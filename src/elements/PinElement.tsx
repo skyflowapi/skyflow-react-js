@@ -4,7 +4,11 @@ import { SkyflowElementProps } from '.';
 
 const PinElement: FC<SkyflowElementProps> = ({ ...props }) => {
   const divElement = document.createElement('div');
-  divElement.setAttribute('id', 'collectPinElement');
+  if (props.id) {
+    divElement.setAttribute('id', props.id);
+  } else {
+    divElement.setAttribute('id', 'collectPinElement');
+  }
   React.useEffect(() => {
     try {
       const elementStylesOptions = {
@@ -47,7 +51,7 @@ const PinElement: FC<SkyflowElementProps> = ({ ...props }) => {
         type: Skyflow.ElementType.PIN,
       }, { enableCopy: false });
 
-      newElement.mount('#collectPinElement');
+      newElement.mount(props.id ? `#${props.id}` : '#collectPinElement');
     } catch (e) {
     // eslint-disable-next-line no-console
       console.log(e);
@@ -59,7 +63,7 @@ const PinElement: FC<SkyflowElementProps> = ({ ...props }) => {
   // useListener(Skyflow.EventName.FOCUS, element as CollectElement, props.onFocus);
   // useListener(Skyflow.EventName.READY, element as CollectElement, props.onReady);
 
-  return <div id='collectPinElement' />;
+  return <div id={props.id ? props.id : 'collectPinElement'}></div>;
 };
 
 export { PinElement };

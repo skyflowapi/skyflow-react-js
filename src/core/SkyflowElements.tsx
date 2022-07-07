@@ -19,15 +19,6 @@ export const SkyflowContext = React.createContext<IConfig>({
     resolve('');
   }),
 });
-
-const SkyflowElements:React.FC<ISkyflowElements> = ({ children, config }):JSX.Element => (
-
-    <SkyflowContext.Provider value={config}>
-      {children}
-    </SkyflowContext.Provider>
-
-);
-
 const useSkyflow = () :{ skyflow: Skyflow, context: IConfig } => {
   const context = useContext(SkyflowContext);
   const skyflow = Skyflow.init({
@@ -40,6 +31,18 @@ const useSkyflow = () :{ skyflow: Skyflow, context: IConfig } => {
 
   return { skyflow, context };
 };
+const SkyflowElements:React.FC<ISkyflowElements> = ({ children, config }):JSX.Element => {
+  // Initialize SKyflow
+  useSkyflow();
+  return (
+
+    <SkyflowContext.Provider value={config}>
+      {children}
+    </SkyflowContext.Provider>
+
+  );
+};
+
 export {
   SkyflowElements, useSkyflow,
 };

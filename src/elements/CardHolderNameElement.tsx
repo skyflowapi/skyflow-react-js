@@ -2,13 +2,14 @@ import React, { FC } from 'react';
 import Skyflow from 'skyflow-js';
 import { SkyflowElementProps } from '.';
 
-const CVVElement: FC<SkyflowElementProps> = ({ ...props }) => {
+const CardHolderNameElement: FC<SkyflowElementProps> = ({ ...props }) => {
   const divElement = document.createElement('div');
   if (props.id) {
     divElement.setAttribute('id', props.id);
   } else {
-    divElement.setAttribute('id', 'collectCVVNumber');
+    divElement.setAttribute('id', 'collectCardName');
   }
+
   React.useEffect(() => {
     try {
       const elementStylesOptions = {
@@ -41,29 +42,28 @@ const CVVElement: FC<SkyflowElementProps> = ({ ...props }) => {
           },
         },
       };
-
       const newElement = props.container.create({
         table: props.table,
         column: props.column,
         ...elementStylesOptions,
         placeholder: props.placeholder || '',
         label: props.label || '',
-        type: Skyflow.ElementType.CVV,
-      }, { enableCopy: false });
+        type: Skyflow.ElementType.CARDHOLDER_NAME,
+      }, { enableCopy: true });
 
-      newElement.mount(props.id ? `#${props.id}` : '#collectCVVNumber');
+      newElement.mount(props.id ? `#${props.id}` : '#collectCardName');
     } catch (e) {
-    // eslint-disable-next-line no-console
+      // eslint-disable-next-line no-console
       console.log(e);
     }
   }, []);
 
-  // useListener(Skyflow.EventName.CHANGE, element as CollectElement, props.onChange);
-  // useListener(Skyflow.EventName.BLUR, element as CollectElement, props.onBlur);
+  // // useListener(Skyflow.EventName.CHANGE, element , props.onChange);
+  // useListener(Skyflow.EventName.BLUR, element, props.onBlur);
   // useListener(Skyflow.EventName.FOCUS, element as CollectElement, props.onFocus);
   // useListener(Skyflow.EventName.READY, element as CollectElement, props.onReady);
 
-  return <div id={props.id ? props.id : 'collectCVVNumber'}></div>;
+  return <div id={props.id ? props.id : 'collectCardName'}></div>;
 };
 
-export { CVVElement };
+export { CardHolderNameElement };

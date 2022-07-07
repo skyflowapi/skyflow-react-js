@@ -4,10 +4,13 @@ import { SkyflowElementProps } from '.';
 
 const CardNumberElement: FC<SkyflowElementProps> = ({ ...props }) => {
   const divElement = document.createElement('div');
-  divElement.setAttribute('id', 'collectCardNumber');
+  if (props.id) {
+    divElement.setAttribute('id', props.id);
+  } else {
+    divElement.setAttribute('id', 'collectCardNumber');
+  }
   React.useEffect(() => {
     try {
-    // custom styles for collect elements
       const elementStylesOptions = {
         inputStyles: {
           base: {
@@ -38,7 +41,6 @@ const CardNumberElement: FC<SkyflowElementProps> = ({ ...props }) => {
           },
         },
       };
-      // create collect elements
       const newElement = props.container.create({
         table: props.table,
         column: props.column,
@@ -48,8 +50,9 @@ const CardNumberElement: FC<SkyflowElementProps> = ({ ...props }) => {
         type: Skyflow.ElementType.CARD_NUMBER,
       }, { enableCopy: true });
 
-      newElement.mount('#collectCardNumber');
+      newElement.mount(props.id ? `#${props.id}` : '#collectCardNumber');
     } catch (e) {
+      // eslint-disable-next-line no-console
       console.log(e);
     }
   }, []);
@@ -59,7 +62,7 @@ const CardNumberElement: FC<SkyflowElementProps> = ({ ...props }) => {
   // useListener(Skyflow.EventName.FOCUS, element as CollectElement, props.onFocus);
   // useListener(Skyflow.EventName.READY, element as CollectElement, props.onReady);
 
-  return <div id="collectCardNumber"></div>;
+  return <div id={props.id ? props.id : 'collectCardNumber'}></div>;
 };
 
 export { CardNumberElement };

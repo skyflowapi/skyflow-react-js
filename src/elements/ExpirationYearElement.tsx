@@ -4,7 +4,13 @@ import { SkyflowElementProps } from '.';
 
 const ExpirationYearElement: FC<SkyflowElementProps> = ({ ...props }) => {
   const divElement = document.createElement('div');
-  divElement.setAttribute('id', 'collectExpirationYear');
+  if (props.id) {
+    console.log('ID', props.id);
+    divElement.setAttribute('id', props.id);
+  } else {
+    divElement.setAttribute('id', 'collectExpirationYear');
+  }
+
   React.useEffect(() => {
     try {
       const elementStylesOptions = {
@@ -47,7 +53,7 @@ const ExpirationYearElement: FC<SkyflowElementProps> = ({ ...props }) => {
         type: Skyflow.ElementType.EXPIRATION_YEAR,
       }, { enableCopy: false });
 
-      newElement.mount('#collectExpirationYear');
+      newElement.mount(props.id ? `#${props.id}` : '#collectExpirationYear');
     } catch (e) {
     // eslint-disable-next-line no-console
       console.log(e);
@@ -58,8 +64,7 @@ const ExpirationYearElement: FC<SkyflowElementProps> = ({ ...props }) => {
   // useListener(Skyflow.EventName.BLUR, element as CollectElement, props.onBlur);
   // useListener(Skyflow.EventName.FOCUS, element as CollectElement, props.onFocus);
   // useListener(Skyflow.EventName.READY, element as CollectElement, props.onReady);
-
-  return <div id='collectExpirationYear' />;
+  return <div id={props.id ? props.id : 'collectExpirationYear'}></div>;
 };
 
 export { ExpirationYearElement };

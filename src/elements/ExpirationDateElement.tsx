@@ -4,7 +4,11 @@ import { SkyflowElementProps } from '.';
 
 const ExpirationDateElement: FC<SkyflowElementProps> = ({ ...props }) => {
   const divElement = document.createElement('div');
-  divElement.setAttribute('id', 'collectExpirationDate');
+  if (props.id) {
+    divElement.setAttribute('id', props.id);
+  } else {
+    divElement.setAttribute('id', 'collectExpirationDate');
+  }
   React.useEffect(() => {
     try {
       const elementStylesOptions = {
@@ -47,7 +51,7 @@ const ExpirationDateElement: FC<SkyflowElementProps> = ({ ...props }) => {
         type: Skyflow.ElementType.EXPIRATION_DATE,
       }, { enableCopy: false });
 
-      newElement.mount('#collectExpirationDate');
+      newElement.mount(props.id ? `#${props.id}` : '#collectExpirationDate');
     } catch (e) {
     // eslint-disable-next-line no-console
       console.log(e);
@@ -58,8 +62,7 @@ const ExpirationDateElement: FC<SkyflowElementProps> = ({ ...props }) => {
   // useListener(Skyflow.EventName.BLUR, element as CollectElement, props.onBlur);
   // useListener(Skyflow.EventName.FOCUS, element as CollectElement, props.onFocus);
   // useListener(Skyflow.EventName.READY, element as CollectElement, props.onReady);
-
-  return <div id='collectExpirationDate' />;
+  return <div id={props.id ? props.id : 'collectExpirationDate'}></div>;
 };
 
 export { ExpirationDateElement };
