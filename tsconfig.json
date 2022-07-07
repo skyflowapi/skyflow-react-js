@@ -1,0 +1,24 @@
+{
+    "compilerOptions": {
+      "forceConsistentCasingInFileNames": true,
+      "target": "es6",
+      "lib": ["es2015", "es2017", "dom", "ES2020.Promise"],
+      "esModuleInterop": true,
+      "importHelpers": true,
+      "jsx": "react", 
+      "module": "commonjs", 
+      "declaration": true,
+      "declarationDir": "types",
+      "sourceMap": true,
+      "outDir": "dist",
+      "moduleResolution": "node",
+      "allowSyntheticDefaultImports": true,
+      "emitDeclarationOnly": true,
+      "skipLibCheck": true,
+      "isolatedModules": false,
+      "noEmit": false,
+      "resolveJsonModule": true,
+    },
+    "include": ["src"],
+    "exclude": ["node_modules", "dist", "tests/*.test.*"]
+  }
