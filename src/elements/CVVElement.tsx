@@ -58,11 +58,6 @@ const CVVElement: FC<SkyflowElementProps> = ({ ...props }) => {
     }
   }, []);
 
-  // useListener(Skyflow.EventName.CHANGE, element as CollectElement, props.onChange);
-  // useListener(Skyflow.EventName.BLUR, element as CollectElement, props.onBlur);
-  // useListener(Skyflow.EventName.FOCUS, element as CollectElement, props.onFocus);
-  // useListener(Skyflow.EventName.READY, element as CollectElement, props.onReady);
-
   return <div id={props.id ? props.id : 'collectCVVNumber'}></div>;
 };
 

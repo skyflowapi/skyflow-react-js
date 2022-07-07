@@ -33,9 +33,9 @@ const useSkyflow = () :{ skyflow: Skyflow, context: IConfig } => {
 };
 const SkyflowElements:React.FC<ISkyflowElements> = ({ children, config }):JSX.Element => {
   // Initialize SKyflow
-  useSkyflow();
-  return (
+  React.useMemo(() => { useSkyflow(); }, [SkyflowContext]);
 
+  return (
     <SkyflowContext.Provider value={config}>
       {children}
     </SkyflowContext.Provider>

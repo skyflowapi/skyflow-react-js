@@ -57,11 +57,6 @@ const CardNumberElement: FC<SkyflowElementProps> = ({ ...props }) => {
     }
   }, []);
 
-  // // useListener(Skyflow.EventName.CHANGE, element , props.onChange);
-  // useListener(Skyflow.EventName.BLUR, element, props.onBlur);
-  // useListener(Skyflow.EventName.FOCUS, element as CollectElement, props.onFocus);
-  // useListener(Skyflow.EventName.READY, element as CollectElement, props.onReady);
-
   return <div id={props.id ? props.id : 'collectCardNumber'}></div>;
 };
 
