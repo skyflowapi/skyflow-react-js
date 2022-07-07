@@ -31,6 +31,7 @@
         ],
         "no-param-reassign": "off",
         "prefer-destructuring": "off",
-        "@typescript-eslint/no-implied-eval": "off"
+        "@typescript-eslint/no-implied-eval": "off",
+        "import/prefer-default-export":"off"
     }
 }

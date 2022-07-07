@@ -1,17 +1,18 @@
 import React, { useContext } from 'react';
+import Skyflow from 'skyflow-js';
 
-interface IConfig {
+export interface IConfig {
   vaultID: string;
   vaultURL: string;
   getBearerToken: () => Promise<string>;
 }
 
-interface ISkyflowElements {
+export interface ISkyflowElements {
   children?: any
   config: IConfig
 }
 
-const SkyflowContext = React.createContext<IConfig>({
+export const SkyflowContext = React.createContext<IConfig>({
   vaultID: '',
   vaultURL: '',
   getBearerToken: () => new Promise<string>((resolve) => {
@@ -19,11 +20,26 @@ const SkyflowContext = React.createContext<IConfig>({
   }),
 });
 
-const SkyflowElements:React.FC<ISkyflowElements> = ({ children, ...props }) => (
-    <SkyflowContext.Provider value={props.config}>
+const SkyflowElements:React.FC<ISkyflowElements> = ({ children, config }):JSX.Element => (
+
+    <SkyflowContext.Provider value={config}>
       {children}
     </SkyflowContext.Provider>
 
 );
-const useSkyflow = () : IConfig => useContext(SkyflowContext);
-export { SkyflowElements, useSkyflow };
+
+const useSkyflow = () :{ skyflow: Skyflow, context: IConfig } => {
+  const context = useContext(SkyflowContext);
+  const skyflow = Skyflow.init({
+    ...context,
+    options: {
+      logLevel: Skyflow.LogLevel.DEBUG,
+      env: Skyflow.Env.PROD,
+    },
+  });
+
+  return { skyflow, context };
+};
+export {
+  SkyflowElements, useSkyflow,
+};

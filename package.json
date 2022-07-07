@@ -5,9 +5,7 @@
   "version": "1.0.0",
   "description": "Skyflow React SDK",
   "homepage": "https://github.com/skyflowapi/skyflow-react",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "typings": "dist/index.d.ts",
+  "main": "src/index.ts",
   "files": [
     "dist"
   ],

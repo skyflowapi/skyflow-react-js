@@ -2,9 +2,9 @@ import React, { FC } from 'react';
 import Skyflow from 'skyflow-js';
 import { SkyflowElementProps } from '.';
 
-const ExpirationMonthElement: FC<SkyflowElementProps> = ({ ...props }) => {
+const ExpirationDateElement: FC<SkyflowElementProps> = ({ ...props }) => {
   const divElement = document.createElement('div');
-  divElement.setAttribute('id', 'collectExpirationMonth');
+  divElement.setAttribute('id', 'collectExpirationDate');
   React.useEffect(() => {
     try {
       const elementStylesOptions = {
@@ -42,12 +42,12 @@ const ExpirationMonthElement: FC<SkyflowElementProps> = ({ ...props }) => {
         table: props.table,
         column: props.column,
         ...elementStylesOptions,
-        placeholder: props.placeholder || '',
+        placeholder: props.placeholder || 'MM/YYYY',
         label: props.label || '',
-        type: Skyflow.ElementType.EXPIRATION_MONTH,
+        type: Skyflow.ElementType.EXPIRATION_DATE,
       }, { enableCopy: false });
 
-      newElement.mount('#collectExpirationMonth');
+      newElement.mount('#collectExpirationDate');
     } catch (e) {
     // eslint-disable-next-line no-console
       console.log(e);
@@ -59,7 +59,7 @@ const ExpirationMonthElement: FC<SkyflowElementProps> = ({ ...props }) => {
   // useListener(Skyflow.EventName.FOCUS, element as CollectElement, props.onFocus);
   // useListener(Skyflow.EventName.READY, element as CollectElement, props.onReady);
 
-  return <div id='collectExpirationMonth' />;
+  return <div id='collectExpirationDate' />;
 };
 
-export { ExpirationMonthElement };
+export { ExpirationDateElement };
