@@ -1,8 +1,9 @@
+import Skyflow from 'skyflow-js';
 import type CollectContainer from 'skyflow-js/types/core/external/collect/CollectContainer';
 import type RevealContainer from 'skyflow-js/types/core/external/reveal/RevealContainer';
 
-export interface SkyflowElementProps {
-  container: CollectContainer | RevealContainer
+export interface SkyflowCollectElementProps {
+  container: CollectContainer 
   table: string;
   column: string;
   id?: string;
@@ -10,13 +11,22 @@ export interface SkyflowElementProps {
   placeholder?: string;
   altText?: string;
   errorText?: string;
-  token?: string;
   validations?: Array<Object>;
+  classes?: Object;
   onChange?:Function;
   onFocus?: Function;
   onBlur?: Function;
   onReady?:Function ;
   // TODO ref
+}
+
+export interface SkyflowRevealElementProps {
+  container: RevealContainer 
+  token?:string
+  id?: string;
+  label?: string;
+  altText?: string;
+  classes?: Object;
 }
 
 export { CardNumberElement } from './CardNumberElement';
@@ -26,5 +36,4 @@ export { ExpirationMonthElement } from './ExpirationMonthElement';
 export { ExpirationYearElement } from './ExpirationYearElement';
 export { PinElement } from './PinElement';
 export { ExpirationDateElement } from './ExpirationDateElement';
-export { useCollectContainer } from './useCollectContainer';
-export { useRevealContainer } from './useRevealContainer';
+export { RevealElement } from './RevealElement';
