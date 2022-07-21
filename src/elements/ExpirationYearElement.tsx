@@ -5,7 +5,6 @@ import { SkyflowCollectElementProps } from '.';
 const ExpirationYearElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
   const divElement = document.createElement('div');
   if (props.id) {
-    console.log('ID', props.id);
     divElement.setAttribute('id', props.id);
   } else {
     divElement.setAttribute('id', 'collectExpirationYear');
@@ -30,7 +29,6 @@ const ExpirationYearElement: FC<SkyflowCollectElementProps> = ({ ...props }) => 
       }
       if(props.onBlur){
         newElement.on(Skyflow.EventName.BLUR,props.onBlur);
-        // useCollectListener(Skyflow.EventName.BLUR,newElement,props.onBlur);
       }
       if(props.onFocus){
         newElement.on(Skyflow.EventName.FOCUS,props.onFocus);

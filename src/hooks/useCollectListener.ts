@@ -7,13 +7,9 @@ const useListeners = (
   element?: CollectElement,
   listener?: Function,
 ) => {
-  console.log("Element: " + element)
-  console.log("listener",listener)
   useEffect(() => {
     if (element && listener) {
-      // newElement.on(Skyflow.EventName.CHANGE,props.onChange);
       element.on(eventType, listener)
-      // element.on(eventType, listener);
     }
   }, [element, listener]);
 };
