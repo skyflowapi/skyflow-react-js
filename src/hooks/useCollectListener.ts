@@ -1,17 +1,23 @@
-import { useEffect } from 'react';
+import Skyflow from 'skyflow-js';
 import CollectElement from 'skyflow-js/types/core/external/collect/CollectElement';
-import { EventName } from 'skyflow-js/types/utils/common';
+import { SkyflowCollectElementProps } from '../elements';
 
-const useListeners = (
-  eventType: EventName,
-  element?: CollectElement,
-  listener?: Function,
-) => {
-  useEffect(() => {
-    if (element && listener) {
-      element.on(eventType, listener)
+const useCollectListeners = (
+ props: SkyflowCollectElementProps,
+ element: CollectElement
+):void => {
+    if(props.onChange){
+      element.on(Skyflow.EventName.CHANGE,props.onChange);
     }
-  }, [element, listener]);
+    if(props.onBlur){
+      element.on(Skyflow.EventName.BLUR,props.onBlur);
+    }
+    if(props.onFocus){
+      element.on(Skyflow.EventName.FOCUS,props.onFocus);
+    }
+    if(props.onReady){
+      element.on(Skyflow.EventName.READY,props.onReady);
+    }
 };
 
-export default useListeners;
+export { useCollectListeners } ;

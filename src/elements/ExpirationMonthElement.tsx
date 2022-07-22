@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import Skyflow from 'skyflow-js';
 import { SkyflowCollectElementProps } from '.';
+import{ useCollectListeners } from './../hooks/useCollectListener';
 
 const ExpirationMonthElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
   const divElement = document.createElement('div');
@@ -23,18 +24,8 @@ const ExpirationMonthElement: FC<SkyflowCollectElementProps> = ({ ...props }) =>
 
       newElement.mount(props.id ? `#${props.id}` : '#collectExpirationMonth');
             
-      if(props.onChange){
-        newElement.on(Skyflow.EventName.CHANGE,props.onChange);
-      }
-      if(props.onBlur){
-        newElement.on(Skyflow.EventName.BLUR,props.onBlur);
-      }
-      if(props.onFocus){
-        newElement.on(Skyflow.EventName.FOCUS,props.onFocus);
-      }
-      if(props.onReady){
-        newElement.on(Skyflow.EventName.READY,props.onReady);
-      }
+      useCollectListeners(props,newElement)
+
     } catch (e) {
     // eslint-disable-next-line no-console
       console.log(e);

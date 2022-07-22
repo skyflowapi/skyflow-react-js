@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import Skyflow from 'skyflow-js';
 import { SkyflowCollectElementProps } from '.';
+import{ useCollectListeners } from './../hooks/useCollectListener';
 
 const PinElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
   const divElement = document.createElement('div');
@@ -11,8 +12,6 @@ const PinElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
   }
   React.useEffect(() => {
     try {
-
-
       const newElement = props.container.create({
         table: props.table,
         column: props.column,
@@ -23,6 +22,8 @@ const PinElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
       }, { enableCopy: false });
 
       newElement.mount(props.id ? `#${props.id}` : '#collectPinElement');
+
+      useCollectListeners(props,newElement)
     } catch (e) {
     // eslint-disable-next-line no-console
       console.log(e);
