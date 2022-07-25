@@ -1,3 +1,6 @@
+/*
+	Copyright (c) 2022 Skyflow, Inc. 
+*/
 import React, { FC } from 'react';
 import Skyflow from 'skyflow-js';
 import { SkyflowRevealElementProps } from '.';

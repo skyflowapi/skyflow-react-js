@@ -1,3 +1,6 @@
+/*
+	Copyright (c) 2022 Skyflow, Inc. 
+*/
 import React, { useContext } from 'react';
 import Skyflow from 'skyflow-js';
 
