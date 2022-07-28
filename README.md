@@ -119,7 +119,7 @@ For `env` parameter, there are 2 accepted values in Skyflow.Env
 
 `Note`:
   - since `env` is optional, by default the env will be  `PROD`.
-  - Use `env` option with caution, make sure the env is set to `PROD` when using `skyflow-js` in production. 
+  - Use `env` option with caution, make sure the env is set to `PROD` when using `skyflow-react-js` in production. 
 
 ---
 # Securely collecting data client-side
