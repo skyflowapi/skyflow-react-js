@@ -10,7 +10,7 @@
       "declaration": true,
       "declarationDir": "types",
       "sourceMap": true,
-      "outDir": "dist",
+      "outDir": "types",
       "moduleResolution": "node",
       "allowSyntheticDefaultImports": true,
       "emitDeclarationOnly": true,
@@ -20,5 +20,5 @@
       "resolveJsonModule": true,
     },
     "include": ["src"],
-    "exclude": ["node_modules", "dist", "tests/*.test.*"]
+    "exclude": ["node_modules", "types", "tests/*.test.*"]
   }
