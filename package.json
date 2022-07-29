@@ -5,13 +5,16 @@
   "version": "1.0.0",
   "description": "Skyflow React SDK",
   "homepage": "https://github.com/skyflowapi/skyflow-react",
-  "main": "src/index.ts",
+  "main": "./dist/main.js",
+  "types": "./types/index.d.ts",
   "files": [
-    "dist"
+    "dist/main.js",
+    "types"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc"
+    "build:types": "tsc",
+    "build": "webpack"
   },
   "keywords": [
     "client",
@@ -70,6 +73,7 @@
     "qs": "^6.10.3",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "skyflow-js": "^1.18.0"
+    "skyflow-js": "^1.18.0",
+    "ts-loader": "^9.3.1"
   }
 }
