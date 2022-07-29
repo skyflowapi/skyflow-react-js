@@ -13,7 +13,6 @@
       "outDir": "types",
       "moduleResolution": "node",
       "allowSyntheticDefaultImports": true,
-      "emitDeclarationOnly": true,
       "skipLibCheck": true,
       "isolatedModules": false,
       "noEmit": false,
