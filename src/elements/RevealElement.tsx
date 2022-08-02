@@ -1,3 +1,6 @@
+/*
+	Copyright (c) 2022 Skyflow, Inc. 
+*/
 import React, { FC } from 'react';
 import Skyflow from 'skyflow-js';
 import { SkyflowRevealElementProps } from '.';
@@ -18,7 +21,6 @@ const RevealElement: FC<SkyflowRevealElementProps> = ({ ...props }) => {
         const RevealElement = props.container.create({
             token:props.token,
             ...props.classes,
-            altText: props.altText || '',
             label: props.label || ''
         })
     

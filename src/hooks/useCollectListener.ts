@@ -1,3 +1,6 @@
+/*
+	Copyright (c) 2022 Skyflow, Inc. 
+*/
 import Skyflow from 'skyflow-js';
 import CollectElement from 'skyflow-js/types/core/external/collect/CollectElement';
 import { SkyflowCollectElementProps } from '../elements';
