@@ -14,23 +14,26 @@ jobs:
       - name: Check JIRA ID
         uses: gsactions/commit-message-checker@v1
         with:
-          pattern: '\[?[A-Z]{1,5}-[1-9][0-9]*.+$'
-          flags: 'gm'
-          excludeDescription: 'true'
-          checkAllCommitMessages: 'true'
+          pattern: '(\[?[A-Z]{1,5}-[1-9][0-9]*)|(\[AUTOMATED\])|(Merge)|(Release).+$'
+          flags: "gm"
+          excludeDescription: "true"
+          checkAllCommitMessages: "true"
           accessToken: ${{ secrets.PAT_ACTIONS }}
-          error: 'One of your your commit messages is not matching the format with JIRA ID Ex: ( SDK-123 commit message )'
+          error: "One of your your commit messages is not matching the format with JIRA ID Ex: ( SDK-123 commit message )"
   ci-checks:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
-      - name: install modules
+        with:
+          node-version: 14.17.6
+
+      - name: install node_modules
         run: npm install
 
       - name: Run tests
         run: npm run test
-      
+
       - name: Codecov
         uses: codecov/codecov-action@v2.1.0
         with:
@@ -38,6 +41,6 @@ jobs:
           files: coverage/lcov.info
           name: codecov-skyflow-react
           verbose: true
-      
+
       - name: Build
         run: npm run build
