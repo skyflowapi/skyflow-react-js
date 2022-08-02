@@ -3,8 +3,8 @@
 */
 import React, { FC } from 'react';
 import Skyflow from 'skyflow-js';
-import { SkyflowCollectElementProps } from '.';
-import { useCollectListeners } from '../hooks';
+import { SkyflowCollectElementProps } from '..';
+import  useCollectListeners  from '../..//hooks/CollectListner';
 
 const CardHolderNameElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
   const divElement = document.createElement('div');
@@ -36,12 +36,7 @@ const CardHolderNameElement: FC<SkyflowCollectElementProps> = ({ ...props }) => 
     }
   }, []);
 
-  // // useListener(Skyflow.EventName.CHANGE, element , props.onChange);
-  // useListener(Skyflow.EventName.BLUR, element, props.onBlur);
-  // useListener(Skyflow.EventName.FOCUS, element as CollectElement, props.onFocus);
-  // useListener(Skyflow.EventName.READY, element as CollectElement, props.onReady);
-
   return <div id={props.id ? props.id : 'collectCardName'}></div>;
 };
 
-export { CardHolderNameElement };
+export default CardHolderNameElement;

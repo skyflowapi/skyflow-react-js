@@ -3,8 +3,8 @@
 */
 import React, { FC } from 'react';
 import Skyflow from 'skyflow-js';
-import { SkyflowCollectElementProps } from '.';
-import{ useCollectListeners } from './../hooks/useCollectListener';
+import { SkyflowCollectElementProps } from '..';
+import  useCollectListeners  from '../../hooks/CollectListner';
 
 const ExpirationDateElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
   const divElement = document.createElement('div');
@@ -37,4 +37,4 @@ const ExpirationDateElement: FC<SkyflowCollectElementProps> = ({ ...props }) => 
   return <div id={props.id ? props.id : 'collectExpirationDate'}></div>;
 };
 
-export { ExpirationDateElement };
+export default ExpirationDateElement;

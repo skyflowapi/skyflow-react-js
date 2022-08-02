@@ -3,15 +3,15 @@
 */
 import React, { FC } from 'react';
 import Skyflow from 'skyflow-js';
-import { SkyflowCollectElementProps } from '.';
-import{ useCollectListeners } from './../hooks/useCollectListener';
+import { SkyflowCollectElementProps } from '..';
+import  useCollectListeners  from '../..//hooks/CollectListner';
 
-const ExpirationMonthElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
+const CVVElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
   const divElement = document.createElement('div');
   if (props.id) {
     divElement.setAttribute('id', props.id);
   } else {
-    divElement.setAttribute('id', 'collectExpirationMonth');
+    divElement.setAttribute('id', 'collectCVVNumber');
   }
   React.useEffect(() => {
     try {
@@ -22,20 +22,20 @@ const ExpirationMonthElement: FC<SkyflowCollectElementProps> = ({ ...props }) =>
         ...props.classes,
         placeholder: props.placeholder || '',
         label: props.label || '',
-        type: Skyflow.ElementType.EXPIRATION_MONTH,
+        type: Skyflow.ElementType.CVV,
       }, { enableCopy: false });
 
-      newElement.mount(props.id ? `#${props.id}` : '#collectExpirationMonth');
-            
+      newElement.mount(props.id ? `#${props.id}` : '#collectCVVNumber');
+      
       useCollectListeners(props,newElement)
-
+      
     } catch (e) {
     // eslint-disable-next-line no-console
       console.log(e);
     }
   }, []);
 
-  return <div id={props.id ? props.id : 'collectExpirationMonth'}></div>;
+  return <div id={props.id ? props.id : 'collectCVVNumber'}></div>;
 };
 
-export { ExpirationMonthElement };
+export default CVVElement;
