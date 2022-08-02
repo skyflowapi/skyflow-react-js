@@ -3,10 +3,10 @@
 */
 import * as React from "react";
 import { render } from "@testing-library/react";
-import { CardNumberElement } from "../../src/elements/CardNumberElement";
+import CardNumberElement from "../../src/elements/CardNumber";
 import CollectContainer from "skyflow-js/types/core/external/collect/CollectContainer";
 
-jest.mock("../../src/hooks/useCollectContainer");
+jest.mock("../../src/hooks/CollectContainer");
 
 describe("CardNumberElement", () => {
   let container: CollectContainer;

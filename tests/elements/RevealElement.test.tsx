@@ -4,10 +4,10 @@
 import * as React from "react";
 import { render } from "@testing-library/react";
 import CollectContainer from "skyflow-js/types/core/external/collect/CollectContainer";
-import { RevealElement } from "../../src/elements";
+import RevealElement from "../../src/elements/RevealElement";
 import RevealContainer from "skyflow-js/types/core/external/reveal/RevealContainer";
 
-jest.mock("../../src/hooks/useRevealContainer");
+jest.mock("../../src/hooks/RevealContainer");
 
 describe("RevealElement", () => {
   let container: RevealContainer;

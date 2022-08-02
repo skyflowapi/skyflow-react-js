@@ -4,10 +4,10 @@
 import * as React from "react";
 import { render } from "@testing-library/react";
 import CollectContainer from "skyflow-js/types/core/external/collect/CollectContainer";
-import { CVVElement } from "../../src/elements";
-import { useCollectContainer } from "../../src/hooks/useCollectContainer";
+import CVVElement from "../../src/elements/CVV";
+import useCollectContainer from "../../src/hooks/CollectContainer";
 
-jest.mock("../../src/hooks/useCollectContainer");
+jest.mock("../../src/hooks/CollectContainer");
 
 describe("CVVElement", () => {
   let container: CollectContainer;

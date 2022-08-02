@@ -1,12 +1,12 @@
 /*
 	Copyright (c) 2022 Skyflow, Inc. 
 */
-import * as React from 'react';
-import { render } from '@testing-library/react';
-import {CardHolderNameElement}from '../../src/elements/CardHolderNameElement'
-import CollectContainer from 'skyflow-js/types/core/external/collect/CollectContainer';
+import * as React from "react";
+import { render } from "@testing-library/react";
+import CardHolderNameElement from "../../src/elements/CardHolderName";
+import CollectContainer from "skyflow-js/types/core/external/collect/CollectContainer";
 
-jest.mock('../../src/hooks/useCollectContainer')
+jest.mock("../../src/hooks/CollectContainer");
 
 describe('CardNameElement', () => {
     let container: CollectContainer 
@@ -23,20 +23,20 @@ describe('CardNameElement', () => {
     let onBlur: jest.Mock;
     let onReady:jest.Mock;
 
-    test('should match snapshot', () => {
-        const cardNameContainer = render( 
-        <CardHolderNameElement  
-            container={container} 
-            table={'table1'} 
-            classes={classes}  
-            column={'card_number'} 
-            label={"Collect Card Number"} 
-            onChange={onChange} 
-            onBlur={onBlur}
-            onFocus={onFocus}
-            onReady={onReady}
-            />
-        )
-        expect(cardNameContainer).toMatchSnapshot();
-    })
-})
+  test("should match snapshot", () => {
+    const cardNameContainer = render(
+      <CardHolderNameElement
+        container={container}
+        table={"table1"}
+        classes={classes}
+        column={"card_name"}
+        label={"Collect Card Naame"}
+        onChange={onChange}
+        onBlur={onBlur}
+        onFocus={onFocus}
+        onReady={onReady}
+      />
+    );
+    expect(cardNameContainer).toMatchSnapshot();
+  });
+});

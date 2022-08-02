@@ -4,9 +4,9 @@
 import * as React from "react";
 import { render } from "@testing-library/react";
 import CollectContainer from "skyflow-js/types/core/external/collect/CollectContainer";
-import { ExpirationMonthElement } from "../../src/elements";
+import ExpirationMonthElement from "../../src/elements/ExpirationMonth";
 
-jest.mock("../../src/hooks/useCollectContainer");
+jest.mock("../../src/hooks/CollectContainer");
 
 describe("ExpiryMonthElement", () => {
   let container: CollectContainer;
@@ -29,8 +29,8 @@ describe("ExpiryMonthElement", () => {
         container={container}
         table={"table1"}
         classes={classes}
-        column={"card_number"}
-        label={"Collect Card Number"}
+        column={"exp_month"}
+        label={"Collect Expiry Month"}
         onChange={onChange}
         onBlur={onBlur}
         onFocus={onFocus}
