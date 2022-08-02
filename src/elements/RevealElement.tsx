@@ -21,7 +21,6 @@ const RevealElement: FC<SkyflowRevealElementProps> = ({ ...props }) => {
         const RevealElement = props.container.create({
             token:props.token,
             ...props.classes,
-            altText: props.altText || '',
             label: props.label || ''
         })
     

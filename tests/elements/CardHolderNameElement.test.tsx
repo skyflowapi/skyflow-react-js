@@ -15,7 +15,6 @@ describe('CardNameElement', () => {
     let id: string;
     let label: string;
     let placeholder: string;
-    let altText: string;
     let errorText: string;
     let validations: Array<Object>;
     let classes: Object;

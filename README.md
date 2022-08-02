@@ -162,7 +162,6 @@ The following `props` can be passed to Skyflow collect Element:
     classes: {},                 //optional, styles that should be applied to the element
     label: "string",             //optional, label for the form element
     placeholder: "string",       //optional, placeholder for the form element
-    altText: "string"            //(DEPRECATED) string that acts as an initial value for the collect 
     validations: []              // optional array of validation rules
     onChange: Function;          //optional, function that is passed to trigger the onChange event
     onFocus: Function;           //optional, function that is passed to trigger the onChange event
@@ -257,7 +256,7 @@ We support the following collect elements in the react SDK:
 - `ExpirationMonthElement`
 - `ExpirationYearElement`
 
-Along with Collect Element we can define other options which takes a dictionary of optional parameters as described below:
+Along with Collect Element we can define other options which takes a object of optional parameters as described below:
 
 ```javascript
 const options = {
@@ -290,7 +289,7 @@ The values that are accepted for `EXPIRATION_YEAR` are
 
 ### Step 3: Collect data from Elements
 
-When the form is ready to be submitted, call the `collect(options?)` method on the container object. The `options` parameter takes a dictionary of optional parameters as shown below: 
+When the form is ready to be submitted, call the `collect(options?)` method on the container object. The `options` parameter takes a object of optional parameters as shown below: 
 
 - `tokens`: indicates whether tokens for the collected data should be returned or not. Defaults to 'true'
 - `additionalFields`: Non-PCI elements data to be inserted into the vault which should be in the `records` object format.
@@ -620,7 +619,6 @@ The following `props` can be passed to Skyflow reveal element:
     id: string,                  //optional, id that can passed to the element 
     classes: {},                 //optional, styles that should be applied to the element
     label: "string",             //optional, label for the form element
-    altText: "string"            //(DEPRECATED) string that acts as an initial value for the collect 
    
 ```
 `Note`: 

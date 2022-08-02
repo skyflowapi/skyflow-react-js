@@ -12,7 +12,6 @@ export interface SkyflowCollectElementProps {
   id?: string;
   label?: string;
   placeholder?: string;
-  altText?: string;
   errorText?: string;
   validations?: Array<Object>;
   classes?: Object;
@@ -28,7 +27,6 @@ export interface SkyflowRevealElementProps {
   token:string
   id?: string;
   label?: string;
-  altText?: string;
   classes?: Object;
 }
 
