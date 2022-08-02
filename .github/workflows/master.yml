@@ -11,12 +11,15 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
-      - name: install modules
+        with:
+          node-version: 14.17.6
+
+      - name: install node_modules
         run: npm install
 
       - name: Run tests
         run: npm run test
-      
+
       - name: Codecov
         uses: codecov/codecov-action@v2.1.0
         with:
