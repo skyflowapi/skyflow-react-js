@@ -24,8 +24,9 @@ const CardNumberElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
           placeholder: props.placeholder || '',
           label: props.label || '',
           type: Skyflow.ElementType.CARD_NUMBER,
+          validations: props.validations || [],
         },
-        { enableCopy: true },
+        { ...props.options },
       )
 
       newElement.mount(props.id ? `#${props.id}` : '#collectCardNumber')

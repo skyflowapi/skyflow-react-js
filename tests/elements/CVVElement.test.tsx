@@ -6,6 +6,7 @@ import { render } from '@testing-library/react'
 import CollectContainer from 'skyflow-js/types/core/external/collect/CollectContainer'
 import CVVElement from '../../src/elements/CVV'
 import useCollectContainer from '../../src/hooks/CollectContainer'
+import { IValidationRule } from 'skyflow-js/types/utils/common'
 
 jest.mock('../../src/hooks/CollectContainer')
 
@@ -16,7 +17,7 @@ describe('CVVElement', () => {
   let id: string
   let label: string
   let placeholder: string
-  let validations: Array<Record<string, unknown>>
+  let validations: IValidationRule[] | undefined
   let classes: Record<string, unknown>
   let onChange: jest.Mock
   let onFocus: jest.Mock
@@ -31,7 +32,7 @@ describe('CVVElement', () => {
     id = 'id'
     label = 'cvv'
     placeholder = 'Enter CVV'
-    validations = [{}]
+    validations = []
     classes = {}
     onChange = jest.fn()
     onFocus = jest.fn()

@@ -7,7 +7,6 @@ import { SkyflowRevealElementProps } from '..'
 const RevealElement: FC<SkyflowRevealElementProps> = ({ ...props }) => {
   const divElement = document.createElement('div')
   if (props.id) {
-    console.log('ID', props.id)
     divElement.setAttribute('id', props.id)
   } else {
     divElement.setAttribute('id', 'revealElement')
@@ -15,11 +14,14 @@ const RevealElement: FC<SkyflowRevealElementProps> = ({ ...props }) => {
 
   React.useEffect(() => {
     try {
-      const RevealElement = props.container.create({
-        token: props.token,
-        ...props.classes,
-        label: props.label || '',
-      })
+      const RevealElement = props.container.create(
+        {
+          token: props.token,
+          ...props.classes,
+          label: props.label || '',
+        },
+        { ...props.options },
+      )
 
       RevealElement.mount(props.id ? `#${props.id}` : '#revealElement')
     } catch (e) {
