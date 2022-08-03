@@ -1,5 +1,5 @@
 /*
-	Copyright (c) 2022 Skyflow, Inc. 
+	Copyright (c) 2022 Skyflow, Inc.
 */
 import React, { FC } from 'react'
 import Skyflow from 'skyflow-js'
@@ -24,8 +24,9 @@ const CardHolderNameElement: FC<SkyflowCollectElementProps> = ({ ...props }) => 
           placeholder: props.placeholder || '',
           label: props.label || '',
           type: Skyflow.ElementType.CARDHOLDER_NAME,
+          validations: props.validations || [],
         },
-        { enableCopy: true },
+        { ...props.options },
       )
 
       newElement.mount(props.id ? `#${props.id}` : '#collectCardName')

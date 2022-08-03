@@ -1,3 +1,6 @@
+/*
+	Copyright (c) 2022 Skyflow, Inc. 
+*/
 const path = require("path");
 module.exports = {
     mode: "production",

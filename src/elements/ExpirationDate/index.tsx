@@ -23,8 +23,9 @@ const ExpirationDateElement: FC<SkyflowCollectElementProps> = ({ ...props }) => 
           placeholder: props.placeholder || 'MM/YYYY',
           label: props.label || '',
           type: Skyflow.ElementType.EXPIRATION_DATE,
+          validations: props.validations || [],
         },
-        { enableCopy: false },
+        { ...props.options },
       )
 
       newElement.mount(props.id ? `#${props.id}` : '#collectExpirationDate')

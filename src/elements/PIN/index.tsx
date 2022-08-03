@@ -23,8 +23,9 @@ const PinElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
           placeholder: props.placeholder || '',
           label: props.label || '',
           type: Skyflow.ElementType.PIN,
+          validations: props.validations || [],
         },
-        { enableCopy: false },
+        { ...props.options },
       )
 
       newElement.mount(props.id ? `#${props.id}` : '#collectPinElement')

@@ -1,3 +1,6 @@
+/*
+	Copyright (c) 2022 Skyflow, Inc. 
+*/
 import SkyflowElements from './core'
 import Skyflow from 'skyflow-js'
 
@@ -18,6 +21,7 @@ import useCollectContainer from './hooks/CollectContainer'
 const LogLevel = Skyflow.LogLevel
 const Env = Skyflow.Env
 
+const ValidationRuleType = Skyflow.ValidationRuleType
 export {
   SkyflowElements,
   CardNumberElement,
@@ -34,4 +38,5 @@ export {
   useCollectListeners,
   LogLevel,
   Env,
+  ValidationRuleType,
 }

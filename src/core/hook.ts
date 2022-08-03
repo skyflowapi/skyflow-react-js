@@ -1,3 +1,6 @@
+/*
+	Copyright (c) 2022 Skyflow, Inc. 
+*/
 import React, { useContext } from 'react'
 import Skyflow from 'skyflow-js'
 import { Env, LogLevel } from 'skyflow-js/types/utils/common'
@@ -10,16 +13,16 @@ export const SkyflowContext = React.createContext<IConfig>({
     new Promise<string>((resolve) => {
       resolve('')
     }),
+  options: {
+    logLevel: Skyflow.LogLevel.ERROR,
+    env: Skyflow.Env.PROD,
+  },
 })
 
-const useSkyflow = (logLevel?: LogLevel, env?: Env): { skyflow: Skyflow; context: IConfig } => {
+const useSkyflow = (): { skyflow: Skyflow; context: IConfig } => {
   const context = useContext(SkyflowContext)
   const skyflow = Skyflow.init({
     ...context,
-    options: {
-      logLevel: logLevel ? logLevel : Skyflow.LogLevel.ERROR,
-      env: env ? env : Skyflow.Env.PROD,
-    },
   })
 
   return { skyflow, context }

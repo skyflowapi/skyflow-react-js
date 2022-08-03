@@ -23,8 +23,9 @@ const CVVElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
           placeholder: props.placeholder || '',
           label: props.label || '',
           type: Skyflow.ElementType.CVV,
+          validations: props.validations || [],
         },
-        { enableCopy: false },
+        { ...props.options },
       )
 
       newElement.mount(props.id ? `#${props.id}` : '#collectCVVNumber')

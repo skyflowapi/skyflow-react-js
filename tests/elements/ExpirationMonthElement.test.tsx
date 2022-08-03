@@ -5,6 +5,7 @@ import * as React from 'react'
 import { render } from '@testing-library/react'
 import CollectContainer from 'skyflow-js/types/core/external/collect/CollectContainer'
 import ExpirationMonthElement from '../../src/elements/ExpirationMonth'
+import { IValidationRule } from 'skyflow-js/types/utils/common'
 
 jest.mock('../../src/hooks/CollectContainer')
 
@@ -15,7 +16,7 @@ describe('ExpiryMonthElement', () => {
   let id: string
   let label: string
   let placeholder: string
-  let validations: Array<Record<string, unknown>>
+  let validations: IValidationRule[] | undefined
   let classes: Record<string, unknown>
   let onChange: jest.Mock
   let onFocus: jest.Mock
