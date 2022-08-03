@@ -1,17 +1,17 @@
 /*
 	Copyright (c) 2022 Skyflow, Inc. 
 */
-import React, { FC } from "react";
-import Skyflow from "skyflow-js";
-import { SkyflowCollectElementProps } from "..";
-import useCollectListeners from "../../hooks/CollectListner";
+import React, { FC } from 'react'
+import Skyflow from 'skyflow-js'
+import { SkyflowCollectElementProps } from '..'
+import useCollectListeners from '../../hooks/CollectListner'
 
 const CardNumberElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
-  const divElement = document.createElement("div");
+  const divElement = document.createElement('div')
   if (props.id) {
-    divElement.setAttribute("id", props.id);
+    divElement.setAttribute('id', props.id)
   } else {
-    divElement.setAttribute("id", "collectCardNumber");
+    divElement.setAttribute('id', 'collectCardNumber')
   }
 
   React.useEffect(() => {
@@ -21,23 +21,23 @@ const CardNumberElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
           table: props.table,
           column: props.column,
           ...props.classes,
-          placeholder: props.placeholder || "",
-          label: props.label || "",
+          placeholder: props.placeholder || '',
+          label: props.label || '',
           type: Skyflow.ElementType.CARD_NUMBER,
         },
-        { enableCopy: true }
-      );
+        { enableCopy: true },
+      )
 
-      newElement.mount(props.id ? `#${props.id}` : "#collectCardNumber");
+      newElement.mount(props.id ? `#${props.id}` : '#collectCardNumber')
 
-      useCollectListeners(props, newElement);
+      useCollectListeners(props, newElement)
     } catch (e) {
       // eslint-disable-next-line no-console
-      console.log(e);
+      console.log(e)
     }
-  }, []);
+  }, [])
 
-  return <div id={props.id ? props.id : "collectCardNumber"}></div>;
-};
+  return <div id={props.id ? props.id : 'collectCardNumber'}></div>
+}
 
-export default CardNumberElement;
+export default CardNumberElement

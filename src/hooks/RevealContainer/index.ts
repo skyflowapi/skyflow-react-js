@@ -1,15 +1,14 @@
 /*
 	Copyright (c) 2022 Skyflow, Inc. 
 */
-import Skyflow from 'skyflow-js';
-import RevealContainer from 'skyflow-js/types/core/external/reveal/RevealContainer';
-import  {useSkyflow}  from '../../core/hook';
-
+import Skyflow from 'skyflow-js'
+import RevealContainer from 'skyflow-js/types/core/external/reveal/RevealContainer'
+import { useSkyflow } from '../../core/hook'
 
 const useRevealContainer = (): RevealContainer => {
-  const { skyflow } = useSkyflow();
+  const { skyflow } = useSkyflow()
 
-  return skyflow.container(Skyflow.ContainerType.REVEAL) as RevealContainer;
-};
+  return skyflow.container(Skyflow.ContainerType.REVEAL) as RevealContainer
+}
 
-export default useRevealContainer ;
+export default useRevealContainer
