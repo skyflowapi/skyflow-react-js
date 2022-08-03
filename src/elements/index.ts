@@ -30,11 +30,3 @@ export interface SkyflowRevealElementProps {
   classes?: Object;
 }
 
-export { CardNumberElement } from './CardNumberElement';
-export { CardHolderNameElement } from './CardHolderNameElement';
-export { CVVElement } from './CVVElement';
-export { ExpirationMonthElement } from './ExpirationMonthElement';
-export { ExpirationYearElement } from './ExpirationYearElement';
-export { PinElement } from './PinElement';
-export { ExpirationDateElement } from './ExpirationDateElement';
-export { RevealElement } from './RevealElement';

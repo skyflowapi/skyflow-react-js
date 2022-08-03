@@ -3,17 +3,16 @@
 */
 import React, { FC } from 'react';
 import Skyflow from 'skyflow-js';
-import { SkyflowCollectElementProps } from '.';
-import{ useCollectListeners } from './../hooks/useCollectListener';
+import { SkyflowCollectElementProps } from '..';
+import  useCollectListeners  from '../../hooks/CollectListner';
 
-const CardNumberElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
+const PinElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
   const divElement = document.createElement('div');
   if (props.id) {
     divElement.setAttribute('id', props.id);
   } else {
-    divElement.setAttribute('id', 'collectCardNumber');
+    divElement.setAttribute('id', 'collectPinElement');
   }
-
   React.useEffect(() => {
     try {
       const newElement = props.container.create({
@@ -22,20 +21,19 @@ const CardNumberElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
         ...props.classes,
         placeholder: props.placeholder || '',
         label: props.label || '',
-        type: Skyflow.ElementType.CARD_NUMBER,
-      }, { enableCopy: true });
+        type: Skyflow.ElementType.PIN,
+      }, { enableCopy: false });
 
-      newElement.mount(props.id ? `#${props.id}` : '#collectCardNumber');
+      newElement.mount(props.id ? `#${props.id}` : '#collectPinElement');
 
       useCollectListeners(props,newElement)
-
     } catch (e) {
-      // eslint-disable-next-line no-console
+    // eslint-disable-next-line no-console
       console.log(e);
     }
   }, []);
 
-  return <div id={props.id ? props.id : 'collectCardNumber'}></div>;
+  return <div id={props.id ? props.id : 'collectPinElement'}></div>;
 };
 
-export { CardNumberElement };
+export default PinElement;

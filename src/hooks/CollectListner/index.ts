@@ -3,7 +3,8 @@
 */
 import Skyflow from 'skyflow-js';
 import CollectElement from 'skyflow-js/types/core/external/collect/CollectElement';
-import { SkyflowCollectElementProps } from '../elements';
+import { SkyflowCollectElementProps } from '../../elements';
+
 
 const useCollectListeners = (
  props: SkyflowCollectElementProps,
@@ -23,4 +24,4 @@ const useCollectListeners = (
     }
 };
 
-export { useCollectListeners } ;
+export default useCollectListeners  ;

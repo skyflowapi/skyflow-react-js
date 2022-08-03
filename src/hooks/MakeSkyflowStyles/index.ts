@@ -11,4 +11,4 @@ const useMakeSkyflowStyles = (styles: Object = {}):Function => {
         return classes;
     }
 }
-export {useMakeSkyflowStyles}
+export default useMakeSkyflowStyles

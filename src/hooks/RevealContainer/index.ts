@@ -3,7 +3,8 @@
 */
 import Skyflow from 'skyflow-js';
 import RevealContainer from 'skyflow-js/types/core/external/reveal/RevealContainer';
-import { useSkyflow } from '../core/SkyflowElements';
+import  {useSkyflow}  from '../../core/hook';
+
 
 const useRevealContainer = (): RevealContainer => {
   const { skyflow } = useSkyflow();
@@ -11,4 +12,4 @@ const useRevealContainer = (): RevealContainer => {
   return skyflow.container(Skyflow.ContainerType.REVEAL) as RevealContainer;
 };
 
-export { useRevealContainer };
+export default useRevealContainer ;

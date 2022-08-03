@@ -4,9 +4,9 @@
 import * as React from "react";
 import { render } from "@testing-library/react";
 import CollectContainer from "skyflow-js/types/core/external/collect/CollectContainer";
-import { PinElement } from "../../src/elements";
+import PinElement from "../../src/elements/PIN";
 
-jest.mock("../../src/hooks/useCollectContainer");
+jest.mock("../../src/hooks/CollectContainer");
 
 describe("pinElement", () => {
   let container: CollectContainer;
@@ -29,8 +29,8 @@ describe("pinElement", () => {
         container={container}
         table={"table1"}
         classes={classes}
-        column={"card_number"}
-        label={"Collect Card Number"}
+        column={"card_pin"}
+        label={"Collect PIN"}
         onChange={onChange}
         onBlur={onBlur}
         onFocus={onFocus}

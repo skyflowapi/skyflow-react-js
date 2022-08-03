@@ -1,15 +1,16 @@
 {
     "compilerOptions": {
+      "baseUrl": "./src",
+      "sourceMap": true,
+      "noImplicitAny": false,
       "forceConsistentCasingInFileNames": true,
       "target": "es6",
       "lib": ["es2015", "es2017", "dom", "ES2020.Promise"],
       "esModuleInterop": true,
-      "importHelpers": true,
       "jsx": "react", 
-      "module": "commonjs", 
+      "module": "esnext", 
       "declaration": true,
-      "declarationDir": "types",
-      "sourceMap": true,
+      "removeComments": true,
       "outDir": "types",
       "moduleResolution": "node",
       "allowSyntheticDefaultImports": true,
@@ -17,7 +18,8 @@
       "isolatedModules": false,
       "noEmit": false,
       "resolveJsonModule": true,
+      "strict": true,
     },
-    "include": ["src"],
+    "include": ["src",],
     "exclude": ["node_modules", "types", "tests/*.test.*"]
   }
