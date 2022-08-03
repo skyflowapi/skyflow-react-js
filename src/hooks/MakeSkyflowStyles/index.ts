@@ -1,14 +1,14 @@
 /*
 	Copyright (c) 2022 Skyflow, Inc. 
 */
-import React, { FC } from 'react';
 
-const useMakeSkyflowStyles = (styles: Object = {}):Function => {
-   
-    return function useStyles(){
-        const classes:Object = styles
-       
-        return classes;
-    }
+const useMakeSkyflowStyles = (
+  styles: Record<string, unknown> = {},
+): (() => Record<string, unknown>) => {
+  return function useStyles() {
+    const classes: Record<string, unknown> = styles
+
+    return classes
+  }
 }
 export default useMakeSkyflowStyles

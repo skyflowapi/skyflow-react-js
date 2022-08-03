@@ -1,35 +1,34 @@
 /*
 	Copyright (c) 2022 Skyflow, Inc. 
 */
-import React, { FC } from 'react';
-import { SkyflowRevealElementProps } from '..';
+import React, { FC } from 'react'
+import { SkyflowRevealElementProps } from '..'
 
 const RevealElement: FC<SkyflowRevealElementProps> = ({ ...props }) => {
-  const divElement = document.createElement('div');
+  const divElement = document.createElement('div')
   if (props.id) {
-    console.log('ID', props.id);
-    divElement.setAttribute('id', props.id);
+    console.log('ID', props.id)
+    divElement.setAttribute('id', props.id)
   } else {
-    divElement.setAttribute('id', 'revealElement');
+    divElement.setAttribute('id', 'revealElement')
   }
 
   React.useEffect(() => {
     try {
+      const RevealElement = props.container.create({
+        token: props.token,
+        ...props.classes,
+        label: props.label || '',
+      })
 
-        const RevealElement = props.container.create({
-            token:props.token,
-            ...props.classes,
-            label: props.label || ''
-        })
-    
-          RevealElement.mount(props.id ? `#${props.id}` : '#revealElement');
+      RevealElement.mount(props.id ? `#${props.id}` : '#revealElement')
     } catch (e) {
-    // eslint-disable-next-line no-console
-      console.log(e);
+      // eslint-disable-next-line no-console
+      console.log(e)
     }
-  }, []);
+  }, [])
 
-  return <div id={props.id ? props.id : 'revealElement'}></div>;
-};
+  return <div id={props.id ? props.id : 'revealElement'}></div>
+}
 
-export default RevealElement;
+export default RevealElement
