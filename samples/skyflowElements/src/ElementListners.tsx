@@ -1,80 +1,69 @@
-import React from "react";
+import React from 'react'
 import {
   CardNumberElement,
   CVVElement,
   useCollectContainer,
   useMakeSkyflowStyles,
-} from "skyflow-react-js";
+} from 'skyflow-react-js/types'
 
 function ElementListners() {
-  const container = useCollectContainer();
-
-  const handleCollect = () => {
-    const response = container.collect();
-    response
-      .then((res: any) => {
-        console.log(JSON.stringify(res));
-      })
-      .catch((e: any) => {
-        console.log(e);
-      });
-  };
+  const container = useCollectContainer()
 
   const handleOnChange = (changeState: any) => {
-    console.log("Value", changeState);
-  };
+    console.log('Value', changeState)
+  }
   const handleOnBlur = (changeState: any) => {
-    console.log("Blur", changeState);
-  };
+    console.log('Blur', changeState)
+  }
 
   const handleOnFocus = (changeState: any) => {
-    console.log("Focus", changeState);
-  };
+    console.log('Focus', changeState)
+  }
 
   const handleOnReady = (changeState: any) => {
-    console.log("Ready", changeState);
-  };
+    console.log('Ready', changeState)
+  }
 
   const useStyles = useMakeSkyflowStyles({
     inputStyles: {
       base: {
-        border: "1px solid black",
-        borderRadius: "4px",
-        color: "#1d1d1d",
-        padding: "10px 16px",
+        border: '1px solid black',
+        borderRadius: '4px',
+        color: '#1d1d1d',
+        padding: '10px 16px',
       },
       complete: {
-        color: "#4caf50",
+        color: '#4caf50',
       },
       empty: {},
       focus: {},
       invalid: {
-        color: "#f44336",
+        color: '#f44336',
       },
     },
     labelStyles: {
       base: {
-        fontSize: "16px",
-        fontWeight: "bold",
+        fontSize: '16px',
+        fontWeight: 'bold',
       },
     },
     errorTextStyles: {
       base: {
-        color: "red",
+        color: 'red',
       },
     },
-  });
-  const classes = useStyles();
+  })
+  const classes = useStyles()
 
   return (
-    <div className="ElementListners" style={{ width: "300px" }}>
+    <div className='ElementListners' style={{ width: '300px' }}>
       <CardNumberElement
-        id={"eventListnerCollectElement"}
+        id={'eventListnerCollectElement'}
         container={container}
-        table={"table1"}
+        table={'table1'}
         classes={classes}
-        column={"card_number"}
-        label={"Collect Card Number"}
+        column={'card_number'}
+        label={'Collect Card Number'}
         onChange={handleOnChange}
         onBlur={handleOnBlur}
         onFocus={handleOnFocus}
@@ -82,15 +71,15 @@ function ElementListners() {
       />
 
       <CVVElement
-        id="eventListnerCVV"
+        id='eventListnerCVV'
         container={container}
-        table="table1"
+        table='table1'
         classes={classes}
-        column={"cvv"}
-        label="Collect CVV"
+        column={'cvv'}
+        label='Collect CVV'
       />
     </div>
-  );
+  )
 }
 
-export default ElementListners;
+export default ElementListners
