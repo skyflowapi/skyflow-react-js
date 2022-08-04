@@ -1,5 +1,5 @@
 import React from 'react'
-import { RevealElement, useMakeSkyflowStyles, useRevealContainer } from 'skyflow-react-js/types'
+import { RevealElement, useMakeSkyflowStyles, useRevealContainer } from 'skyflow-react-js'
 
 function RevealElements() {
   const revealContainer = useRevealContainer()
