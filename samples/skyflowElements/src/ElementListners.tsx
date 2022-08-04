@@ -4,7 +4,7 @@ import {
   CVVElement,
   useCollectContainer,
   useMakeSkyflowStyles,
-} from 'skyflow-react-js/types'
+} from 'skyflow-react-js'
 
 function ElementListners() {
   const container = useCollectContainer()
