@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { Env, LogLevel, SkyflowElements } from 'skyflow-react-js/types'
+import { Env, LogLevel, SkyflowElements } from 'skyflow-react-js'
+
 import App from './App'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)

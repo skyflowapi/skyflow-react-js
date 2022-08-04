@@ -5,15 +5,13 @@
   "version": "1.0.0",
   "description": "Skyflow React SDK",
   "homepage": "https://github.com/skyflowapi/skyflow-react",
-  "main": "./dist/main.js",
-  "types": "./types/index.d.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "files": [
-    "dist/main.js",
-    "types"
+    "lib"
   ],
   "scripts": {
-    "build:types": "tsc",
-    "build": "webpack",
+    "build": "tsc",
     "test": "jest",
     "test:cov": "jest --coverage",
     "lint": "eslint src/**/*.{js,jsx,ts,tsx,json} tests/**/*.{js,jsx,ts,tsx,json}",

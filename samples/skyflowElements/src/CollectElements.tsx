@@ -8,7 +8,7 @@ import {
   ExpirationDateElement,
   useCollectContainer,
   useMakeSkyflowStyles,
-} from 'skyflow-react-js/types'
+} from 'skyflow-react-js'
 
 function CollectElements() {
   const container = useCollectContainer()
