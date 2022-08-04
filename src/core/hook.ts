@@ -3,7 +3,6 @@
 */
 import React, { useContext } from 'react'
 import Skyflow from 'skyflow-js'
-import { Env, LogLevel } from 'skyflow-js/types/utils/common'
 import { IConfig } from '.'
 
 export const SkyflowContext = React.createContext<IConfig>({
