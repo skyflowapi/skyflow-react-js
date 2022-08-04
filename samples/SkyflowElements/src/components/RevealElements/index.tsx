@@ -1,3 +1,6 @@
+/*
+	Copyright (c) 2022 Skyflow, Inc. 
+*/
 import React from 'react'
 import { RevealElement, useMakeSkyflowStyles, useRevealContainer } from 'skyflow-react-js'
 
