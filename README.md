@@ -1,5 +1,7 @@
 # skyflow-react-js
-A React wrapper for [Skyflow](https://github.com/skyflowapi/skyflow-js) JS SDK.
+
+## A React wrapper for [Skyflow JS SDK](https://github.com/skyflowapi/skyflow-js)
+
 ---
 # Table of Contents
 - [**Including Skyflow-React**](#Including-Skyflow-React) 
@@ -24,7 +26,7 @@ npm install --save skyflow-react
 React components are wrapped in skyflow provider which takes in config object and SDK internally initializes a skyflow client.
 
 ```javascript
-import Skyflow from "skyflow-react" 
+import { Skyflow, LogLevel, Env } from "skyflow-react" 
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -34,8 +36,8 @@ const config = {
    vaultURL: "string",         //URL of the vault that the client should connect to
    getBearerToken: helperFunc,  //helper function that retrieves a Skyflow bearer token from your backend
    options:{
-     logLevel: Skyflow.LogLevel, // optional, if not specified default is ERROR 
-     env: Skyflow.Env          // optional, if not specified default is PROD 
+     logLevel: LogLevel.DEBUG, // optional, if not specified default is ERROR 
+     env: Env.DEV          // optional, if not specified default is PROD 
    }
 }
 root.render(
@@ -85,32 +87,32 @@ getBearerToken: () => {
 }
 
 ```
-For `logLevel` parameter, there are 4 accepted values in Skyflow.LogLevel
+For `logLevel` parameter, there are 4 accepted values in  `LogLevel`
 
 - `DEBUG`
     
-  When `Skyflow.LogLevel.DEBUG` is passed, all level of logs will be printed(DEBUG, INFO, WARN, ERROR).
+  When `LogLevel.DEBUG` is passed, all level of logs will be printed(DEBUG, INFO, WARN, ERROR).
 
 - `INFO`
 
-  When `Skyflow.LogLevel.INFO` is passed, INFO logs for every event that has occurred during the SDK flow execution will be printed along with WARN and ERROR logs.
+  When `LogLevel.INFO` is passed, INFO logs for every event that has occurred during the SDK flow execution will be printed along with WARN and ERROR logs.
 
 
 - `WARN`
 
-  When `Skyflow.LogLevel.WARN` is passed, WARN and ERROR logs will be printed.
+  When `LogLevel.WARN` is passed, WARN and ERROR logs will be printed.
 
 - `ERROR`
 
-  When `Skyflow.LogLevel.ERROR` is passed, only ERROR logs will be printed.
+  When `LogLevel.ERROR` is passed, only ERROR logs will be printed.
 
 `Note`:
   - The ranking of logging levels is as follows :  DEBUG < INFO < WARN < ERROR
-  - since `logLevel` is optional, by default the logLevel will be  `ERROR`.
+  - Since `logLevel` is optional, by default the logLevel will be  `ERROR`.
 
 
 
-For `env` parameter, there are 2 accepted values in Skyflow.Env
+For `env` parameter, there are 2 accepted values in `Env`
 
 - `PROD`
 - `DEV`
@@ -118,7 +120,7 @@ For `env` parameter, there are 2 accepted values in Skyflow.Env
   In [Event Listeners](#event-listener-on-collect-elements), actual value of element can only be accessed inside the handler when the `env` is set to `DEV`.
 
 `Note`:
-  - since `env` is optional, by default the env will be  `PROD`.
+  - Since `env` is optional, by default the env will be  `PROD`.
   - Use `env` option with caution, make sure the env is set to `PROD` when using `skyflow-react-js` in production. 
 
 ---
@@ -154,7 +156,8 @@ import {
 
 The following `props` can be passed to Skyflow collect Element: 
 
-```
+``` javascript
+{
     conatiner: "CollectContainer" // required, the collect container
     table: "string",             //required, the table this data belongs to
     column: "string",            //required, the column into which this data should be inserted
@@ -167,7 +170,7 @@ The following `props` can be passed to Skyflow collect Element:
     onFocus: Function;           //optional, function that is passed to trigger the onChange event
     onBlur: Function;            //optional, function that is passed to trigger the onChange event
     onReady: Function ;          //optional, function that is passed to trigger the onChange event
-
+}
 ```
 
 The `table` and `column` fields indicate which table and column in the vault the Element corresponds to. 
@@ -354,6 +357,11 @@ function App() {
       },
     },
   })
+
+  const options = {
+    enableCopy: true,
+  };
+
   const classes =  useStyles()
 
  return(
@@ -365,7 +373,8 @@ function App() {
         table={'cards'} 
         classes={classes}  
         column={'cardNumber'} 
-        label={"Collect Card Number"} 
+        label={'Collect Card Number'} 
+        options={options}
       />
 
      </header>
@@ -389,7 +398,7 @@ export default App;
   ]
 }
 ```
-### Validations
+## Validations:
 
 Skyflow-React which internally uses Skyflow-JS SDK provides two types of validations on Collect Elements
 
@@ -409,7 +418,7 @@ Custom validations can be added to any element which will be checked after the d
 
 ```javascript
 const regexMatchRule = {
-  type: Skyflow.ValidationRuleType.REGEX_MATCH_RULE,
+  type: ValidationRuleType.REGEX_MATCH_RULE,
   params: {
     regex: RegExp,
     error: string // optional, default error is "VALIDATION FAILED"
@@ -421,7 +430,7 @@ const regexMatchRule = {
 
 ```javascript
 const lengthMatchRule = {
-  type: Skyflow.ValidationRuleType.LENGTH_MATCH_RULE,
+  type: ValidationRuleType.LENGTH_MATCH_RULE,
   params: {
     min : number, // optional
     max : number, // optional 
@@ -434,7 +443,7 @@ const lengthMatchRule = {
 
 ```javascript
 const elementValueMatchRule = {
-  type: Skyflow.ValidationRuleType.ELEMENT_VALUE_MATCH_RULE,
+  type: ValidationRuleType.ELEMENT_VALUE_MATCH_RULE,
   params: {
     element: CollectElement,
     error: string // optional, default error is "VALIDATION FAILED"
@@ -450,11 +459,11 @@ The Sample for using custom validations:
   Adding REGEX_MATCH_RULE , LENGTH_MATCH_RULE to collect element.
 */
 
-import {CardNumberElement} from "skyflow-react";
+import { CardNumberElement,ValidationRuleType } from "skyflow-react";
 
 // this rule allows 1 or more alphabets
 const alphabetsOnlyRegexRule = {
-  type: Skyflow.ValidationRuleType.REGEX_MATCH_RULE,
+  type: ValidationRuleType.REGEX_MATCH_RULE,
   params:{
     regex: /^[A-Za-z]+$/,
     error: "Only alphabets are allowed"
@@ -463,7 +472,7 @@ const alphabetsOnlyRegexRule = {
 
 // this rule allows input length between 4 and 6 characters
 const lengthRule = {
-  type: Skyflow.ValidationRuleType.LENGTH_MATCH_RULE,
+  type: ValidationRuleType.LENGTH_MATCH_RULE,
   params:{
     min: 4,
     max: 6,
@@ -482,12 +491,12 @@ const form = (props) => {
           />
 }
 ```
-### Event Listener on Collect Elements
+## Event Listener on Collect Elements
 
 Helps to communicate with skyflow elements / iframes by listening to an event. Event listeners can be triggered by passing the handler methods as props to the Element components.
 
 
-There are 4 events in `Skyflow.EventName`
+There are 4 events which SDK supports:
 - `CHANGE`  
   Change event is triggered when the Element's value changes.
 
@@ -591,7 +600,7 @@ export default App;
 Skyflow Elements can be used to securely reveal data in a browser without exposing your front end to the sensitive data. This is great for use cases like card issuance where you may want to reveal the card number to a user without increasing your PCI compliance scope. 
 
 ### Step 1: Create a container
-To start, create a container using the `container(Skyflow.ContainerType)` method of the Skyflow client as shown below.
+To start, create a container using the `useRevealContainer()` method of the Skyflow client as shown below.
 
 ```javascript
   const revealContainer = useRevealContainer()
@@ -613,18 +622,18 @@ import {
 ```
 The following `props` can be passed to Skyflow reveal element: 
 
-```
+```javascript 
+{
     conatiner: "RevealContainer" // required, the reveal container
     token:"string" //required, the actual data token
     id: string,                  //optional, id that can passed to the element 
     classes: {},                 //optional, styles that should be applied to the element
     label: "string",             //optional, label for the form element
-   
+}   
 ```
 `Note`: 
-- `token` is optional only if it is being used in invokeConnection()
 
-The styling for reveal is same styles object as described in the [previous section](#step-2-create-a-collect-element) for collecting data.
+- The styling for reveal is same styles object as described in the [previous section](#step-2-create-a-collect-element) for collecting data.
 
 ### End to end example using Reveal Element
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 import {
   CardNumberElement,
   CVVElement,
@@ -8,110 +8,110 @@ import {
   ExpirationDateElement,
   useCollectContainer,
   useMakeSkyflowStyles,
-} from "skyflow-react-js";
+} from 'skyflow-react-js/types'
 
 function CollectElements() {
-  const container = useCollectContainer();
+  const container = useCollectContainer()
 
   const handleCollect = () => {
-    const response = container.collect();
+    const response = container.collect()
     response
-      .then((res: any) => {
-        console.log(JSON.stringify(res));
+      .then((res: unknown) => {
+        console.log(JSON.stringify(res))
       })
-      .catch((e: any) => {
-        console.log(e);
-      });
-  };
+      .catch((e: unknown) => {
+        console.log(e)
+      })
+  }
 
   const useStyles = useMakeSkyflowStyles({
     inputStyles: {
       base: {
-        border: "1px solid black",
-        borderRadius: "4px",
-        color: "#1d1d1d",
-        padding: "10px 16px",
+        border: '1px solid black',
+        borderRadius: '4px',
+        color: '#1d1d1d',
+        padding: '10px 16px',
       },
       complete: {
-        color: "#4caf50",
+        color: '#4caf50',
       },
       empty: {},
       focus: {},
       invalid: {
-        color: "#f44336",
+        color: '#f44336',
       },
     },
     labelStyles: {
       base: {
-        fontSize: "16px",
-        fontWeight: "bold",
+        fontSize: '16px',
+        fontWeight: 'bold',
       },
     },
     errorTextStyles: {
       base: {
-        color: "red",
+        color: 'red',
       },
     },
-  });
+  })
 
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
-    <div className="CollectElements" style={{ width: "300px" }}>
+    <div className='CollectElements' style={{ width: '300px' }}>
       <CardNumberElement
-        id={"collectCardNumber"}
+        id={'collectCardNumber'}
         container={container}
-        table={"table1"}
+        table={'table1'}
         classes={classes}
-        column={"card_number"}
-        label={"Collect Card Number"}
+        column={'card_number'}
+        label={'Collect Card Number'}
       />
       <CVVElement
-        id="cvv"
+        id='cvv'
         container={container}
-        table="table1"
+        table='table1'
         classes={classes}
-        column={"cvv"}
-        label="Collect CVV"
+        column={'cvv'}
+        label='Collect CVV'
       />
       <ExpirationMonthElement
-        id="mon"
+        id='mon'
         container={container}
         classes={classes}
-        table="table1"
-        column={"exp_month"}
-        label="Collect Exp Month"
-        placeholder="MM"
+        table='table1'
+        column={'exp_month'}
+        label='Collect Exp Month'
+        placeholder='MM'
       />
       <ExpirationYearElement
-        id="year"
+        id='year'
         container={container}
         classes={classes}
-        table="table1"
-        column={"exp_year"}
-        label="Collect Exp Year"
-        placeholder="YY"
+        table='table1'
+        column={'exp_year'}
+        label='Collect Exp Year'
+        placeholder='YY'
       />
       <ExpirationDateElement
-        id="date"
+        id='date'
         container={container}
         classes={classes}
-        table={"table1"}
-        column={"card_expiration"}
-        label={"Expiration Date"}
+        table={'table1'}
+        column={'card_expiration'}
+        label={'Expiration Date'}
       />
       <PinElement
-        id="pin"
+        id='pin'
         container={container}
         classes={classes}
-        table={"table1"}
-        column={"card_pin"}
-        label={"Pin"}
+        table={'table1'}
+        column={'card_pin'}
+        label={'Pin'}
       />
 
       <button onClick={handleCollect}>Collect</button>
     </div>
-  );
+  )
 }
 
-export default CollectElements;
+export default CollectElements
