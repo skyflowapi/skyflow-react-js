@@ -1,7 +1,11 @@
+/*
+	Copyright (c) 2022 Skyflow, Inc. 
+*/
 import React from 'react'
-import CollectElements from './CollectElements'
-import ElementListners from './ElementListners'
-import RevealElements from './RevealElements'
+import CollectElements from './components/CollectElements'
+import CustomValidations from './components/CustomValidations'
+import ElementListners from './components/ElementListeners'
+import RevealElements from './components/RevealElements'
 function App() {
   return (
     <div id='App'>
@@ -24,6 +28,13 @@ function App() {
           <b>Sample for Reveal Element</b>
         </p>
         <RevealElements />
+      </div>
+      <br />
+      <div id='Sample for Custom Validations'>
+        <p>
+          <b>Sample for Custom Validations</b>
+        </p>
+        <CustomValidations />
       </div>
     </div>
   )
