@@ -5,7 +5,7 @@ import React, { useContext } from 'react'
 import Skyflow from 'skyflow-js'
 import { IConfig } from '.'
 
-export const SkyflowContext = React.createContext<IConfig>({
+export const skyflowContext = React.createContext<IConfig>({
   vaultID: '',
   vaultURL: '',
   getBearerToken: () =>
@@ -19,11 +19,10 @@ export const SkyflowContext = React.createContext<IConfig>({
 })
 
 const useSkyflow = (): { skyflow: Skyflow; context: IConfig } => {
-  const context = useContext(SkyflowContext)
+  const context = useContext(skyflowContext)
   const skyflow = Skyflow.init({
     ...context,
   })
-
   return { skyflow, context }
 }
 export { useSkyflow }

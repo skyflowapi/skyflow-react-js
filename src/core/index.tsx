@@ -3,7 +3,7 @@
 */
 import React from 'react'
 import { Env, LogLevel } from 'skyflow-js/types/utils/common'
-import { SkyflowContext, useSkyflow } from './hook'
+import { skyflowContext, useSkyflow } from './hook'
 
 export interface IConfig {
   vaultID: string
@@ -23,7 +23,7 @@ export interface ISkyflowElements {
 const SkyflowElements: React.FC<ISkyflowElements> = ({ children, config }): JSX.Element => {
   // Initialize SKyflow
   useSkyflow()
-  return <SkyflowContext.Provider value={config}>{children}</SkyflowContext.Provider>
+  return <skyflowContext.Provider value={config}>{children}</skyflowContext.Provider>
 }
 
 export default React.memo(SkyflowElements)
