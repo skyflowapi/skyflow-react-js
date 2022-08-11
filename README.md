@@ -1,31 +1,35 @@
 # skyflow-react-js
 
-## A React wrapper for [Skyflow JS SDK](https://github.com/skyflowapi/skyflow-js)
+A React wrapper for [Skyflow JS SDK](https://github.com/skyflowapi/skyflow-js)
 
 ---
-# Table of Contents
+## Table of Contents
 - [**Including Skyflow-React**](#Including-Skyflow-React) 
     - [Requirements](#requirements)
 - [**Initializing Skyflow-React**](#Initializing-Skyflow-React)
 - [**Securely collecting data client-side**](#Securely-collecting-data-client-side)
 - [**Securely revealing data client-side**](#Securely-revealing-data-client-side)
-
+- [**Reporting a Vulnerability**](#Reporting-Vulnerability)
+- [**License**](#License)
 ---
 
-# Including Skyflow-React
+## Including Skyflow-React
 
 ### Requirements
 - React 18.1.0 and above
 
-### Installation
+## Installation
+
+Using [npm](https://npmjs.org/)
+
 ```
 npm install --save skyflow-react
 ```
 ---
-# Initializing Skyflow-React
+## Initializing Skyflow-React
 React components are wrapped in skyflow provider which takes in config object and SDK internally initializes a skyflow client.
 
-```javascript
+```jsx
 import { Skyflow, LogLevel, Env } from "skyflow-react" 
 
 const root = ReactDOM.createRoot(
@@ -59,7 +63,7 @@ For example, if the response of the consumer tokenAPI is in the below format
 ```
 then, your getBearerToken Implementation should be as below
 
-```javascript
+```jsx
 getBearerToken: () => {
   return new Promise((resolve, reject) => {
     const Http = new XMLHttpRequest();
@@ -124,23 +128,23 @@ For `env` parameter, there are 2 accepted values in `Env`
   - Use `env` option with caution, make sure the env is set to `PROD` when using `skyflow-react-js` in production. 
 
 ---
-# Securely collecting data client-side
+## Securely collecting data client-side
 -  [**Using Skyflow Elements to collect data**](#using-skyflow-elements-to-collect-data)
 -  [**Event Listener on Collect Elements**](#event-listener-on-collect-elements)
 
-## Using Skyflow Elements to collect data
+### Using Skyflow Elements to collect data
 
 **Skyflow Elements** provide developers with pre-built form elements to securely collect sensitive data client-side. These elements are hosted by Skyflow and injected into your web page as iFrames. This reduces your PCI compliance scope by not exposing your front-end application to sensitive data. Follow the steps below to securely collect data with Skyflow Elements.
 ### Step 1: Create a container
 
 First create a container for the form elements using the `useCollectContainer` hook as show below:
 
-```javascript
+```jsx
  const container = useCollectContainer()
 ```
 ### Step 2: Create a collect Element
  
-```javascript
+```jsx
 import {
  CardNumberElement,  
 } from "skyflow-react";
@@ -156,7 +160,7 @@ import {
 
 The following `props` can be passed to Skyflow collect Element: 
 
-``` javascript
+``` jsx
 {
     conatiner: "CollectContainer" // required, the collect container
     table: "string",             //required, the table this data belongs to
@@ -182,7 +186,7 @@ All elements can be styled using [JSS](https://cssinjs.org/?v=v10.7.1) syntax.
 
 An example of styling an element with `makeSkyflowStyles` hook :
 
-```javascript
+```jsx
 import { makeSkyflowStyles } from "skyflow-react";
 
 const useSkyflowStyles = makeSkyflowStyles({
@@ -225,7 +229,7 @@ The states that are available for `labelStyles` are `base` and `focus`.
 
 An example of a labelStyles object:
 
-```javascript
+```jsx
 labelStyles: {
     base: {
       fontSize: "12px",
@@ -241,7 +245,7 @@ The state that is available for `errorTextStyles` is only the `base` state, it s
 
 An example of a errorTextStyles object:
 
-```javascript
+```jsx
 errorTextStyles: {
     base: {
       color: "#f44336"
@@ -261,7 +265,7 @@ We support the following collect elements in the react SDK:
 
 Along with Collect Element we can define other options which takes a object of optional parameters as described below:
 
-```javascript
+```jsx
 const options = {
   required: false,  //optional, indicates whether the field is marked as required. Defaults to 'false'
   enableCardIcon: true, // optional, indicates whether card icon should be enabled (only applicable for CARD_NUMBER ElementType)
@@ -297,7 +301,7 @@ When the form is ready to be submitted, call the `collect(options?)` method on t
 - `tokens`: indicates whether tokens for the collected data should be returned or not. Defaults to 'true'
 - `additionalFields`: Non-PCI elements data to be inserted into the vault which should be in the `records` object format.
 
-```javascript
+```jsx
 const options = {
   tokens: true  //optional, indicates whether tokens for the collected data should be returned. Defaults to 'true'
   additionalFields: {  
@@ -318,7 +322,7 @@ container.collect(options={})
 ```
 ### End to end example of collecting data with Skyflow Elements
 
-```javascript
+```jsx
 
 import React from 'react';
 import {CardNumberElement, useCollectContainer, useMakeSkyflowStyles} from 'skyflow-react-js'
@@ -386,7 +390,7 @@ export default App;
 
 ```
 **Sample Response :**
-```javascript
+```jsx
 {
   "records": [
     {
@@ -402,7 +406,7 @@ export default App;
 
 Skyflow-React which internally uses Skyflow-JS SDK provides two types of validations on Collect Elements
 
-#### 1. Default Validations:
+### 1. Default Validations:
 Every Collect Element except of type `INPUT_FIELD` has a set of default validations listed below:
 - `CARD_NUMBER`: Card number validation with checkSum algorithm(Luhn algorithm).
 Available card lengths for defined card types are [12, 13, 14, 15, 16, 17, 18, 19]. 
@@ -412,11 +416,11 @@ A valid 16 digit card number will be in the format - `XXXX XXXX XXXX XXXX`
 - `EXPIRATION_DATE`: Any date starting from current month. By default valid expiration date should be in short year format - `MM/YY`
 - `PIN`: Can have 4-12 digits
 
-#### 2. Custom Validations:
+### 2. Custom Validations:
 Custom validations can be added to any element which will be checked after the default validations have passed. The following Custom validation rules are currently supported:
 - `REGEX_MATCH_RULE`: You can use this rule to specify any Regular Expression to be matched with the input field value
 
-```javascript
+```jsx
 const regexMatchRule = {
   type: ValidationRuleType.REGEX_MATCH_RULE,
   params: {
@@ -428,7 +432,7 @@ const regexMatchRule = {
 
 - `LENGTH_MATCH_RULE`: You can use this rule to set the minimum and maximum permissible length of the input field value
 
-```javascript
+```jsx
 const lengthMatchRule = {
   type: ValidationRuleType.LENGTH_MATCH_RULE,
   params: {
@@ -441,7 +445,7 @@ const lengthMatchRule = {
 
 - `ELEMENT_VALUE_MATCH_RULE`: You can use this rule to match the value of one element with another element
 
-```javascript
+```jsx
 const elementValueMatchRule = {
   type: ValidationRuleType.ELEMENT_VALUE_MATCH_RULE,
   params: {
@@ -453,7 +457,7 @@ const elementValueMatchRule = {
 
 The Sample for using custom validations:
 
-```javascript
+```jsx
 /*
   A simple example that illustrates custom validations.
   Adding REGEX_MATCH_RULE , LENGTH_MATCH_RULE to collect element.
@@ -511,7 +515,7 @@ There are 4 events which SDK supports:
 
 The handler ```function(state) => void```   is a callback function you provide, that will be called when the event is fired with the state object as shown below. 
 
-```javascript
+```jsx
 state : {
   elementType: Skyflow.ElementType
   isEmpty: boolean 
@@ -524,8 +528,8 @@ state : {
 `Note:`
 values of SkyflowElements will be returned in elementstate object only when `env` is  `DEV`,  else it is empty string i.e, ''
 
-##### Example Usage of Event Listener on Collect Elements
-```javascript
+### Example Usage of Event Listener on Collect Elements
+```jsx
 
 import React from 'react';
 import {CardNumberElement} from 'skyflow-react-js'
@@ -570,9 +574,9 @@ function App() {
 export default App;
 
 ```
-##### Sample Element state object when `env` is `DEV`
+### Sample Element state object when `env` is `DEV`
 
-```javascript
+```jsx
 {
    elementType: "CARD_NUMBER"
    isEmpty: false
@@ -582,9 +586,9 @@ export default App;
 }
 
 ```
-##### Sample Element state object when `env` is `PROD`
+### Sample Element state object when `env` is `PROD`
 
-```javascript
+```jsx
 {
    elementType: "CARD_NUMBER"
    isEmpty: false
@@ -593,22 +597,22 @@ export default App;
    value: ''
 }
 ```
-# Securely revealing data client-side
+## Securely revealing data client-side
 
-## Using Skyflow Elements to reveal data
+### Using Skyflow Elements to reveal data
 
 Skyflow Elements can be used to securely reveal data in a browser without exposing your front end to the sensitive data. This is great for use cases like card issuance where you may want to reveal the card number to a user without increasing your PCI compliance scope. 
 
 ### Step 1: Create a container
 To start, create a container using the `useRevealContainer()` method of the Skyflow client as shown below.
 
-```javascript
+```jsx
   const revealContainer = useRevealContainer()
 ```
 
 ### Step 2: Create a reveal element
 
-```javascript
+```jsx
 import {
  RevealElement,  
 } from "skyflow-react";
@@ -622,7 +626,7 @@ import {
 ```
 The following `props` can be passed to Skyflow reveal element: 
 
-```javascript 
+```jsx 
 {
     conatiner: "RevealContainer" // required, the reveal container
     token:"string" //required, the actual data token
@@ -637,7 +641,7 @@ The following `props` can be passed to Skyflow reveal element:
 
 ### End to end example using Reveal Element
 
-``` javascript
+``` jsx
 
 import React from 'react';
 import {RevealElement, useRevealContainer, useMakeSkyflowStyles} from 'skyflow-react-js'
@@ -729,3 +733,7 @@ export default App;
 ## Reporting a Vulnerability
 
 If you discover a potential security issue in this project, please reach out to us at security@skyflow.com. Please do not create public GitHub issues or Pull Requests, as malicious actors could potentially view them.
+
+## License
+
+This project is licensed under the MIT license. See the [LICENSE](https://github.com/skyflowapi/skyflow-react-js/blob/master/LICENSE) file for more info.
