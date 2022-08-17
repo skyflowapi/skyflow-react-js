@@ -23,30 +23,30 @@ A React wrapper for [Skyflow JS SDK](https://github.com/skyflowapi/skyflow-js)
 Using [npm](https://npmjs.org/)
 
 ```
-npm install --save skyflow-react
+npm install --save skyflow-react-js
 ```
 ---
 ## Initializing Skyflow-React
 React components are wrapped in skyflow provider which takes in config object and SDK internally initializes a skyflow client.
 
 ```jsx
-import { Skyflow, LogLevel, Env } from "skyflow-react" 
+import { Skyflow, LogLevel, Env } from "skyflow-react"
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+    document.getElementById('root') as HTMLElement
 );
 const config = {
-   vaultID: "string",          //Id of the vault that the client should connect to 
-   vaultURL: "string",         //URL of the vault that the client should connect to
-   getBearerToken: helperFunc,  //helper function that retrieves a Skyflow bearer token from your backend
-   options:{
-     logLevel: LogLevel.DEBUG, // optional, if not specified default is ERROR 
-     env: Env.DEV          // optional, if not specified default is PROD 
-   }
+    vaultID: "string",          //Id of the vault that the client should connect to 
+    vaultURL: "string",         //URL of the vault that the client should connect to
+    getBearerToken: helperFunc,  //helper function that retrieves a Skyflow bearer token from your backend
+    options: {
+        logLevel: LogLevel.DEBUG, // optional, if not specified default is ERROR 
+        env: Env.DEV          // optional, if not specified default is PROD 
+    }
 }
 root.render(
-     <SkyflowElements config={config}>
-        <App/>
+    <SkyflowElements config={config}>
+        <App />
     </SkyflowElements>
 )
 ```
@@ -65,28 +65,28 @@ then, your getBearerToken Implementation should be as below
 
 ```jsx
 getBearerToken: () => {
-  return new Promise((resolve, reject) => {
-    const Http = new XMLHttpRequest();
+    return new Promise((resolve, reject) => {
+        const Http = new XMLHttpRequest();
 
-    Http.onreadystatechange = () => {
-      if (Http.readyState == 4) {
-        if (Http.status == 200) {
-          const response = JSON.parse(Http.responseText);
-          resolve(response.accessToken);
-        } else {
-          reject("Error occured");
-        }
-      }
-    };
+        Http.onreadystatechange = () => {
+            if (Http.readyState == 4) {
+                if (Http.status == 200) {
+                    const response = JSON.parse(Http.responseText);
+                    resolve(response.accessToken);
+                } else {
+                    reject("Error occured");
+                }
+            }
+        };
 
-    Http.onerror = (error) => {
-      reject("Error occured");
-    };
+        Http.onerror = (error) => {
+            reject("Error occured");
+        };
 
-    const url = "https://api.acmecorp.com/skyflowToken";
-    Http.open("GET", url);
-    Http.send();
-  })
+        const url = "https://api.acmecorp.com/skyflowToken";
+        Http.open("GET", url);
+        Http.send();
+    })
 
 }
 
@@ -146,21 +146,20 @@ First create a container for the form elements using the `useCollectContainer` h
  
 ```jsx
 import {
- CardNumberElement,  
+    CardNumberElement,
 } from "skyflow-react";
 
-<CardNumberElement 
-   table="<TABLE_NAME>" 
-   container="<CONTAINER>"
-   column="<COLUMN_NAME>"
-   …props
+<CardNumberElement
+    table="<TABLE_NAME>"
+    container="<CONTAINER>"
+    column="<COLUMN_NAME>"
+      … props
 />
-
 ```
 
 The following `props` can be passed to Skyflow collect Element: 
 
-``` jsx
+``` javascript
 {
     conatiner: "CollectContainer" // required, the collect container
     table: "string",             //required, the table this data belongs to
@@ -191,31 +190,32 @@ import { makeSkyflowStyles } from "skyflow-react";
 
 const useSkyflowStyles = makeSkyflowStyles({
     inputStyles: {
-           base: {
-             color: "#013370",
-             // ...otherStyles
-           }
+        base: {
+            color: "#013370",
+            // ...otherStyles
+        }
     },
     labelStyles: {
-           base: {
-             color: "#0D4370",
-             // ...otherStyles
-           }
+        base: {
+            color: "#0D4370",
+            // ...otherStyles
+        }
     }
     errorStyles: {
-           base: {
-             color: "#0FE470",
-             // ...otherStyles
-           }
+        base: {
+            color: "#0FE470",
+            // ...otherStyles
+        }
     },
     errorTextStyles: {
-          base: {
-             color: "#f44336",
-             // ...otherStyles
-          } 
-  }
+        base: {
+            color: "#f44336",
+            // ...otherStyles
+        }
+    }
 
 })
+
 ```
 
 The `inputStyles` field accepts a style object which consists of CSS properties that should be applied to the form element in the following states:
@@ -232,11 +232,11 @@ An example of a labelStyles object:
 ```jsx
 labelStyles: {
     base: {
-      fontSize: "12px",
-      fontWeight: "bold"
+        fontSize: "12px",
+            fontWeight: "bold"
     },
     focus: {
-      color: "#1d1d1d"
+        color: "#1d1d1d"
     }
 }
 ```
@@ -248,7 +248,7 @@ An example of a errorTextStyles object:
 ```jsx
 errorTextStyles: {
     base: {
-      color: "#f44336"
+        color: "#f44336"
     }
 }
 ```
@@ -267,10 +267,10 @@ Along with Collect Element we can define other options which takes a object of o
 
 ```jsx
 const options = {
-  required: false,  //optional, indicates whether the field is marked as required. Defaults to 'false'
-  enableCardIcon: true, // optional, indicates whether card icon should be enabled (only applicable for CARD_NUMBER ElementType)
-  format: String, //optional, format for the element (only applicable currently for EXPIRATION_DATE ElementType),
-  enableCopy: false // optional, enables the copy icon in collect and reveal elements to copy text to clipboard. Defaults to 'false')
+    required: false,  //optional, indicates whether the field is marked as required. Defaults to 'false'
+    enableCardIcon: true, // optional, indicates whether card icon should be enabled (only applicable for CARD_NUMBER ElementType)
+    format: String, //optional, format for the element (only applicable currently for EXPIRATION_DATE ElementType),
+    enableCopy: false // optional, enables the copy icon in collect and reveal elements to copy text to clipboard. Defaults to 'false')
 }
 ```
 
@@ -301,105 +301,104 @@ When the form is ready to be submitted, call the `collect(options?)` method on t
 - `tokens`: indicates whether tokens for the collected data should be returned or not. Defaults to 'true'
 - `additionalFields`: Non-PCI elements data to be inserted into the vault which should be in the `records` object format.
 
-```jsx
+```javascript
 const options = {
-  tokens: true  //optional, indicates whether tokens for the collected data should be returned. Defaults to 'true'
-  additionalFields: {  
-    records: [
-      {
-        table: "string", //table into which record should be inserted
-        fields: {
-          column1: "value", //column names should match vault column names
-          //...additional fields here
-        }
-      }
-      //...additional records here
-    ]
-  } //optional
+    tokens: true  //optional, indicates whether tokens for the collected data should be returned. Defaults to 'true'
+    additionalFields: {
+        records: [
+            {
+                table: "string", //table into which record should be inserted
+                fields: {
+                    column1: "value", //column names should match vault column names
+                    //...additional fields here
+                }
+            }
+            //...additional records here
+        ]
+    } //optional
 }
 
-container.collect(options={})
+container.collect(options = {})
 ```
 ### End to end example of collecting data with Skyflow Elements
 
 ```jsx
-
 import React from 'react';
-import {CardNumberElement, useCollectContainer, useMakeSkyflowStyles} from 'skyflow-react-js'
+import { CardNumberElement, useCollectContainer, useMakeSkyflowStyles } from 'skyflow-react-js'
 
 function App() {
 
-  const container = useCollectContainer()
+    const container = useCollectContainer()
 
-  const useStyles = useMakeSkyflowStyles( {
-    inputStyles: {
-      base: {
-        border: '1px solid black',
-        borderRadius: '4px',
-        color: '#1d1d1d',
-        padding: '10px 16px',
-      
-      },
-      complete: {
-        color: '#4caf50',
-      },
-      empty: {},
-      focus: {},
-      invalid: {
-        color: '#f44336',
-      },
-    },
-    labelStyles: {
-      base: {
-        fontSize: '16px',
-        fontWeight: 'bold',
-      },
-    },
-    errorTextStyles: {
-      base: {
-        color: 'blue',
-      },
-    },
-  })
+    const useStyles = useMakeSkyflowStyles({
+        inputStyles: {
+            base: {
+                border: '1px solid black',
+                borderRadius: '4px',
+                color: '#1d1d1d',
+                padding: '10px 16px',
 
-  const options = {
-    enableCopy: true,
-  };
+            },
+            complete: {
+                color: '#4caf50',
+            },
+            empty: {},
+            focus: {},
+            invalid: {
+                color: '#f44336',
+            },
+        },
+        labelStyles: {
+            base: {
+                fontSize: '16px',
+                fontWeight: 'bold',
+            },
+        },
+        errorTextStyles: {
+            base: {
+                color: 'blue',
+            },
+        },
+    })
 
-  const classes =  useStyles()
+    const options = {
+        enableCopy: true,
+    };
 
- return(
-     <div className="App">
-     <header className="App-header">
+    const classes = useStyles()
 
-      <CardNumberElement  
-        container={container} 
-        table={'cards'} 
-        classes={classes}  
-        column={'cardNumber'} 
-        label={'Collect Card Number'} 
-        options={options}
-      />
+    return (
+        <div className="App">
+            <header className="App-header">
 
-     </header>
-   </div>
- )
+                <CardNumberElement
+                    container={container}
+                    table={'cards'}
+                    classes={classes}
+                    column={'cardNumber'}
+                    label={'Collect Card Number'}
+                    options={options}
+                />
+
+            </header>
+        </div>
+    )
 }
 
 export default App;
 
 ```
 **Sample Response :**
-```jsx
+```javascript
 {
-  "records": [
-    {
-      "table": "cards",
-      "fields": {
-        "cardNumber": "f3907186-e7e2-466f-91e5-48e12c2bcbc1",
-      }
-    }
-  ]
+    "records": [
+        {
+            "table": "cards",
+            "fields": {
+                "cardNumber": "f3907186-e7e2-466f-91e5-48e12c2bcbc1",
+            }
+        }
+    ]
 }
 ```
 ## Validations:
@@ -422,11 +421,11 @@ Custom validations can be added to any element which will be checked after the d
 
 ```jsx
 const regexMatchRule = {
-  type: ValidationRuleType.REGEX_MATCH_RULE,
-  params: {
-    regex: RegExp,
-    error: string // optional, default error is "VALIDATION FAILED"
-  }
+    type: ValidationRuleType.REGEX_MATCH_RULE,
+    params: {
+        regex: RegExp,
+        error: string // optional, default error is "VALIDATION FAILED"
+    }
 }
 ```
 
@@ -434,12 +433,12 @@ const regexMatchRule = {
 
 ```jsx
 const lengthMatchRule = {
-  type: ValidationRuleType.LENGTH_MATCH_RULE,
-  params: {
-    min : number, // optional
-    max : number, // optional 
-    error: string // optional, default error is "VALIDATION FAILED"
-  }
+    type: ValidationRuleType.LENGTH_MATCH_RULE,
+    params: {
+        min: number, // optional
+        max: number, // optional 
+        error: string // optional, default error is "VALIDATION FAILED"
+    }
 }
 ```
 
@@ -447,11 +446,11 @@ const lengthMatchRule = {
 
 ```jsx
 const elementValueMatchRule = {
-  type: ValidationRuleType.ELEMENT_VALUE_MATCH_RULE,
-  params: {
-    element: CollectElement,
-    error: string // optional, default error is "VALIDATION FAILED"
-  }
+    type: ValidationRuleType.ELEMENT_VALUE_MATCH_RULE,
+    params: {
+        element: CollectElement,
+        error: string // optional, default error is "VALIDATION FAILED"
+    }
 }
 ```
 
@@ -462,37 +461,36 @@ The Sample for using custom validations:
   A simple example that illustrates custom validations.
   Adding REGEX_MATCH_RULE , LENGTH_MATCH_RULE to collect element.
 */
+import { CardNumberElement, ValidationRuleType } from "skyflow-react";
 
-import { CardNumberElement,ValidationRuleType } from "skyflow-react";
-
-// this rule allows 1 or more alphabets
+// This rule allows 1 or more alphabets
 const alphabetsOnlyRegexRule = {
-  type: ValidationRuleType.REGEX_MATCH_RULE,
-  params:{
-    regex: /^[A-Za-z]+$/,
-    error: "Only alphabets are allowed"
-  }
-}; 
+    type: ValidationRuleType.REGEX_MATCH_RULE,
+    params: {
+        regex: /^[A-Za-z]+$/,
+        error: "Only alphabets are allowed"
+    }
+};
 
-// this rule allows input length between 4 and 6 characters
+// This rule allows input length between 4 and 6 characters
 const lengthRule = {
-  type: ValidationRuleType.LENGTH_MATCH_RULE,
-  params:{
-    min: 4,
-    max: 6,
-    error: "Must be between 4 and 6 alphabets"
-  }
-}; 
+    type: ValidationRuleType.LENGTH_MATCH_RULE,
+    params: {
+        min: 4,
+        max: 6,
+        error: "Must be between 4 and 6 alphabets"
+    }
+};
 
 const form = (props) => {
 
-   return <CardNumberElement 
-             container="COLLECT CONTAINER"
-             table="<TABLE_NAME>" 
-             column="<COLUMN_NAME>"
-             validations= [alphabetsOnlyRegexRule, lengthRule]
+    return <CardNumberElement
+        container="COLLECT CONTAINER"
+        table="<TABLE_NAME>"
+        column="<COLUMN_NAME>"
+        validations= [alphabetsOnlyRegexRule, lengthRule]
              ...props
-          />
+    />
 }
 ```
 ## Event Listener on Collect Elements
@@ -515,7 +513,7 @@ There are 4 events which SDK supports:
 
 The handler ```function(state) => void```   is a callback function you provide, that will be called when the event is fired with the state object as shown below. 
 
-```jsx
+```javascript
 state : {
   elementType: Skyflow.ElementType
   isEmpty: boolean 
@@ -532,69 +530,69 @@ values of SkyflowElements will be returned in elementstate object only when `env
 ```jsx
 
 import React from 'react';
-import {CardNumberElement} from 'skyflow-react-js'
+import { CardNumberElement } from 'skyflow-react-js'
 
 function App() {
-  const container = useCollectContainer()
+    const container = useCollectContainer()
 
-  const handleCollect = () =>{
-    const response = container.collect();
-    response.then((res:any)=>{
-      console.log(JSON.stringify(res));
-    }).catch((e:any)=>{console.log(e)})
-  }
+    const handleCollect = () => {
+        const response = container.collect();
+        response.then((res: any) => {
+            console.log(JSON.stringify(res));
+        }).catch((e: any) => { console.log(e) })
+    }
 
-  const handleReveal = () =>{
-  const handleOnChange =(changeState:any) =>{
-    console.log("Change",changeState)
-  }
-  const handleOnBlur =(changeState:any) =>{
-    console.log("Blur",changeState)
-  }
+    const handleReveal = () => {
+        const handleOnChange = (changeState: any) => {
+            console.log("Change", changeState)
+        }
+        const handleOnBlur = (changeState: any) => {
+            console.log("Blur", changeState)
+        }
 
- return(
-     <div className="App">
-     <header className="App-header">
+        return (
+            <div className="App">
+                <header className="App-header">
 
-      <CardNumberElement  
-        container={container} 
-        table={'table1'} 
-        column={'card_number'} 
-        label={"Collect Card Number"} 
-        onChange={handleOnChange} 
-        onBlur={handleOnBlur}/>
-     
-      <button onClick={handleCollect}>Collect</button>
+                    <CardNumberElement
+                        container={container}
+                        table={'table1'}
+                        column={'card_number'}
+                        label={"Collect Card Number"}
+                        onChange={handleOnChange}
+                        onBlur={handleOnBlur} />
 
-     </header>
-   </div>
- )
-}
+                    <button onClick={handleCollect}>Collect</button>
 
-export default App;
+                </header>
+            </div>
+        )
+    }
+
+    export default App;
 
 ```
 ### Sample Element state object when `env` is `DEV`
 
-```jsx
+```javascript
 {
-   elementType: "CARD_NUMBER"
-   isEmpty: false
-   isFocused: true
-   isValid: false
-   value: "411"
+    elementType: "CARD_NUMBER"
+    isEmpty: false
+    isFocused: true
+    isValid: false
+    value: "411"
 }
 
 ```
 ### Sample Element state object when `env` is `PROD`
 
-```jsx
+```javascript
 {
-   elementType: "CARD_NUMBER"
-   isEmpty: false
-   isFocused: true
-   isValid: false
-   value: ''
+    elementType: "CARD_NUMBER"
+    isEmpty: false
+    isFocused: true
+    isValid: false
+    value: ''
 }
 ```
 ## Securely revealing data client-side
@@ -614,21 +612,20 @@ To start, create a container using the `useRevealContainer()` method of the Skyf
 
 ```jsx
 import {
- RevealElement,  
+    RevealElement,
 } from "skyflow-react";
 
-<RevealElement 
-   token = "<DATA_TOKEN>"
-   container="<CONTAINER>"   
-   …props
+<RevealElement
+    token="<DATA_TOKEN>"
+    container="<CONTAINER>"   
+      … props
 />
-
 ```
 The following `props` can be passed to Skyflow reveal element: 
 
-```jsx 
+```javascript 
 {
-    conatiner: "RevealContainer" // required, the reveal container
+    container: "RevealContainer" // required, the reveal container
     token:"string" //required, the actual data token
     id: string,                  //optional, id that can passed to the element 
     classes: {},                 //optional, styles that should be applied to the element
@@ -641,70 +638,69 @@ The following `props` can be passed to Skyflow reveal element:
 
 ### End to end example using Reveal Element
 
-``` jsx
-
+```jsx
 import React from 'react';
-import {RevealElement, useRevealContainer, useMakeSkyflowStyles} from 'skyflow-react-js'
+import { RevealElement, useRevealContainer, useMakeSkyflowStyles } from 'skyflow-react-js'
 
 function App() {
-   const revealContainer = useRevealContainer()
+    const revealContainer = useRevealContainer()
 
-  const useStyles = useMakeSkyflowStyles( {
-    inputStyles: {
-      base: {
-        border: '1px solid black',
-        borderRadius: '4px',
-        color: '#1d1d1d',
-        padding: '10px 16px',
-      
-      },
-      complete: {
-        color: '#4caf50',
-      },
-      empty: {},
-      focus: {},
-      invalid: {
-        color: '#f44336',
-      },
-    },
-    labelStyles: {
-      base: {
-        fontSize: '16px',
-        fontWeight: 'bold',
-      },
-    },
-    errorTextStyles: {
-      base: {
-        color: 'red',
-      },
-    },
-  })
+    const useStyles = useMakeSkyflowStyles({
+        inputStyles: {
+            base: {
+                border: '1px solid black',
+                borderRadius: '4px',
+                color: '#1d1d1d',
+                padding: '10px 16px',
 
-   const handleReveal = () =>{
-   revealContainer.reveal().then((res)=>{
-      console.log(res);
-    }).catch((err)=>{
-      console.log(err);
-    });
-  }
-  
-  const classes =  useStyles()
+            },
+            complete: {
+                color: '#4caf50',
+            },
+            empty: {},
+            focus: {},
+            invalid: {
+                color: '#f44336',
+            },
+        },
+        labelStyles: {
+            base: {
+                fontSize: '16px',
+                fontWeight: 'bold',
+            },
+        },
+        errorTextStyles: {
+            base: {
+                color: 'red',
+            },
+        },
+    })
 
- return(
-     <div className="App">
-     <header className="App-header">
+    const handleReveal = () => {
+        revealContainer.reveal().then((res) => {
+            console.log(res);
+        }).catch((err) => {
+            console.log(err);
+        });
+    }
 
-      <RevealElement 
-        container={revealContainer} 
-        token={"1404-8379-9069-7378"} 
-        label={"Reveal Card Number"} 
-        classes={classes}/>
+    const classes = useStyles()
 
-      <button onClick={handleReveal}>Reveal</button>
+    return (
+        <div className="App">
+            <header className="App-header">
 
-     </header>
-   </div>
- )
+                <RevealElement
+                    container={revealContainer}
+                    token={"1404-8379-9069-7378"}
+                    label={"Reveal Card Number"}
+                    classes={classes} />
+
+                <button onClick={handleReveal}>Reveal</button>
+
+            </header>
+        </div>
+    )
 }
 
 export default App;
@@ -712,22 +708,22 @@ export default App;
 ```
 ### Sample Response
 
-```
+```javascript
 {
-  "success": [
-    {
-      "token": "b63ec4e0-bbad-4e43-96e6-6bd50f483f75"
-    }
-  ],
- "errors": [
-    {
-       "token": "89024714-6a26-4256-b9d4-55ad69aa4047",
-       "error": {
-         "code": 404,
-         "description": "Tokens not found for 89024714-6a26-4256-b9d4-55ad69aa4047"
-       } 
-   }   
-  ]
+    "success": [
+        {
+            "token": "b63ec4e0-bbad-4e43-96e6-6bd50f483f75"
+        }
+    ],
+        "errors": [
+            {
+                "token": "89024714-6a26-4256-b9d4-55ad69aa4047",
+                "error": {
+                    "code": 404,
+                    "description": "Tokens not found for 89024714-6a26-4256-b9d4-55ad69aa4047"
+                }
+            }
+        ]
 }
 ```
 ## Reporting a Vulnerability
