@@ -16,7 +16,7 @@ A React wrapper for [Skyflow JS SDK](https://github.com/skyflowapi/skyflow-js)
 ## Including Skyflow-React
 
 ### Requirements
-- React 18.1.0 and above
+- The minimum supported version of React is v16.8.0. If you use an older version, upgrade React to use this library
 
 ## Installation
 
@@ -30,7 +30,7 @@ npm install --save skyflow-react-js
 React components are wrapped in skyflow provider which takes in config object and SDK internally initializes a skyflow client.
 
 ```jsx
-import { Skyflow, LogLevel, Env } from "skyflow-react"
+import { Skyflow, LogLevel, Env } from "skyflow-react-js"
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
@@ -147,7 +147,7 @@ First create a container for the form elements using the `useCollectContainer` h
 ```jsx
 import {
     CardNumberElement,
-} from "skyflow-react";
+} from "skyflow-react-js";
 
 <CardNumberElement
     table="<TABLE_NAME>"
@@ -186,7 +186,7 @@ All elements can be styled using [JSS](https://cssinjs.org/?v=v10.7.1) syntax.
 An example of styling an element with `makeSkyflowStyles` hook :
 
 ```jsx
-import { makeSkyflowStyles } from "skyflow-react";
+import { makeSkyflowStyles } from "skyflow-react-js";
 
 const useSkyflowStyles = makeSkyflowStyles({
     inputStyles: {
@@ -461,7 +461,7 @@ The Sample for using custom validations:
   A simple example that illustrates custom validations.
   Adding REGEX_MATCH_RULE , LENGTH_MATCH_RULE to collect element.
 */
-import { CardNumberElement, ValidationRuleType } from "skyflow-react";
+import { CardNumberElement, ValidationRuleType } from "skyflow-react-js";
 
 // This rule allows 1 or more alphabets
 const alphabetsOnlyRegexRule = {
@@ -542,34 +542,33 @@ function App() {
         }).catch((e: any) => { console.log(e) })
     }
 
-    const handleReveal = () => {
-        const handleOnChange = (changeState: any) => {
-            console.log("Change", changeState)
-        }
-        const handleOnBlur = (changeState: any) => {
-            console.log("Blur", changeState)
-        }
-
-        return (
-            <div className="App">
-                <header className="App-header">
-
-                    <CardNumberElement
-                        container={container}
-                        table={'table1'}
-                        column={'card_number'}
-                        label={"Collect Card Number"}
-                        onChange={handleOnChange}
-                        onBlur={handleOnBlur} />
-
-                    <button onClick={handleCollect}>Collect</button>
-
-                </header>
-            </div>
-        )
+    const handleOnChange = (changeState: any) => {
+        console.log("Change", changeState)
+    }
+    const handleOnBlur = (changeState: any) => {
+        console.log("Blur", changeState)
     }
 
-    export default App;
+    return (
+        <div className="App">
+            <header className="App-header">
+
+                <CardNumberElement
+                    container={container}
+                    table={'table1'}
+                    column={'card_number'}
+                    label={"Collect Card Number"}
+                    onChange={handleOnChange}
+                    onBlur={handleOnBlur} />
+
+                <button onClick={handleCollect}>Collect</button>
+
+            </header>
+        </div>
+    )
+}
+
+export default App;
 
 ```
 ### Sample Element state object when `env` is `DEV`
@@ -613,7 +612,7 @@ To start, create a container using the `useRevealContainer()` method of the Skyf
 ```jsx
 import {
     RevealElement,
-} from "skyflow-react";
+} from "skyflow-react-js";
 
 <RevealElement
     token="<DATA_TOKEN>"
