@@ -3,7 +3,7 @@
   "preferGlobal": true,
   "analyze": false,
   "version": "1.1.0",
-  "description": "Skyflow React SDK",
+  "description": "Skyflow SDK for the React JS web framework.",
   "homepage": "https://github.com/skyflowapi/skyflow-react",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
