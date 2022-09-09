@@ -425,7 +425,7 @@ Custom validations can be added to any element which will be checked after the d
 
 ```jsx
 const regexMatchRule = {
-    type: ValidationRuleType.REGEX_MATCH_RULE,
+    type: REGEX_MATCH_RULE,
     params: {
         regex: RegExp,
         error: string // optional, default error is "VALIDATION FAILED"
@@ -437,21 +437,10 @@ const regexMatchRule = {
 
 ```jsx
 const lengthMatchRule = {
-    type: ValidationRuleType.LENGTH_MATCH_RULE,
+    type: LENGTH_MATCH_RULE,
     params: {
         min: number, // optional
         max: number, // optional 
-        error: string // optional, default error is "VALIDATION FAILED"
-    }
-}
-```
-- `ELEMENT_VALUE_MATCH_RULE`: You can use this rule to match the value of one element with another element
-
-```jsx
-const elementValueMatchRule = {
-    type: ValidationRuleType.ELEMENT_VALUE_MATCH_RULE,
-    params: {
-        element: CollectElement,
         error: string // optional, default error is "VALIDATION FAILED"
     }
 }
@@ -463,11 +452,11 @@ The Sample for using custom validations:
   A simple example that illustrates custom validations.
   Adding REGEX_MATCH_RULE , LENGTH_MATCH_RULE to collect element.
 */
-import { CardNumberElement, ValidationRuleType } from "skyflow-react-js";
+import { CardNumberElement, REGEX_MATCH_RULE, LENGTH_MATCH_RULE} from "skyflow-react-js";
 
 // This rule allows 1 or more alphabets
 const alphabetsOnlyRegexRule = {
-    type: ValidationRuleType.REGEX_MATCH_RULE,
+    type: REGEX_MATCH_RULE,
     params: {
         regex: /^[A-Za-z]+$/,
         error: "Only alphabets are allowed"
@@ -476,7 +465,7 @@ const alphabetsOnlyRegexRule = {
 
 // This rule allows input length between 4 and 6 characters
 const lengthRule = {
-    type: ValidationRuleType.LENGTH_MATCH_RULE,
+    type: LENGTH_MATCH_RULE,
     params: {
         min: 4,
         max: 6,
