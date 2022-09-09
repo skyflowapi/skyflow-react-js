@@ -262,6 +262,10 @@ We support the following collect elements in the react SDK:
 - `ExpirationDateElement`
 - `ExpirationMonthElement`
 - `ExpirationYearElement`
+- `InputFieldElement` 
+  
+The InputFieldElement type is a custom UI element without any built-in validations. See the section on [validations](#validations) for more information on validations.
+  
 
 Along with Collect Element we can define other options which takes a object of optional parameters as described below:
 
@@ -406,7 +410,7 @@ export default App;
 Skyflow-React which internally uses Skyflow-JS SDK provides two types of validations on Collect Elements
 
 ### 1. Default Validations:
-Every Collect Element except of type `INPUT_FIELD` has a set of default validations listed below:
+Every Collect Element except of type `InputFieldElement` has a set of default validations listed below:
 - `CARD_NUMBER`: Card number validation with checkSum algorithm(Luhn algorithm).
 Available card lengths for defined card types are [12, 13, 14, 15, 16, 17, 18, 19]. 
 A valid 16 digit card number will be in the format - `XXXX XXXX XXXX XXXX`
@@ -441,7 +445,6 @@ const lengthMatchRule = {
     }
 }
 ```
-
 - `ELEMENT_VALUE_MATCH_RULE`: You can use this rule to match the value of one element with another element
 
 ```jsx
@@ -453,7 +456,6 @@ const elementValueMatchRule = {
     }
 }
 ```
-
 The Sample for using custom validations:
 
 ```jsx
