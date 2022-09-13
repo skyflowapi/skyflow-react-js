@@ -262,6 +262,10 @@ We support the following collect elements in the react SDK:
 - `ExpirationDateElement`
 - `ExpirationMonthElement`
 - `ExpirationYearElement`
+- `InputFieldElement` 
+  
+The InputFieldElement type is a custom UI element without any built-in validations. See the section on [validations](#validations) for more information on validations.
+  
 
 Along with Collect Element we can define other options which takes a object of optional parameters as described below:
 
@@ -406,7 +410,7 @@ export default App;
 Skyflow-React which internally uses Skyflow-JS SDK provides two types of validations on Collect Elements
 
 ### 1. Default Validations:
-Every Collect Element except of type `INPUT_FIELD` has a set of default validations listed below:
+Every Collect Element except of type `InputFieldElement` has a set of default validations listed below:
 - `CARD_NUMBER`: Card number validation with checkSum algorithm(Luhn algorithm).
 Available card lengths for defined card types are [12, 13, 14, 15, 16, 17, 18, 19]. 
 A valid 16 digit card number will be in the format - `XXXX XXXX XXXX XXXX`
@@ -421,7 +425,7 @@ Custom validations can be added to any element which will be checked after the d
 
 ```jsx
 const regexMatchRule = {
-    type: ValidationRuleType.REGEX_MATCH_RULE,
+    type: REGEX_MATCH_RULE,
     params: {
         regex: RegExp,
         error: string // optional, default error is "VALIDATION FAILED"
@@ -433,7 +437,7 @@ const regexMatchRule = {
 
 ```jsx
 const lengthMatchRule = {
-    type: ValidationRuleType.LENGTH_MATCH_RULE,
+    type: LENGTH_MATCH_RULE,
     params: {
         min: number, // optional
         max: number, // optional 
@@ -441,19 +445,6 @@ const lengthMatchRule = {
     }
 }
 ```
-
-- `ELEMENT_VALUE_MATCH_RULE`: You can use this rule to match the value of one element with another element
-
-```jsx
-const elementValueMatchRule = {
-    type: ValidationRuleType.ELEMENT_VALUE_MATCH_RULE,
-    params: {
-        element: CollectElement,
-        error: string // optional, default error is "VALIDATION FAILED"
-    }
-}
-```
-
 The Sample for using custom validations:
 
 ```jsx
@@ -461,11 +452,11 @@ The Sample for using custom validations:
   A simple example that illustrates custom validations.
   Adding REGEX_MATCH_RULE , LENGTH_MATCH_RULE to collect element.
 */
-import { CardNumberElement, ValidationRuleType } from "skyflow-react-js";
+import { CardNumberElement, REGEX_MATCH_RULE, LENGTH_MATCH_RULE} from "skyflow-react-js";
 
 // This rule allows 1 or more alphabets
 const alphabetsOnlyRegexRule = {
-    type: ValidationRuleType.REGEX_MATCH_RULE,
+    type: REGEX_MATCH_RULE,
     params: {
         regex: /^[A-Za-z]+$/,
         error: "Only alphabets are allowed"
@@ -474,7 +465,7 @@ const alphabetsOnlyRegexRule = {
 
 // This rule allows input length between 4 and 6 characters
 const lengthRule = {
-    type: ValidationRuleType.LENGTH_MATCH_RULE,
+    type: LENGTH_MATCH_RULE,
     params: {
         min: 4,
         max: 6,

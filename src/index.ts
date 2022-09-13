@@ -12,6 +12,7 @@ import ExpirationYearElement from './elements/ExpirationYear'
 import PinElement from './elements/PIN'
 import ExpirationDateElement from './elements/ExpirationDate'
 import RevealElement from './elements/RevealElement'
+import InputFieldElement from './elements/InputField'
 
 import useRevealContainer from './hooks/RevealContainer'
 import useMakeSkyflowStyles from './hooks/MakeSkyflowStyles'
@@ -21,7 +22,9 @@ import useCollectContainer from './hooks/CollectContainer'
 const LogLevel = Skyflow.LogLevel
 const Env = Skyflow.Env
 
-const ValidationRuleType = Skyflow.ValidationRuleType
+const LENGTH_MATCH_RULE = Skyflow.ValidationRuleType.LENGTH_MATCH_RULE
+const REGEX_MATCH_RULE = Skyflow.ValidationRuleType.REGEX_MATCH_RULE
+
 export {
   SkyflowElements,
   CardNumberElement,
@@ -38,5 +41,7 @@ export {
   useCollectListeners,
   LogLevel,
   Env,
-  ValidationRuleType,
+  LENGTH_MATCH_RULE,
+  REGEX_MATCH_RULE,
+  InputFieldElement
 }

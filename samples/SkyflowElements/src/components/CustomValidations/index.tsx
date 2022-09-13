@@ -4,9 +4,8 @@
 import React from 'react'
 import {
   useCollectContainer,
-  useMakeSkyflowStyles,
-  CardHolderNameElement,
-  ValidationRuleType,
+  LENGTH_MATCH_RULE,
+  CardHolderNameElement
 } from 'skyflow-react-js'
 
 function CustomValidations() {
@@ -24,7 +23,7 @@ function CustomValidations() {
   }
 
   const lengthRule = {
-    type: ValidationRuleType.LENGTH_MATCH_RULE,
+    type: LENGTH_MATCH_RULE,
     params: {
       min: 4,
       max: 6,

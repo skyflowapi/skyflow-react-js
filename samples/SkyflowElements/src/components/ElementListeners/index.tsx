@@ -4,7 +4,7 @@
 import React from 'react'
 import {
   CardNumberElement,
-  CVVElement,
+  InputFieldElement,
   useCollectContainer,
   useMakeSkyflowStyles,
 } from 'skyflow-react-js'
@@ -73,13 +73,17 @@ function ElementListners() {
         onReady={handleOnReady}
       />
 
-      <CVVElement
-        id='eventListnerCVV'
+      <InputFieldElement
+        id='eventListnerInputField'
         container={container}
-        table='table1'
         classes={classes}
-        column={'cvv'}
-        label='Collect CVV'
+        table={'table1'}
+        column={'ssn'}
+        label={'SSN'}
+        onChange={handleOnChange}
+        onBlur={handleOnBlur}
+        onFocus={handleOnFocus}
+        onReady={handleOnReady}
       />
     </div>
   )

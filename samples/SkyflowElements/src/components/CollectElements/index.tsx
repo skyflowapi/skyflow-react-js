@@ -11,6 +11,7 @@ import {
   ExpirationDateElement,
   useCollectContainer,
   useMakeSkyflowStyles,
+  InputFieldElement,
 } from 'skyflow-react-js'
 
 function CollectElements() {
@@ -110,6 +111,15 @@ function CollectElements() {
         table={'table1'}
         column={'card_pin'}
         label={'Pin'}
+      />
+
+      <InputFieldElement
+        id='input'
+        container={container}
+        classes={classes}
+        table={'table1'}
+        column={'ssn'}
+        label={'SSN'}
       />
 
       <button onClick={handleCollect}>Collect</button>
