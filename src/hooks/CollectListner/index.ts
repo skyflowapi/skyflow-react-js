@@ -2,7 +2,7 @@
 	Copyright (c) 2022 Skyflow, Inc. 
 */
 import Skyflow from 'skyflow-js'
-import CollectElement from 'skyflow-js/types/core/external/collect/CollectElement'
+import CollectElement from 'skyflow-js/types/core/external/collect/collect-element'
 import { SkyflowCollectElementProps } from '../../elements'
 
 const useCollectListeners = (props: SkyflowCollectElementProps, element: CollectElement): void => {

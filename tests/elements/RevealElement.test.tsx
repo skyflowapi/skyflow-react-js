@@ -4,7 +4,8 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import RevealElement from '../../src/elements/RevealElement'
-import RevealContainer from 'skyflow-js/types/core/external/reveal/RevealContainer'
+import RevealContainer from 'skyflow-js/types/core/external/reveal/reveal-container'
+
 
 jest.mock('../../src/hooks/RevealContainer')
 

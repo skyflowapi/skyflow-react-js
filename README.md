@@ -322,7 +322,7 @@ const options = {
     } //optional
 }
 
-container.collect(options = {})
+container.collect(options)
 ```
 ### End to end example of collecting data with Skyflow Elements
 
