@@ -2,10 +2,9 @@
 	Copyright (c) 2022 Skyflow, Inc. 
 */
 
-import type CollectContainer from 'skyflow-js/types/core/external/collect/CollectContainer'
-import RevealContainer, {
-  IRevealElementOptions,
-} from 'skyflow-js/types/core/external/reveal/RevealContainer'
+
+import CollectContainer from 'skyflow-js/types/core/external/collect/collect-container'
+import RevealContainer, { IRevealElementOptions } from 'skyflow-js/types/core/external/reveal/reveal-container'
 import { IValidationRule } from 'skyflow-js/types/utils/common'
 
 export interface SkyflowCollectElementProps {
