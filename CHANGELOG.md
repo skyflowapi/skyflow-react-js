@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.1] - 2022-09-23
+  
+### Changed
+
+-  Update collect options in README.md file
+-  Update JS SDK imports
+
 ## [1.2.0] - 2022-09-13
 
 ### Added
