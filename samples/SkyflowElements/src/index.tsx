@@ -27,15 +27,15 @@ const getBearerToken = () => {
       reject('Error occured')
     }
 
-    const url = ''
+    const url = '<TOKEN_END_POINT_URL>'
     Http.open('GET', url)
     Http.send()
   })
 }
 
 const config = {
-  vaultID: '',
-  vaultURL: '',
+  vaultID: '<VAULT_ID>',
+  vaultURL: '<VAULT_URL>',
   getBearerToken,
   options: {
     logLevel: LogLevel.DEBUG,
