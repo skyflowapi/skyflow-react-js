@@ -1,5 +1,5 @@
 # Skyflow-React-Js Sdk Sample Templates
-Use this folder to test the functionalities of JS-SDK just by adding `VAULT-ID` `VAULT-URL` and `SERVICE-ACCOUNT` details at the required place.
+Use this folder to test the functionalities of REACT-JS-SDK just by adding `VAULT-ID` `VAULT-URL` and `SERVICE-ACCOUNT` details at the required place.
 
 
 ### Prerequisites
