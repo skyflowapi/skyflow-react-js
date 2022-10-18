@@ -6,7 +6,6 @@ Use this folder to test the functionalities of REACT-JS-SDK just by adding `VAUL
 - [Node.js](https://nodejs.org/en/) version 10 or above
 - [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) version 6.x.x
 - [express.js](http://expressjs.com/en/starter/hello-world.html)
-- Android Gradle plugin 4.2.0 and above
 - Minimum supported version of React is v16.8.0
 
 ## Configure
