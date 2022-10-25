@@ -9,7 +9,6 @@ Test the SDK by adding `VAULT-ID`, `VAULT-URL`, and `SERVICE-ACCOUNT` details in
 - Minimum supported version of React is v16.8.0
 
 ## Prepare
-- `TOKEN_URL` for generating bearer token.
 -  Install modules : 
 
         npm install
@@ -25,22 +24,22 @@ Test the SDK by adding `VAULT-ID`, `VAULT-URL`, and `SERVICE-ACCOUNT` details in
 2. For Name, enter "SDK Sample". For Roles, choose **Vault Editor**.
 3. Click **Create**. Your browser downloads a **credentials.json** file. Keep this file secure, as You'll need it for each of the samples.
 
-### Create TOKEN_END_POINT_URL
-- Create a new directory named `bearer-token-generator`.
+### Create a bearer token generation endpoint
+1. Create a new directory named `bearer-token-generator`.
 
         mkdir bearer-token-generator
-- Navigate to `bearer-token-generator` directory.
+2. Navigate to `bearer-token-generator` directory.
 
         cd bearer-token-generator
-- Initialize npm
+3. Initialize npm
 
         npm init
-- Install `skyflow-node`
+4. Install `skyflow-node`
 
         npm i skyflow-node
-- Create `index.js` file
-- Open `index.js` file
-- populate `index.js` file with below code snippet
+5. Create `index.js` file
+6. Open `index.js` file
+7. populate `index.js` file with below code snippet
 ```javascript
 const express = require('express')
 const app = express()
@@ -79,13 +78,12 @@ app.get('/', async (req, res) => {
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`)
 })
-
 ```
-- Start the server
+8. Start the server
 
         node index.js
     server will start at `localhost:3000`
-- Update `<TOKEN_END_POINT_URL>` in [index.tsx](src/index.tsx)
+9. Update `<TOKEN_END_POINT_URL>` in [index.tsx](src/index.tsx)
 
 ## The samples
 ### Collect data
