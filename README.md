@@ -304,10 +304,11 @@ When the form is ready to be submitted, call the `collect(options?)` method on t
 
 - `tokens`: indicates whether tokens for the collected data should be returned or not. Defaults to 'true'
 - `additionalFields`: Non-PCI elements data to be inserted into the vault which should be in the `records` object format.
+- - `upsert`: To support upsert operations while collecting the data from skyflow elements, pass the table and column that have been marked as unique in the table.
 
 ```javascript
 const options = {
-    tokens: true  //optional, indicates whether tokens for the collected data should be returned. Defaults to 'true'
+    tokens: true,  //optional, indicates whether tokens for the collected data should be returned. Defaults to 'true'
     additionalFields: {
         records: [
             {
@@ -319,7 +320,13 @@ const options = {
             }
             //...additional records here
         ]
-    } //optional
+    }, //optional
+    upsert: [ // upsert operations support in the vault
+        {
+            table: "string", // table name
+            column: "value  ", // unique column in the table
+        }
+    ]
 }
 
 container.collect(options)
@@ -327,69 +334,83 @@ container.collect(options)
 ### End to end example of collecting data with Skyflow Elements
 
 ```jsx
-import React from 'react';
-import { CardNumberElement, useCollectContainer, useMakeSkyflowStyles } from 'skyflow-react-js'
+import React from "react";
+import {
+    CardNumberElement,
+    useCollectContainer,
+    useMakeSkyflowStyles,
+} from "skyflow-react-js";
 
 function App() {
-
-    const container = useCollectContainer()
+    const container = useCollectContainer();
 
     const useStyles = useMakeSkyflowStyles({
         inputStyles: {
             base: {
-                border: '1px solid black',
-                borderRadius: '4px',
-                color: '#1d1d1d',
-                padding: '10px 16px',
-
+                border: "1px solid black",
+                borderRadius: "4px",
+                color: "#1d1d1d",
+                padding: "10px 16px",
             },
             complete: {
-                color: '#4caf50',
+                color: "#4caf50",
             },
             empty: {},
             focus: {},
             invalid: {
-                color: '#f44336',
+                color: "#f44336",
             },
         },
         labelStyles: {
             base: {
-                fontSize: '16px',
-                fontWeight: 'bold',
+                fontSize: "16px",
+                fontWeight: "bold",
             },
         },
         errorTextStyles: {
             base: {
-                color: 'blue',
+                color: "blue",
             },
         },
-    })
+    });
 
     const options = {
         enableCopy: true,
     };
 
-    const classes = useStyles()
+    const classes = useStyles();
+
+    const handleCollect = () => {
+        const response = container.collect();
+        response
+            .then((res: any) => {
+                console.log(JSON.stringify(res));
+            })
+            .catch((e: any) => {
+                console.log(e);
+            });
+    };
 
     return (
         <div className="App">
             <header className="App-header">
-
                 <CardNumberElement
                     container={container}
-                    table={'cards'}
+                    table={"cards"}
                     classes={classes}
-                    column={'cardNumber'}
-                    label={'Collect Card Number'}
+                    column={"cardNumber"}
+                    label={"Collect Card Number"}
                     options={options}
                 />
 
+                <button onClick={handleCollect}>Collect</button>
             </header>
         </div>
-    )
+    );
 }
 
 export default App;
+
 
 ```
 **Sample Response :**
@@ -400,6 +421,113 @@ export default App;
             "table": "cards",
             "fields": {
                 "cardNumber": "f3907186-e7e2-466f-91e5-48e12c2bcbc1",
+            }
+        }
+    ]
+}
+```
+
+### End to end example of upsert support with Skyflow Elements
+
+```jsx
+import React from "react";
+import {
+    CardNumberElement,
+    useCollectContainer,
+    useMakeSkyflowStyles,
+} from "skyflow-react-js";
+
+function App() {
+    const container = useCollectContainer();
+
+    const useStyles = useMakeSkyflowStyles({
+        inputStyles: {
+            base: {
+                border: "1px solid black",
+                borderRadius: "4px",
+                color: "#1d1d1d",
+                padding: "10px 16px",
+            },
+            complete: {
+                color: "#4caf50",
+            },
+            empty: {},
+            focus: {},
+            invalid: {
+                color: "#f44336",
+            },
+        },
+        labelStyles: {
+            base: {
+                fontSize: "16px",
+                fontWeight: "bold",
+            },
+        },
+        errorTextStyles: {
+            base: {
+                color: "blue",
+            },
+        },
+    });
+
+    const classes = useStyles();
+
+    const handleCollect = () => {
+        const options = [
+            {
+                table: "cards",
+                column: "cardNumber",
+            },
+        ];
+
+        const response = container.collect(options);
+        response
+            .then((res: any) => {
+                console.log(JSON.stringify(res));
+            })
+            .catch((e: any) => {
+                console.log(e);
+            });
+    };
+
+    return (
+        <div className="App">
+            <header className="App-header">
+                <CardNumberElement
+                    container={container}
+                    table={"cards"}
+                    classes={classes}
+                    column={"cardNumber"}
+                    label={"Collect Card Number"}
+                    options={options}
+                />
+
+                <CVVElement
+                    container={container}
+                    table={"cards"}
+                    classes={classes}
+                    column={"cvv"}
+                    label={"Collect CVV"}
+                    options={options}
+                />
+
+                <button onClick={handleCollect}>Collect</button>
+            </header>
+        </div>
+    );
+}
+
+export default App;
+```
+**Sample Response :**
+```javascript
+{
+    "records": [
+        {
+            "table": "cards",
+            "fields": {
+                "cardNumber": "f3907186-e7e2-466f-91e5-48e12c2bcbc1",
+                "cvv": "l4907186-e7e2-466f-91e5-985e12c2bcbc1"
             }
         }
     ]

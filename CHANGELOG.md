@@ -9,6 +9,12 @@ All notable changes to this project will be documented in this file.
 -  Update collect options in README.md file
 -  Update JS SDK imports
 
+## [1.3.0] - 2022-11-15
+
+### Added
+
+- `upsert` support while collecting data through skyflow elements.
+
 ## [1.2.0] - 2022-09-13
 
 ### Added
