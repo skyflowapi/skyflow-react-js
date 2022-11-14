@@ -193,6 +193,21 @@ const useSkyflowStyles = makeSkyflowStyles({
         base: {
             color: "#013370",
             // ...otherStyles
+        },
+        complete: {
+            color: "#4caf50",
+        },
+        empty: {},
+        focus: {},
+        invalid: {},
+        cardIcon:{
+            position: "absolute",
+            left:"8px", 
+            bottom:"calc(50% - 12px)"
+        },
+        copyIcon:{
+            position: "absolute",
+            right:"8px",
         }
     },
     labelStyles: {
@@ -224,6 +239,8 @@ The `inputStyles` field accepts a style object which consists of CSS properties 
 - `empty`: applied when the Element has no input
 - `focus`: applied when the Element has focus
 - `invalid`: applied when the Element has invalid input
+- `cardIcon`: applied to the card type icon in `CARD_NUMBER` Element
+- `copyIcon`: applied to copy icon in Elements when `enableCopy` option is true
 
 The states that are available for `labelStyles` are `base` and `focus`.
 
@@ -359,6 +376,11 @@ function App() {
             focus: {},
             invalid: {
                 color: "#f44336",
+            },
+            cardIcon:{
+                position: "absolute",
+                left:"8px", 
+                bottom:"calc(50% - 12px)"
             },
         },
         labelStyles: {
@@ -752,7 +774,7 @@ The following `props` can be passed to Skyflow reveal element:
 ```
 `Note`: 
 
-- The styling for reveal is same styles object as described in the [previous section](#step-2-create-a-collect-element) for collecting data.
+The `inputStyles`, `labelStyles` and  `errorTextStyles` parameters accepts a styles object as described in the [previous section](#step-2-create-a-collect-element) for collecting data. But for reveal element, `inputStyles` accepts only `base` variant and `copyIcon` style object. 
 
 ### End to end example using Reveal Element
 
@@ -772,14 +794,11 @@ function App() {
                 padding: '10px 16px',
 
             },
-            complete: {
-                color: '#4caf50',
-            },
-            empty: {},
-            focus: {},
-            invalid: {
-                color: '#f44336',
-            },
+            copyIcon:{
+                position: "absolute",
+                right:"8px",
+                top: "calc(50% - 10px)",
+            }
         },
         labelStyles: {
             base: {

@@ -14,6 +14,8 @@ All notable changes to this project will be documented in this file.
 ### Added
 
 - `upsert` support while collecting data through skyflow elements.
+- `cardIcon` and `copyIcon` style objects for collect and reveal elements.
+- Added asterisk (*) symbol for label of required collect element.
 
 ## [1.2.0] - 2022-09-13
 
