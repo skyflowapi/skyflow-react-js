@@ -321,7 +321,7 @@ When the form is ready to be submitted, call the `collect(options?)` method on t
 
 - `tokens`: indicates whether tokens for the collected data should be returned or not. Defaults to 'true'
 - `additionalFields`: Non-PCI elements data to be inserted into the vault which should be in the `records` object format.
-- - `upsert`: To support upsert operations while collecting the data from skyflow elements, pass the table and column that have been marked as unique in the table.
+- `upsert`: To support upsert operations while collecting the data from skyflow elements, pass the table and column that have been marked as unique in the table.
 
 ```javascript
 const options = {
@@ -455,6 +455,7 @@ export default App;
 import React from "react";
 import {
     CardNumberElement,
+    CVVElement,
     useCollectContainer,
     useMakeSkyflowStyles,
 } from "skyflow-react-js";
@@ -495,12 +496,17 @@ function App() {
     const classes = useStyles();
 
     const handleCollect = () => {
-        const options = [
-            {
-                table: "cards",
-                column: "cardNumber",
-            },
-        ];
+        
+        const options = {
+            tokens: true,
+            upsert: [
+                {
+                    table: "cards",
+                    column: "cardNumber",
+                },
+            ],
+        };
+
 
         const response = container.collect(options);
         response
