@@ -1,31 +1,31 @@
 /*
-	Copyright (c) 2022 Skyflow, Inc. 
+	Copyright (c) 2022 Skyflow, Inc.
 */
-import React from 'react'
+import React from 'react';
 import {
   CardNumberElement,
   InputFieldElement,
   useCollectContainer,
   useMakeSkyflowStyles,
-} from 'skyflow-react-js'
+} from 'skyflow-react-js';
 
-function ElementListners() {
-  const container = useCollectContainer()
+const ElementListners = () => {
+  const container = useCollectContainer();
 
-  const handleOnChange = (changeState: any) => {
-    console.log('Value', changeState)
-  }
-  const handleOnBlur = (changeState: any) => {
-    console.log('Blur', changeState)
-  }
+  const handleOnChange = (changeState: unknown) => {
+    console.log('Value', changeState);
+  };
+  const handleOnBlur = (changeState: unknown) => {
+    console.log('Blur', changeState);
+  };
 
-  const handleOnFocus = (changeState: any) => {
-    console.log('Focus', changeState)
-  }
+  const handleOnFocus = (changeState: unknown) => {
+    console.log('Focus', changeState);
+  };
 
-  const handleOnReady = (changeState: any) => {
-    console.log('Ready', changeState)
-  }
+  const handleOnReady = (changeState: unknown) => {
+    console.log('Ready', changeState);
+  };
 
   const useStyles = useMakeSkyflowStyles({
     inputStyles: {
@@ -55,11 +55,11 @@ function ElementListners() {
         color: 'red',
       },
     },
-  })
-  const classes = useStyles()
+  });
+  const classes = useStyles();
 
   return (
-    <div className='ElementListners' style={{ width: '300px' }}>
+    <div className='ElementListners' style={{width: '300px'}}>
       <CardNumberElement
         id={'eventListnerCollectElement'}
         container={container}
@@ -86,7 +86,7 @@ function ElementListners() {
         onReady={handleOnReady}
       />
     </div>
-  )
-}
+  );
+};
 
-export default ElementListners
+export default ElementListners;

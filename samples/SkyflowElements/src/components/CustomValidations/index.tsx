@@ -1,26 +1,26 @@
 /*
-	Copyright (c) 2022 Skyflow, Inc. 
+	Copyright (c) 2022 Skyflow, Inc.
 */
-import React from 'react'
+import React from 'react';
 import {
   useCollectContainer,
   LENGTH_MATCH_RULE,
-  CardHolderNameElement
-} from 'skyflow-react-js'
+  CardHolderNameElement,
+} from 'skyflow-react-js';
 
-function CustomValidations() {
-  const container = useCollectContainer()
+const CustomValidations = () => {
+  const container = useCollectContainer();
 
   const handleCollect = () => {
-    const response = container.collect()
+    const response = container.collect();
     response
       .then((res: unknown) => {
-        console.log(JSON.stringify(res))
+        console.log(JSON.stringify(res));
       })
       .catch((e: unknown) => {
-        console.log(e)
-      })
-  }
+        console.log(e);
+      });
+  };
 
   const lengthRule = {
     type: LENGTH_MATCH_RULE,
@@ -29,11 +29,11 @@ function CustomValidations() {
       max: 6,
       error: 'Must be between 4 and 6 alphabets',
     },
-  }
-  const validationArray = [lengthRule]
+  };
+  const validationArray = [lengthRule];
 
   return (
-    <div className='CollectElements' style={{ width: '300px' }}>
+    <div className='CollectElements' style={{width: '300px'}}>
       <CardHolderNameElement
         id={'collectCardName'}
         container={container}
@@ -45,7 +45,7 @@ function CustomValidations() {
 
       <button onClick={handleCollect}>Collect</button>
     </div>
-  )
-}
+  );
+};
 
-export default CustomValidations
+export default CustomValidations;
