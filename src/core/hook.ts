@@ -1,28 +1,22 @@
 /*
-	Copyright (c) 2022 Skyflow, Inc. 
+  Copyright (c) 2022 Skyflow, Inc. 
 */
+import { IConfig } from 'core'
 import React, { useContext } from 'react'
 import Skyflow from 'skyflow-js'
-import { IConfig } from '.'
 
-export const skyflowContext = React.createContext<IConfig>({
-  vaultID: '',
-  vaultURL: '',
-  getBearerToken: () =>
-    new Promise<string>((resolve) => {
-      resolve('')
-    }),
-  options: {
-    logLevel: Skyflow.LogLevel.ERROR,
-    env: Skyflow.Env.PROD,
-  },
-})
+export const skyflowContext = React.createContext<Skyflow | undefined>( undefined) 
 
-const useSkyflow = (): { skyflow: Skyflow; context: IConfig } => {
-  const context = useContext(skyflowContext)
-  const skyflow = Skyflow.init({
-    ...context,
-  })
-  return { skyflow, context }
+const useSkyflow = () => {
+  const skyflow = useContext(skyflowContext)
+  return { skyflow };
 }
-export { useSkyflow }
+
+const useSkyflowInit = (context:IConfig) => {
+  const skyflow = Skyflow.init({
+    ...context
+  })
+  return skyflow;
+}
+
+export { useSkyflow, useSkyflowInit }

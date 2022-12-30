@@ -7,12 +7,7 @@ import { SkyflowCollectElementProps } from '..'
 import useCollectListeners from '../../hooks/CollectListner'
 
 const PinElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
-  const divElement = document.createElement('div')
-  if (props.id) {
-    divElement.setAttribute('id', props.id)
-  } else {
-    divElement.setAttribute('id', 'collectPinElement')
-  }
+
   React.useEffect(() => {
     try {
       const newElement = props.container.create(
