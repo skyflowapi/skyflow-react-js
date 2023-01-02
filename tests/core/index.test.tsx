@@ -5,9 +5,19 @@ import React, { useContext } from 'react'
 import Skyflow from 'skyflow-js'
 import '@testing-library/jest-dom'
 
-const mockContext: IConfig = {
+const mockContext = React.createContext<IConfig>({
   vaultID: 'abc',
   vaultURL: 'url',
+  getBearerToken: jest.fn(),
+  options: {
+    logLevel: Skyflow.LogLevel.ERROR,
+    env: Skyflow.Env.PROD,
+  },
+})
+
+const config: IConfig = {
+  vaultID: '',
+  vaultURL: '',
   getBearerToken: jest.fn(),
   options: {
     logLevel: Skyflow.LogLevel.ERROR,
@@ -18,7 +28,7 @@ const mockContext: IConfig = {
 Skyflow.init = jest.fn()
 
 const TestingComponent = () => {
-  const { vaultID, vaultURL } = useContext(skyflowContext)
+  const { vaultID, vaultURL } = useContext(mockContext)
   return (
     <>
       <div data-testid='vault-id'>{vaultID}</div>
@@ -37,7 +47,7 @@ const customRender = (ui, { providerProps, ...renderOptions }) => {
 describe('<SkyflowElements />', () => {
   test('test vault id default value', () => {
     render(<TestingComponent />)
-    expect(screen.getByTestId('vault-id')).toHaveTextContent('')
+    expect(screen.getByTestId('vault-id')).toHaveTextContent('abc')
   })
 
   test('vault ID and vault URL value from provider', () => {
@@ -51,7 +61,7 @@ describe('<SkyflowElements />', () => {
 
   test('SkyflowElements /Consumer shows vaultID and vaultURL', () => {
     const wrapper = ({ children }) => (
-      <SkyflowElements config={mockContext}>{children}</SkyflowElements>
+      <SkyflowElements config={config}>{children}</SkyflowElements>
     )
 
     render(<TestingComponent />, { wrapper })

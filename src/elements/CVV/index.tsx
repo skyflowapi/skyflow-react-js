@@ -7,12 +7,7 @@ import { SkyflowCollectElementProps } from '..'
 import useCollectListeners from '../../hooks/CollectListner'
 
 const CVVElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
-  const divElement = document.createElement('div')
-  if (props.id) {
-    divElement.setAttribute('id', props.id)
-  } else {
-    divElement.setAttribute('id', 'collectCVVNumber')
-  }
+
   React.useEffect(() => {
     try {
       const newElement = props.container.create(
