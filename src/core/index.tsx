@@ -1,9 +1,9 @@
 /*
-	Copyright (c) 2022 Skyflow, Inc. 
+  Copyright (c) 2022 Skyflow, Inc. 
 */
 import React from 'react'
 import { Env, LogLevel } from 'skyflow-js/types/utils/common'
-import { skyflowContext, useSkyflow } from './hook'
+import { skyflowContext, useSkyflowInit } from './hook'
 
 export interface IConfig {
   vaultID: string
@@ -21,9 +21,9 @@ export interface ISkyflowElements {
 }
 
 const SkyflowElements: React.FC<ISkyflowElements> = ({ children, config }): JSX.Element => {
-  // Initialize SKyflow
-  useSkyflow()
-  return <skyflowContext.Provider value={config}>{children}</skyflowContext.Provider>
+  // Initialize Skyflow
+  const skyflow = useSkyflowInit(config)
+  return <skyflowContext.Provider value={skyflow}>{children}</skyflowContext.Provider>
 }
 
 export default React.memo(SkyflowElements)

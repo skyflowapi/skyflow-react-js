@@ -1,5 +1,5 @@
 /*
-	Copyright (c) 2022 Skyflow, Inc.
+  Copyright (c) 2022 Skyflow, Inc.
 */
 import React, { FC } from 'react'
 import Skyflow from 'skyflow-js'
@@ -7,12 +7,6 @@ import { SkyflowCollectElementProps } from '..'
 import useCollectListeners from '../../hooks/CollectListner'
 
 const CardHolderNameElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
-  const divElement = document.createElement('div')
-  if (props.id) {
-    divElement.setAttribute('id', props.id)
-  } else {
-    divElement.setAttribute('id', 'collectCardName')
-  }
 
   React.useEffect(() => {
     try {
