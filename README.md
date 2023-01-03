@@ -34,7 +34,7 @@ npm install --save skyflow-react-js
 
 ## Initializing Skyflow-React
 
-React components are wrapped in skyflow provider which takes in config object and SDK internally initializes a skyflow client.
+React components are wrapped in Skyflow provider which takes in config object and SDK internally initializes a Skyflow client.
 
 ```jsx
 import {SkyflowElements, LogLevel, Env} from 'skyflow-react-js';
@@ -345,12 +345,12 @@ const options = {
     ],
   }, // Optional
   upsert: [
-    // upsert operations support in the vault
+    // Upsert operations support in the vault
     {
-      table: 'string', // table name
-      column: 'value  ', // unique column in the table
+      table: 'string', // Table name
+      column: 'value', // Unique column in the table
     },
-  ], //optional
+  ], //Optional
 }
 
 container.collect(options)
@@ -654,7 +654,7 @@ const Form = (props) => {
 
 ## Event Listener on Collect Elements
 
-Helps to communicate with skyflow elements / iframes by listening to an event. Event listeners can be triggered by passing the handler methods as props to the Element components.
+Helps to communicate with Skyflow elements / iframes by listening to an event. Event listeners can be triggered by passing the handler methods as props to the Element components.
 
 There are 4 events which SDK supports:
 
