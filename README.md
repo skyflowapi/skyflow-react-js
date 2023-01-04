@@ -442,11 +442,11 @@ export default App
 
 ```javascript
 {
-  'records': [
+  "records": [
     {
-      'table': 'cards',
-      'fields': {
-        'cardNumber': 'f3907186-e7e2-466f-91e5-48e12c2bcbc1',
+      "table": "cards",
+      "fields": {
+        "cardNumber": "f3907186-e7e2-466f-91e5-48e12c2bcbc1",
       }
     }
   ]
@@ -683,7 +683,7 @@ state: {
 ```
 
 `Note:`
-values of SkyflowElements will be returned in elementstate object only when `env` is `DEV`, else it is empty string i.e, ''
+Values of SkyflowElements will be returned in elementstate object only when `env` is `DEV`, else it is empty string i.e, ''
 
 ### Example Usage of Event Listener on Collect Elements
 
@@ -733,7 +733,7 @@ const App = () => {
 export default App
 ```
 
-### Sample Element state object when `env` is `DEV`
+#### Sample Element state object when `env` is `DEV`
 
 ```javascript
 {
@@ -745,7 +745,7 @@ export default App
 }
 ```
 
-### Sample Element state object when `env` is `PROD`
+#### Sample Element state object when `env` is `PROD`
 
 ```javascript
 {
@@ -871,17 +871,17 @@ export default App
 
 ```javascript
 {
-  'success': [
+  "success": [
     {
-      'token': 'b63ec4e0-bbad-4e43-96e6-6bd50f483f75'
+      "token": "b63ec4e0-bbad-4e43-96e6-6bd50f483f75"
     }
   ],
-  'errors': [
+  "errors": [
     {
-      'token': '89024714-6a26-4256-b9d4-55ad69aa4047',
-      'error': {
-        'code': 404,
-        'description': 'Tokens not found for 89024714-6a26-4256-b9d4-55ad69aa4047'
+      "token": "89024714-6a26-4256-b9d4-55ad69aa4047",
+      "error": {
+        "code": 404,
+        "description": "Tokens not found for 89024714-6a26-4256-b9d4-55ad69aa4047"
       }
     }
   ]
