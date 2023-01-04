@@ -3,8 +3,10 @@
 */
 import React, { FC } from 'react'
 import Skyflow from 'skyflow-js'
+import CollectElement from 'skyflow-js/types/core/external/collect/collect-element'
 import { SkyflowCollectElementProps } from '..'
 import useCollectListeners from '../../hooks/CollectListner'
+import { ELEMENT_CREATED } from '../../utils/constants'
 
 const CardHolderNameElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
 
@@ -23,7 +25,12 @@ const CardHolderNameElement: FC<SkyflowCollectElementProps> = ({ ...props }) => 
         { ...props.options },
       )
 
-      newElement.mount(props.id ? `#${props.id}` : '#collectCardName')
+      if (props.container.type === Skyflow.ContainerType.COLLECT) {
+        const collectElement = newElement as CollectElement;
+        collectElement.mount(props.id ? `#${props.id}` : '#collectCardName')
+      }
+      else if (props.container.type === Skyflow.ContainerType.COMPOSABLE)
+        props.eventEmitter._emit(ELEMENT_CREATED, { id: 'CARD HOLDER NAME' })
 
       useCollectListeners(props, newElement)
     } catch (e) {
@@ -32,7 +39,11 @@ const CardHolderNameElement: FC<SkyflowCollectElementProps> = ({ ...props }) => 
     }
   }, [])
 
-  return <div id={props.id ? props.id : 'collectCardName'}></div>
+  return (
+    props.container.type === Skyflow.ContainerType.COLLECT 
+    ? (<div id={props.id ? props.id : 'collectCardName'}></div>) 
+    : (<></>)
+  )
 }
 
 export default CardHolderNameElement
