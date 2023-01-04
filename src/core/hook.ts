@@ -5,7 +5,7 @@ import { IConfig } from 'core'
 import React, { useContext } from 'react'
 import Skyflow from 'skyflow-js'
 
-export const skyflowContext = React.createContext<Skyflow | undefined>( undefined) 
+export const skyflowContext = React.createContext<Skyflow | undefined>(undefined) 
 
 const useSkyflow = () => {
   const skyflow = useContext(skyflowContext)

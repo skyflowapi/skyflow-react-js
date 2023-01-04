@@ -13,11 +13,13 @@ import PinElement from './elements/PIN'
 import ExpirationDateElement from './elements/ExpirationDate'
 import RevealElement from './elements/RevealElement'
 import InputFieldElement from './elements/InputField'
+import ComposableContainer from './elements/ComposableContainer'
 
 import useRevealContainer from './hooks/RevealContainer'
 import useMakeSkyflowStyles from './hooks/MakeSkyflowStyles'
 import useCollectListeners from './hooks/CollectListner'
 import useCollectContainer from './hooks/CollectContainer'
+import useComposableContainer from './hooks/ComposableContainer'
 
 const LogLevel = Skyflow.LogLevel
 const Env = Skyflow.Env
@@ -36,9 +38,11 @@ export {
   PinElement,
   RevealElement,
   useCollectContainer,
+  useComposableContainer,
   useMakeSkyflowStyles,
   useRevealContainer,
   useCollectListeners,
+  ComposableContainer,
   LogLevel,
   Env,
   LENGTH_MATCH_RULE,
