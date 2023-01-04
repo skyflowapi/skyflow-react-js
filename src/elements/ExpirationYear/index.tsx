@@ -3,8 +3,10 @@
 */
 import React, { FC } from 'react'
 import Skyflow from 'skyflow-js'
+import CollectElement from 'skyflow-js/types/core/external/collect/collect-element'
 import { SkyflowCollectElementProps } from '..'
 import useCollectListeners from '../../hooks/CollectListner'
+import { ELEMENT_CREATED } from '../../utils/constants'
 
 const ExpirationYearElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
 
@@ -23,8 +25,13 @@ const ExpirationYearElement: FC<SkyflowCollectElementProps> = ({ ...props }) => 
         { ...props.options },
       )
 
-      newElement.mount(props.id ? `#${props.id}` : '#collectExpirationYear')
-
+      if(props.container.type === Skyflow.ContainerType.COLLECT){
+        const collectElement = newElement as CollectElement;
+        collectElement.mount(props.id ? `#${props.id}` : '#collectExpirationYear')
+      }
+      else if (props.container.type === Skyflow.ContainerType.COMPOSABLE)
+        props.eventEmitter._emit(ELEMENT_CREATED,{id : 'EXPIRATION YEAR'})
+    
       useCollectListeners(props, newElement)
     } catch (e) {
       // eslint-disable-next-line no-console
@@ -32,7 +39,12 @@ const ExpirationYearElement: FC<SkyflowCollectElementProps> = ({ ...props }) => 
     }
   }, [])
 
-  return <div id={props.id ? props.id : 'collectExpirationYear'}></div>
+  return (
+    props.container.type === Skyflow.ContainerType.COLLECT 
+    ? (<div id={props.id ? props.id : 'collectExpirationYear'}></div>) 
+    : (<></>)
+  )
+  
 }
 
 export default ExpirationYearElement
