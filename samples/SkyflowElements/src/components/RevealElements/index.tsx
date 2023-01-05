@@ -1,11 +1,15 @@
 /*
-	Copyright (c) 2022 Skyflow, Inc. 
+	Copyright (c) 2022 Skyflow, Inc.
 */
-import React from 'react'
-import { RevealElement, useMakeSkyflowStyles, useRevealContainer } from 'skyflow-react-js'
+import React from 'react';
+import {
+  RevealElement,
+  useMakeSkyflowStyles,
+  useRevealContainer,
+} from 'skyflow-react-js';
 
-function RevealElements() {
-  const revealContainer = useRevealContainer()
+const RevealElements = () => {
+  const revealContainer = useRevealContainer();
 
   const useStyles = useMakeSkyflowStyles({
     inputStyles: {
@@ -35,21 +39,21 @@ function RevealElements() {
         color: 'red',
       },
     },
-  })
-  const classes = useStyles()
+  });
+  const classes = useStyles();
 
   const handleReveal = () => {
     revealContainer
       .reveal()
-      .then((res) => {
-        console.log(res)
+      .then(res => {
+        console.log(res);
       })
-      .catch((err) => {
-        console.log(err)
-      })
-  }
+      .catch(err => {
+        console.log(err);
+      });
+  };
   return (
-    <div className='RevealElement' style={{ width: '300px' }}>
+    <div className='RevealElement' style={{width: '300px'}}>
       <RevealElement
         id={'revealElement-1'}
         container={revealContainer}
@@ -68,7 +72,7 @@ function RevealElements() {
 
       <button onClick={handleReveal}>Reveal</button>
     </div>
-  )
-}
+  );
+};
 
-export default RevealElements
+export default RevealElements;

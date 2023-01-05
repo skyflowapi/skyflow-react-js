@@ -1,7 +1,7 @@
 /*
-	Copyright (c) 2022 Skyflow, Inc. 
+	Copyright (c) 2022 Skyflow, Inc.
 */
-import React from 'react'
+import React from 'react';
 import {
   CardNumberElement,
   CVVElement,
@@ -12,21 +12,21 @@ import {
   useCollectContainer,
   useMakeSkyflowStyles,
   InputFieldElement,
-} from 'skyflow-react-js'
+} from 'skyflow-react-js';
 
-function CollectElements() {
-  const container = useCollectContainer()
+const CollectElements = () => {
+  const container = useCollectContainer();
 
   const handleCollect = () => {
-    const response = container.collect()
+    const response = container.collect();
     response
       .then((res: unknown) => {
-        console.log(JSON.stringify(res))
+        console.log(JSON.stringify(res));
       })
       .catch((e: unknown) => {
-        console.log(e)
-      })
-  }
+        console.log(e);
+      });
+  };
 
   const useStyles = useMakeSkyflowStyles({
     inputStyles: {
@@ -56,12 +56,12 @@ function CollectElements() {
         color: 'red',
       },
     },
-  })
+  });
 
-  const classes = useStyles()
+  const classes = useStyles();
 
   return (
-    <div className='CollectElements' style={{ width: '300px' }}>
+    <div className='CollectElements' style={{width: '300px'}}>
       <CardNumberElement
         id={'collectCardNumber'}
         container={container}
@@ -70,6 +70,7 @@ function CollectElements() {
         column={'card_number'}
         label={'Collect Card Number'}
       />
+
       <CVVElement
         id='cvv'
         container={container}
@@ -78,8 +79,9 @@ function CollectElements() {
         column={'cvv'}
         label='Collect CVV'
       />
+
       <ExpirationMonthElement
-        id='mon'
+        id='month'
         container={container}
         classes={classes}
         table='table1'
@@ -87,6 +89,7 @@ function CollectElements() {
         label='Collect Exp Month'
         placeholder='MM'
       />
+
       <ExpirationYearElement
         id='year'
         container={container}
@@ -96,6 +99,7 @@ function CollectElements() {
         label='Collect Exp Year'
         placeholder='YY'
       />
+
       <ExpirationDateElement
         id='date'
         container={container}
@@ -104,6 +108,7 @@ function CollectElements() {
         column={'card_expiration'}
         label={'Expiration Date'}
       />
+
       <PinElement
         id='pin'
         container={container}
@@ -112,7 +117,7 @@ function CollectElements() {
         column={'card_pin'}
         label={'Pin'}
       />
-
+      
       <InputFieldElement
         id='input'
         container={container}
@@ -124,7 +129,7 @@ function CollectElements() {
 
       <button onClick={handleCollect}>Collect</button>
     </div>
-  )
-}
+  );
+};
 
-export default CollectElements
+export default CollectElements;
