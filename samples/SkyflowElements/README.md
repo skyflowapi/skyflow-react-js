@@ -3,6 +3,7 @@ Test the SDK by adding `VAULT-ID`, `VAULT-URL`, and `SERVICE-ACCOUNT` details in
 
 
 ## Prerequisites
+- A Skyflow account. If you don't have one, register for one on the [Try Skyflow](https://skyflow.com/try-skyflow) page.
 - [Node.js](https://nodejs.org/en/) version 10 or above
 - [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) version 6.x.x
 - [express.js](http://expressjs.com/en/starter/hello-world.html)
@@ -37,64 +38,66 @@ Test the SDK by adding `VAULT-ID`, `VAULT-URL`, and `SERVICE-ACCOUNT` details in
 4. Install `skyflow-node`
 
         npm i skyflow-node
-5. Create `index.js` file
-6. Open `index.js` file
-7. populate `index.js` file with below code snippet
+5. Move the downloaded “credentials.json” file #Create a service account account into the bearer-token-generator directory.
+6. Create `index.js` file
+7. Open `index.js` file
+8. Populate `index.js` file with below code snippet
 ```javascript
-const express = require('express')
-const app = express()
-var cors = require('cors')
-const port = 3000
+const express = require("express");
+const app = express();
+const cors = require("cors");
+const port = 3000;
 const {
-    generateBearerToken,
-    isExpired
-} = require('skyflow-node');
+   generateBearerToken,
+   isExpired
+} = require("skyflow-node");
 
-app.use(cors())
+app.use(cors());
 
-let filepath = 'cred.json';
+let filepath = "credentials.json";
 let bearerToken = "";
 
-function getSkyflowBearerToken() {
-    return new Promise(async (resolve, reject) => {
-        try {
-            if (!isExpired(bearerToken)) resolve(bearerToken)
-            else {
-                let response = await generateBearerToken(filepath);
-                bearerToken = response.accessToken;
-                resolve(bearerToken);
-            }
-        } catch (e) {
-            reject(e);
-        }
-    });
+const getSkyflowBearerToken = () => {
+   return new Promise(async (resolve, reject) => {
+       try {
+           if (!isExpired(bearerToken)) {
+               resolve(bearerToken);
+           }
+           else {
+               let response = await generateBearerToken(filepath);
+               bearerToken = response.accessToken;
+               resolve(bearerToken);
+           }
+       } catch (e) {
+           reject(e);
+       }
+   });
 }
 
-app.get('/', async (req, res) => {
-  let bearerToken = await getSkyflowBearerToken();
-  res.json({"accessToken" : bearerToken});
-})
+app.get("/", async (req, res) => {
+ let bearerToken = await getSkyflowBearerToken();
+ res.json({"accessToken" : bearerToken});
+});
 
 app.listen(port, () => {
-  console.log(`Server is listening on port ${port}`)
+ console.log(`Server is listening on port ${port}`);
 })
 ```
-8. Start the server
+9. Start the server
 
         node index.js
     server will start at `localhost:3000`
-9. Update `<TOKEN_END_POINT_URL>` in [index.tsx](src/index.tsx)
+10. Update `<TOKEN_END_POINT_URL>` in [index.tsx](src/index.tsx)
 
 ## The samples
-### Collect data
+### [Collect data](https://github.com/skyflowapi/skyflow-react-js/tree/master/samples/SkyflowElements/src/components/CollectElements)
 This sample illustrates how to use secure Skyflow elements to collect sensitive user information and reveal it to the user via tokens.
-### Custom Validation
+### [Custom Validation](https://github.com/skyflowapi/skyflow-react-js/tree/master/samples/SkyflowElements/src/components/CustomValidations)
 This sample illustrates how to use custom validation with skylow collect elements.
-### Reveal
+### [Reveal data](https://github.com/skyflowapi/skyflow-react-js/tree/master/samples/SkyflowElements/src/components/RevealElements)
 This sample illustrates how functionality of reveal feature works.
-### Event Listeners
+### [Event Listeners](https://github.com/skyflowapi/skyflow-react-js/tree/master/samples/SkyflowElements/src/components/ElementListeners)
 This sample illustrates how evenet listeners with Skyflow elements.
-
 
 #### Run the sample
 

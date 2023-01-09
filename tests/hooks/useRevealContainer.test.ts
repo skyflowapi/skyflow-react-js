@@ -34,7 +34,6 @@ const skyflowMock: unknown = {
 
 jest.spyOn(hooks, 'useSkyflow').mockReturnValue({
   skyflow: skyflowMock as Skyflow,
-  context: mockContext,
 })
 
 describe('test useRevealContainer', () => {

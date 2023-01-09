@@ -3,7 +3,7 @@
 */
 import * as React from 'react'
 import { render } from '@testing-library/react'
-import CollectContainer from 'skyflow-js/types/core/external/collect/CollectContainer'
+import CollectContainer from 'skyflow-js/types/core/external/collect/collect-container'
 import CVVElement from '../../src/elements/CVV'
 import useCollectContainer from '../../src/hooks/CollectContainer'
 import { IValidationRule } from 'skyflow-js/types/utils/common'

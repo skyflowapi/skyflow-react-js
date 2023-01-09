@@ -1,19 +1,18 @@
 /*
-	Copyright (c) 2022 Skyflow, Inc. 
+  Copyright (c) 2022 Skyflow, Inc. 
 */
 import React, { FC } from 'react'
 import { SkyflowRevealElementProps } from '..'
 
 const RevealElement: FC<SkyflowRevealElementProps> = ({ ...props }) => {
-  const divElement = document.createElement('div')
-  if (props.id) {
-    divElement.setAttribute('id', props.id)
-  } else {
-    divElement.setAttribute('id', 'revealElement')
-  }
+
+  const divElement = props.id && document.getElementById(props.id || 'revealElement');
 
   React.useEffect(() => {
     try {
+      if (divElement) {
+        divElement.innerHTML = ''
+      }
       const RevealElement = props.container.create(
         {
           token: props.token,
@@ -22,13 +21,15 @@ const RevealElement: FC<SkyflowRevealElementProps> = ({ ...props }) => {
         },
         { ...props.options },
       )
-
       RevealElement.mount(props.id ? `#${props.id}` : '#revealElement')
     } catch (e) {
       // eslint-disable-next-line no-console
       console.log(e)
     }
-  }, [])
+  }, [props])
+
+
+
 
   return <div id={props.id ? props.id : 'revealElement'}></div>
 }

@@ -4,8 +4,8 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import CardHolderNameElement from '../../src/elements/CardHolderName'
-import CollectContainer from 'skyflow-js/types/core/external/collect/CollectContainer'
 import { IValidationRule } from 'skyflow-js/types/utils/common'
+import CollectContainer from 'skyflow-js/types/core/external/collect/collect-container'
 
 jest.mock('../../src/hooks/CollectContainer')
 
