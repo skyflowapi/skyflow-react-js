@@ -32,7 +32,8 @@ const ComposableContainer: FC<any> = ({ children, ...props }) => {
     }
   }, [currentCount])
 
-  return <div id={props.id ? props.id : 'composeContainer'}>
+  return <div id={props.id ? props.id : 'composeContainer'} style={{ width:'inherit',
+    height:'100%'}}>
     {iterateOverChildren(children)}
   </div>
 }
