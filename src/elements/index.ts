@@ -4,11 +4,12 @@
 
 
 import CollectContainer from 'skyflow-js/types/core/external/collect/collect-container'
+import ComposableContainer from 'skyflow-js/types/core/external/collect/compose-collect-container'
 import RevealContainer, { IRevealElementOptions } from 'skyflow-js/types/core/external/reveal/reveal-container'
 import { IValidationRule } from 'skyflow-js/types/utils/common'
 
 export interface SkyflowCollectElementProps {
-  container: CollectContainer
+  container: CollectContainer | ComposableContainer
   table: string
   column: string
   id?: string
@@ -22,6 +23,7 @@ export interface SkyflowCollectElementProps {
   onFocus?: (state: unknown) => void
   onBlur?: (state: unknown) => void
   onReady?: (state: unknown) => void
+  eventEmitter?:any
   // TODO ref
 }
 
