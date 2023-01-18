@@ -7,6 +7,7 @@ import CollectElement from 'skyflow-js/types/core/external/collect/collect-eleme
 import { SkyflowCollectElementProps } from '..'
 import useCollectListeners from '../../hooks/CollectListner'
 import { ELEMENT_CREATED } from '../../utils/constants'
+import { SKYFLOW_ERROR_CODE } from '../../utils/errors'
 
 const ExpirationDateElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
 
@@ -29,13 +30,16 @@ const ExpirationDateElement: FC<SkyflowCollectElementProps> = ({ ...props }) => 
         const collectElement = newElement as CollectElement;
         collectElement.mount(props.id ? `#${props.id}` : '#collectExpirationDate')
       } 
-      else if (props.container.type === Skyflow.ContainerType.COMPOSABLE)
+      else if (props.container.type === Skyflow.ContainerType.COMPOSABLE){
+        if(!props.eventEmitter)
+          throw new Error(SKYFLOW_ERROR_CODE.COMPOSABLE_COMPONENT_NOT_PROVIDED.description);    
         props.eventEmitter._emit(ELEMENT_CREATED,{id : 'EXPIRATION DATE'})
+      }
     
       useCollectListeners(props, newElement)
     } catch (e) {
       // eslint-disable-next-line no-console
-      console.log(e)
+      console.error(e)
     }
   }, [])
 

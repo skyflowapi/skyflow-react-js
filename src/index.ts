@@ -13,7 +13,7 @@ import PinElement from './elements/PIN'
 import ExpirationDateElement from './elements/ExpirationDate'
 import RevealElement from './elements/RevealElement'
 import InputFieldElement from './elements/InputField'
-import ComposableContainer from './elements/ComposableContainer'
+import ComposableContainerComponent from './elements/ComposableContainer'
 
 import useRevealContainer from './hooks/RevealContainer'
 import useMakeSkyflowStyles from './hooks/MakeSkyflowStyles'
@@ -42,7 +42,7 @@ export {
   useMakeSkyflowStyles,
   useRevealContainer,
   useCollectListeners,
-  ComposableContainer,
+  ComposableContainerComponent as ComposableContainer,
   LogLevel,
   Env,
   LENGTH_MATCH_RULE,
