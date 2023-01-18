@@ -11,7 +11,12 @@ import { SKYFLOW_ERROR_CODE } from '../../utils/errors'
 
 const CardHolderNameElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
 
+  const divElement = props.id && document.getElementById(props.id || 'collectCardName');
+
   React.useEffect(() => {
+    if (divElement) {
+      divElement.innerHTML = ''
+    }
     try {
       const newElement = props.container.create(
         {
@@ -41,7 +46,7 @@ const CardHolderNameElement: FC<SkyflowCollectElementProps> = ({ ...props }) => 
       // eslint-disable-next-line no-console
       console.error(e)
     }
-  }, [])
+  }, [props])
 
   return (
     props.container.type === Skyflow.ContainerType.COLLECT 
