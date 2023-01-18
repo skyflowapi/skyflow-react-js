@@ -24,7 +24,7 @@ const RevealElement: FC<SkyflowRevealElementProps> = ({ ...props }) => {
       RevealElement.mount(props.id ? `#${props.id}` : '#revealElement')
     } catch (e) {
       // eslint-disable-next-line no-console
-      console.log(e)
+      console.error(e)
     }
   }, [props])
 
