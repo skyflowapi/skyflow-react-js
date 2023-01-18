@@ -4,8 +4,14 @@
 import React, { FC, useState } from 'react'
 import { ELEMENT_CREATED } from '../../utils/constants'
 import EventEmitter from '../../utils/event-emitter'
+import ComposableContainer from 'skyflow-js/types/core/external/collect/compose-collect-container';
+export interface IComposableContainer {
+  children?: React.ReactNode
+  container: ComposableContainer
+  id?: string
+}
 
-const ComposableContainer: FC<any> = ({ children, ...props }) => {
+const ComposableContainerComponent: FC<IComposableContainer> = ({ children, ...props }) => {
 
   const [currentCount, setCurrentCount] = useState(0);
 
@@ -28,7 +34,7 @@ const ComposableContainer: FC<any> = ({ children, ...props }) => {
         props.container.mount(props.id ? `#${props.id}` : '#composableContainer');
     } catch (e) {
       // eslint-disable-next-line no-console
-      console.log(e)
+      console.error(e)
     }
   }, [currentCount])
 
@@ -38,4 +44,4 @@ const ComposableContainer: FC<any> = ({ children, ...props }) => {
   </div>
 }
 
-export default ComposableContainer;
+export default ComposableContainerComponent;

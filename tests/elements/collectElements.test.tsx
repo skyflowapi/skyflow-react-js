@@ -419,7 +419,7 @@ describe('test collect elements', () => {
     const composableContainer = render(
       <ComposableContainer
         id={'id'}
-        container={ComposableContainer}
+        container={container}
       >
         <ExpirationYearElement
           container={container}
