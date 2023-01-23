@@ -82,7 +82,8 @@
     "@testing-library/react": "^13.0.0"
   },
   "dependencies": {
-    "skyflow-js": "^1.24.0"
+    "skyflow-js": "^1.24.1",
+    "uuid": "^9.0.0"
   },
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
