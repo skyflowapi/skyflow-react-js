@@ -6,13 +6,13 @@ Object {
   "baseElement": <body>
     <div>
       <div
-        id="revealElement"
+        id="reveal-12443"
       />
     </div>
   </body>,
   "container": <div>
     <div
-      id="revealElement"
+      id="reveal-12443"
     />
   </div>,
   "debug": [Function],

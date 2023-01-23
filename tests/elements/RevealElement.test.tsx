@@ -8,6 +8,10 @@ import RevealContainer from 'skyflow-js/types/core/external/reveal/reveal-contai
 
 
 jest.mock('../../src/hooks/RevealContainer')
+jest.mock('uuid',()=>{return {
+  v4 :()=>('12443')
+}
+})
 
 describe('RevealElement', () => {
   let container: RevealContainer

@@ -36,6 +36,11 @@ jest.spyOn(hooks, 'useSkyflow').mockReturnValue({
   skyflow: skyflowMock as Skyflow,
 })
 
+jest.spyOn(React,'useMemo').mockImplementation((arg)=>{
+  return arg();
+});
+
+
 describe('test useComposableContainer', () => {
   it('should return composable container', () => {
     expect(useComposableContainer({layout:[1]})).toBe(ComposableContainerMock)
