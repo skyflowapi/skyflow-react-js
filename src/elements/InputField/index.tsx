@@ -8,12 +8,13 @@ import { SkyflowCollectElementProps } from '..'
 import useCollectListeners from '../../hooks/CollectListner'
 import { ELEMENT_CREATED } from '../../utils/constants'
 import { SKYFLOW_ERROR_CODE } from '../../utils/errors'
+import { v4 as uuid } from 'uuid';
 
 const InputFieldElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
-
+  const uniqueDivId = uuid();
   React.useEffect(() => {
     try {
-      const newElement = props.container.create(
+      const newElement = props?.container.create(
         {
           table: props.table,
           column: props.column,
@@ -26,11 +27,11 @@ const InputFieldElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
         { ...props.options },
       )
 
-      if(props.container.type === Skyflow.ContainerType.COLLECT){
+      if(props?.container.type === Skyflow.ContainerType.COLLECT){
         const collectElement = newElement as CollectElement;
-        collectElement.mount(props.id ? `#${props.id}` : '#collectInputElement')
+        collectElement.mount(props.id ? `#${props.id}` : `#INPUT_FIELD-id-${uniqueDivId}`)
       }
-      else if (props.container.type === Skyflow.ContainerType.COMPOSABLE){
+      else if (props?.container.type === Skyflow.ContainerType.COMPOSABLE){
         if(!props.eventEmitter)
           throw new Error(SKYFLOW_ERROR_CODE.COMPOSABLE_COMPONENT_NOT_PROVIDED.description);    
         props.eventEmitter._emit(ELEMENT_CREATED,{id : 'INPUT FIELD'})
@@ -44,8 +45,8 @@ const InputFieldElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
   }, [])
 
   return (
-    props.container.type === Skyflow.ContainerType.COLLECT 
-    ? (<div id={props.id ? props.id : 'collectInputElement'}></div>) 
+    props?.container.type === Skyflow.ContainerType.COLLECT 
+    ? (<div id={props.id ? props.id : `INPUT_FIELD-id-${uniqueDivId}`}></div>) 
     : (<></>)
   )
 }

@@ -55,6 +55,11 @@ jest.mock('../../src/hooks/ComposableContainer', () => ({
   }))
 }));
 
+jest.mock('uuid',()=>{return {
+  v4 :()=>('12443')
+}
+})
+
 
 describe('test collect elements', () => {
   beforeEach(() => {

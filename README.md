@@ -171,7 +171,7 @@ The following `props` can be passed to Skyflow collect Element:
 
 ```javascript
 {
-  conatiner: 'CollectContainer' // Required, the collect container.
+  container: 'CollectContainer' // Required, the collect container.
   table: 'string',              // Required, the table this data belongs to.
   column: 'string',             // Required, the column into which this data should be inserted.
   id: string,                   // Optional, id that can passed to the element.
@@ -179,6 +179,7 @@ The following `props` can be passed to Skyflow collect Element:
   label: 'string',              // Optional, label for the form element.
   placeholder: 'string',        // Optional, placeholder for the form element.
   validations: [],              // Optional, array of validation rules.
+  options: {},                  // Optional, options that can be passed to an element.
   onChange: Function,           // Optional, function that is passed to trigger the onChange event.
   onFocus: Function,            // Optional, function that is passed to trigger the onFocus event.
   onBlur: Function,             // Optional, function that is passed to trigger the onBlur event.
