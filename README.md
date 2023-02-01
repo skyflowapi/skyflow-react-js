@@ -10,6 +10,7 @@ A React wrapper for [Skyflow JS SDK](https://github.com/skyflowapi/skyflow-js)
   - [Requirements](#requirements)
 - [**Initializing Skyflow-React**](#Initializing-Skyflow-React)
 - [**Securely collecting data client-side**](#Securely-collecting-data-client-side)
+- [**Securely collecting data client-side using Composable Elements**](#Securely-collecting-data-client-side-using-composable-elements)
 - [**Securely revealing data client-side**](#Securely-revealing-data-client-side)
 - [**Reporting a Vulnerability**](#Reporting-Vulnerability)
 - [**License**](#License)
@@ -756,6 +757,607 @@ export default App
   isValid: false
   value: ''
 }
+```
+## Securely collecting data client-side using Composable Elements
+
+Composable Elements combine multiple Skyflow Elements in a single iframe, letting you create multiple Skyflow Elements in a single row. The following steps create a composable element and securely collect data through it.
+
+### Step 1: Create a composable container
+
+Create a container for the composable element using the useComposableContainer hook of the Skyflow client:
+
+```javascript
+const container = useComposableContainer(containerOptions)
+```
+
+The container requires an options object that contains the following keys:
+
+* `layout`: An array that indicates the number of rows in the container and the number of elements in each row. The index value of the array defines the number of rows, and each value in the array represents the number of elements in that row, in order.
+
+	For example: `[2,1]` means the container has two rows, with two elements in the first row and one element in the second row.
+
+	`Note`: The sum of values in the layout array should be equal to the number of elements created
+
+* `styles`: CSS styles to apply to the composable container.
+* `errorTextStyles`: CSS styles to apply if an error is encountered.
+
+```javascript
+const options = {
+    layout: [2, 1],                           // Required
+    styles: {                                 // Optional
+        base: {
+            border: '1px solid #DFE3EB',
+            padding: '8px',
+            borderRadius: '4px',
+            margin: '12px 2px',
+        },
+    },
+    errorTextStyles: {                       // Optional
+        base: {
+            color: 'red',
+        },
+    },
+};
+```
+
+### Step 2: Create Composable Elements
+
+Composable Elements use the following format. Create other elements within the Composable Element.
+
+```jsx
+import {
+    ComposableContainer,
+    CardHolderNameElement,
+    CardNumberElement,
+} from "skyflow-react-js";
+
+<ComposableContainer id="<ID>" container="<CONTAINER>">
+  <CardHolderNameElement 
+      id="<ID>" 
+      table="<TABLE_NAME>" 
+      container="<CONTAINER>" 
+      column="<COLUMN_NAME>" 
+      ... props 
+  />
+  <CardNumberElement 
+      id="<ID>" 
+      table="<TABLE_NAME>" 
+      container="<CONTAINER>" 
+      column="<COLUMN_NAME>" 
+      ... props 
+  />
+</ComposableContainer>
+```
+
+The following `props` can be passed to Skyflow Composable Element:
+
+```javascript
+{
+  container: 'ComposableContainer' // Required, the Composable Container.
+  table: 'string',              // Required, the table this data belongs to.
+  column: 'string',             // Required, the column into which this data should be inserted.
+  id: string,                   // Optional, id that can passed to the element.
+  classes: {},                  // Optional, styles that should be applied to the element.
+  label: 'string',              // Optional, label for the form element.
+  placeholder: 'string',        // Optional, placeholder for the form element.
+  validations: [],              // Optional, array of validation rules.
+  options: {},                  // Optional, options that can be passed to an element.
+  onChange: Function,           // Optional, function that is passed to trigger the onChange event.
+  onFocus: Function,            // Optional, function that is passed to trigger the onFocus event.
+  onBlur: Function,             // Optional, function that is passed to trigger the onBlur event.
+  onReady: Function,            // Optional, function that is passed to trigger the onReady event.
+}
+```
+
+The `table` and `column` fields indicate which table and column in the vault the Element correspond to.
+
+Note: Use dot-delimited strings to specify columns nested inside JSON fields (for example, `address.street.line1`).
+
+All elements can be styled with JSS syntax.
+
+An example of styling an element with `makeSkyflowStyles` hook:
+
+```jsx
+const useSkyflowStyles = makeSkyflowStyles({
+  inputStyles: {
+    base: {
+      color: "#013370",
+      // ...otherStyles
+    },
+    complete: {
+      color: "#4caf50",
+    },
+    empty: {},
+    focus: {},
+    invalid: {},
+    cardIcon: {
+      position: "absolute",
+      left: "8px",
+      bottom: "calc(50% - 12px)"
+    },
+    copyIcon: {
+      position: "absolute",
+      right: "8px",
+    }
+  },
+  labelStyles: {
+    base: {
+      color: "#0D4370",
+      // ...otherStyles
+    }
+  }
+    errorStyles: {
+    base: {
+      color: "#0FE470",
+      // ...otherStyles
+    }
+  },
+  errorTextStyles: {
+    base: {
+      color: "#f44336",
+      // ...otherStyles
+    }
+  }
+
+})
+```
+The `inputStyles` field accepts an object of CSS properties to apply to the form element in the following states:
+
+* `base`: all variants inherit from these styles
+* `complete`: applied when the Element has valid input
+* `empty`: applied when the Element has no input
+* `focus`: applied when the Element has focus
+* `invalid`: applied when the Element has invalid input
+* `cardIcon`: applied to the card type icon in CARD_NUMBER Element
+* `copyIcon`: applied to copy icon in Elements when enableCopy option is true
+
+An example of an `inputStyles` object:
+
+```javascript
+inputStyles: {
+  base: {
+    border: '1px solid #eae8ee',
+    padding: '10px 16px',
+    borderRadius: '4px',
+    color: '#1d1d1d',
+  },
+  complete: {
+    color: '#4caf50',
+  },
+  empty: {},
+  focus: {},
+  invalid: {
+    color: '#f44336',
+  },
+  cardIcon: {
+    position: 'absolute',
+    left: '8px',
+    bottom: 'calc(50% - 12px)',
+  },
+  copyIcon: {
+    position: 'absolute',
+    right: '8px',
+  },
+}
+```
+The `labelStyles` field supports the `base` and `focus` states.
+
+An example `labelStyles` object:
+
+```javascript
+labelStyles: {
+  base: {
+    fontSize: '12px',
+      fontWeight: 'bold'
+  },
+  focus: {
+    color: '#1d1d1d'
+  }
+}
+```
+The `errorTextStyles` field only supports the `base` state, which appears when there is an error in the composable element.
+
+An example `errorTextStyles` object:
+
+```javascript
+errorTextStyles: {
+  base: {
+    color: '#f44336'
+  }
+}
+```
+The React SDK supports the following composable elements:
+
+- `CardHolderNameElement`
+- `CardNumberElement`
+- `ExpirationDateElement`
+- `CVVElement`
+- `PinElement`
+- `ExpirationDateElement`
+- `ExpirationMonthElement`
+- `ExpirationYearElement`
+- `InputFieldElement`
+
+`Note`: Only when the entered value in the below composable elements is valid, the focus shifts automatically. The element types are:
+- `CardNumberElement`
+- `ExpirationDateElement`
+- `ExpirationMonthElement`
+- `ExpirationYearElement`
+
+The `InputFieldElement` type is a custom UI element without any built-in validations. For information on validations, see [validations](#validations).
+
+Along with the Composable Element definition, you can define additional options for the element:
+
+```javascript
+const options = {
+    required: false,  		// Optional, indicates whether the field is marked as required. Defaults to 'false'
+    enableCardIcon: true, 	// Optional, indicates whether card icon should be enabled (only applicable for CARD_NUMBER ElementType)
+    format: String, 		// Optional, format for the element (only applicable currently for EXPIRATION_DATE ElementType),
+    enableCopy: false 		// Optional, enables the copy icon in collect and reveal elements to copy text to clipboard. Defaults to 'false')
+}
+```
+
+- `required`: Whether or not the field is marked as required. Defaults to `false`.
+- `enableCardIcon`: Whether or not the icon is visible for the CARD_NUMBER element. Defaults to `true`.
+- `format`: Format pattern for the element. Only applicable to EXPIRATION_DATE and EXPIRATION_YEAR element types.
+- `enableCopy`: Whether or not the copy icon is visible in collect and reveal elements. Defaults to `false`.
+
+The accepted `EXPIRATION_DATE` values are
+
+- `MM/YY` (default)
+- `MM/YYYY`
+- `YY/MM`
+- `YYYY/MM`
+
+
+The accepted `EXPIRATION_YEAR` values are
+
+- `YY` (default)
+- `YYYY`
+
+### Step 3: Collect data from Elements
+
+When the form is ready to be submitted, call the `collect(options?)` method on the container object. The options parameter takes an object of optional parameters as follows:
+- `tokens`: Whether or not tokens for the collected data are returned. Defaults to 'true'
+- `additionalFields`: Non-PCI elements data to insert into the vault, specified in the records object format.
+- `upsert`: To support upsert operations,  the table containing the data and a column marked as unique in that table.
+
+```javascript
+const options = {
+  tokens: true,                             // Optional, indicates whether tokens for the collected data should be returned. Defaults to 'true'.
+  additionalFields: {
+    records: [
+      {
+        table: 'string',                   // Table into which record should be inserted.
+        fields: {
+          column1: 'value',                // Column names should match vault column names.
+          // ...additional fields here.
+        },
+      },
+      // ...additional records here.
+    ],
+  },                                      // Optional
+  upsert: [                               // Upsert operations support in the vault                                    
+    {
+      table: 'string',                    // Table name
+      column: 'value',                    // Unique column in the table
+    },
+  ],                                      // Optional
+};
+```
+### End to end example of collecting data with Composable Elements:
+
+```jsx
+import React from 'react';
+import {
+  CardNumberElement,
+  CVVElement,
+  useMakeSkyflowStyles,
+  useComposableContainer,
+  ComposableContainer,
+  CardHolderNameElement,
+} from 'skyflow-react-js';
+
+const CollectElements = () => {
+
+  const useStyles = useMakeSkyflowStyles({
+    inputStyles: {
+      base: {
+        fontFamily: 'Inter',
+        fontStyle: 'normal',
+        fontWeight: 400,
+        fontSize: '14px',
+        lineHeight: '21px',
+        color: '#1d1d1d',
+        padding: '0px 16px'
+      },
+      complete: {
+        color: '#4caf50',
+      }
+    },
+    empty: {
+    },
+    focus: {
+    },
+    invalid: {
+      color: '#f44336',
+    },
+  });
+  const useCVVStyles = useMakeSkyflowStyles({
+    inputStyles: {
+      base: {
+        fontFamily: 'Inter',
+        fontStyle: 'normal',
+        fontWeight: 400,
+        fontSize: '14px',
+        lineHeight: '21px',
+      },
+      complete: {
+        color: '#4caf50',
+      },
+      empty: {},
+      focus: {},
+      invalid: {
+        color: '#f44336',
+      },
+    },
+    labelStyles: {
+    },
+    errorTextStyles: {
+      base: {
+        display: 'none'
+      },
+    },
+  })
+
+  const classes = useStyles();
+  const cvvClasses = useCVVStyles();
+
+  const containerOptions = {
+    layout: [1, 2],
+    styles: {
+      base: {
+        border: '1px solid #DFE3EB',
+        padding: '8px',
+        borderRadius: '4px',
+        margin: '12px 2px',
+      }
+    },
+    errorTextSyles: {
+      base: {
+        color: '#f44336'
+      }
+    }
+  }
+  const container = useComposableContainer(containerOptions);
+
+  const handleCollect = () => {
+    const options = {
+      tokens: true
+    }
+    const response = container?.collect(options);
+    response
+      ?.then((res: any) => {
+        console.log(JSON.stringify(res));
+      })
+      .catch((e: any) => {
+        console.log(e);
+      });
+  };
+
+  return (
+    <div className='CollectElements' >
+      <ComposableContainer
+        id='composecontainer'
+        container={container}
+      >
+        <CardHolderNameElement
+          id='collectCardHolderName'
+          container={container}
+          table='pii_fields'
+          classes={classes}
+          placeholder='Cardholder Name'
+          column='first_name'
+        />
+        <CardNumberElement
+          id='collectCardNumber'
+          container={container}
+          table='pii_fields'
+          classes={classes}
+          placeholder='XXXX XXXX XXXX XXXX'
+          column='card_number'
+        />
+        <CVVElement
+          id='cvv'
+          container={container}
+          table='pii_fields'
+          classes={cvvClasses}
+          placeholder='CVC'
+          column='cvv'
+        />
+      </ComposableContainer >
+
+      <button onClick={handleCollect}>Collect</button>
+    </div>
+  );
+};
+
+export default CollectElements;
+```
+
+### Sample Response:
+
+```javascript
+{
+    "records": [
+        {
+            "table": "pii_fields",
+            "fields": {
+                "first_name": "63b5eeee-3624-493f-825e-137a9336f882",
+                "card_number": "f3907186-e7e2-466f-91e5-48e12c2bcbc1",
+                "cvv": "7baf5bda-aa22-4587-a5c5-412f6f783a19",
+            }
+        }
+    ]
+}
+```
+For information on validations, see [validations](#validations).
+
+## Set an event listener on Composable Elements:
+
+You can communicate with Skyflow Elements by listening to element events:
+
+The SDK supports four events:
+
+- `CHANGE`: Triggered when the Element's value changes.
+- `READY`: Triggered when the Element is fully rendered.
+- `FOCUS`: Triggered when the Element gains focus.
+- `BLUR`: Triggered when the Element loses focus.
+
+The handler `function(state) => void` is a callback function you provide that's called when the event is fired with a state object that uses the following schema:
+
+```javascript
+state : {
+  elementType: Skyflow.ElementType
+  isEmpty: boolean 
+  isFocused: boolean
+  isValid: boolean
+  value: string
+}
+```
+`Note`: Events only include element values when in the state object when env is DEV. By default, value is an empty string.
+
+### Example Usage of Event Listener on Composable Elements
+
+```jsx
+import React from 'react';
+import {
+  CardNumberElement,
+  CVVElement,
+  useMakeSkyflowStyles,
+  useComposableContainer,
+  ComposableContainer,
+  CardHolderNameElement,
+} from 'skyflow-react-js';
+
+const CollectElements = () => {
+
+  const useStyles = useMakeSkyflowStyles({
+    inputStyles: {
+      base: {
+        fontFamily: 'Inter',
+        fontStyle: 'normal',
+        fontWeight: 400,
+        fontSize: '14px',
+        lineHeight: '21px',
+        color: '#1d1d1d',
+        padding: '0px 16px'
+      },
+      complete: {},
+      empty: {},
+      focus: {},
+      invalid: {},
+    },
+    labelStyles: {},
+    errorTextStyles: {
+      base: {
+        display: 'none'
+      },
+    },
+  });
+
+  const classes = useStyles();
+
+  const handleOnChange = (changeState: any) => {
+    console.log('Value', changeState);
+  };
+  const handleOnBlur = (changeState: any) => {
+    console.log('Blur', changeState);
+  };
+
+  const handleOnFocus = (changeState: any) => {
+    console.log('Focus', changeState);
+  };
+
+  const handleOnReady = (changeState: any) => {
+    console.log('Ready', changeState);
+  }
+
+  const containerOptions = {
+    layout: [1, 2],
+    styles: {
+      base: {
+        border: '1px solid #DFE3EB',
+        padding: '8px',
+        borderRadius: '4px',
+        margin: '12px 2px',
+      }
+    }
+  }
+  const container = useComposableContainer(containerOptions);
+
+
+  const handleCollect = () => {
+    const response = container?.collect();
+    response
+      ?.then((res: any) => {
+        console.log(JSON.stringify(res));
+      })
+      .catch((e: any) => {
+        console.log(e);
+      });
+  };
+
+  return (
+    <div className='CollectElements' >
+      <ComposableContainer
+        id='composecontainer'
+        container={container}
+      >
+        <CardHolderNameElement
+          id='collectCardHolderName'
+          container={container}
+          table='pii_fields'
+          classes={classes}
+          placeholder='Cardholder Name'
+          column='first_name'
+          onChange={handleOnChange}
+          onBlur={handleOnBlur}
+          onFocus={handleOnFocus}
+          onReady={handleOnReady}
+        />
+        <CardNumberElement
+          id='collectCardNumber'
+          container={container}
+          table='pii_fields'
+          classes={classes}
+          placeholder='XXXX XXXX XXXX XXXX'
+          column='card_number'
+          onChange={handleOnChange}
+          onBlur={handleOnBlur}
+          onFocus={handleOnFocus}
+          onReady={handleOnReady}
+        />
+        <CVVElement
+          id='cvv'
+          container={container}
+          table='pii_fields'
+          classes={classes}
+          placeholder='CVC'
+          column='cvv'
+          onChange={handleOnChange}
+          onBlur={handleOnBlur}
+          onFocus={handleOnFocus}
+          onReady={handleOnReady}
+        />
+      </ComposableContainer >
+
+      <button onClick={handleCollect}>Collect</button>
+    </div>
+  );
+};
+
+export default CollectElements;
 ```
 
 ## Securely revealing data client-side
