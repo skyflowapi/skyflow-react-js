@@ -885,12 +885,6 @@ const useSkyflowStyles = makeSkyflowStyles({
       color: "#0D4370",
       // ...otherStyles
     }
-  }
-    errorStyles: {
-    base: {
-      color: "#0FE470",
-      // ...otherStyles
-    }
   },
   errorTextStyles: {
     base: {
@@ -1225,7 +1219,7 @@ state : {
   value: string
 }
 ```
-`Note`: Events only include element values when in the state object when env is DEV. By default, value is an empty string.
+`Note`: Events only include element values when in the state object when env is `DEV`. By default, value is an empty string.
 
 ### Example Usage of Event Listener on Composable Elements
 
