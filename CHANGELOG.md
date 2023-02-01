@@ -2,7 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
-## [1.2.1] - 2022-09-23
+## [1.5.0] - 2023-01-18
+  
+### Added
+
+-  Added new `Composable` Elements.
+
+## [1.4.0] - 2023-01-03
+  
+### Fixed
+- Fixed `Reveal` Element re-redering
+
+## [1.3.1] - 2022-09-23
   
 ### Changed
 
