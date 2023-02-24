@@ -32,6 +32,7 @@ export interface SkyflowRevealElementProps {
   token: string
   id?: string
   label?: string
+  altText?: string
   classes?: Record<string, unknown>
   options?: IRevealOptions
 }
