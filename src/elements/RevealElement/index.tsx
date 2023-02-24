@@ -7,6 +7,8 @@ import { v4 as uuid } from 'uuid';
 
 const RevealElement: FC<SkyflowRevealElementProps> = ({ ...props }) => {
   const uniqueDivId = uuid();
+  const [element,setElement] = React.useState<any>(null);
+
   React.useEffect(() => {
     const divElement = document.getElementById(props?.id || `reveal-${uniqueDivId}`);
     try {
@@ -18,20 +20,25 @@ const RevealElement: FC<SkyflowRevealElementProps> = ({ ...props }) => {
           token: props.token,
           ...props.classes,
           label: props.label || '',
+          altText: props.altText || '',
         },
         { ...props.options },
       )
+      setElement(RevealElement);
       RevealElement.mount(props.id ? `#${props.id}` : `#reveal-${uniqueDivId}`)
     } catch (e) {
       // eslint-disable-next-line no-console
       console.error(e)
     }
-  }, [props])
+  }, [])
 
-
-
+  React.useEffect(()=>{
+    if(element){
+      element?.setToken(props.token);
+    }
+  },[props.token])
 
   return <div id={props.id ? props.id : `reveal-${uniqueDivId}` }></div>
 }
 
-export default RevealElement
+export default React.memo(RevealElement);
