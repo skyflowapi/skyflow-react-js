@@ -44,4 +44,7 @@ export interface ICollectElementOptions {
   enableCopy?: boolean
 }
 
-export type IRevealOptions = IRevealElementOptions
+export type IRevealOptions = {
+  enableCopy?: boolean;
+  format?:string
+}
