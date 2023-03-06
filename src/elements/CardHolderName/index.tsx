@@ -1,7 +1,7 @@
 /*
   Copyright (c) 2022 Skyflow, Inc.
 */
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import Skyflow from 'skyflow-js'
 import CollectElement from 'skyflow-js/types/core/external/collect/collect-element'
 import { SkyflowCollectElementProps } from '..'
@@ -9,9 +9,12 @@ import useCollectListeners from '../../hooks/CollectListner'
 import { ELEMENT_CREATED } from '../../utils/constants'
 import { SKYFLOW_ERROR_CODE } from '../../utils/errors'
 import { v4 as uuid } from 'uuid';
+import useUpdateElement from '../../hooks/UpdateElement'
+import ComposableElement from 'skyflow-js/types/core/external/collect/compose-collect-element'
 
 const CardHolderNameElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
   const uniqueDivId = uuid();
+  const [element,setElement] = React.useState<CollectElement| ComposableElement | null>(null);
 
   React.useEffect(() => {
     try {
@@ -28,6 +31,8 @@ const CardHolderNameElement: FC<SkyflowCollectElementProps> = ({ ...props }) => 
         { ...props.options },
       )
 
+      setElement(newElement);
+
       if (props?.container.type === Skyflow.ContainerType.COLLECT) {
         const collectElement = newElement as CollectElement;
         collectElement.mount(props.id ? `#${props.id}` : `#CARDHOLDER_NAME-id-${uniqueDivId}`)
@@ -37,7 +42,6 @@ const CardHolderNameElement: FC<SkyflowCollectElementProps> = ({ ...props }) => 
           throw new Error(SKYFLOW_ERROR_CODE.COMPOSABLE_COMPONENT_NOT_PROVIDED.description);
         props.eventEmitter._emit(ELEMENT_CREATED, { id: 'CARD HOLDER NAME' })
       }
-
       useCollectListeners(props, newElement)
     }
 
@@ -47,6 +51,7 @@ const CardHolderNameElement: FC<SkyflowCollectElementProps> = ({ ...props }) => 
     }
   }, [])
 
+  useUpdateElement(props, element);
   return (
     props?.container?.type === Skyflow.ContainerType.COLLECT
       ? (<div id={props.id ? props.id : `CARDHOLDER_NAME-id-${uniqueDivId}`}></div>)
@@ -54,4 +59,4 @@ const CardHolderNameElement: FC<SkyflowCollectElementProps> = ({ ...props }) => 
   )
 }
 
-export default CardHolderNameElement
+export default React.memo(CardHolderNameElement)
