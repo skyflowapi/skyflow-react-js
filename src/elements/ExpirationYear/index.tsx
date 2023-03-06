@@ -9,9 +9,13 @@ import useCollectListeners from '../../hooks/CollectListner'
 import { ELEMENT_CREATED } from '../../utils/constants'
 import { SKYFLOW_ERROR_CODE } from '../../utils/errors'
 import { v4 as uuid } from 'uuid';
+import useUpdateElement from '../../hooks/UpdateElement'
+import ComposableElement from 'skyflow-js/types/core/external/collect/compose-collect-element'
 
 const ExpirationYearElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
   const uniqueDivId = uuid();
+  const [element,setElement] = React.useState<CollectElement| ComposableElement | null>(null);
+
   React.useEffect(() => {
     try {
       const newElement = props?.container.create(
@@ -26,7 +30,7 @@ const ExpirationYearElement: FC<SkyflowCollectElementProps> = ({ ...props }) => 
         },
         { ...props.options },
       )
-
+      setElement(newElement);
       if(props?.container.type === Skyflow.ContainerType.COLLECT){
         const collectElement = newElement as CollectElement;
         collectElement.mount(props.id ? `#${props.id}` : `#EXPIRATION_YEAR-id-${uniqueDivId}`)
@@ -44,6 +48,8 @@ const ExpirationYearElement: FC<SkyflowCollectElementProps> = ({ ...props }) => 
     }
   }, [])
 
+  useUpdateElement(props, element);
+
   return (
     props?.container.type === Skyflow.ContainerType.COLLECT 
     ? (<div id={props.id ? props.id : `EXPIRATION_YEAR-id-${uniqueDivId}`}></div>) 
@@ -52,4 +58,4 @@ const ExpirationYearElement: FC<SkyflowCollectElementProps> = ({ ...props }) => 
   
 }
 
-export default ExpirationYearElement
+export default React.memo(ExpirationYearElement)

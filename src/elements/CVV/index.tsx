@@ -9,9 +9,13 @@ import useCollectListeners from '../../hooks/CollectListner'
 import CollectElement from 'skyflow-js/types/core/external/collect/collect-element'
 import { SKYFLOW_ERROR_CODE } from '../../utils/errors'
 import { v4 as uuid } from 'uuid';
+import useUpdateElement from '../../hooks/UpdateElement'
+import ComposableElement from 'skyflow-js/types/core/external/collect/compose-collect-element'
 
 const CVVElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
   const uniqueDivId = uuid();
+  const [element,setElement] = React.useState<CollectElement| ComposableElement | null>(null);
+
 
   React.useEffect(() => {
     try {
@@ -27,6 +31,8 @@ const CVVElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
         },
         { ...props.options },
       )
+      
+      setElement(newElement);
 
       if(props?.container.type === Skyflow.ContainerType.COLLECT){
         const collectElement = newElement as CollectElement;
@@ -45,6 +51,8 @@ const CVVElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
     }
   }, [])
 
+  useUpdateElement(props, element);
+
   return (
     props?.container.type === Skyflow.ContainerType.COLLECT 
     ? (<div id={props.id ? props.id : `CVV-id-${uniqueDivId}`}></div>) 
@@ -52,4 +60,4 @@ const CVVElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
   )
 }
 
-export default CVVElement
+export default React.memo(CVVElement);

@@ -5,11 +5,13 @@ import React, { FC, useState } from 'react'
 import { ELEMENT_CREATED } from '../../utils/constants'
 import EventEmitter from '../../utils/event-emitter'
 import ComposableContainer from 'skyflow-js/types/core/external/collect/compose-collect-container';
+import Skyflow from 'skyflow-js'
 import { v4 as uuid } from 'uuid';
 export interface IComposableContainer {
   children?: React.ReactNode
   container: ComposableContainer
   id?: string
+  onSubmit?: () => void
 }
 
 const ComposableContainerComponent: FC<IComposableContainer> = ({ children, ...props }) => {
@@ -31,9 +33,13 @@ const ComposableContainerComponent: FC<IComposableContainer> = ({ children, ...p
 
   React.useEffect(() => {
     try {
-      if (currentCount === React.Children.count(children))
+      if (currentCount === React.Children.count(children)){
         props.container.mount(props.id ? `#${props.id}` : `#COMPOSABLE_CONTAINER-id-${uniqueDivId}`);
-
+        
+        if(props.onSubmit)
+          props.container.on(Skyflow.EventName.SUBMIT,props.onSubmit)
+      }
+       
     } catch (e) {
       // eslint-disable-next-line no-console
       console.error(e)
