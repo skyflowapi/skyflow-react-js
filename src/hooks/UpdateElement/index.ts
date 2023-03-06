@@ -11,8 +11,8 @@ const useUpdateElement = (
 
   React.useEffect(() => {
     if (element) {
-      if (props?.container.type === Skyflow.ContainerType.COMPOSABLE) {
-        element?.update({
+      if (props?.container?.type === Skyflow.ContainerType.COMPOSABLE) {
+        element.update({
           table: props.table,
         })
       }
@@ -21,8 +21,8 @@ const useUpdateElement = (
 
   React.useEffect(() => {
     if (element) {
-      if (props?.container.type === Skyflow.ContainerType.COMPOSABLE) {
-        element?.update({
+      if (props?.container?.type === Skyflow.ContainerType.COMPOSABLE) {
+        element.update({
           column: props.column,
         })
       }
@@ -31,8 +31,8 @@ const useUpdateElement = (
 
   React.useEffect(() => {
     if (element) {
-      if (props?.container.type === Skyflow.ContainerType.COMPOSABLE) {
-        element?.update({
+      if (props?.container?.type === Skyflow.ContainerType.COMPOSABLE) {
+        element.update({
           validations: props.validations,
         })
       }
@@ -41,8 +41,8 @@ const useUpdateElement = (
 
   React.useEffect(() => {
     if (element) {
-      if (props?.container.type === Skyflow.ContainerType.COMPOSABLE) {
-        element?.update({
+      if (props?.container?.type === Skyflow.ContainerType.COMPOSABLE) {
+        element.update({
           label: props.label,
         })
       }
@@ -51,8 +51,8 @@ const useUpdateElement = (
 
   React.useEffect(() => {
     if (element) {
-      if (props?.container.type === Skyflow.ContainerType.COMPOSABLE) {
-        element?.update({
+      if (props?.container?.type === Skyflow.ContainerType.COMPOSABLE) {
+        element.update({
           placeholder: props.placeholder,
         })
       }
@@ -62,9 +62,11 @@ const useUpdateElement = (
 
   React.useEffect(() => {
     if (element) {
+      if (props?.container?.type === Skyflow.ContainerType.COMPOSABLE) {
         element.update({
           ...props.classes
         })
+      }
     }
   }, [props.classes])
 
