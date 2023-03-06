@@ -9,9 +9,13 @@ import useCollectListeners from '../../hooks/CollectListner'
 import { ELEMENT_CREATED } from '../../utils/constants'
 import { SKYFLOW_ERROR_CODE } from '../../utils/errors'
 import { v4 as uuid } from 'uuid';
+import useUpdateElement from '../../hooks/UpdateElement'
+import ComposableElement from 'skyflow-js/types/core/external/collect/compose-collect-element'
 
 const CardNumberElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
   const uniqueDivId = uuid();
+  const [element,setElement] = React.useState<CollectElement| ComposableElement | null>(null);
+  
   React.useEffect(() => {
     try {
       const newElement = props?.container.create(
@@ -26,6 +30,8 @@ const CardNumberElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
         },
         { ...props.options },
       )
+
+      setElement(newElement);
   
       if(props?.container.type === Skyflow.ContainerType.COLLECT){
         const collectElement = newElement as CollectElement;
@@ -44,6 +50,8 @@ const CardNumberElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
     }
   }, [])
   
+  useUpdateElement(props, element);
+  
   return (
     props.container.type === Skyflow.ContainerType.COLLECT 
     ? (<div id={props.id ? props.id : `CARD_NUMBER-id-${uniqueDivId}`}></div>) 
@@ -51,4 +59,4 @@ const CardNumberElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
   )
 }
 
-export default CardNumberElement
+export default React.memo(CardNumberElement)
