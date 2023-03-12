@@ -685,13 +685,13 @@ state: {
 ```
 
 `Note:`
-Values of SkyflowElements will be returned in elementstate object only when `env` is `DEV`, else it is empty string i.e, ''
+Values of SkyflowElements will be returned in element state object only when `env` is  `DEV`,  else it is empty string i.e, '', but in case of CARD_NUMBER type element when the `env` is `PROD` for all the card types except AMEX, it will return first eight digits, for AMEX it will return first six digits and rest all digits in masked format.
 
 ### Example Usage of Event Listener on Collect Elements
 
 ```jsx
 import React from 'react'
-import { CardNumberElement, useCollectContainer } from 'skyflow-react-js'
+import { CardNumberElement, CardHolderNameElement, useCollectContainer } from 'skyflow-react-js'
 
 const App = () => {
   const container = useCollectContainer()
@@ -725,6 +725,14 @@ const App = () => {
           onChange={handleOnChange}
           onBlur={handleOnBlur}
         />
+        <CardHolderNameElement
+          container={container}
+          table={'table1'}
+          column={'first_name'}
+          label={'Collect Card Holder Name'}
+          onChange={handleOnChange}
+          onBlur={handleOnBlur}
+        />
 
         <button onClick={handleCollect}>Collect</button>
       </header>
@@ -739,24 +747,38 @@ export default App
 
 ```javascript
 {
-  elementType: 'CARD_NUMBER'
-  isEmpty: false
-  isFocused: true
-  isValid: false
-  value: '411'
-}
+  elementType: 'CARDHOLDER_NAME',
+  isEmpty: false,
+  isFocused: true,
+  isValid: true,
+  value: 'John',
+};
+{
+  elementType: 'CARD_NUMBER',
+  isEmpty: false,
+  isFocused: true,
+  isValid: true,
+  value: '4111111111111111',
+};
 ```
 
 #### Sample Element state object when `env` is `PROD`
 
 ```javascript
 {
-  elementType: 'CARD_NUMBER'
-  isEmpty: false
-  isFocused: true
-  isValid: false
-  value: ''
-}
+  elementType: 'CARDHOLDER_NAME',
+  isEmpty: false,
+  isFocused: true,
+  isValid: true,
+  value: '',
+};
+{
+  elementType: 'CARD_NUMBER',
+  isEmpty: false,
+  isFocused: true,
+  isValid: true,
+  value: '41111111XXXXXXXX',
+};
 ```
 ## Securely collecting data client-side using Composable Elements
 
