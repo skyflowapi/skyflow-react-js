@@ -1375,6 +1375,120 @@ const CollectElements = () => {
 
 export default CollectElements;
 ```
+### Set an event listener on a composable container
+
+
+Currently, the SDK supports one event:
+- `SUBMIT`: Triggered when the `Enter` key is pressed in any container element.
+
+The handler `function(void) => void` is a callback function you provide that's called when the `SUBMIT' event fires.
+
+### Example usage of event listener on composable container
+```javascript
+import React from 'react';
+import {
+  CardNumberElement,
+  CVVElement,
+  useMakeSkyflowStyles,
+  useComposableContainer,
+  ComposableContainer,
+  CardHolderNameElement,
+} from 'skyflow-react-js';
+
+const ComposableElements = () => {
+
+  const useStyles = useMakeSkyflowStyles({
+    inputStyles: {
+      base: {
+        color: '#1d1d1d',
+      },
+    },
+    labelStyles: {},
+    errorTextStyles: {
+      base: {
+        display: 'none'
+      },
+    },
+  });
+
+  const classes = useStyles();
+
+  
+  const handleOnSubmit = () => {
+    // Your implementation when the SUBMIT(enter) event occurs.
+    console.log('Submit Event Listener is being Triggered.');
+  };
+
+  const containerOptions = {
+    layout: [1, 2],
+    styles: {
+      base: {
+        border: '1px solid #DFE3EB',
+        padding: '8px',
+        borderRadius: '4px',
+        margin: '12px 2px',
+      }
+    }
+  }
+
+  const container = useComposableContainer(containerOptions);
+
+
+  const handleCollect = () => {
+    const response = container?.collect();
+    response
+      ?.then((res: any) => {
+        console.log(JSON.stringify(res));
+      })
+      .catch((e: any) => {
+        console.log(e);
+      });
+  };
+
+  return (
+    <div className='CollectElements' >
+      <ComposableContainer
+        id='composecontainer'
+        container={container}
+        onSubmit={handleOnSubmit} // Pass onSubmit handler.
+      >
+        <CardHolderNameElement
+          id='collectCardHolderName'
+          container={container}
+          table='pii_fields'
+          classes={classes}
+          placeholder='Cardholder Name'
+          column='first_name'
+        />
+        <CardNumberElement
+          id='collectCardNumber'
+          container={container}
+          table='pii_fields'
+          classes={classes}
+          placeholder='XXXX XXXX XXXX XXXX'
+          column='card_number'
+        />
+        <CVVElement
+          id='cvv'
+          container={container}
+          table='pii_fields'
+          classes={classes}
+          placeholder='CVC'
+          column='cvv'
+        />
+      </ComposableContainer >
+
+      <button onClick={handleCollect}>Collect</button>
+    </div>
+  );
+};
+
+export default ComposableElements;
+
+```
+
+
+
 
 ## Securely revealing data client-side
 
