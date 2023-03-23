@@ -5,6 +5,7 @@ import React from 'react';
 import CollectElements from './components/CollectElements';
 import ComposableElements from './components/ComposableElements';
 import CustomValidations from './components/CustomValidations';
+import DynamicComposableElements from './components/DynamicComposableElements';
 import ElementListners from './components/ElementListeners';
 import RevealElements from './components/RevealElements';
 
@@ -43,6 +44,12 @@ const App = () => {
           <b>Sample for Custom Validations</b>
         </p>
         <CustomValidations />
+      </div>
+      <div id='Sample for Composable Elements In Modal'>
+        <p>
+          <b>Sample Composable Elements Dynamic properties update</b>
+        </p>
+        <DynamicComposableElements />
       </div>
     </div>
   );
