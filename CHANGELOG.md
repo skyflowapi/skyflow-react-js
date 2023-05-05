@@ -2,6 +2,36 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.0] - 2023-03-06
+  
+### Added
+
+-  composable elements improvements.
+
+## [1.5.4] - 2023-03-01
+  
+### Changed
+
+-  Upgrade JS SDK version to fix grace period of cached token.
+
+## [1.5.3] - 2023-02-25
+  
+### Added
+
+-  Added support for input formatting in Reveal Element 
+
+## [1.5.2] - 2023-02-24
+  
+### Fixed
+
+-  fix reveal element rerenders.
+
+## [1.5.1] - 2023-01-23
+  
+### Fixed
+
+-  bug fixes with collect and composable elements.
+
 ## [1.5.0] - 2023-01-18
   
 ### Added
