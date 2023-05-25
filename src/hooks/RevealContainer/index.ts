@@ -5,14 +5,16 @@ import React from 'react'
 import Skyflow from 'skyflow-js'
 import RevealContainer from 'skyflow-js/types/core/external/reveal/reveal-container'
 
-import { useSkyflow } from '../../core/hook'
+import { useSkyflow } from '../../core/SkyflowElements/hook'
 
-const useRevealContainer = (): RevealContainer => {
+/**
+ * sample documentation for useRevealContainer hook
+ * @returns RevealContainer
+ */
+export const useRevealContainer = (): RevealContainer => {
   const { skyflow } = useSkyflow()
   return React.useMemo(
     () => skyflow?.container(Skyflow.ContainerType.REVEAL) as RevealContainer,
     [],
   )
 }
-
-export default useRevealContainer

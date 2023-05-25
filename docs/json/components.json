@@ -1,0 +1,2731 @@
+{
+  "core": [
+    {
+      "tags": {},
+      "filePath": "src/core/SkyflowElements/index.tsx",
+      "description": "sample documentation for SkyflowElements",
+      "displayName": "SkyflowElements",
+      "methods": [],
+      "props": {
+        "children": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "children",
+          "parent": {
+            "fileName": "src/core/SkyflowElements/index.tsx",
+            "name": "ISkyflowElements"
+          },
+          "declarations": [
+            {
+              "fileName": "src/core/SkyflowElements/index.tsx",
+              "name": "ISkyflowElements"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "ReactNode"
+          }
+        },
+        "config": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "config",
+          "parent": {
+            "fileName": "src/core/SkyflowElements/index.tsx",
+            "name": "ISkyflowElements"
+          },
+          "declarations": [
+            {
+              "fileName": "src/core/SkyflowElements/index.tsx",
+              "name": "ISkyflowElements"
+            }
+          ],
+          "required": true,
+          "type": {
+            "name": "IConfig"
+          }
+        }
+      }
+    }
+  ],
+  "elements": [
+    {
+      "tags": {},
+      "filePath": "src/elements/CVVElement/index.tsx",
+      "description": "sample documentation for CVVElement",
+      "displayName": "CVVElement",
+      "methods": [],
+      "props": {
+        "container": {
+          "defaultValue": null,
+          "description": "used to declare the type of container you want to create",
+          "name": "container",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": true,
+          "type": {
+            "name": "CollectContainer | ComposableContainer"
+          }
+        },
+        "table": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "table",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": true,
+          "type": {
+            "name": "string"
+          }
+        },
+        "column": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "column",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": true,
+          "type": {
+            "name": "string"
+          }
+        },
+        "id": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "id",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "string | undefined"
+          }
+        },
+        "label": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "label",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "string | undefined"
+          }
+        },
+        "placeholder": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "placeholder",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "string | undefined"
+          }
+        },
+        "errorText": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "errorText",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "string | undefined"
+          }
+        },
+        "validations": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "validations",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "IValidationRule[] | undefined"
+          }
+        },
+        "classes": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "classes",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "Record<string, unknown> | undefined"
+          }
+        },
+        "options": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "options",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "ICollectElementOptions | undefined"
+          }
+        },
+        "onChange": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "onChange",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "((state: unknown) => void) | undefined"
+          }
+        },
+        "onFocus": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "onFocus",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "((state: unknown) => void) | undefined"
+          }
+        },
+        "onBlur": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "onBlur",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "((state: unknown) => void) | undefined"
+          }
+        },
+        "onReady": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "onReady",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "((state: unknown) => void) | undefined"
+          }
+        },
+        "eventEmitter": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "eventEmitter",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "any"
+          }
+        }
+      }
+    },
+    {
+      "tags": {},
+      "filePath": "src/elements/CardHolderNameElement/index.tsx",
+      "description": "CardHolderNameElement can be used to create a name element",
+      "displayName": "CardHolderNameElement",
+      "methods": [],
+      "props": {
+        "container": {
+          "defaultValue": null,
+          "description": "used to declare the type of container you want to create",
+          "name": "container",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": true,
+          "type": {
+            "name": "CollectContainer | ComposableContainer"
+          }
+        },
+        "table": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "table",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": true,
+          "type": {
+            "name": "string"
+          }
+        },
+        "column": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "column",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": true,
+          "type": {
+            "name": "string"
+          }
+        },
+        "id": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "id",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "string | undefined"
+          }
+        },
+        "label": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "label",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "string | undefined"
+          }
+        },
+        "placeholder": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "placeholder",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "string | undefined"
+          }
+        },
+        "errorText": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "errorText",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "string | undefined"
+          }
+        },
+        "validations": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "validations",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "IValidationRule[] | undefined"
+          }
+        },
+        "classes": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "classes",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "Record<string, unknown> | undefined"
+          }
+        },
+        "options": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "options",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "ICollectElementOptions | undefined"
+          }
+        },
+        "onChange": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "onChange",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "((state: unknown) => void) | undefined"
+          }
+        },
+        "onFocus": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "onFocus",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "((state: unknown) => void) | undefined"
+          }
+        },
+        "onBlur": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "onBlur",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "((state: unknown) => void) | undefined"
+          }
+        },
+        "onReady": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "onReady",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "((state: unknown) => void) | undefined"
+          }
+        },
+        "eventEmitter": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "eventEmitter",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "any"
+          }
+        }
+      }
+    },
+    {
+      "tags": {},
+      "filePath": "src/elements/CardNumberElement/index.tsx",
+      "description": "sample documentation for CardNumberElement",
+      "displayName": "CardNumberElement",
+      "methods": [],
+      "props": {
+        "container": {
+          "defaultValue": null,
+          "description": "used to declare the type of container you want to create",
+          "name": "container",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": true,
+          "type": {
+            "name": "CollectContainer | ComposableContainer"
+          }
+        },
+        "table": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "table",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": true,
+          "type": {
+            "name": "string"
+          }
+        },
+        "column": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "column",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": true,
+          "type": {
+            "name": "string"
+          }
+        },
+        "id": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "id",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "string | undefined"
+          }
+        },
+        "label": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "label",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "string | undefined"
+          }
+        },
+        "placeholder": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "placeholder",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "string | undefined"
+          }
+        },
+        "errorText": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "errorText",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "string | undefined"
+          }
+        },
+        "validations": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "validations",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "IValidationRule[] | undefined"
+          }
+        },
+        "classes": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "classes",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "Record<string, unknown> | undefined"
+          }
+        },
+        "options": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "options",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "ICollectElementOptions | undefined"
+          }
+        },
+        "onChange": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "onChange",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "((state: unknown) => void) | undefined"
+          }
+        },
+        "onFocus": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "onFocus",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "((state: unknown) => void) | undefined"
+          }
+        },
+        "onBlur": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "onBlur",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "((state: unknown) => void) | undefined"
+          }
+        },
+        "onReady": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "onReady",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "((state: unknown) => void) | undefined"
+          }
+        },
+        "eventEmitter": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "eventEmitter",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "any"
+          }
+        }
+      }
+    },
+    {
+      "tags": {},
+      "filePath": "src/elements/ComposableContainer/index.tsx",
+      "description": "sample documentation for ComposableContainerComponent",
+      "displayName": "ComposableContainer",
+      "methods": [],
+      "props": {
+        "children": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "children",
+          "parent": {
+            "fileName": "src/elements/ComposableContainer/index.tsx",
+            "name": "IComposableContainer"
+          },
+          "declarations": [
+            {
+              "fileName": "src/elements/ComposableContainer/index.tsx",
+              "name": "IComposableContainer"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "ReactNode"
+          }
+        },
+        "container": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "container",
+          "parent": {
+            "fileName": "src/elements/ComposableContainer/index.tsx",
+            "name": "IComposableContainer"
+          },
+          "declarations": [
+            {
+              "fileName": "src/elements/ComposableContainer/index.tsx",
+              "name": "IComposableContainer"
+            }
+          ],
+          "required": true,
+          "type": {
+            "name": "ComposableContainer"
+          }
+        },
+        "id": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "id",
+          "parent": {
+            "fileName": "src/elements/ComposableContainer/index.tsx",
+            "name": "IComposableContainer"
+          },
+          "declarations": [
+            {
+              "fileName": "src/elements/ComposableContainer/index.tsx",
+              "name": "IComposableContainer"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "string | undefined"
+          }
+        },
+        "onSubmit": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "onSubmit",
+          "parent": {
+            "fileName": "src/elements/ComposableContainer/index.tsx",
+            "name": "IComposableContainer"
+          },
+          "declarations": [
+            {
+              "fileName": "src/elements/ComposableContainer/index.tsx",
+              "name": "IComposableContainer"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "(() => void) | undefined"
+          }
+        }
+      }
+    },
+    {
+      "tags": {},
+      "filePath": "src/elements/ExpirationDateElement/index.tsx",
+      "description": "sample documentation for ExpirationDateElement",
+      "displayName": "ExpirationDateElement",
+      "methods": [],
+      "props": {
+        "container": {
+          "defaultValue": null,
+          "description": "used to declare the type of container you want to create",
+          "name": "container",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": true,
+          "type": {
+            "name": "CollectContainer | ComposableContainer"
+          }
+        },
+        "table": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "table",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": true,
+          "type": {
+            "name": "string"
+          }
+        },
+        "column": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "column",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": true,
+          "type": {
+            "name": "string"
+          }
+        },
+        "id": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "id",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "string | undefined"
+          }
+        },
+        "label": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "label",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "string | undefined"
+          }
+        },
+        "placeholder": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "placeholder",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "string | undefined"
+          }
+        },
+        "errorText": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "errorText",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "string | undefined"
+          }
+        },
+        "validations": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "validations",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "IValidationRule[] | undefined"
+          }
+        },
+        "classes": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "classes",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "Record<string, unknown> | undefined"
+          }
+        },
+        "options": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "options",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "ICollectElementOptions | undefined"
+          }
+        },
+        "onChange": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "onChange",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "((state: unknown) => void) | undefined"
+          }
+        },
+        "onFocus": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "onFocus",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "((state: unknown) => void) | undefined"
+          }
+        },
+        "onBlur": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "onBlur",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "((state: unknown) => void) | undefined"
+          }
+        },
+        "onReady": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "onReady",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "((state: unknown) => void) | undefined"
+          }
+        },
+        "eventEmitter": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "eventEmitter",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "any"
+          }
+        }
+      }
+    },
+    {
+      "tags": {},
+      "filePath": "src/elements/ExpirationMonthElement/index.tsx",
+      "description": "sample documentation for ExpirationMonthElement",
+      "displayName": "ExpirationMonthElement",
+      "methods": [],
+      "props": {
+        "container": {
+          "defaultValue": null,
+          "description": "used to declare the type of container you want to create",
+          "name": "container",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": true,
+          "type": {
+            "name": "CollectContainer | ComposableContainer"
+          }
+        },
+        "table": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "table",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": true,
+          "type": {
+            "name": "string"
+          }
+        },
+        "column": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "column",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": true,
+          "type": {
+            "name": "string"
+          }
+        },
+        "id": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "id",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "string | undefined"
+          }
+        },
+        "label": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "label",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "string | undefined"
+          }
+        },
+        "placeholder": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "placeholder",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "string | undefined"
+          }
+        },
+        "errorText": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "errorText",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "string | undefined"
+          }
+        },
+        "validations": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "validations",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "IValidationRule[] | undefined"
+          }
+        },
+        "classes": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "classes",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "Record<string, unknown> | undefined"
+          }
+        },
+        "options": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "options",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "ICollectElementOptions | undefined"
+          }
+        },
+        "onChange": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "onChange",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "((state: unknown) => void) | undefined"
+          }
+        },
+        "onFocus": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "onFocus",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "((state: unknown) => void) | undefined"
+          }
+        },
+        "onBlur": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "onBlur",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "((state: unknown) => void) | undefined"
+          }
+        },
+        "onReady": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "onReady",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "((state: unknown) => void) | undefined"
+          }
+        },
+        "eventEmitter": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "eventEmitter",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "any"
+          }
+        }
+      }
+    },
+    {
+      "tags": {},
+      "filePath": "src/elements/ExpirationYearElement/index.tsx",
+      "description": "sample documentation for ExpirationYearElement",
+      "displayName": "ExpirationYearElement",
+      "methods": [],
+      "props": {
+        "container": {
+          "defaultValue": null,
+          "description": "used to declare the type of container you want to create",
+          "name": "container",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": true,
+          "type": {
+            "name": "CollectContainer | ComposableContainer"
+          }
+        },
+        "table": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "table",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": true,
+          "type": {
+            "name": "string"
+          }
+        },
+        "column": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "column",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": true,
+          "type": {
+            "name": "string"
+          }
+        },
+        "id": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "id",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "string | undefined"
+          }
+        },
+        "label": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "label",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "string | undefined"
+          }
+        },
+        "placeholder": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "placeholder",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "string | undefined"
+          }
+        },
+        "errorText": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "errorText",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "string | undefined"
+          }
+        },
+        "validations": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "validations",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "IValidationRule[] | undefined"
+          }
+        },
+        "classes": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "classes",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "Record<string, unknown> | undefined"
+          }
+        },
+        "options": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "options",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "ICollectElementOptions | undefined"
+          }
+        },
+        "onChange": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "onChange",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "((state: unknown) => void) | undefined"
+          }
+        },
+        "onFocus": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "onFocus",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "((state: unknown) => void) | undefined"
+          }
+        },
+        "onBlur": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "onBlur",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "((state: unknown) => void) | undefined"
+          }
+        },
+        "onReady": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "onReady",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "((state: unknown) => void) | undefined"
+          }
+        },
+        "eventEmitter": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "eventEmitter",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "any"
+          }
+        }
+      }
+    },
+    {
+      "tags": {},
+      "filePath": "src/elements/InputFieldElement/index.tsx",
+      "description": "sample documentation for InputFieldElement",
+      "displayName": "InputFieldElement",
+      "methods": [],
+      "props": {
+        "container": {
+          "defaultValue": null,
+          "description": "used to declare the type of container you want to create",
+          "name": "container",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": true,
+          "type": {
+            "name": "CollectContainer | ComposableContainer"
+          }
+        },
+        "table": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "table",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": true,
+          "type": {
+            "name": "string"
+          }
+        },
+        "column": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "column",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": true,
+          "type": {
+            "name": "string"
+          }
+        },
+        "id": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "id",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "string | undefined"
+          }
+        },
+        "label": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "label",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "string | undefined"
+          }
+        },
+        "placeholder": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "placeholder",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "string | undefined"
+          }
+        },
+        "errorText": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "errorText",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "string | undefined"
+          }
+        },
+        "validations": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "validations",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "IValidationRule[] | undefined"
+          }
+        },
+        "classes": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "classes",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "Record<string, unknown> | undefined"
+          }
+        },
+        "options": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "options",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "ICollectElementOptions | undefined"
+          }
+        },
+        "onChange": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "onChange",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "((state: unknown) => void) | undefined"
+          }
+        },
+        "onFocus": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "onFocus",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "((state: unknown) => void) | undefined"
+          }
+        },
+        "onBlur": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "onBlur",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "((state: unknown) => void) | undefined"
+          }
+        },
+        "onReady": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "onReady",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "((state: unknown) => void) | undefined"
+          }
+        },
+        "eventEmitter": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "eventEmitter",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "any"
+          }
+        }
+      }
+    },
+    {
+      "tags": {},
+      "filePath": "src/elements/PinElement/index.tsx",
+      "description": "sample documentation for PinElement",
+      "displayName": "PinElement",
+      "methods": [],
+      "props": {
+        "container": {
+          "defaultValue": null,
+          "description": "used to declare the type of container you want to create",
+          "name": "container",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": true,
+          "type": {
+            "name": "CollectContainer | ComposableContainer"
+          }
+        },
+        "table": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "table",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": true,
+          "type": {
+            "name": "string"
+          }
+        },
+        "column": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "column",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": true,
+          "type": {
+            "name": "string"
+          }
+        },
+        "id": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "id",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "string | undefined"
+          }
+        },
+        "label": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "label",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "string | undefined"
+          }
+        },
+        "placeholder": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "placeholder",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "string | undefined"
+          }
+        },
+        "errorText": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "errorText",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "string | undefined"
+          }
+        },
+        "validations": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "validations",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "IValidationRule[] | undefined"
+          }
+        },
+        "classes": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "classes",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "Record<string, unknown> | undefined"
+          }
+        },
+        "options": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "options",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "ICollectElementOptions | undefined"
+          }
+        },
+        "onChange": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "onChange",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "((state: unknown) => void) | undefined"
+          }
+        },
+        "onFocus": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "onFocus",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "((state: unknown) => void) | undefined"
+          }
+        },
+        "onBlur": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "onBlur",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "((state: unknown) => void) | undefined"
+          }
+        },
+        "onReady": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "onReady",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "((state: unknown) => void) | undefined"
+          }
+        },
+        "eventEmitter": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "eventEmitter",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowCollectElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowCollectElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "any"
+          }
+        }
+      }
+    },
+    {
+      "tags": {},
+      "filePath": "src/elements/RevealElement/index.tsx",
+      "description": "sample documentation for RevealElement",
+      "displayName": "RevealElement",
+      "methods": [],
+      "props": {
+        "container": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "container",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowRevealElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowRevealElementProps"
+            }
+          ],
+          "required": true,
+          "type": {
+            "name": "RevealContainer"
+          }
+        },
+        "token": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "token",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowRevealElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowRevealElementProps"
+            }
+          ],
+          "required": true,
+          "type": {
+            "name": "string"
+          }
+        },
+        "id": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "id",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowRevealElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowRevealElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "string | undefined"
+          }
+        },
+        "label": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "label",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowRevealElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowRevealElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "string | undefined"
+          }
+        },
+        "altText": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "altText",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowRevealElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowRevealElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "string | undefined"
+          }
+        },
+        "classes": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "classes",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowRevealElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowRevealElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "Record<string, unknown> | undefined"
+          }
+        },
+        "options": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "options",
+          "parent": {
+            "fileName": "skyflow-react-js/src/elements/index.ts",
+            "name": "SkyflowRevealElementProps"
+          },
+          "declarations": [
+            {
+              "fileName": "skyflow-react-js/src/elements/index.ts",
+              "name": "SkyflowRevealElementProps"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "IRevealOptions | undefined"
+          }
+        }
+      }
+    },
+    null
+  ],
+  "hooks": [
+    {
+      "tags": {
+        "returns": "CollectContainer"
+      },
+      "filePath": "src/hooks/CollectContainer/index.ts",
+      "description": "sample documentation for useCollectContainer hook",
+      "displayName": "useCollectContainer",
+      "methods": [],
+      "props": {}
+    },
+    {
+      "tags": {},
+      "filePath": "src/hooks/ComposableContainer/index.ts",
+      "description": "sample documentation for useComposableContainer hook",
+      "displayName": "useComposableContainer",
+      "methods": [],
+      "props": {
+        "layout": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "layout",
+          "parent": {
+            "fileName": "src/hooks/ComposableContainer/index.ts",
+            "name": "IOptions"
+          },
+          "declarations": [
+            {
+              "fileName": "src/hooks/ComposableContainer/index.ts",
+              "name": "IOptions"
+            }
+          ],
+          "required": true,
+          "type": {
+            "name": "number[]"
+          }
+        },
+        "styles": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "styles",
+          "parent": {
+            "fileName": "src/hooks/ComposableContainer/index.ts",
+            "name": "IOptions"
+          },
+          "declarations": [
+            {
+              "fileName": "src/hooks/ComposableContainer/index.ts",
+              "name": "IOptions"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "object | undefined"
+          }
+        },
+        "errorTextSyles": {
+          "defaultValue": null,
+          "description": "sample documentation",
+          "name": "errorTextSyles",
+          "parent": {
+            "fileName": "src/hooks/ComposableContainer/index.ts",
+            "name": "IOptions"
+          },
+          "declarations": [
+            {
+              "fileName": "src/hooks/ComposableContainer/index.ts",
+              "name": "IOptions"
+            }
+          ],
+          "required": false,
+          "type": {
+            "name": "object | undefined"
+          }
+        }
+      }
+    },
+    {
+      "tags": {
+        "param": "styles : Record<string, unknown>\nstyle : string"
+      },
+      "filePath": "src/hooks/MakeSkyflowStyles/index.ts",
+      "description": "sample documentation for useMakeSkyflowStyles hook",
+      "displayName": "useMakeSkyflowStyles",
+      "methods": [],
+      "props": {}
+    },
+    {
+      "tags": {
+        "returns": "RevealContainer"
+      },
+      "filePath": "src/hooks/RevealContainer/index.ts",
+      "description": "sample documentation for useRevealContainer hook",
+      "displayName": "useRevealContainer",
+      "methods": [],
+      "props": {}
+    }
+  ]
+}

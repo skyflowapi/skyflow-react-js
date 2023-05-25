@@ -5,14 +5,17 @@ import React, { FC } from 'react'
 import Skyflow from 'skyflow-js'
 import CollectElement from 'skyflow-js/types/core/external/collect/collect-element'
 import { SkyflowCollectElementProps } from '..'
-import useCollectListeners from '../../hooks/CollectListner'
+import {useCollectListeners} from '../../hooks/CollectListner'
 import { ELEMENT_CREATED } from '../../utils/constants'
 import { SKYFLOW_ERROR_CODE } from '../../utils/errors'
 import { v4 as uuid } from 'uuid';
 import useUpdateElement from '../../hooks/UpdateElement'
 import ComposableElement from 'skyflow-js/types/core/external/collect/compose-collect-element'
 
-const ExpirationMonthElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
+/**
+ *  sample documentation for ExpirationMonthElement
+ */
+const ExpirationMonthElement: FC<SkyflowCollectElementProps> = React.memo(function ExpirationMonthElement({ ...props }: SkyflowCollectElementProps) {
   const uniqueDivId = uuid();
   const [element,setElement] = React.useState<CollectElement | ComposableElement | null>(null);
   React.useEffect(() => {
@@ -56,6 +59,6 @@ const ExpirationMonthElement: FC<SkyflowCollectElementProps> = ({ ...props }) =>
     ? (<div id={props.id ? props.id : `EXPIRATION_MONTH-id-${uniqueDivId}`}></div>) 
     : (<></>)
   )
-}
+})
 
-export default React.memo(ExpirationMonthElement)
+export default ExpirationMonthElement
