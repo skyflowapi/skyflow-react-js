@@ -13,7 +13,7 @@ sample documentation for RevealElement
 ## Import
 
 ```js
-import RevealElement from 'skyflow-react-js';
+import {RevealElement} from 'skyflow-react-js';
 ```
 
 ## Props

@@ -13,7 +13,7 @@ sample documentation for CVVElement
 ## Import
 
 ```js
-import CVVElement from 'skyflow-react-js';
+import {CVVElement} from 'skyflow-react-js';
 ```
 
 ## Props

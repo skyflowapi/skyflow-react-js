@@ -13,7 +13,7 @@ sample documentation for SkyflowElements
 ## Import
 
 ```js
-import SkyflowElements from 'skyflow-react-js';
+import {SkyflowElements} from 'skyflow-react-js';
 ```
 
 ## Props

@@ -13,7 +13,7 @@ sample documentation for ComposableContainerComponent
 ## Import
 
 ```js
-import ComposableContainer from 'skyflow-react-js';
+import {ComposableContainer} from 'skyflow-react-js';
 ```
 
 ## Props

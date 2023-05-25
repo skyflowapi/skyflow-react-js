@@ -13,7 +13,7 @@ sample documentation for CardNumberElement
 ## Import
 
 ```js
-import CardNumberElement from 'skyflow-react-js';
+import {CardNumberElement} from 'skyflow-react-js';
 ```
 
 ## Props

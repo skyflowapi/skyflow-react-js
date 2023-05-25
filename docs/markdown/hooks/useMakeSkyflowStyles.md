@@ -13,6 +13,6 @@ sample documentation for useMakeSkyflowStyles hook
 ## Import
 
 ```js
-import useMakeSkyflowStyles from 'skyflow-react-js';
+import {useMakeSkyflowStyles} from 'skyflow-react-js';
 ```
 {% /env %}

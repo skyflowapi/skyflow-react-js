@@ -5,7 +5,7 @@
 
 Some documentation for the overview page.
 
-## SkyflowProvider
+## Skyflow Provider
 
 - [SkyflowElements](/sdks/react-js/core/SkyflowElements)
 

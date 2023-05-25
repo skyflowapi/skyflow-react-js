@@ -13,7 +13,7 @@ sample documentation for PinElement
 ## Import
 
 ```js
-import PinElement from 'skyflow-react-js';
+import {PinElement} from 'skyflow-react-js';
 ```
 
 ## Props

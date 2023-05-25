@@ -13,7 +13,7 @@ sample documentation for useComposableContainer hook
 ## Import
 
 ```js
-import useComposableContainer from 'skyflow-react-js';
+import {useComposableContainer} from 'skyflow-react-js';
 ```
 
 ## Props

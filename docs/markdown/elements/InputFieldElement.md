@@ -13,7 +13,7 @@ sample documentation for InputFieldElement
 ## Import
 
 ```js
-import InputFieldElement from 'skyflow-react-js';
+import {InputFieldElement} from 'skyflow-react-js';
 ```
 
 ## Props

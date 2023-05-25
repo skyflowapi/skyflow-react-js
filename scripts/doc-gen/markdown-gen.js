@@ -32,9 +32,10 @@ Some documentation for the overview page.
 
 // Loop through each component in the JSON object
 Object.keys(components).forEach((key) => {
-  overviewContent += `\n## ${key == 'core' 
-    ? 'SkyflowProvider': key == 'elements'
-    ? 'Components' : key.charAt(0).toUpperCase() + key.slice(1)}\n\n`
+  overviewContent += `\n## ${
+    key == 'core' ? 'Skyflow Provider'
+    : key == 'elements' ? 'Components'
+    : key.charAt(0).toUpperCase() + key.slice(1)}\n\n`
 
   components[key]
   .filter(component => component)
@@ -75,7 +76,7 @@ ${component.description}
 ## Import
 
 \`\`\`js
-import ${component.displayName} from 'skyflow-react-js';
+import {${component.displayName}} from 'skyflow-react-js';
 \`\`\`
 `
 const propsDetails = `

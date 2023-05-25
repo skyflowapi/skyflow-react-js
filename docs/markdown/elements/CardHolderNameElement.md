@@ -13,7 +13,7 @@ CardHolderNameElement can be used to create a name element
 ## Import
 
 ```js
-import CardHolderNameElement from 'skyflow-react-js';
+import {CardHolderNameElement} from 'skyflow-react-js';
 ```
 
 ## Props

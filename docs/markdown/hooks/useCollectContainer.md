@@ -13,7 +13,7 @@ sample documentation for useCollectContainer hook
 ## Import
 
 ```js
-import useCollectContainer from 'skyflow-react-js';
+import {useCollectContainer} from 'skyflow-react-js';
 ```
 
 ## Returns

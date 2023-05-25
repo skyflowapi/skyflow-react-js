@@ -13,7 +13,7 @@ sample documentation for useRevealContainer hook
 ## Import
 
 ```js
-import useRevealContainer from 'skyflow-react-js';
+import {useRevealContainer} from 'skyflow-react-js';
 ```
 
 ## Returns

@@ -13,7 +13,7 @@ sample documentation for ExpirationDateElement
 ## Import
 
 ```js
-import ExpirationDateElement from 'skyflow-react-js';
+import {ExpirationDateElement} from 'skyflow-react-js';
 ```
 
 ## Props
