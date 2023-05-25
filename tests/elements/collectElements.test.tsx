@@ -3,16 +3,16 @@
 */
 import * as React from 'react'
 import { render } from '@testing-library/react'
-import CardNumberElement from '../../src/elements/CardNumber'
-import useCollectContainer from '../../src/hooks/CollectContainer'
-import useComposabelContainer from '../../src/hooks/ComposableContainer'
-import CVVElement from '../../src/elements/CVV'
-import PinElement from '../../src/elements/PIN'
-import ExpirationDateElement from '../../src/elements/ExpirationDate'
-import ExpirationMonthElement from '../../src/elements/ExpirationMonth'
-import ExpirationYearElement from '../../src/elements/ExpirationYear'
-import InputFieldElement from '../../src/elements/InputField'
-import CardHolderNameElement from '../../src/elements/CardHolderName'
+import CardNumberElement from '../../src/elements/CardNumberElement'
+import {useCollectContainer} from '../../src/hooks/CollectContainer'
+import {useComposableContainer} from '../../src/hooks/ComposableContainer'
+import CVVElement from '../../src/elements/CVVElement'
+import PinElement from '../../src/elements/PinElement'
+import ExpirationDateElement from '../../src/elements/ExpirationDateElement'
+import ExpirationMonthElement from '../../src/elements/ExpirationMonthElement'
+import ExpirationYearElement from '../../src/elements/ExpirationYearElement'
+import InputFieldElement from '../../src/elements/InputFieldElement'
+import CardHolderNameElement from '../../src/elements/CardHolderNameElement'
 import ComposableContainer from '../../src/elements/ComposableContainer';
 
 const foucsTrigger = jest.fn();
@@ -41,15 +41,16 @@ const composableElementMock = {
  
 jest.mock('../../src/hooks/CollectContainer', () => ({
   __esModule: true,
-  default: (() => ({
+  useCollectContainer: (() => ({
     create: () => (collectElementMock),
     type: 'COLLECT'
   }))
+
 }));
 
 jest.mock('../../src/hooks/ComposableContainer', () => ({
   __esModule: true,
-  default: (() => ({
+  useComposableContainer: (() => ({
     create: () => (composableElementMock),
     type: 'COMPOSABLE'
   }))
@@ -89,7 +90,7 @@ describe('test collect elements', () => {
   });
 
   test('test card number composable Element ', () => {
-    const container = useComposabelContainer({ layout: [1] });
+    const container = useComposableContainer({ layout: [1] });
     const cardContainer = render(
       <CardNumberElement
         id={'id'}
@@ -134,7 +135,7 @@ describe('test collect elements', () => {
   });
 
   test('test cvv  composable Element ', () => {
-    const container = useComposabelContainer({ layout: [1] });
+    const container = useComposableContainer({ layout: [1] });
     const cvvContainer = render(
       <CVVElement
         container={container}
@@ -178,7 +179,7 @@ describe('test collect elements', () => {
   });
 
   test('test Pin composable Element ', () => {
-    const container = useComposabelContainer({ layout: [1] });
+    const container = useComposableContainer({ layout: [1] });
     const PinContainer = render(
       <PinElement
         container={container}
@@ -222,7 +223,7 @@ describe('test collect elements', () => {
   });
 
   test('test cardHolderName composable Element ', () => {
-    const container = useComposabelContainer({ layout: [1] });
+    const container = useComposableContainer({ layout: [1] });
     const cardHolderNameContainer = render(
       <CardHolderNameElement
         container={container}
@@ -266,7 +267,7 @@ describe('test collect elements', () => {
   });
 
   test('test inputField  composable Element ', () => {
-    const container = useComposabelContainer({ layout: [1] });
+    const container = useComposableContainer({ layout: [1] });
     const inputFieldContainer = render(
       <InputFieldElement
         container={container}
@@ -310,7 +311,7 @@ describe('test collect elements', () => {
   });
 
   test('test expirationDate  composable Element ', () => {
-    const container = useComposabelContainer({ layout: [1] });
+    const container = useComposableContainer({ layout: [1] });
     const expirationDateContainer = render(
       <ExpirationDateElement
         container={container}
@@ -354,7 +355,7 @@ describe('test collect elements', () => {
   });
 
   test('test expirationMonth  composable Element ', () => {
-    const container = useComposabelContainer({ layout: [1] });
+    const container = useComposableContainer({ layout: [1] });
     const expirationMonthContainer = render(
       <ExpirationMonthElement
         container={container}
@@ -398,7 +399,7 @@ describe('test collect elements', () => {
   });
 
   test('test expirationYear composable Element ', () => {
-    const container = useComposabelContainer({ layout: [1] });
+    const container = useComposableContainer({ layout: [1] });
     const expirationYearContainer = render(
       <ExpirationYearElement
         container={container}
@@ -420,7 +421,7 @@ describe('test collect elements', () => {
   });
 
   test('test composable container element', () => {
-    const container = useComposabelContainer({ layout: [1] });
+    const container = useComposableContainer({ layout: [1] });
     const composableContainer = render(
       <ComposableContainer
         id={'id'}

@@ -3,8 +3,8 @@
 */
 import React from 'react'
 import Skyflow from 'skyflow-js'
-import { IConfig } from '../../src/core'
-import { useSkyflow } from '../../src/core/hook'
+import { IConfig } from '../../src/core/SkyflowElements'
+import { useSkyflow } from '../../src/core/SkyflowElements/hook'
 
 const mockContext: IConfig = {
   vaultID: '',

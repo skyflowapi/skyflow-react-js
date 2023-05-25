@@ -2,10 +2,10 @@
 	Copyright (c) 2022 Skyflow, Inc. 
 */
 import Skyflow from 'skyflow-js'
-import useRevealContainer from '../../src/hooks/RevealContainer'
+import {useRevealContainer} from '../../src/hooks/RevealContainer'
 import React from 'react'
-import * as hooks from '../../src/core/hook'
-import { IConfig } from '../../src/core'
+import * as hooks from '../../src/core/SkyflowElements/hook'
+import { IConfig } from '../../src/core/SkyflowElements'
 
 const mockContext: IConfig = {
   vaultID: '',

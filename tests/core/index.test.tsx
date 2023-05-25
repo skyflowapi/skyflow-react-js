@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
-import SkyflowElements, { IConfig } from '../../src/core/index'
-import { skyflowContext } from '../../src/core/hook'
+import SkyflowElements, { IConfig } from '../../src/core/SkyflowElements/index'
+import { skyflowContext } from '../../src/core/SkyflowElements/hook'
 import React, { useContext } from 'react'
 import Skyflow from 'skyflow-js'
 import '@testing-library/jest-dom'

@@ -1,7 +1,7 @@
 /*
 	Copyright (c) 2022 Skyflow, Inc. 
 */
-import useMakeSkyflowStyles from '../../src/hooks/MakeSkyflowStyles'
+import {useMakeSkyflowStyles} from '../../src/hooks/MakeSkyflowStyles'
 
 const mockStyleObject = {
   inputStyles: {
