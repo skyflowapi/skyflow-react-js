@@ -6,7 +6,7 @@
 import CollectContainer from 'skyflow-js/types/core/external/collect/collect-container'
 import ComposableContainer from 'skyflow-js/types/core/external/collect/compose-collect-container'
 import RevealContainer, { IRevealElementOptions } from 'skyflow-js/types/core/external/reveal/reveal-container'
-import { IValidationRule } from 'skyflow-js/types/utils/common'
+import { IValidationRule, RedactionType } from 'skyflow-js/types/utils/common'
 
 export interface SkyflowCollectElementProps {
   container: CollectContainer | ComposableContainer
@@ -35,6 +35,7 @@ export interface SkyflowRevealElementProps {
   altText?: string
   classes?: Record<string, unknown>
   options?: IRevealOptions
+  redaction?: RedactionType
 }
 
 export interface ICollectElementOptions {
