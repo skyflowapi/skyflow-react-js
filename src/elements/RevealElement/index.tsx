@@ -4,6 +4,7 @@
 import React, { FC } from 'react'
 import { SkyflowRevealElementProps } from '..'
 import { v4 as uuid } from 'uuid';
+import Skyflow from 'skyflow-js';
 
 const RevealElement: FC<SkyflowRevealElementProps> = ({ ...props }) => {
   const uniqueDivId = uuid();
@@ -21,6 +22,7 @@ const RevealElement: FC<SkyflowRevealElementProps> = ({ ...props }) => {
           ...props.classes,
           label: props.label || '',
           altText: props.altText || '',
+          redaction: props.redaction || Skyflow.RedactionType.PLAIN_TEXT
         },
         { ...props.options },
       )
