@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.7.0] - 2023-06-06
+
+### Added 
+
+-  `redaction` prop in Reveal Element.
+
 ## [1.6.0] - 2023-03-06
   
 ### Added
