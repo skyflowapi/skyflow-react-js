@@ -1,7 +1,8 @@
 /*
-	Copyright (c) 2022 Skyflow, Inc.
+  Copyright (c) 2022 Skyflow, Inc.
 */
 import React from 'react';
+import Skyflow from 'skyflow-js';
 import {
   RevealElement,
   useMakeSkyflowStyles,
@@ -60,6 +61,7 @@ const RevealElements = () => {
         token=''
         label={'Reveal Card Number'}
         classes={classes}
+        redaction={Skyflow.RedactionType.PLAIN_TEXT}
       />
 
       <RevealElement
@@ -68,6 +70,7 @@ const RevealElements = () => {
         token=''
         label={'Reveal CVV Number'}
         classes={classes}
+        redaction={Skyflow.RedactionType.DEFAULT}
       />
 
       <button onClick={handleReveal}>Reveal</button>

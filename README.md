@@ -1508,6 +1508,7 @@ const revealContainer = useRevealContainer()
 
 ```jsx
 import {RevealElement} from 'skyflow-react-js';
+import Skyflow from 'skyflow-js';
 
 <RevealElement
   token='<DATA_TOKEN>'
@@ -1525,18 +1526,31 @@ The following `props` can be passed to Skyflow reveal element:
   id: string,                   // Optional, id that can passed to the element.
   classes: {},                  // Optional, styles that should be applied to the element.
   label: 'string',              // Optional, label for the form element.
+  redaction: Skyflow.RedactionType // Optional. Redaction to apply for retrieved data. E.g. RedactionType.MASKED
 }
 ```
 
 `Note`:
 
-The `inputStyles`, `labelStyles` and `errorTextStyles` parameters accepts a styles object as described in the [previous section](#step-2-create-a-collect-element) for collecting data. But for reveal element, `inputStyles` accepts only `base` variant and `copyIcon` style object.
+- The `inputStyles`, `labelStyles` and `errorTextStyles` parameters accepts a styles object as described in the [previous section](#step-2-create-a-collect-element) for collecting data. But for reveal element, `inputStyles` accepts only `base` variant and `copyIcon` style object.
+- `redaction` defaults to `RedactionType.PLAIN_TEXT`.
+
+#### Redaction Types
+
+There are four accepted values for RedactionType:
+
+- PLAIN_TEXT
+- MASKED
+- REDACTED
+- DEFAULT
+
 
 ### End to end example using Reveal Element
 
 ```jsx
 import React from 'react'
 import { RevealElement, useRevealContainer, useMakeSkyflowStyles } from 'skyflow-react-js'
+import Skyflow from 'skyflow-js';
 
 const App = () => {
   const revealContainer = useRevealContainer()
@@ -1589,6 +1603,15 @@ const App = () => {
           token={'1404-8379-9069-7378'}
           label={'Reveal Card Number'}
           classes={classes}
+          redaction={Skyflow.RedactionType.MASKED}
+        />
+
+        <RevealElement
+          container={revealContainer}
+          token={'89024714-6a26-4256-b9d4-55ad69aa4047'}
+          label={'Reveal Card Holder Name'}
+          classes={classes}
+          redaction={Skyflow.RedactionType.DEFAULT}
         />
 
         <button onClick={handleReveal}>Reveal</button>
@@ -1606,7 +1629,7 @@ export default App
 {
   "success": [
     {
-      "token": "b63ec4e0-bbad-4e43-96e6-6bd50f483f75"
+      "token": "1404-8379-9069-7378"
     }
   ],
   "errors": [
