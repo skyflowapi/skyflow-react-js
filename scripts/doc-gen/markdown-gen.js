@@ -44,7 +44,7 @@ Object.keys(components).forEach((key) => {
     const componentPath = path.join(outputDir, key, `${component.displayName}.md`)
 
     const name = `${component.displayName}`
-    overviewContent += `- [${name}](/sdks/react-js/${key}/${name})\n`
+    overviewContent += `- [${name}](/sdks/skyflow-react-js/${key}/${name})\n`
 
     const sortedProps = Object.entries(component.props)
       .sort(([_, propA], [__, propB]) => {

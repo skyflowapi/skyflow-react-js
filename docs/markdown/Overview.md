@@ -7,26 +7,26 @@ Some documentation for the overview page.
 
 ## Skyflow Provider
 
-- [SkyflowElements](/sdks/react-js/core/SkyflowElements)
+- [SkyflowElements](/sdks/skyflow-react-js/core/SkyflowElements)
 
 ## Components
 
-- [CVVElement](/sdks/react-js/elements/CVVElement)
-- [CardHolderNameElement](/sdks/react-js/elements/CardHolderNameElement)
-- [CardNumberElement](/sdks/react-js/elements/CardNumberElement)
-- [ComposableContainer](/sdks/react-js/elements/ComposableContainer)
-- [ExpirationDateElement](/sdks/react-js/elements/ExpirationDateElement)
-- [ExpirationMonthElement](/sdks/react-js/elements/ExpirationMonthElement)
-- [ExpirationYearElement](/sdks/react-js/elements/ExpirationYearElement)
-- [InputFieldElement](/sdks/react-js/elements/InputFieldElement)
-- [PinElement](/sdks/react-js/elements/PinElement)
-- [RevealElement](/sdks/react-js/elements/RevealElement)
+- [CVVElement](/sdks/skyflow-react-js/elements/CVVElement)
+- [CardHolderNameElement](/sdks/skyflow-react-js/elements/CardHolderNameElement)
+- [CardNumberElement](/sdks/skyflow-react-js/elements/CardNumberElement)
+- [ComposableContainer](/sdks/skyflow-react-js/elements/ComposableContainer)
+- [ExpirationDateElement](/sdks/skyflow-react-js/elements/ExpirationDateElement)
+- [ExpirationMonthElement](/sdks/skyflow-react-js/elements/ExpirationMonthElement)
+- [ExpirationYearElement](/sdks/skyflow-react-js/elements/ExpirationYearElement)
+- [InputFieldElement](/sdks/skyflow-react-js/elements/InputFieldElement)
+- [PinElement](/sdks/skyflow-react-js/elements/PinElement)
+- [RevealElement](/sdks/skyflow-react-js/elements/RevealElement)
 
 ## Hooks
 
-- [useCollectContainer](/sdks/react-js/hooks/useCollectContainer)
-- [useComposableContainer](/sdks/react-js/hooks/useComposableContainer)
-- [useMakeSkyflowStyles](/sdks/react-js/hooks/useMakeSkyflowStyles)
-- [useRevealContainer](/sdks/react-js/hooks/useRevealContainer)
+- [useCollectContainer](/sdks/skyflow-react-js/hooks/useCollectContainer)
+- [useComposableContainer](/sdks/skyflow-react-js/hooks/useComposableContainer)
+- [useMakeSkyflowStyles](/sdks/skyflow-react-js/hooks/useMakeSkyflowStyles)
+- [useRevealContainer](/sdks/skyflow-react-js/hooks/useRevealContainer)
 
 {% /env %}

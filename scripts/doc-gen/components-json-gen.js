@@ -20,7 +20,7 @@ function getFiles(dir, files = []) {
 
   fileNames.forEach((fileName) => {
     const filePath = path.join(dir, fileName);
-    const stat = fs.statSync(filePath);;
+    const stat = fs.statSync(filePath);
     if (stat.isDirectory() && !excludeDirs.includes(fileName)) {
       getFiles(filePath, files);
     } else if (fileName === 'index.tsx' || fileName === 'index.ts') {
