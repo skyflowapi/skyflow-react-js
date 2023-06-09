@@ -3,18 +3,23 @@
 */
 import React, { FC } from 'react'
 import Skyflow from 'skyflow-js'
-import CollectElement from 'skyflow-js/types/core/external/collect/collect-element'
 import { SkyflowCollectElementProps } from '..'
-import useCollectListeners from '../../hooks/CollectListner'
 import { ELEMENT_CREATED } from '../../utils/constants'
+import {useCollectListeners} from '../../hooks/CollectListner'
+import CollectElement from 'skyflow-js/types/core/external/collect/collect-element'
 import { SKYFLOW_ERROR_CODE } from '../../utils/errors'
 import { v4 as uuid } from 'uuid';
 import useUpdateElement from '../../hooks/UpdateElement'
 import ComposableElement from 'skyflow-js/types/core/external/collect/compose-collect-element'
 
-const ExpirationDateElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
+/**
+ *  sample documentation for CVVElement
+ */
+const CVVElement: FC<SkyflowCollectElementProps> = React.memo(function CVVElement({ ...props }: SkyflowCollectElementProps) {
   const uniqueDivId = uuid();
-  const [element,setElement] = React.useState<CollectElement | ComposableElement | null>(null);
+  const [element,setElement] = React.useState<CollectElement| ComposableElement | null>(null);
+
+
   React.useEffect(() => {
     try {
       const newElement = props?.container.create(
@@ -24,20 +29,22 @@ const ExpirationDateElement: FC<SkyflowCollectElementProps> = ({ ...props }) => 
           ...props.classes,
           placeholder: props.placeholder || '',
           label: props.label || '',
-          type: Skyflow.ElementType.EXPIRATION_DATE,
+          type: Skyflow.ElementType.CVV,
           validations: props.validations || [],
         },
         { ...props.options },
       )
+      
       setElement(newElement);
+
       if(props?.container.type === Skyflow.ContainerType.COLLECT){
         const collectElement = newElement as CollectElement;
-        collectElement.mount(props.id ? `#${props.id}` : `#EXPIRATION_DATE-id-${uniqueDivId}`)
-      } 
+        collectElement.mount(props.id ? `#${props.id}` : `#CVV-id-${uniqueDivId}`)
+      }
       else if (props?.container.type === Skyflow.ContainerType.COMPOSABLE){
         if(!props.eventEmitter)
           throw new Error(SKYFLOW_ERROR_CODE.COMPOSABLE_COMPONENT_NOT_PROVIDED.description);    
-        props.eventEmitter._emit(ELEMENT_CREATED,{id : 'EXPIRATION DATE'})
+        props.eventEmitter._emit(ELEMENT_CREATED,{id : 'CVV'})
       }
     
       useCollectListeners(props, newElement)
@@ -51,9 +58,9 @@ const ExpirationDateElement: FC<SkyflowCollectElementProps> = ({ ...props }) => 
 
   return (
     props?.container.type === Skyflow.ContainerType.COLLECT 
-    ? (<div id={props.id ? props.id : `EXPIRATION_DATE-id-${uniqueDivId}`}></div>) 
+    ? (<div id={props.id ? props.id : `CVV-id-${uniqueDivId}`}></div>) 
     : (<></>)
   )
-}
+})
 
-export default React.memo(ExpirationDateElement)
+export default CVVElement;

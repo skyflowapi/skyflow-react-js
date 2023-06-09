@@ -5,17 +5,20 @@ import React, { FC } from 'react'
 import Skyflow from 'skyflow-js'
 import CollectElement from 'skyflow-js/types/core/external/collect/collect-element'
 import { SkyflowCollectElementProps } from '..'
-import useCollectListeners from '../../hooks/CollectListner'
+import {useCollectListeners} from '../../hooks/CollectListner'
 import { ELEMENT_CREATED } from '../../utils/constants'
 import { SKYFLOW_ERROR_CODE } from '../../utils/errors'
 import { v4 as uuid } from 'uuid';
 import useUpdateElement from '../../hooks/UpdateElement'
 import ComposableElement from 'skyflow-js/types/core/external/collect/compose-collect-element'
 
-const PinElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
+/**
+ *  sample documentation for ExpirationYearElement
+ */
+const ExpirationYearElement: FC<SkyflowCollectElementProps> = React.memo(function ExpirationYearElement({ ...props }: SkyflowCollectElementProps) {
   const uniqueDivId = uuid();
-  const [element,setElement] = React.useState<CollectElement | ComposableElement | null>(null);
-  
+  const [element,setElement] = React.useState<CollectElement| ComposableElement | null>(null);
+
   React.useEffect(() => {
     try {
       const newElement = props?.container.create(
@@ -25,22 +28,20 @@ const PinElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
           ...props.classes,
           placeholder: props.placeholder || '',
           label: props.label || '',
-          type: Skyflow.ElementType.PIN,
+          type: Skyflow.ElementType.EXPIRATION_YEAR,
           validations: props.validations || [],
         },
         { ...props.options },
       )
-      
       setElement(newElement);
-
       if(props?.container.type === Skyflow.ContainerType.COLLECT){
         const collectElement = newElement as CollectElement;
-        collectElement.mount(props.id ? `#${props.id}` : `#PIN-id-${uniqueDivId}`)
+        collectElement.mount(props.id ? `#${props.id}` : `#EXPIRATION_YEAR-id-${uniqueDivId}`)
       }
       else if (props?.container.type === Skyflow.ContainerType.COMPOSABLE){
         if(!props.eventEmitter)
           throw new Error(SKYFLOW_ERROR_CODE.COMPOSABLE_COMPONENT_NOT_PROVIDED.description);    
-        props.eventEmitter._emit(ELEMENT_CREATED,{id : 'PIN ELEMENT'})
+        props.eventEmitter._emit(ELEMENT_CREATED,{id : 'EXPIRATION YEAR'})
       }
     
       useCollectListeners(props, newElement)
@@ -54,9 +55,10 @@ const PinElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
 
   return (
     props?.container.type === Skyflow.ContainerType.COLLECT 
-    ? (<div id={props.id ? props.id : `PIN-id-${uniqueDivId}`}></div>) 
+    ? (<div id={props.id ? props.id : `EXPIRATION_YEAR-id-${uniqueDivId}`}></div>) 
     : (<></>)
   )
-}
+  
+})
 
-export default React.memo(PinElement)
+export default ExpirationYearElement
