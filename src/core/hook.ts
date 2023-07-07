@@ -13,7 +13,7 @@ const useSkyflow = () => {
 }
 
 const useSkyflowInit = (context:IConfig) => {
-  localStorage.setItem("sdk_version",sdkVersion.name);
+  localStorage.setItem('sdk_version',`${sdkVersion.name}@${sdkVersion.version}`);
   const skyflow = Skyflow.init({
     ...context
   })
