@@ -4,7 +4,9 @@
 import React from 'react'
 import Skyflow from 'skyflow-js'
 import { IConfig } from '../../src/core'
-import  useSkyflow  from '../../src/hooks/GetMethod'
+import  useSkyflow from '../../src/hooks/GetMethod'
+import * as hooks from '../../src/core/hook'
+
 
 const mockContext: IConfig = {
   vaultID: '',
@@ -30,6 +32,13 @@ const skyflowMock: unknown = {
 }
 Skyflow.init = jest.fn().mockReturnValue(skyflowMock)
 
+jest.spyOn(hooks, 'useSkyflowClient').mockReturnValue({
+  skyflow: skyflowMock as Skyflow,
+})
+
+jest.spyOn(React,'useMemo').mockImplementation((arg)=>{
+  return arg();
+});
 const mockReturnValue = {
   skyflow: skyflowMock as Skyflow,
 }
