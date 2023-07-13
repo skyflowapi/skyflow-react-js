@@ -8,6 +8,7 @@ import CustomValidations from './components/CustomValidations';
 import DynamicComposableElements from './components/DynamicComposableElements';
 import ElementListners from './components/ElementListeners';
 import RevealElements from './components/RevealElements';
+import { Get } from './components/Get';
 
 const App = () => {
   return (
@@ -50,6 +51,12 @@ const App = () => {
           <b>Sample Composable Elements Dynamic properties update</b>
         </p>
         <DynamicComposableElements />
+      </div>
+      <div id='get-parent-div'>
+      <p>
+          <b>Retrieve data using Get Method</b>
+      </p>
+      <Get/>
       </div>
     </div>
   );
