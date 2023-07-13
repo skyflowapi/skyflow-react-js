@@ -4,7 +4,7 @@
 import React from 'react'
 import Skyflow from 'skyflow-js'
 import { IConfig } from '../../src/core'
-import  useSkyflow from '../../src/hooks/GetMethod'
+import  useSkyflow from '../../src/hooks/Skyflow'
 import * as hooks from '../../src/core/hook'
 
 
