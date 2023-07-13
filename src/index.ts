@@ -20,7 +20,7 @@ import useMakeSkyflowStyles from './hooks/MakeSkyflowStyles'
 import useCollectListeners from './hooks/CollectListner'
 import useCollectContainer from './hooks/CollectContainer'
 import useComposableContainer from './hooks/ComposableContainer'
-
+import useSkyflow from './hooks/GetMethod'
 const LogLevel = Skyflow.LogLevel
 const Env = Skyflow.Env
 
@@ -47,5 +47,6 @@ export {
   Env,
   LENGTH_MATCH_RULE,
   REGEX_MATCH_RULE,
-  InputFieldElement
+  InputFieldElement,
+  useSkyflow
 }
