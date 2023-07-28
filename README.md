@@ -6,14 +6,14 @@ A React wrapper for [Skyflow JS SDK](https://github.com/skyflowapi/skyflow-js)
 
 ## Table of Contents
 
-- [**Including Skyflow-React**](#Including-Skyflow-React)
+- [**Including Skyflow-React**](#including-skyflow-react)
   - [Requirements](#requirements)
-- [**Initializing Skyflow-React**](#Initializing-Skyflow-React)
-- [**Securely collecting data client-side**](#Securely-collecting-data-client-side)
-- [**Securely collecting data client-side using Composable Elements**](#Securely-collecting-data-client-side-using-composable-elements)
-- [**Securely revealing data client-side**](#Securely-revealing-data-client-side)
-- [**Reporting a Vulnerability**](#Reporting-Vulnerability)
-- [**License**](#License)
+- [**Initializing Skyflow-React**](#initializing-skyflow-react)
+- [**Securely collecting data client-side**](#securely-collecting-data-client-side)
+- [**Securely collecting data client-side using Composable Elements**](#securely-collecting-data-client-side-using-composable-elements)
+- [**Securely revealing data client-side**](#securely-revealing-data-client-side)
+- [**Reporting a Vulnerability**](#reporting-a-vulnerability)
+- [**License**](#license)
 
 ---
 
