@@ -9,18 +9,18 @@ import Skyflow from 'skyflow-js'
 import { v4 as uuid } from 'uuid';
 
 export interface IComposableContainer {
-  /** sample documentation*/
+  /** Composable Skyflow elements wrapped within composable container. */
   children?: React.ReactNode
-  /** sample documentation*/
+  /** Composable container instance. */
   container: ComposableContainer
-  /** sample documentation*/
+  /** Unique ID for the composable container. */
   id?: string
-  /** sample documentation*/
+  /** OnSubmit event handler.*/
   onSubmit?: () => void
 }
 
 /**
- *  sample documentation for ComposableContainerComponent
+ *  Container for all Composable Elements.
  */
 const ComposableContainerComponent: FC<IComposableContainer> = ({ children, ...props }) => {
   const uniqueDivId = uuid();

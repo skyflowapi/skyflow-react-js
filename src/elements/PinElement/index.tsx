@@ -13,7 +13,7 @@ import useUpdateElement from '../../hooks/UpdateElement'
 import ComposableElement from 'skyflow-js/types/core/external/collect/compose-collect-element'
 
 /**
- *  sample documentation for PinElement
+ *  Collect Element for capturing Pin.
  */
 const PinElement: FC<SkyflowCollectElementProps> = React.memo(function PinElement({ ...props }: SkyflowCollectElementProps) {
   const uniqueDivId = uuid();

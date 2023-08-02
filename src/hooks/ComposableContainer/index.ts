@@ -8,16 +8,16 @@ import ComposableContainer from 'skyflow-js/types/core/external/collect/compose-
 import { useSkyflow } from '../../core/SkyflowElements/hook'
 
 interface IOptions{
-  /** sample documentation*/
+  /** Layout configuration for the container. */
   layout: Array<number>,
-  /** sample documentation*/
+  /** Additional styles for the container. */
   styles?: object,
-  /** sample documentation*/
-  errorTextSyles?: object
+  /** Styles for the element's error text. */
+  errorTextStyles?: object
 }
 
 /**
- *  sample documentation for useComposableContainer hook
+ *  Container for all Comosable Elements.
  */
 export const useComposableContainer = (options: IOptions) => {
   const { skyflow } = useSkyflow()

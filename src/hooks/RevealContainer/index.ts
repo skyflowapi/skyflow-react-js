@@ -8,7 +8,7 @@ import RevealContainer from 'skyflow-js/types/core/external/reveal/reveal-contai
 import { useSkyflow } from '../../core/SkyflowElements/hook'
 
 /**
- * sample documentation for useRevealContainer hook
+ * Container for all Reveal Elements.
  * @returns RevealContainer
  */
 export const useRevealContainer = (): RevealContainer => {

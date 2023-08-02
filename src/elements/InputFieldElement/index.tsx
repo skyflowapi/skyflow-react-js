@@ -13,7 +13,7 @@ import useUpdateElement from '../../hooks/UpdateElement'
 import ComposableElement from 'skyflow-js/types/core/external/collect/compose-collect-element'
 
 /**
- *  sample documentation for InputFieldElement
+ *  Collects sensitive data securely.
  */
 const InputFieldElement: FC<SkyflowCollectElementProps> = React.memo(function InputFieldElement({ ...props }: SkyflowCollectElementProps) {
   const uniqueDivId = uuid();

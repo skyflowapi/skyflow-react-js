@@ -6,13 +6,13 @@ import { Env, LogLevel } from 'skyflow-js/types/utils/common'
 import { skyflowContext, useSkyflowInit } from './hook'
 
 export interface IConfig {
-  /** sample documentation*/
+  /** ID of the vault to connect to. */
   vaultID: string,
-  /** sample documentation*/
+  /** URL of the vault to connect to. */
   vaultURL: string,
-  /** sample documentation*/
+  /** Function that retrieves a Skyflow bearer token from your backend. */
   getBearerToken: () => Promise<string>,
-  /** sample documentation*/
+  /** Additional configuration options. */
   options?: {
     logLevel?: LogLevel
     env?: Env
@@ -20,14 +20,14 @@ export interface IConfig {
 }
 
 export interface ISkyflowElements {
-  /** sample documentation*/
+  /** Children components to be wrapped by SkyflowElements. */
   children?: React.ReactNode,
-  /** sample documentation*/
+  /** Configuration object for connecting to the Skyflow vault.*/
   config: IConfig
 }
 
 /**
- * sample documentation for SkyflowElements
+ * Provides a secure way to integrate Skyflow into your React applications.
  */
 const SkyflowElements: React.FC<ISkyflowElements> = React.memo(function SkyflowElements({ children, config }: ISkyflowElements) {
   // Initialize Skyflow

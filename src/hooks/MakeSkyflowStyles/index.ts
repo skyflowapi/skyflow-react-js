@@ -3,9 +3,7 @@
 */
 
 /**
- *  sample documentation for useMakeSkyflowStyles hook
- * @param styles: Record<string, unknown>
- * @param style: string
+ * A hook to create Skyflow styles for a component.
  */
 export const useMakeSkyflowStyles = (
   styles: Record<string, unknown> = {}

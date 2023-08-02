@@ -9,73 +9,73 @@ import RevealContainer, { IRevealElementOptions } from 'skyflow-js/types/core/ex
 import { IValidationRule } from 'skyflow-js/types/utils/common'
 
 /**
- *  sample documentation for collect element props
+ *  Configuration for a Collect Element.
  */
 export interface SkyflowCollectElementProps {
-  /** used to declare the type of container you want to create*/
+  /** #Used to declare the type of container you want to create*/
   container: CollectContainer | ComposableContainer
-  /** sample documentation*/
+  /** Table that the data belongs to. */
   table: string
-  /** sample documentation*/
+  /** Column that the data belongs to. */
   column: string
-  /** sample documentation*/
+  /** ID that is passed to the element. */
   id?: string
-  /** sample documentation*/
+  /** Label for the element. */
   label?: string
-  /** sample documentation*/
+  /** Placeholder text for the element. */
   placeholder?: string
-  /** sample documentation*/
+  /** Error text to display. */
   errorText?: string
-  /** sample documentation*/
+  /** Input validation rules for the element. */
   validations?: IValidationRule[] | undefined
-  /** sample documentation*/
+  /** Styles that should be applied to the element. */
   classes?: Record<string, unknown>
-  /** sample documentation*/
+  /** Options that can be passed to an element. */
   options?: ICollectElementOptions
-  /** sample documentation*/
+  /** Function that is passed to trigger the onChange event. */
   onChange?: (state: unknown) => void
-  /** sample documentation*/
+  /** Function that is passed to trigger the onFocus event. */
   onFocus?: (state: unknown) => void
-  /** sample documentation*/
+  /** Function that is passed to trigger the onBlur event. */
   onBlur?: (state: unknown) => void
-  /** sample documentation*/
+  /** Function that is passed to trigger the onReady event. */
   onReady?: (state: unknown) => void
-  /** sample documentation*/
+  /** #Event emitter for this element. */
   eventEmitter?:any
   // TODO ref
 }
 
 /**
- *  sample documentation reveal element props
+ *  Configuration for Reveal Elements.
  */
 export interface SkyflowRevealElementProps {
-  /** sample documentation*/
+  /** #Container used for the Reveal Element.*/
   container: RevealContainer
-  /** sample documentation*/
+  /** A token to retrieve the value of. */
   token: string
-  /** sample documentation*/
+  /** ID that is passed to the element. */
   id?: string
-  /** sample documentation*/
+  /** Label for the Reveal Element. */
   label?: string
-  /** sample documentation*/
+  /** Alternative text for the Reveal Element. */
   altText?: string
-  /** sample documentation*/
+  /** Styles that should be applied to the element. */
   classes?: Record<string, unknown>
-  /** sample documentation*/
+  /** Additional configuration options. */
   options?: IRevealOptions
 }
 
 /**
- *  sample documentation collect element options
+ *  Options for a Collect Element.
  */
 export interface ICollectElementOptions {
-  /** sample documentation*/
+  /** Indicates whether the element is required or not. */
   required?: boolean
-  /** sample documentation*/
+  /**  #Indicates whether to enable the card icon for the card number Collect Element. */
   enableCardIcon?: boolean
-  /** sample documentation*/
+  /** Format of the Collect Element. */
   format?: string
-  /** sample documentation*/
+  /** If `true` displays a copy button that copies the Collect Element value to the clipboard. Defaults to `false`. */
   enableCopy?: boolean
 }
 

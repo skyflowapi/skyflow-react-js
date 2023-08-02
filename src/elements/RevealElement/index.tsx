@@ -6,7 +6,7 @@ import { SkyflowRevealElementProps } from '..'
 import { v4 as uuid } from 'uuid';
 
 /**
- *  sample documentation for RevealElement
+ *  Configuration for Reveal Elements to diplay sensitive data securely.
  */
 const RevealElement: FC<SkyflowRevealElementProps> = React.memo(function RevealElement({ ...props }: SkyflowRevealElementProps) {
   const uniqueDivId = uuid();
