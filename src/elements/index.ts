@@ -12,7 +12,7 @@ import { IValidationRule } from 'skyflow-js/types/utils/common'
  *  Configuration for a Collect Element.
  */
 export interface SkyflowCollectElementProps {
-  /** #Used to declare the type of container you want to create*/
+  /** Used to declare the type of container you want to create*/
   container: CollectContainer | ComposableContainer
   /** Table that the data belongs to. */
   table: string
