@@ -15,7 +15,7 @@ export interface IComposableContainer {
   container: ComposableContainer
   /** Unique ID for the composable container. */
   id?: string
-  /** OnSubmit event handler.*/
+  /** `onSubmit` event handler. */
   onSubmit?: () => void
 }
 

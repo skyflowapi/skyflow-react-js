@@ -12,7 +12,7 @@ import { IValidationRule } from 'skyflow-js/types/utils/common'
  *  Configuration for a Collect Element.
  */
 export interface SkyflowCollectElementProps {
-  /** Used to declare the type of container you want to create*/
+  /** Type of the container. */
   container: CollectContainer | ComposableContainer
   /** Table that the data belongs to. */
   table: string
@@ -32,15 +32,15 @@ export interface SkyflowCollectElementProps {
   classes?: Record<string, unknown>
   /** Options that can be passed to an element. */
   options?: ICollectElementOptions
-  /** Function that is passed to trigger the onChange event. */
+  /** Function to call when the onChange event triggers. */
   onChange?: (state: unknown) => void
-  /** Function that is passed to trigger the onFocus event. */
+  /** Function to call when the onFocus event triggers. */
   onFocus?: (state: unknown) => void
-  /** Function that is passed to trigger the onBlur event. */
+  /** Function to call when the onBlur event triggers. */
   onBlur?: (state: unknown) => void
-  /** Function that is passed to trigger the onReady event. */
+  /** Function to call when the onReady event triggers. */
   onReady?: (state: unknown) => void
-  /** #Event emitter for this element. */
+  /** Event emitter for the element. */
   eventEmitter?:any
   // TODO ref
 }
@@ -49,7 +49,7 @@ export interface SkyflowCollectElementProps {
  *  Configuration for Reveal Elements.
  */
 export interface SkyflowRevealElementProps {
-  /** #Container used for the Reveal Element.*/
+  /** Type of the container. */
   container: RevealContainer
   /** A token to retrieve the value of. */
   token: string
@@ -71,11 +71,11 @@ export interface SkyflowRevealElementProps {
 export interface ICollectElementOptions {
   /** Indicates whether the element is required or not. */
   required?: boolean
-  /**  #Indicates whether to enable the card icon for the card number Collect Element. */
+  /** Indicates whether to enable the card icon for the card number Collect Element. */
   enableCardIcon?: boolean
   /** Format of the Collect Element. */
   format?: string
-  /** If `true` displays a copy button that copies the Collect Element value to the clipboard. Defaults to `false`. */
+  /** If `true`, displays a copy button that copies the Collect Element value to the clipboard. Defaults to `false`. */
   enableCopy?: boolean
 }
 

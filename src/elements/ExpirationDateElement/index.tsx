@@ -13,7 +13,7 @@ import useUpdateElement from '../../hooks/UpdateElement'
 import ComposableElement from 'skyflow-js/types/core/external/collect/compose-collect-element'
 
 /**
- *  Collect Element for capturing expiration date.
+ *  Element to collect expiration dates.
  */
 const ExpirationDateElement: FC<SkyflowCollectElementProps> = React.memo(function ExpirationDateElement({ ...props }: SkyflowCollectElementProps) {
   const uniqueDivId = uuid();

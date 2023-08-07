@@ -13,7 +13,7 @@ import useUpdateElement from '../../hooks/UpdateElement'
 import ComposableElement from 'skyflow-js/types/core/external/collect/compose-collect-element'
 
 /**
- *  Creates a Name element.
+ *  Element to collect cardholder names.
  */
 const CardHolderNameElement: FC<SkyflowCollectElementProps> = React.memo(function CardHolderNameElement({ ...props }: SkyflowCollectElementProps) {
   const uniqueDivId = uuid();

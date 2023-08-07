@@ -8,7 +8,7 @@ import CollectContainer from 'skyflow-js/types/core/external/collect/collect-con
 import { useSkyflow } from '../../core/SkyflowElements/hook'
 
 /**
- * Container for all Collect Elements.
+ * Container for Collect Elements.
  * @returns CollectContainer
  */
 export const useCollectContainer = (): CollectContainer => {

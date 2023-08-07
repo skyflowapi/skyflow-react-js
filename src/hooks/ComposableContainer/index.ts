@@ -17,7 +17,7 @@ interface IOptions{
 }
 
 /**
- *  Container for all Comosable Elements.
+ *  Container for composable elements.
  */
 export const useComposableContainer = (options: IOptions) => {
   const { skyflow } = useSkyflow()

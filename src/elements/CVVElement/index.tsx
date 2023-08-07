@@ -13,7 +13,7 @@ import useUpdateElement from '../../hooks/UpdateElement'
 import ComposableElement from 'skyflow-js/types/core/external/collect/compose-collect-element'
 
 /**
- *  Collect Element for capturing CVV.
+ *  Element to collect CVVs.
  */
 const CVVElement: FC<SkyflowCollectElementProps> = React.memo(function CVVElement({ ...props }: SkyflowCollectElementProps) {
   const uniqueDivId = uuid();
