@@ -9,7 +9,7 @@ import { useSkyflow } from '../../core/SkyflowElements/hook'
 
 /**
  * Container for Collect Elements.
- * @returns CollectContainer
+ * @returns Returns the CollectContainer instance.
  */
 export const useCollectContainer = (): CollectContainer => {
   const { skyflow } = useSkyflow()

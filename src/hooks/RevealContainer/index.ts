@@ -9,7 +9,7 @@ import { useSkyflow } from '../../core/SkyflowElements/hook'
 
 /**
  * Container for Reveal Elements.
- * @returns RevealContainer
+ * @returns Returns the RevealContainer instance.
  */
 export const useRevealContainer = (): RevealContainer => {
   const { skyflow } = useSkyflow()
