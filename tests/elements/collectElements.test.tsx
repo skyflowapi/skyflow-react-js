@@ -13,6 +13,7 @@ import ExpirationMonthElement from '../../src/elements/ExpirationMonth'
 import ExpirationYearElement from '../../src/elements/ExpirationYear'
 import InputFieldElement from '../../src/elements/InputField'
 import CardHolderNameElement from '../../src/elements/CardHolderName'
+import FileInputElement from '../../src/elements/FileInputElement'
 import ComposableContainer from '../../src/elements/ComposableContainer';
 
 const foucsTrigger = jest.fn();
@@ -417,6 +418,54 @@ describe('test collect elements', () => {
     expect(expirationYearContainer).toMatchSnapshot()
     expect(eventEmitterMock).toBeCalled();
     expect(eventListenerMock).toBeCalled();
+  });
+
+  test('test fileInput collect Element ', () => {
+    const container = useCollectContainer();
+    const fileInputContainer = render(
+      <FileInputElement
+        id={''}
+        container={container}
+        table={''}
+        column={'string'}
+        label={'file input'}
+        validations={[]}
+        skyflowID={'skyflow-id'}
+        eventEmitter={composableEventEmitter}
+      />,
+    )
+    expect(fileInputContainer).toMatchSnapshot()
+  });
+
+  test('test fileInput composable Element with emitter ', () => {
+    const container = useComposabelContainer({ layout: [1] });
+    const fileInputContainer = render(
+      <FileInputElement
+        container={container}
+        table={'table1'}
+        column={'string'}
+        label={'file input'}
+        validations={[]}
+        skyflowID={'skyflow-id'}
+        eventEmitter={composableEventEmitter}
+      />,
+    )
+    expect(fileInputContainer).toMatchSnapshot()
+  });
+
+  test('test fileInput composable Element ', () => {
+    const container = useComposabelContainer({ layout: [1] });
+    const fileInputContainer = render(
+      <FileInputElement
+        container={container}
+        table={'table1'}
+        column={'string'}
+        label={'file input'}
+        validations={[]}
+        skyflowID={'skyflow-id'}
+      />,
+    )
+    expect(fileInputContainer).toBeTruthy();
   });
 
   test('test composable container element', () => {

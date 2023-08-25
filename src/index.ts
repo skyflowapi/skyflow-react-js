@@ -9,6 +9,7 @@ import CardNumberElement from './elements/CardNumber'
 import CVVElement from './elements/CVV'
 import ExpirationMonthElement from './elements/ExpirationMonth'
 import ExpirationYearElement from './elements/ExpirationYear'
+import FileInputElement from './elements/FileInputElement'
 import PinElement from './elements/PIN'
 import ExpirationDateElement from './elements/ExpirationDate'
 import RevealElement from './elements/RevealElement'
@@ -35,6 +36,7 @@ export {
   ExpirationDateElement,
   ExpirationMonthElement,
   ExpirationYearElement,
+  FileInputElement,
   PinElement,
   RevealElement,
   useCollectContainer,
