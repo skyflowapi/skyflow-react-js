@@ -2,6 +2,46 @@
 
 All notable changes to this project will be documented in this file.
 
+
+## [1.8.0] - 2023-08-29
+
+### Added 
+
+-  `File Input Element` support in React SDK.
+
+## [1.7.5] - 2023-08-14
+
+### Changed 
+
+-  Update JS SDK version for global styles and required Asterisk.
+
+## [1.7.4] - 2023-08-01
+
+### Changed 
+
+-  Upgrade JS SDK latest version for patch fixes.
+
+## [1.7.3] - 2023-07-26
+
+### Changed 
+
+-  Upgrade JS SDK latest version for patch fixes.
+
+## [1.7.2] - 2023-07-20
+
+### Added 
+
+-  Add `sdk metrics` to React SDK.
+### Changed 
+
+-  Upgrade JS SDK latest version for patch fixes.
+
+## [1.7.1] - 2023-06-22
+
+### Changed 
+
+-  Upgrade latest version of JS SDK for patch fix.
+
 ## [1.7.0] - 2023-06-06
 
 ### Added 
