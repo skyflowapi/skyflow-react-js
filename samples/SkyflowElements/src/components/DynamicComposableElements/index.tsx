@@ -11,6 +11,7 @@ import {
 	useComposableContainer,
 	LENGTH_MATCH_RULE,
 	ExpirationDateElement,
+	FileInputElement,
 } from 'skyflow-react-js';
 
 const DynamicComposableElements = () => {
@@ -45,7 +46,7 @@ const DynamicComposableElements = () => {
 	const classes = useStyles();
 
 	const containerOptions = {
-		layout: [1, 3],
+		layout: [1, 4],
 		styles: {
 			base: {
 				border: '1px solid #DFE3EB',
@@ -116,6 +117,17 @@ const DynamicComposableElements = () => {
 		console.log('OnSubmit listener Triggred..!')
 	};
 
+	const handleFile = () => {
+		const response = container.uploadFiles({});
+		response
+		  .then((res: unknown) => {
+			console.log(JSON.stringify(res));
+		  })
+		  .catch((e: unknown) => {
+			console.log(e);
+		  });
+	  };
+	  
 	return (
 		<div className='ComposableElements' >
 			<ComposableContainer
@@ -157,7 +169,19 @@ const DynamicComposableElements = () => {
 					column={'cvv'}
 					validations={cvvValidationRules} // pass validations state.
 				/>
+
+				<FileInputElement
+					id='file-input'
+					container={container}
+					classes={classes}
+					table={'pii_fields'}
+					column={'file_input'}
+					skyflowID='431eaa6c-5c15-4513-aa15-29f50babe882'
+				/>
+
 			</ComposableContainer >
+			
+			<button onClick={handleFile}>Submit file</button>
 
 			<button onClick={handleCollect}>Collect</button>
 		</div>
