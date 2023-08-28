@@ -12,6 +12,7 @@ import {
   useCollectContainer,
   useMakeSkyflowStyles,
   InputFieldElement,
+  FileInputElement,
 } from 'skyflow-react-js';
 
 const CollectElements = () => {
@@ -19,6 +20,17 @@ const CollectElements = () => {
 
   const handleCollect = () => {
     const response = container.collect();
+    response
+      .then((res: unknown) => {
+        console.log(JSON.stringify(res));
+      })
+      .catch((e: unknown) => {
+        console.log(e);
+      });
+  };
+
+  const handleFile = () => {
+    const response = container.uploadFiles({});
     response
       .then((res: unknown) => {
         console.log(JSON.stringify(res));
@@ -127,6 +139,16 @@ const CollectElements = () => {
         label={'SSN'}
       />
 
+      <FileInputElement
+        id='file-input'
+        container={container}
+        classes={classes}
+        table={'table1'}
+        column={'file-input'}
+        label={'file-input'}
+      />
+
+      <button onClick={handleFile}>Submit file</button>
       <button onClick={handleCollect}>Collect</button>
     </div>
   );
