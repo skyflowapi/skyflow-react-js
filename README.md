@@ -142,6 +142,7 @@ For `env` parameter, there are 2 accepted values in `Env`
 
 - [**Using Skyflow Elements to collect data**](#using-skyflow-elements-to-collect-data)
 - [**Event Listener on Collect Elements**](#event-listener-on-collect-elements)
+- [**Using Skyflow File Input Element to upload a file**](#using-skyflow-file-input-element-to-upload-a-file)
 
 ### Using Skyflow Elements to collect data
 
@@ -287,6 +288,7 @@ We support the following collect elements in the react SDK:
 - `ExpirationMonthElement`
 - `ExpirationYearElement`
 - `InputFieldElement`
+- `FileInputElement`
 
 The InputFieldElement type is a custom UI element without any built-in validations. See the section on [validations](#validations) for more information on validations.
 
@@ -780,6 +782,274 @@ export default App
   value: '41111111XXXXXXXX',
 };
 ```
+## Using Skyflow File Input Element to upload a file
+
+You can upload binary files to a vault using the Skyflow File Input Element. Use the following steps to securely upload a file.
+### Step 1: Create a container
+
+First create a container for the form elements using the `useCollectContainer` hook as show below:
+
+```javascript
+const container = useCollectContainer()
+```
+
+### Step 2: Create a File Input Element
+
+```javascript
+import { FileInputElement} from 'skyflow-react-js';
+
+<FileInputElement
+ table='<TABLE_NAME>'
+ column='<COLUMN_NAME>'
+ skyflowID='<SKYFLOW_ID>' 
+  ... props
+/>
+```
+The following `props` can be passed to Skyflow collect Element:
+
+```javascript
+{
+  container: 'CollectContainer' // Required, the collect container.
+  table: 'string',              // Required, the table this data belongs to.
+  column: 'string',             // Required, the column into which this data should be inserted.
+  id: string,                   // Optional, id that can passed to the element.
+  classes: {},                  // Optional, styles that should be applied to the element.
+  label: 'string',              // Optional, label for the form element.
+  validations: [],              // Optional, array of validation rules.
+  options: {},                  // Optional, options that can be passed to an element.
+}
+```
+
+The `table` and `column` fields indicate which table and column the Element corresponds to. 
+
+`skyflowID` indicates the record that stores the file.
+
+**Notes**: 
+- `skyflowID` is required while creating File element
+- Use period-delimited strings to specify columns nested inside JSON fields (e.g. `address.street.line1`).
+
+## Step 3: Collect data from elements
+
+When the file is ready to be uploaded, call the `uploadFiles()` method on the container object.
+
+```javascript
+container.uploadFiles();
+```
+### File upload limitations:
+
+- Only non-executable file are allowed to be uploaded.
+- Files must have a maximum size of 32 MB
+- File columns can't enable tokenization, redaction, or arrays.
+- Re-uploading a file overwrites previously uploaded data.
+- Partial uploads or resuming a previous upload isn't supported.
+
+### End-to-end file upload
+
+```javascript
+import React from 'react'
+import { FileInputElement , useCollectContainer, useMakeSkyflowStyles } from 'skyflow-react-js'
+
+const App = () => {
+  const container = useCollectContainer()
+
+  const useStyles = useMakeSkyflowStyles({
+    inputStyles: {
+      base: {
+        border: '1px solid black',
+        borderRadius: '4px',
+        color: '#1d1d1d',
+        padding: '10px 16px',
+      },
+      complete: {
+        color: '#4caf50',
+      },
+      empty: {},
+      focus: {},
+      invalid: {
+        color: '#f44336',
+      },
+      cardIcon: {
+        position: 'absolute',
+        left: '8px',
+        bottom: 'calc(50% - 12px)',
+      },
+    },
+    labelStyles: {
+      base: {
+        fontSize: '16px',
+        fontWeight: 'bold',
+      },
+    },
+    errorTextStyles: {
+      base: {
+        color: 'blue',
+      },
+    },
+  })
+
+  const classes = useStyles()
+
+  const handleUpload = () => {
+    const response = container.uploadFile({})
+    response
+      .then((res: unknown) => {
+        console.log(JSON.stringify(res))
+      })
+      .catch((e: unknown) => {
+        console.log(e)
+      })
+  }
+
+  return (
+    <div className='App'>
+      <header className='App-header'>
+        <FileInputElement
+          container={container}
+          table={'newTable'}
+          skyflowId={'431eaa6c-5c15-4513-aa15-29f50babe882'}
+          column={'file_input'}	
+    label={'File Input'}
+    classes={classes}
+        />
+        <button onClick={handleUpload}>upload File</button>
+      </header>
+    </div>
+  )
+}
+
+export default App
+```
+
+**Sample Response :**
+```javascript
+{
+    fileUploadResponse: [
+        {
+            "skyflow_id": "431eaa6c-5c15-4513-aa15-29f50babe882"
+        }
+    ]
+}
+```
+#### File upload with additional elements
+
+```javascript
+import React from 'react';
+import {
+  CardNumberElement,
+  useCollectContainer,
+  useMakeSkyflowStyles,
+  FileInputElement,
+} from 'skyflow-react-js';
+
+const CollectElements = () => {
+  const container = useCollectContainer();
+
+  const handleCollect = () => {
+    const response = container.collect();
+    response
+      .then((res: unknown) => {
+        console.log(JSON.stringify(res));
+      })
+      .catch((e: unknown) => {
+        console.log(e);
+      });
+  };
+
+  const handleFile = () => {
+    const response = container.uploadFiles({});
+    response
+      .then((res: unknown) => {
+        console.log(JSON.stringify(res));
+      })
+      .catch((e: unknown) => {
+        console.log(e);
+      });
+  };
+
+  const useStyles = useMakeSkyflowStyles({
+    inputStyles: {
+      base: {
+        border: '1px solid black',
+        borderRadius: '4px',
+        color: '#1d1d1d',
+        padding: '10px 16px',
+      },
+      complete: {
+        color: '#4caf50',
+      },
+      empty: {},
+      focus: {},
+      invalid: {
+        color: '#f44336',
+      },
+    },
+    labelStyles: {
+      base: {
+        fontSize: '16px',
+        fontWeight: 'bold',
+      },
+    },
+    errorTextStyles: {
+      base: {
+        color: 'red',
+      },
+    },
+  });
+
+  const classes = useStyles();
+
+  return (
+    <div className='CollectElements' style={{width: '300px'}}>
+      <CardNumberElement
+        id={'collectCardNumber'}
+        container={container}
+        table={'newTable'}
+        classes={classes}
+        column={'card_number'}
+        label={'Collect Card Number'}
+      />
+      <FileInputElement
+        id='file-input'
+        container={container}
+        classes={classes}
+        table={'newTable'}
+        column={'file_input'}
+        label={'File Input'}
+        skyflowId={'431eaa6c-5c15-4513-aa15-29f50babe882'}
+      />
+
+      <button onClick={handleFile}>Submit file</button>
+      <button onClick={handleCollect}>Collect</button>
+    </div>
+  );
+};
+
+export default CollectElements;
+```
+**Sample Response for collect():**
+```javascript
+{
+  "records": [
+    {
+      "table": "newTable",
+      "fields": {
+        "card_number": "f3907186-e7e2-466f-91e5-48e12c2bcbc1",
+      }
+    }
+  ]
+}
+```
+**Sample Response for file uploadFiles() :**
+```javascript
+{
+    "fileUploadResponse": [
+        {
+            "skyflow_id": "431eaa6c-5c15-4513-aa15-29f50babe882"
+        }
+    ]
+}
+```
+---
 ## Securely collecting data client-side using Composable Elements
 
 Composable Elements combine multiple Skyflow Elements in a single iframe, letting you create multiple Skyflow Elements in a single row. The following steps create a composable element and securely collect data through it.
