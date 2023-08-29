@@ -46,10 +46,10 @@ const RevealElements = () => {
   const handleReveal = () => {
     revealContainer
       .reveal()
-      .then(res => {
+      .then((res: any) => {
         console.log(res);
       })
-      .catch(err => {
+      .catch((err: any) => {
         console.log(err);
       });
   };
