@@ -24,6 +24,7 @@ export interface SkyflowCollectElementProps {
   onBlur?: (state: unknown) => void
   onReady?: (state: unknown) => void
   eventEmitter?:any
+  skyflowID?:string
   // TODO ref
 }
 
