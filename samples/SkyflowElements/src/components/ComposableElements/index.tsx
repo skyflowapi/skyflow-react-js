@@ -6,7 +6,6 @@ import {
 	useComposableContainer,
 	ComposableContainer,
 	CardHolderNameElement,
-	FileInputElement,
 } from 'skyflow-react-js';
 
 const ComposableElements = () => {
@@ -97,17 +96,6 @@ const ComposableElements = () => {
 			});
 	};
 
-	const handleFile = () => {
-		const response = container.uploadFiles({});
-		response
-		  .then((res: unknown) => {
-			console.log(JSON.stringify(res));
-		  })
-		  .catch((e: unknown) => {
-			console.log(e);
-		  });
-	  };
-
 	return (
 		<div className='ComposableElements' >
 			<ComposableContainer
@@ -138,17 +126,7 @@ const ComposableElements = () => {
 					placeholder={'CVC'}
 					column={'cvv'}
 				/>
-				<FileInputElement
-					id='file-input'
-					container={container}
-					classes={classes}
-					table={'pii_fields'}
-					column={'file_input'}
-					skyflowID='431eaa6c-5c15-4513-aa15-29f50babe882'
-				/>
 			</ComposableContainer >
-			
-			<button onClick={handleFile}>Submit file</button>
 			
 			<button onClick={handleCollect}>Collect</button>
 		</div>
