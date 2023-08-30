@@ -10,6 +10,7 @@ A React wrapper for [Skyflow JS SDK](https://github.com/skyflowapi/skyflow-js)
   - [Requirements](#requirements)
 - [**Initializing Skyflow-React**](#initializing-skyflow-react)
 - [**Securely collecting data client-side**](#securely-collecting-data-client-side)
+- [**Securely collecting data using File Input Element to upload a file**](#securely-collecting-data-client-side)
 - [**Securely collecting data client-side using Composable Elements**](#securely-collecting-data-client-side-using-composable-elements)
 - [**Securely revealing data client-side**](#securely-revealing-data-client-side)
 - [**Reporting a Vulnerability**](#reporting-a-vulnerability)
@@ -909,8 +910,8 @@ const App = () => {
           table={'newTable'}
           skyflowID={'431eaa6c-5c15-4513-aa15-29f50babe882'}
           column={'file_input'}	
-    label={'File Input'}
-    classes={classes}
+          label={'File Input'}
+          classes={classes}
         />
         <button onClick={handleUpload}>upload File</button>
       </header>
