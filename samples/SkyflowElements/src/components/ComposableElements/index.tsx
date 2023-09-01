@@ -26,13 +26,6 @@ const ComposableElements = () => {
 			}
 
 		},
-		empty: {
-		},
-		focus: {
-		},
-		invalid: {
-			color: '#f44336',
-		},
 	});
 	const useCardCvvStyles = useMakeSkyflowStyles({
 		inputStyles: {
@@ -54,11 +47,6 @@ const ComposableElements = () => {
 		},
 		labelStyles: {
 		},
-		errorTextStyles: {
-			base: {
-				display: 'none'
-			},
-		},
 	})
 
 	const classes = useStyles();
@@ -76,8 +64,12 @@ const ComposableElements = () => {
 		},
 		errorTextSyles: {
 			base: {
-				color: '#f44336'
-			}
+				color: '#f44336',
+				fontFamily: '"Roboto", sans-serif'
+			},
+			global: {
+			  	'@import' :'url("https://fonts.googleapis.com/css2?family=Roboto&display=swap")',
+			},
 		}
 	}
 	const container = useComposableContainer(containerOptions);

@@ -47,6 +47,7 @@ const CollectElements = () => {
         borderRadius: '4px',
         color: '#1d1d1d',
         padding: '10px 16px',
+        fontFamily: '"Roboto", sans-serif'
       },
       complete: {
         color: '#4caf50',
@@ -56,16 +57,30 @@ const CollectElements = () => {
       invalid: {
         color: '#f44336',
       },
+      global: {
+        '@import' :'url("https://fonts.googleapis.com/css2?family=Roboto&display=swap")',
+      }
     },
     labelStyles: {
       base: {
         fontSize: '16px',
         fontWeight: 'bold',
+        fontFamily: '"Roboto", sans-serif'
       },
+      global: {
+        '@import' :'url("https://fonts.googleapis.com/css2?family=Roboto&display=swap")',
+      },
+      requiredAsterisk:{
+        color: 'red'
+      }
     },
     errorTextStyles: {
       base: {
         color: 'red',
+        fontFamily: '"Roboto", sans-serif'
+      },
+      global: {
+        '@import' :'url("https://fonts.googleapis.com/css2?family=Roboto&display=swap")',
       },
     },
   });
