@@ -207,6 +207,7 @@ const useSkyflowStyles = useMakeSkyflowStyles({
   inputStyles: {
     base: {
       color: '#013370',
+      fontFamily: '"Roboto", sans-serif'
       // ...otherStyles
     },
     complete: {
@@ -224,6 +225,9 @@ const useSkyflowStyles = useMakeSkyflowStyles({
       position: 'absolute',
       right: '8px',
     },
+    global: {   
+      '@import': 'url("https://fonts.googleapis.com/css2?family=Roboto&display=swap")',
+    }
   },
   labelStyles: {
     base: {
@@ -249,8 +253,10 @@ The `inputStyles` field accepts a style object which consists of CSS properties 
 - `invalid`: applied when the Element has invalid input.
 - `cardIcon`: applied to the card type icon in `CARD_NUMBER` Element.
 - `copyIcon`: applied to copy icon in Elements when `enableCopy` option is true.
+- `global`: used for global styles like font-family.
 
-The states that are available for `labelStyles` are `base` and `focus`.
+The states that are available for `labelStyles` are `base`, `focus`, `global` and `requiredAsterisk`.
+* `requiredAsterisk`: styles applied for the Asterisk symbol in the label.
 
 An example of a labelStyles object:
 
@@ -262,11 +268,17 @@ labelStyles: {
   },
   focus: {
     color: '#1d1d1d'
+  },
+  global: {
+    '@import' :'url("https://fonts.googleapis.com/css2?family=Roboto&display=swap")',
+  },
+  requiredAsterisk:{
+    color: 'red'
   }
 }
 ```
 
-The state that is available for `errorTextStyles` is only the `base` state, it shows up when there is some error in the collect element.
+The state that is available for `errorTextStyles` are `base` and `global`, it shows up when there is some error in the collect element.
 
 An example of a errorTextStyles object:
 
@@ -274,6 +286,10 @@ An example of a errorTextStyles object:
 errorTextStyles: {
   base: {
     color: '#f44336',
+    fontFamily: '"Roboto", sans-serif'
+  },
+  global: {
+    '@import': 'url("https://fonts.googleapis.com/css2?family=Roboto&display=swap")',
   }
 }
 ```
@@ -1089,7 +1105,11 @@ const options = {
     errorTextStyles: {                       // Optional
         base: {
             color: 'red',
+            fontFamily: '"Roboto", sans-serif'
         },
+        global: {
+            '@import': 'url("https://fonts.googleapis.com/css2?family=Roboto&display=swap")',
+        }        
     },
 };
 ```
@@ -1198,6 +1218,7 @@ The `inputStyles` field accepts an object of CSS properties to apply to the form
 * `invalid`: applied when the Element has invalid input
 * `cardIcon`: applied to the card type icon in CARD_NUMBER Element
 * `copyIcon`: applied to copy icon in Elements when enableCopy option is true
+* `global`: used for global styles like font-family
 
 An example of an `inputStyles` object:
 
@@ -1226,9 +1247,13 @@ inputStyles: {
     position: 'absolute',
     right: '8px',
   },
+  global: {   
+    '@import': 'url("https://fonts.googleapis.com/css2?family=Roboto&display=swap")',
+  }
 }
 ```
-The `labelStyles` field supports the `base` and `focus` states.
+The `labelStyles` field supports the `base`, `focus`, `global`.
+* requiredAsterisk: styles applied for the Asterisk symbol in the label.
 
 An example `labelStyles` object:
 
@@ -1240,20 +1265,13 @@ labelStyles: {
   },
   focus: {
     color: '#1d1d1d'
+  },
+  global: {
+    '@import' :'url("https://fonts.googleapis.com/css2?family=Roboto&display=swap")',
   }
 }
 ```
-The `errorTextStyles` field only supports the `base` state, which appears when there is an error in the composable element.
 
-An example `errorTextStyles` object:
-
-```javascript
-errorTextStyles: {
-  base: {
-    color: '#f44336'
-  }
-}
-```
 The React SDK supports the following composable elements:
 
 - `CardHolderNameElement`
@@ -1804,7 +1822,7 @@ The following `props` can be passed to Skyflow reveal element:
 
 `Note`:
 
-- The `inputStyles`, `labelStyles` and `errorTextStyles` parameters accepts a styles object as described in the [previous section](#step-2-create-a-collect-element) for collecting data. But for reveal element, `inputStyles` accepts only `base` variant and `copyIcon` style object.
+- The `inputStyles`, `labelStyles` and `errorTextStyles` parameters accepts a styles object as described in the [previous section](#step-2-create-a-collect-element) for collecting data. But for reveal element, `inputStyles` accepts only `base` variant and `copyIcon` and `global` style objects.
 - `redaction` defaults to `RedactionType.PLAIN_TEXT`.
 
 #### Redaction Types
@@ -1834,23 +1852,35 @@ const App = () => {
         borderRadius: '4px',
         color: '#1d1d1d',
         padding: '10px 16px',
+        fontFamily: '"Roboto", sans-serif'
       },
       copyIcon: {
         position: 'absolute',
         right: '8px',
         top: 'calc(50% - 10px)',
       },
+      global: {
+        '@import' :'url("https://fonts.googleapis.com/css2?family=Roboto&display=swap")',
+      }
     },
     labelStyles: {
       base: {
         fontSize: '16px',
         fontWeight: 'bold',
+        fontFamily: '"Roboto", sans-serif'
       },
+      global: {
+        '@import' :'url("https://fonts.googleapis.com/css2?family=Roboto&display=swap")',
+      }      
     },
     errorTextStyles: {
       base: {
         color: 'red',
+        fontFamily: '"Roboto", sans-serif'
       },
+      global: {
+        '@import' :'url("https://fonts.googleapis.com/css2?family=Roboto&display=swap")',
+      }
     },
   })
 
