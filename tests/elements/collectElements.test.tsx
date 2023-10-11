@@ -437,6 +437,27 @@ describe('test collect elements', () => {
     expect(fileInputContainer).toMatchSnapshot()
   });
 
+  test('test fileInput collect Element with allowedFileType option ', () => {
+    const container = useCollectContainer();
+    const options = {
+      allowedFileType: ['.pdf', '.png'],
+    };
+    const fileInputContainer = render(
+      <FileInputElement
+        id={''}
+        container={container}
+        table={''}
+        column={'string'}
+        label={'file input'}
+        validations={[]}
+        skyflowID={'skyflow-id'}
+        options={options}
+        eventEmitter={composableEventEmitter}
+      />,
+    )
+    expect(fileInputContainer).toMatchSnapshot()
+  });
+
   test('test fileInput composable Element with emitter ', () => {
     const container = useComposabelContainer({ layout: [1] });
     const fileInputContainer = render(
