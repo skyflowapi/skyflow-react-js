@@ -28,6 +28,7 @@ const FileInputElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
           ...props.classes,
           type: Skyflow.ElementType.FILE_INPUT,
           validations: props.validations || [],
+          accept: props.options?.allowedFileType || [],
         },
         { ...props.options },
       )

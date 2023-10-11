@@ -23,6 +23,7 @@ const InputFieldElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
           column: props.column,
           ...props.classes,
           placeholder: props.placeholder || '',
+          accept: props.options?.allowedFileType || [],
           label: props.label || '',
           type: Skyflow.ElementType.INPUT_FIELD,
           validations: props.validations || [],
