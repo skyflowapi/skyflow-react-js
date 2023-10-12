@@ -317,6 +317,7 @@ const options = {
   enableCardIcon: true, // Optional, indicates whether card icon should be enabled (only applicable for CARD_NUMBER ElementType).
   format: String, // Optional, format for the element (only applicable currently for EXPIRATION_DATE ElementType).
   enableCopy: false, // Optional, enables the copy icon in collect and reveal elements to copy text to clipboard. Defaults to 'false').
+  allowedFileType: string[], // Optional, allowed extensions for the ElementType to be uploaded.
 }
 ```
 
@@ -948,6 +949,131 @@ export default App
     ]
 }
 ```
+#### File upload with allowedFileType option
+
+```javascript
+import React from 'react';
+import {
+  CardNumberElement,
+  useCollectContainer,
+  useMakeSkyflowStyles,
+  FileInputElement,
+} from 'skyflow-react-js';
+
+const CollectElements = () => {
+  const container = useCollectContainer();
+
+  const handleCollect = () => {
+    const response = container.collect();
+    response
+      .then((res: unknown) => {
+        console.log(JSON.stringify(res));
+      })
+      .catch((e: unknown) => {
+        console.log(e);
+      });
+  };
+  
+  const options = {
+    allowedFileType: [".pdf",".png"]
+  };
+  
+  const handleFile = () => {
+    const response = container.uploadFiles({});
+    response
+      .then((res: unknown) => {
+        console.log(JSON.stringify(res));
+      })
+      .catch((e: unknown) => {
+        console.log(e);
+      });
+  };
+
+  const useStyles = useMakeSkyflowStyles({
+    inputStyles: {
+      base: {
+        border: '1px solid black',
+        borderRadius: '4px',
+        color: '#1d1d1d',
+        padding: '10px 16px',
+      },
+      complete: {
+        color: '#4caf50',
+      },
+      empty: {},
+      focus: {},
+      invalid: {
+        color: '#f44336',
+      },
+    },
+    labelStyles: {
+      base: {
+        fontSize: '16px',
+        fontWeight: 'bold',
+      },
+    },
+    errorTextStyles: {
+      base: {
+        color: 'red',
+      },
+    },
+  });
+
+  const classes = useStyles();
+
+  return (
+    <div className='CollectElements' style={{width: '300px'}}>
+      <CardNumberElement
+        id={'collectCardNumber'}
+        container={container}
+        table={'newTable'}
+        classes={classes}
+        column={'card_number'}
+        label={'Collect Card Number'}
+      />
+      <FileInputElement
+        id='file-input'
+        container={container}
+        classes={classes}
+        table={'newTable'}
+        column={'file_input'}
+        label={'File Input'}
+        skyflowID={'431eaa6c-5c15-4513-aa15-29f50babe882'}
+        options={options}
+      />
+
+      <button onClick={handleFile}>Submit file</button>
+      <button onClick={handleCollect}>Collect</button>
+    </div>
+  );
+};
+
+export default CollectElements;
+```
+**Sample Response for collect():**
+```javascript
+{
+  "records": [
+    {
+      "table": "newTable",
+      "fields": {
+        "card_number": "f3907186-e7e2-466f-91e5-48e12c2bcbc1",
+      }
+    }
+  ]
+}
+```
+**Sample Response for file uploadFiles() :**
+```javascript
+{
+    "fileUploadResponse": [
+        {
+            "skyflow_id": "431eaa6c-5c15-4513-aa15-29f50babe882"
+        }
+    ]
+}
+```
+
 #### File upload with additional elements
 
 ```javascript
