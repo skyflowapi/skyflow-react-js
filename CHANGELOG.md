@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.8.1] - 2023-10-17
+
+### Added 
+
+- allowedFileType option in FileInputElement.
 
 ## [1.8.0] - 2023-08-29
 

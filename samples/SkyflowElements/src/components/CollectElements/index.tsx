@@ -29,6 +29,10 @@ const CollectElements = () => {
       });
   };
 
+  const options = {
+    allowedFileType: ["<allowedFileType1>","<allowedFileType2>"]
+  };
+  
   const handleFile = () => {
     const response = container.uploadFiles({});
     response
@@ -159,9 +163,10 @@ const CollectElements = () => {
         container={container}
         classes={classes}
         table={'table1'}
-        column={'file_input'}
-        skyflowID='431eaa6c-5c15-4513-aa15-29f50babe882'
+        column={'file'}
+        skyflowID='ad5b38ae-4bcf-4b08-a274-3b68ddbf30f5'
         label={'file-input'}
+        options={options}
       />
 
       <button onClick={handleFile}>Submit file</button>
