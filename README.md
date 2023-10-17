@@ -317,17 +317,19 @@ const options = {
   enableCardIcon: true, // Optional, indicates whether card icon should be enabled (only applicable for CARD_NUMBER ElementType).
   format: String, // Optional, format for the element (only applicable currently for EXPIRATION_DATE ElementType).
   enableCopy: false, // Optional, enables the copy icon in collect and reveal elements to copy text to clipboard. Defaults to 'false').
-  allowedFileType: string[], // Optional, allowed extensions for the ElementType to be uploaded.
+  allowedFileType: string[], // Optional, allowed extensions for the file to be uploaded.
 }
 ```
 
-`required` parameter indicates whether the field is marked as required or not. If not provided, it defaults to false
+- `required` parameter indicates whether the field is marked as required or not. If not provided, it defaults to false
 
-`enableCardIcon` parameter indicates whether the icon is visible for the CARD_NUMBER element, defaults to true
+- `enableCardIcon` parameter indicates whether the icon is visible for the CARD_NUMBER element, defaults to true
 
-`format` parameter takes string value and indicates the format pattern applicable to the element type, It's currently only applicable to `EXPIRATION_DATE` and `EXPIRATION_YEAR` element types.
+- `format` parameter takes string value and indicates the format pattern applicable to the element type, It's currently only applicable to `EXPIRATION_DATE` and `EXPIRATION_YEAR` element types.
 
-`enableCopy` parameter indicates whether the copy icon is visible in collect and reveal elements.
+- `enableCopy` parameter indicates whether the copy icon is visible in collect and reveal elements.
+
+- `allowedFileType` parameter indicates the allowedFileType extensions to be uploaded.
 
 The values that are accepted for `EXPIRATION_DATE` are
 
