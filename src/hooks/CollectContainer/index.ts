@@ -5,10 +5,10 @@ import React from 'react'
 import Skyflow from 'skyflow-js'
 import CollectContainer from 'skyflow-js/types/core/external/collect/collect-container'
 
-import { useSkyflow } from '../../core/hook'
+import { useSkyflowClient } from '../../core/hook'
 
 const useCollectContainer = (): CollectContainer => {
-  const { skyflow } = useSkyflow()
+  const { skyflow } = useSkyflowClient()
 
   return React.useMemo(
     () => skyflow?.container(Skyflow.ContainerType.COLLECT) as CollectContainer,

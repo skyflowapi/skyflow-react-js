@@ -1,11 +1,12 @@
 /*
 	Copyright (c) 2022 Skyflow, Inc. 
 */
-import Skyflow from 'skyflow-js'
-import useComposableContainer from '../../src/hooks/ComposableContainer'
 import React from 'react'
-import * as hooks from '../../src/core/hook'
+import Skyflow from 'skyflow-js'
 import { IConfig } from '../../src/core'
+import  useSkyflow from '../../src/hooks/Skyflow'
+import * as hooks from '../../src/core/hook'
+
 
 const mockContext: IConfig = {
   vaultID: '',
@@ -21,16 +22,15 @@ const mockUseContext = jest.fn().mockImplementation(() => mockContext)
 
 React.useContext = mockUseContext
 
-Skyflow.init = jest.fn()
-
-const ComposableContainerMock: unknown = {
+const CollectContainerMock: unknown = {
   create: jest.fn(),
   collect: jest.fn(),
 }
 
 const skyflowMock: unknown = {
-  container: jest.fn().mockReturnValue(ComposableContainerMock),
+  container: jest.fn().mockReturnValue(CollectContainerMock),
 }
+Skyflow.init = jest.fn().mockReturnValue(skyflowMock)
 
 jest.spyOn(hooks, 'useSkyflowClient').mockReturnValue({
   skyflow: skyflowMock as Skyflow,
@@ -39,10 +39,15 @@ jest.spyOn(hooks, 'useSkyflowClient').mockReturnValue({
 jest.spyOn(React,'useMemo').mockImplementation((arg)=>{
   return arg();
 });
+const mockReturnValue = {
+  skyflow: skyflowMock as Skyflow,
+}
 
-
-describe('test useComposableContainer', () => {
-  it('should return composable container', () => {
-    expect(useComposableContainer({layout:[1]})).toBe(ComposableContainerMock)
+describe('test useSkyflow hook', () => {
+  it('should return skyflow object and context', () => {
+    expect(useSkyflow()).not.toBe(undefined)
+  })
+  it('should not return undefined', () => {
+    expect(useSkyflow()).not.toBe(undefined)
   })
 })
