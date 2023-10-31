@@ -4,7 +4,7 @@
 import React from 'react'
 import Skyflow from 'skyflow-js'
 import { IConfig } from '../../src/core'
-import { useSkyflow } from '../../src/core/hook'
+import { useSkyflowClient } from '../../src/core/hook'
 
 const mockContext: IConfig = {
   vaultID: '',
@@ -34,11 +34,11 @@ const mockReturnValue = {
   skyflow: skyflowMock as Skyflow,
 }
 
-describe('test useSkyflow hook', () => {
+describe('test useSkyflowClient hook', () => {
   it('should return skyflow object and context', () => {
-    expect(useSkyflow()).not.toBe(undefined)
+    expect(useSkyflowClient()).not.toBe(undefined)
   })
   it('should not return undefined', () => {
-    expect(useSkyflow()).not.toBe(undefined)
+    expect(useSkyflowClient()).not.toBe(undefined)
   })
 })

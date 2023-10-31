@@ -7,7 +7,7 @@ import Skyflow from 'skyflow-js'
 import sdkVersion from '../../package.json'
 export const skyflowContext = React.createContext<Skyflow | undefined>(undefined) 
 
-const useSkyflow = () => {
+const useSkyflowClient = () => {
   const skyflow = useContext(skyflowContext)
   return { skyflow };
 }
@@ -20,4 +20,4 @@ const useSkyflowInit = (context:IConfig) => {
   return skyflow;
 }
 
-export { useSkyflow, useSkyflowInit }
+export { useSkyflowClient, useSkyflowInit }
