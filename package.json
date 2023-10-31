@@ -2,7 +2,7 @@
   "name": "skyflow-react-js",
   "preferGlobal": true,
   "analyze": false,
-  "version": "1.8.1-dev.ecf4ce7",
+  "version": "1.9.0",
   "description": "Skyflow React SDK",
   "homepage": "https://github.com/skyflowapi/skyflow-react",
   "main": "lib/index.js",
