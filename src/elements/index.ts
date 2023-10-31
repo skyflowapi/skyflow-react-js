@@ -24,6 +24,7 @@ export interface SkyflowCollectElementProps {
   onBlur?: (state: unknown) => void
   onReady?: (state: unknown) => void
   eventEmitter?:any
+  skyflowID?:string
   // TODO ref
 }
 
@@ -43,6 +44,7 @@ export interface ICollectElementOptions {
   enableCardIcon?: boolean
   format?: string
   enableCopy?: boolean
+  allowedFileType?: string[]
 }
 
 export type IRevealOptions = {

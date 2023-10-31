@@ -45,7 +45,7 @@ const DynamicComposableElements = () => {
 	const classes = useStyles();
 
 	const containerOptions = {
-		layout: [1, 3],
+		layout: [1, 4],
 		styles: {
 			base: {
 				border: '1px solid #DFE3EB',
@@ -115,7 +115,7 @@ const DynamicComposableElements = () => {
 		// Your implementation when the SUBMIT(enter) event occurs.
 		console.log('OnSubmit listener Triggred..!')
 	};
-
+	  
 	return (
 		<div className='ComposableElements' >
 			<ComposableContainer
@@ -157,6 +157,7 @@ const DynamicComposableElements = () => {
 					column={'cvv'}
 					validations={cvvValidationRules} // pass validations state.
 				/>
+
 			</ComposableContainer >
 
 			<button onClick={handleCollect}>Collect</button>

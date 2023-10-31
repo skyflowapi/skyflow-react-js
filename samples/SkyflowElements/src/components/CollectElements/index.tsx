@@ -12,6 +12,7 @@ import {
   useCollectContainer,
   useMakeSkyflowStyles,
   InputFieldElement,
+  FileInputElement,
 } from 'skyflow-react-js';
 
 const CollectElements = () => {
@@ -28,6 +29,21 @@ const CollectElements = () => {
       });
   };
 
+  const options = {
+    allowedFileType: ["<allowedFileType1>","<allowedFileType2>"]
+  };
+  
+  const handleFile = () => {
+    const response = container.uploadFiles({});
+    response
+      .then((res: unknown) => {
+        console.log(JSON.stringify(res));
+      })
+      .catch((e: unknown) => {
+        console.log(e);
+      });
+  };
+
   const useStyles = useMakeSkyflowStyles({
     inputStyles: {
       base: {
@@ -35,6 +51,7 @@ const CollectElements = () => {
         borderRadius: '4px',
         color: '#1d1d1d',
         padding: '10px 16px',
+        fontFamily: '"Roboto", sans-serif'
       },
       complete: {
         color: '#4caf50',
@@ -44,16 +61,30 @@ const CollectElements = () => {
       invalid: {
         color: '#f44336',
       },
+      global: {
+        '@import' :'url("https://fonts.googleapis.com/css2?family=Roboto&display=swap")',
+      }
     },
     labelStyles: {
       base: {
         fontSize: '16px',
         fontWeight: 'bold',
+        fontFamily: '"Roboto", sans-serif'
       },
+      global: {
+        '@import' :'url("https://fonts.googleapis.com/css2?family=Roboto&display=swap")',
+      },
+      requiredAsterisk:{
+        color: 'red'
+      }
     },
     errorTextStyles: {
       base: {
         color: 'red',
+        fontFamily: '"Roboto", sans-serif'
+      },
+      global: {
+        '@import' :'url("https://fonts.googleapis.com/css2?family=Roboto&display=swap")',
       },
     },
   });
@@ -127,6 +158,18 @@ const CollectElements = () => {
         label={'SSN'}
       />
 
+      <FileInputElement
+        id='file-input'
+        container={container}
+        classes={classes}
+        table={'table1'}
+        column={'file'}
+        skyflowID='ad5b38ae-4bcf-4b08-a274-3b68ddbf30f5'
+        label={'file-input'}
+        options={options}
+      />
+
+      <button onClick={handleFile}>Submit file</button>
       <button onClick={handleCollect}>Collect</button>
     </div>
   );

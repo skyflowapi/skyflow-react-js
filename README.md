@@ -6,14 +6,15 @@ A React wrapper for [Skyflow JS SDK](https://github.com/skyflowapi/skyflow-js)
 
 ## Table of Contents
 
-- [**Including Skyflow-React**](#Including-Skyflow-React)
+- [**Including Skyflow-React**](#including-skyflow-react)
   - [Requirements](#requirements)
-- [**Initializing Skyflow-React**](#Initializing-Skyflow-React)
-- [**Securely collecting data client-side**](#Securely-collecting-data-client-side)
-- [**Securely collecting data client-side using Composable Elements**](#Securely-collecting-data-client-side-using-composable-elements)
-- [**Securely revealing data client-side**](#Securely-revealing-data-client-side)
-- [**Reporting a Vulnerability**](#Reporting-Vulnerability)
-- [**License**](#License)
+- [**Initializing Skyflow-React**](#initializing-skyflow-react)
+- [**Securely collecting data client-side**](#securely-collecting-data-client-side)
+- [**Securely collecting data using File Input Element to upload a file**](#securely-collecting-data-client-side)
+- [**Securely collecting data client-side using Composable Elements**](#securely-collecting-data-client-side-using-composable-elements)
+- [**Securely revealing data client-side**](#securely-revealing-data-client-side)
+- [**Reporting a Vulnerability**](#reporting-a-vulnerability)
+- [**License**](#license)
 
 ---
 
@@ -142,6 +143,7 @@ For `env` parameter, there are 2 accepted values in `Env`
 
 - [**Using Skyflow Elements to collect data**](#using-skyflow-elements-to-collect-data)
 - [**Event Listener on Collect Elements**](#event-listener-on-collect-elements)
+- [**Using Skyflow File Input Element to upload a file**](#using-skyflow-file-input-element-to-upload-a-file)
 
 ### Using Skyflow Elements to collect data
 
@@ -149,7 +151,7 @@ For `env` parameter, there are 2 accepted values in `Env`
 
 ### Step 1: Create a container
 
-First create a container for the form elements using the `useCollectContainer` hook as show below:
+First create a container for the form elements using the `useCollectContainer` hook as shown below:
 
 ```jsx
 const container = useCollectContainer()
@@ -205,6 +207,7 @@ const useSkyflowStyles = useMakeSkyflowStyles({
   inputStyles: {
     base: {
       color: '#013370',
+      fontFamily: '"Roboto", sans-serif'
       // ...otherStyles
     },
     complete: {
@@ -222,6 +225,9 @@ const useSkyflowStyles = useMakeSkyflowStyles({
       position: 'absolute',
       right: '8px',
     },
+    global: {   
+      '@import': 'url("https://fonts.googleapis.com/css2?family=Roboto&display=swap")',
+    }
   },
   labelStyles: {
     base: {
@@ -247,8 +253,10 @@ The `inputStyles` field accepts a style object which consists of CSS properties 
 - `invalid`: applied when the Element has invalid input.
 - `cardIcon`: applied to the card type icon in `CARD_NUMBER` Element.
 - `copyIcon`: applied to copy icon in Elements when `enableCopy` option is true.
+- `global`: used for global styles like font-family.
 
-The states that are available for `labelStyles` are `base` and `focus`.
+The states that are available for `labelStyles` are `base`, `focus`, `global` and `requiredAsterisk`.
+* `requiredAsterisk`: styles applied for the Asterisk symbol in the label.
 
 An example of a labelStyles object:
 
@@ -260,11 +268,17 @@ labelStyles: {
   },
   focus: {
     color: '#1d1d1d'
+  },
+  global: {
+    '@import' :'url("https://fonts.googleapis.com/css2?family=Roboto&display=swap")',
+  },
+  requiredAsterisk:{
+    color: 'red'
   }
 }
 ```
 
-The state that is available for `errorTextStyles` is only the `base` state, it shows up when there is some error in the collect element.
+The state that is available for `errorTextStyles` are `base` and `global`, it shows up when there is some error in the collect element.
 
 An example of a errorTextStyles object:
 
@@ -272,6 +286,10 @@ An example of a errorTextStyles object:
 errorTextStyles: {
   base: {
     color: '#f44336',
+    fontFamily: '"Roboto", sans-serif'
+  },
+  global: {
+    '@import': 'url("https://fonts.googleapis.com/css2?family=Roboto&display=swap")',
   }
 }
 ```
@@ -287,6 +305,7 @@ We support the following collect elements in the react SDK:
 - `ExpirationMonthElement`
 - `ExpirationYearElement`
 - `InputFieldElement`
+- `FileInputElement`
 
 The InputFieldElement type is a custom UI element without any built-in validations. See the section on [validations](#validations) for more information on validations.
 
@@ -298,16 +317,19 @@ const options = {
   enableCardIcon: true, // Optional, indicates whether card icon should be enabled (only applicable for CARD_NUMBER ElementType).
   format: String, // Optional, format for the element (only applicable currently for EXPIRATION_DATE ElementType).
   enableCopy: false, // Optional, enables the copy icon in collect and reveal elements to copy text to clipboard. Defaults to 'false').
+  allowedFileType: string[], // Optional, allowed extensions for the file to be uploaded.
 }
 ```
 
-`required` parameter indicates whether the field is marked as required or not. If not provided, it defaults to false
+- `required` parameter indicates whether the field is marked as required or not. If not provided, it defaults to false
 
-`enableCardIcon` parameter indicates whether the icon is visible for the CARD_NUMBER element, defaults to true
+- `enableCardIcon` parameter indicates whether the icon is visible for the CARD_NUMBER element, defaults to true
 
-`format` parameter takes string value and indicates the format pattern applicable to the element type, It's currently only applicable to `EXPIRATION_DATE` and `EXPIRATION_YEAR` element types.
+- `format` parameter takes string value and indicates the format pattern applicable to the element type, It's currently only applicable to `EXPIRATION_DATE` and `EXPIRATION_YEAR` element types.
 
-`enableCopy` parameter indicates whether the copy icon is visible in collect and reveal elements.
+- `enableCopy` parameter indicates whether the copy icon is visible in collect and reveal elements.
+
+- `allowedFileType` parameter indicates the allowedFileType extensions to be uploaded.
 
 The values that are accepted for `EXPIRATION_DATE` are
 
@@ -780,6 +802,400 @@ export default App
   value: '41111111XXXXXXXX',
 };
 ```
+## Using Skyflow File Input Element to upload a file
+
+You can upload binary files to a vault using the Skyflow File Input Element. Use the following steps to securely upload a file.
+### Step 1: Create a container
+
+First create a container for the form elements using the `useCollectContainer` hook as shown below:
+
+```javascript
+const container = useCollectContainer()
+```
+
+### Step 2: Create a File Input Element
+
+```javascript
+import { FileInputElement} from 'skyflow-react-js';
+
+<FileInputElement
+ table='<TABLE_NAME>'
+ column='<COLUMN_NAME>'
+ skyflowID='<SKYFLOW_ID>' 
+  ... props
+/>
+```
+The following `props` can be passed to file input element:
+
+```javascript
+{
+  container: 'CollectContainer' // Required, the collect container.
+  table: 'string',              // Required, the table this data belongs to.
+  column: 'string',             // Required, the column into which this data should be inserted.
+  skyflowID: 'string',             //Required, skyflowID of the record that stores the file.
+  id: 'string',                   // Optional, id that can passed to the element.
+  classes: {},                  // Optional, styles that should be applied to the element.
+  label: 'string',              // Optional, label for the form element.
+  validations: [],              // Optional, array of validation rules.
+  options: {},                  // Optional, options that can be passed to an element.
+}
+```
+
+The `table` and `column` fields indicate which table and column the Element corresponds to. 
+
+`skyflowID` indicates the record that stores the file.
+
+**Notes**: 
+- `skyflowID` is required while creating File element
+- Use period-delimited strings to specify columns nested inside JSON fields (e.g. `address.street.line1`).
+
+## Step 3: Collect data from elements
+
+When the file is ready to be uploaded, call the `uploadFiles()` method on the container object.
+
+```javascript
+container.uploadFiles(options);
+```
+### File upload limitations:
+
+- Only non-executable file are allowed to be uploaded.
+- Files must have a maximum size of 32 MB
+- File columns can't enable tokenization, redaction, or arrays.
+- Re-uploading a file overwrites previously uploaded data.
+- Partial uploads or resuming a previous upload isn't supported.
+
+### End-to-end file upload
+
+```javascript
+import React from 'react'
+import { FileInputElement , useCollectContainer, useMakeSkyflowStyles } from 'skyflow-react-js'
+
+const App = () => {
+  const container = useCollectContainer()
+
+  const useStyles = useMakeSkyflowStyles({
+    inputStyles: {
+      base: {
+        border: '1px solid black',
+        borderRadius: '4px',
+        color: '#1d1d1d',
+        padding: '10px 16px',
+      },
+      complete: {
+        color: '#4caf50',
+      },
+      empty: {},
+      focus: {},
+      invalid: {
+        color: '#f44336',
+      },
+      cardIcon: {
+        position: 'absolute',
+        left: '8px',
+        bottom: 'calc(50% - 12px)',
+      },
+    },
+    labelStyles: {
+      base: {
+        fontSize: '16px',
+        fontWeight: 'bold',
+      },
+    },
+    errorTextStyles: {
+      base: {
+        color: 'blue',
+      },
+    },
+  })
+
+  const classes = useStyles()
+
+  const handleUpload = () => {
+    const response = container.uploadFiles({})
+    response
+      .then((res: unknown) => {
+        console.log(JSON.stringify(res))
+      })
+      .catch((e: unknown) => {
+        console.log(e)
+      })
+  }
+
+  return (
+    <div className='App'>
+      <header className='App-header'>
+        <FileInputElement
+          container={container}
+          table={'newTable'}
+          skyflowID={'431eaa6c-5c15-4513-aa15-29f50babe882'}
+          column={'file_input'}	
+          label={'File Input'}
+          classes={classes}
+        />
+        <button onClick={handleUpload}>upload File</button>
+      </header>
+    </div>
+  )
+}
+
+export default App
+```
+
+**Sample Response :**
+```javascript
+{
+    fileUploadResponse: [
+        {
+            "skyflow_id": "431eaa6c-5c15-4513-aa15-29f50babe882"
+        }
+    ]
+}
+```
+#### File upload with allowedFileType option
+
+```javascript
+import React from 'react';
+import {
+  CardNumberElement,
+  useCollectContainer,
+  useMakeSkyflowStyles,
+  FileInputElement,
+} from 'skyflow-react-js';
+
+const CollectElements = () => {
+  const container = useCollectContainer();
+
+  const handleCollect = () => {
+    const response = container.collect();
+    response
+      .then((res: unknown) => {
+        console.log(JSON.stringify(res));
+      })
+      .catch((e: unknown) => {
+        console.log(e);
+      });
+  };
+  
+  const options = {
+    allowedFileType: [".pdf",".png"]
+  };
+  
+  const handleFile = () => {
+    const response = container.uploadFiles({});
+    response
+      .then((res: unknown) => {
+        console.log(JSON.stringify(res));
+      })
+      .catch((e: unknown) => {
+        console.log(e);
+      });
+  };
+
+  const useStyles = useMakeSkyflowStyles({
+    inputStyles: {
+      base: {
+        border: '1px solid black',
+        borderRadius: '4px',
+        color: '#1d1d1d',
+        padding: '10px 16px',
+      },
+      complete: {
+        color: '#4caf50',
+      },
+      empty: {},
+      focus: {},
+      invalid: {
+        color: '#f44336',
+      },
+    },
+    labelStyles: {
+      base: {
+        fontSize: '16px',
+        fontWeight: 'bold',
+      },
+    },
+    errorTextStyles: {
+      base: {
+        color: 'red',
+      },
+    },
+  });
+
+  const classes = useStyles();
+
+  return (
+    <div className='CollectElements' style={{width: '300px'}}>
+      <CardNumberElement
+        id={'collectCardNumber'}
+        container={container}
+        table={'newTable'}
+        classes={classes}
+        column={'card_number'}
+        label={'Collect Card Number'}
+      />
+      <FileInputElement
+        id='file-input'
+        container={container}
+        classes={classes}
+        table={'newTable'}
+        column={'file_input'}
+        label={'File Input'}
+        skyflowID={'431eaa6c-5c15-4513-aa15-29f50babe882'}
+        options={options}
+      />
+
+      <button onClick={handleFile}>Submit file</button>
+      <button onClick={handleCollect}>Collect</button>
+    </div>
+  );
+};
+
+export default CollectElements;
+```
+**Sample Response for collect():**
+```javascript
+{
+  "records": [
+    {
+      "table": "newTable",
+      "fields": {
+        "card_number": "f3907186-e7e2-466f-91e5-48e12c2bcbc1",
+      }
+    }
+  ]
+}
+```
+**Sample Response for file uploadFiles() :**
+```javascript
+{
+    "fileUploadResponse": [
+        {
+            "skyflow_id": "431eaa6c-5c15-4513-aa15-29f50babe882"
+        }
+    ]
+}
+```
+
+#### File upload with additional elements
+
+```javascript
+import React from 'react';
+import {
+  CardNumberElement,
+  useCollectContainer,
+  useMakeSkyflowStyles,
+  FileInputElement,
+} from 'skyflow-react-js';
+
+const CollectElements = () => {
+  const container = useCollectContainer();
+
+  const handleCollect = () => {
+    const response = container.collect();
+    response
+      .then((res: unknown) => {
+        console.log(JSON.stringify(res));
+      })
+      .catch((e: unknown) => {
+        console.log(e);
+      });
+  };
+
+  const handleFile = () => {
+    const response = container.uploadFiles({});
+    response
+      .then((res: unknown) => {
+        console.log(JSON.stringify(res));
+      })
+      .catch((e: unknown) => {
+        console.log(e);
+      });
+  };
+
+  const useStyles = useMakeSkyflowStyles({
+    inputStyles: {
+      base: {
+        border: '1px solid black',
+        borderRadius: '4px',
+        color: '#1d1d1d',
+        padding: '10px 16px',
+      },
+      complete: {
+        color: '#4caf50',
+      },
+      empty: {},
+      focus: {},
+      invalid: {
+        color: '#f44336',
+      },
+    },
+    labelStyles: {
+      base: {
+        fontSize: '16px',
+        fontWeight: 'bold',
+      },
+    },
+    errorTextStyles: {
+      base: {
+        color: 'red',
+      },
+    },
+  });
+
+  const classes = useStyles();
+
+  return (
+    <div className='CollectElements' style={{width: '300px'}}>
+      <CardNumberElement
+        id={'collectCardNumber'}
+        container={container}
+        table={'newTable'}
+        classes={classes}
+        column={'card_number'}
+        label={'Collect Card Number'}
+      />
+      <FileInputElement
+        id='file-input'
+        container={container}
+        classes={classes}
+        table={'newTable'}
+        column={'file_input'}
+        label={'File Input'}
+        skyflowID={'431eaa6c-5c15-4513-aa15-29f50babe882'}
+      />
+
+      <button onClick={handleFile}>Submit file</button>
+      <button onClick={handleCollect}>Collect</button>
+    </div>
+  );
+};
+
+export default CollectElements;
+```
+**Sample Response for collect():**
+```javascript
+{
+  "records": [
+    {
+      "table": "newTable",
+      "fields": {
+        "card_number": "f3907186-e7e2-466f-91e5-48e12c2bcbc1",
+      }
+    }
+  ]
+}
+```
+**Sample Response for file uploadFiles() :**
+```javascript
+{
+    "fileUploadResponse": [
+        {
+            "skyflow_id": "431eaa6c-5c15-4513-aa15-29f50babe882"
+        }
+    ]
+}
+```
+---
 ## Securely collecting data client-side using Composable Elements
 
 Composable Elements combine multiple Skyflow Elements in a single iframe, letting you create multiple Skyflow Elements in a single row. The following steps create a composable element and securely collect data through it.
@@ -817,7 +1233,11 @@ const options = {
     errorTextStyles: {                       // Optional
         base: {
             color: 'red',
+            fontFamily: '"Roboto", sans-serif'
         },
+        global: {
+            '@import': 'url("https://fonts.googleapis.com/css2?family=Roboto&display=swap")',
+        }        
     },
 };
 ```
@@ -926,6 +1346,7 @@ The `inputStyles` field accepts an object of CSS properties to apply to the form
 * `invalid`: applied when the Element has invalid input
 * `cardIcon`: applied to the card type icon in CARD_NUMBER Element
 * `copyIcon`: applied to copy icon in Elements when enableCopy option is true
+* `global`: used for global styles like font-family
 
 An example of an `inputStyles` object:
 
@@ -954,9 +1375,13 @@ inputStyles: {
     position: 'absolute',
     right: '8px',
   },
+  global: {   
+    '@import': 'url("https://fonts.googleapis.com/css2?family=Roboto&display=swap")',
+  }
 }
 ```
-The `labelStyles` field supports the `base` and `focus` states.
+The `labelStyles` field supports the `base`, `focus`, `global`.
+* requiredAsterisk: styles applied for the Asterisk symbol in the label.
 
 An example `labelStyles` object:
 
@@ -968,20 +1393,13 @@ labelStyles: {
   },
   focus: {
     color: '#1d1d1d'
+  },
+  global: {
+    '@import' :'url("https://fonts.googleapis.com/css2?family=Roboto&display=swap")',
   }
 }
 ```
-The `errorTextStyles` field only supports the `base` state, which appears when there is an error in the composable element.
 
-An example `errorTextStyles` object:
-
-```javascript
-errorTextStyles: {
-  base: {
-    color: '#f44336'
-  }
-}
-```
 The React SDK supports the following composable elements:
 
 - `CardHolderNameElement`
@@ -1710,7 +2128,7 @@ The following `props` can be passed to Skyflow reveal element:
 
 `Note`:
 
-- The `inputStyles`, `labelStyles` and `errorTextStyles` parameters accepts a styles object as described in the [previous section](#step-2-create-a-collect-element) for collecting data. But for reveal element, `inputStyles` accepts only `base` variant and `copyIcon` style object.
+- The `inputStyles`, `labelStyles` and `errorTextStyles` parameters accepts a styles object as described in the [previous section](#step-2-create-a-collect-element) for collecting data. But for reveal element, `inputStyles` accepts only `base` variant and `copyIcon` and `global` style objects.
 - `redaction` defaults to `RedactionType.PLAIN_TEXT`.
 
 #### Redaction Types
@@ -1740,23 +2158,35 @@ const App = () => {
         borderRadius: '4px',
         color: '#1d1d1d',
         padding: '10px 16px',
+        fontFamily: '"Roboto", sans-serif'
       },
       copyIcon: {
         position: 'absolute',
         right: '8px',
         top: 'calc(50% - 10px)',
       },
+      global: {
+        '@import' :'url("https://fonts.googleapis.com/css2?family=Roboto&display=swap")',
+      }
     },
     labelStyles: {
       base: {
         fontSize: '16px',
         fontWeight: 'bold',
+        fontFamily: '"Roboto", sans-serif'
       },
+      global: {
+        '@import' :'url("https://fonts.googleapis.com/css2?family=Roboto&display=swap")',
+      }      
     },
     errorTextStyles: {
       base: {
         color: 'red',
+        fontFamily: '"Roboto", sans-serif'
       },
+      global: {
+        '@import' :'url("https://fonts.googleapis.com/css2?family=Roboto&display=swap")',
+      }
     },
   })
 
