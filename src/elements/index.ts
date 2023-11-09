@@ -8,6 +8,8 @@ import ComposableContainer from 'skyflow-js/types/core/external/collect/compose-
 import RevealContainer, { IRevealElementOptions } from 'skyflow-js/types/core/external/reveal/reveal-container'
 import { IValidationRule, RedactionType } from 'skyflow-js/types/utils/common'
 
+export const FileRenderElements = {};
+
 export interface SkyflowCollectElementProps {
   container: CollectContainer | ComposableContainer
   table: string
@@ -25,18 +27,30 @@ export interface SkyflowCollectElementProps {
   onReady?: (state: unknown) => void
   eventEmitter?:any
   skyflowID?:string
-  // TODO ref
+  // TODO ref 
 }
 
 export interface SkyflowRevealElementProps {
   container: RevealContainer
-  token: string
+  token?: string
   id?: string
   label?: string
   altText?: string
   classes?: Record<string, unknown>
   options?: IRevealOptions
   redaction?: RedactionType
+  skyflowID?:string
+  table?: string
+  column?: string
+}
+export interface SkyflowRenderElementProps {
+  container: RevealContainer
+  id?: string
+  altText?: string
+  classes?: Record<string, unknown>
+  skyflowID?:string
+  table?: string
+  column?: string
 }
 
 export interface ICollectElementOptions {
