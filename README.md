@@ -317,16 +317,19 @@ const options = {
   enableCardIcon: true, // Optional, indicates whether card icon should be enabled (only applicable for CARD_NUMBER ElementType).
   format: String, // Optional, format for the element (only applicable currently for EXPIRATION_DATE ElementType).
   enableCopy: false, // Optional, enables the copy icon in collect and reveal elements to copy text to clipboard. Defaults to 'false').
+  allowedFileType: string[], // Optional, allowed extensions for the file to be uploaded.
 }
 ```
 
-`required` parameter indicates whether the field is marked as required or not. If not provided, it defaults to false
+- `required` parameter indicates whether the field is marked as required or not. If not provided, it defaults to false
 
-`enableCardIcon` parameter indicates whether the icon is visible for the CARD_NUMBER element, defaults to true
+- `enableCardIcon` parameter indicates whether the icon is visible for the CARD_NUMBER element, defaults to true
 
-`format` parameter takes string value and indicates the format pattern applicable to the element type, It's currently only applicable to `EXPIRATION_DATE` and `EXPIRATION_YEAR` element types.
+- `format` parameter takes string value and indicates the format pattern applicable to the element type, It's currently only applicable to `EXPIRATION_DATE` and `EXPIRATION_YEAR` element types.
 
-`enableCopy` parameter indicates whether the copy icon is visible in collect and reveal elements.
+- `enableCopy` parameter indicates whether the copy icon is visible in collect and reveal elements.
+
+- `allowedFileType` parameter indicates the allowedFileType extensions to be uploaded.
 
 The values that are accepted for `EXPIRATION_DATE` are
 
@@ -948,6 +951,131 @@ export default App
     ]
 }
 ```
+#### File upload with allowedFileType option
+
+```javascript
+import React from 'react';
+import {
+  CardNumberElement,
+  useCollectContainer,
+  useMakeSkyflowStyles,
+  FileInputElement,
+} from 'skyflow-react-js';
+
+const CollectElements = () => {
+  const container = useCollectContainer();
+
+  const handleCollect = () => {
+    const response = container.collect();
+    response
+      .then((res: unknown) => {
+        console.log(JSON.stringify(res));
+      })
+      .catch((e: unknown) => {
+        console.log(e);
+      });
+  };
+  
+  const options = {
+    allowedFileType: [".pdf",".png"]
+  };
+  
+  const handleFile = () => {
+    const response = container.uploadFiles({});
+    response
+      .then((res: unknown) => {
+        console.log(JSON.stringify(res));
+      })
+      .catch((e: unknown) => {
+        console.log(e);
+      });
+  };
+
+  const useStyles = useMakeSkyflowStyles({
+    inputStyles: {
+      base: {
+        border: '1px solid black',
+        borderRadius: '4px',
+        color: '#1d1d1d',
+        padding: '10px 16px',
+      },
+      complete: {
+        color: '#4caf50',
+      },
+      empty: {},
+      focus: {},
+      invalid: {
+        color: '#f44336',
+      },
+    },
+    labelStyles: {
+      base: {
+        fontSize: '16px',
+        fontWeight: 'bold',
+      },
+    },
+    errorTextStyles: {
+      base: {
+        color: 'red',
+      },
+    },
+  });
+
+  const classes = useStyles();
+
+  return (
+    <div className='CollectElements' style={{width: '300px'}}>
+      <CardNumberElement
+        id={'collectCardNumber'}
+        container={container}
+        table={'newTable'}
+        classes={classes}
+        column={'card_number'}
+        label={'Collect Card Number'}
+      />
+      <FileInputElement
+        id='file-input'
+        container={container}
+        classes={classes}
+        table={'newTable'}
+        column={'file_input'}
+        label={'File Input'}
+        skyflowID={'431eaa6c-5c15-4513-aa15-29f50babe882'}
+        options={options}
+      />
+
+      <button onClick={handleFile}>Submit file</button>
+      <button onClick={handleCollect}>Collect</button>
+    </div>
+  );
+};
+
+export default CollectElements;
+```
+**Sample Response for collect():**
+```javascript
+{
+  "records": [
+    {
+      "table": "newTable",
+      "fields": {
+        "card_number": "f3907186-e7e2-466f-91e5-48e12c2bcbc1",
+      }
+    }
+  ]
+}
+```
+**Sample Response for file uploadFiles() :**
+```javascript
+{
+    "fileUploadResponse": [
+        {
+            "skyflow_id": "431eaa6c-5c15-4513-aa15-29f50babe882"
+        }
+    ]
+}
+```
+
 #### File upload with additional elements
 
 ```javascript
@@ -1777,12 +1905,190 @@ export default ComposableElements;
 
 ```
 
-
-
-
 ## Securely revealing data client-side
+-  [**Retrieving data from the vault**](#retrieving-data-from-the-vault)
+-  [**Using Skyflow Elements to reveal data**](#using-skyflow-elements-to-reveal-data)
 
-### Using Skyflow Elements to reveal data
+## Retrieving data from the vault
+
+For non-PCI use-cases, retrieving data from the vault and revealing it in the browser can be done either using the SkyflowID's, unique column values as described below
+
+- ### Using Skyflow ID's or Unique Column Values
+    You can retrieve data from the vault with the get(records) method using either Skyflow IDs or unique column values.
+
+    The records parameter accepts a JSON object that contains an array of either Skyflow IDs or unique column names and values.
+
+    Note: You can use either Skyflow IDs  or unique values to retrieve records. You can't use both at the same time.
+
+    Skyflow.RedactionTypes accepts four values:
+    - `PLAIN_TEXT`
+    - `MASKED`
+    - `REDACTED`
+    - `DEFAULT`
+
+    You must apply a redaction type to retrieve data.
+
+#### Schema (Skyflow IDs)
+
+```javascript
+data = {
+ records: [
+   {
+     ids: ["SKYFLOW_ID_1", "SKYFLOW_ID_2"],      // List of skyflow_ids for the records to fetch.
+     table: "NAME_OF_SKYFLOW_TABLE",             // Name of table holding the records in the vault.
+     redaction: Skyflow.RedactionType,           // Redaction type to apply to retrieved data.
+   },
+ ],
+};
+```
+#### Schema (Unique column values)
+
+```javascript
+data = {
+ records: [
+   {
+     table: "NAME_OF_SKYFLOW_TABLE",        // Name of table holding the records in the vault.
+     columnName: "UNIQUE_COLUMN_NAME",      // Unique column name in the vault.
+     columnValues: [                        // List of given unique column values. 
+       "<COLUMN_VALUE_2>",
+       "<COLUMN_VALUE_3>",
+     ],                                     // Required when specifying a unique column
+     redaction: Skyflow.RedactionType,      // Redaction type applies to retrieved data.
+   },
+ ],
+};
+```
+Example usage (Skyflow IDs)
+
+```jsx
+import React from 'react';
+import {
+    useSkyflow
+} from 'skyflow-react-js';
+
+const GetRecords = () => {
+
+    const skyflow = useSkyflow()
+
+    const handleGetMethod = () => {
+        const response = skyflow.get({
+            records: [{
+                    ids: ['f8d8a622-b557-4c6b-a12c-c5ebe0b0bfd9'],
+                    table: 'cards',
+                    redaction: Skyflow.RedactionType.PLAIN_TEXT,
+                },
+                {
+                    ids: ["da26de53-95d5-4bdb-99db-8d8c66a35ff9"],
+                    table: "contacts",
+                    redaction: Skyflow.RedactionType.PLAIN_TEXT,
+                },
+            ],
+        });
+        response.then((res: any) => {
+                console.log(res)
+            })
+            .catch((e: any) => {
+                console.log(e)
+            });
+    }
+	return ( 
+    <div id = 'get-div' >
+		<button id = 'get-button' onClick = {callGet} > Get Records </button>  
+    </div >
+	)
+}
+```
+Example response
+
+```javascript
+{
+   "records": [
+       {
+           "fields": {
+              "card_number": "4111111111111111",
+              "cvv": "127",
+              "expiry_date": "11/2035",
+              "fullname": "myname",
+              "id": "f8d8a622-b557-4c6b-a12c-c5ebe0b0bfd9"
+           },
+           "table": "cards"
+       }
+   ],
+   "errors": [
+       {
+           "error": {
+              "code": "404",
+              "description": "No Records Found"
+           },
+           "ids": ["da26de53-95d5-4bdb-99db-8d8c66a35ff9"]
+       }
+   ]
+}
+```
+
+Example usage (Unique column values)
+
+```jsx
+import React from 'react';
+import {
+	useSkyflow
+} from 'skyflow-react-js';
+
+const GetRecords = () => {
+
+	const skyflow = useSkyflow()
+
+	const handleGetMethod = () => {
+		const response = skyflow.get({
+			records: [{
+				table: "cards",
+				redaction: RedactionType.PLAIN_TEXT,
+				columnName: "card_id",
+				columnValues: ["123", "456"],
+			}],
+		});
+		response.then((res: any) => {
+				console.log(res)
+			})
+			.catch((e: any) => {
+				console.log(e)
+			});
+	}
+	return ( 
+    <div id = 'get-div' >
+		<button id = 'get-button' onClick = {callGet} > Get Records </button>  
+    </div >
+	)
+}
+```
+
+Sample response: 
+```javascript
+{
+   "records": [
+       {
+           "fields": {
+               "card_id": "123",
+               "expiry_date": "11/35",
+               "fullname": "myname",
+               "id": "f8d2-b557-4c6b-a12c-c5ebfd9"
+           },
+           "table": "cards"
+       },
+       {
+           "fields": {
+               "card_id": "456",
+               "expiry_date": "10/23",
+               "fullname": "sam",
+               "id": "da53-95d5-4bdb-99db-8d8c5ff9"
+           },
+           "table": "cards"
+       }
+   ]
+}
+```
+
+## Using Skyflow Elements to reveal data
 
 Skyflow Elements can be used to securely reveal data in a browser without exposing your front end to the sensitive data. This is great for use cases like card issuance where you may want to reveal the card number to a user without increasing your PCI compliance scope.
 

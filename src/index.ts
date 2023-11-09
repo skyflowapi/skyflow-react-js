@@ -23,6 +23,7 @@ import useCollectListeners from './hooks/CollectListner'
 import useCollectContainer from './hooks/CollectContainer'
 import useComposableContainer from './hooks/ComposableContainer'
 import useRenderFile from './hooks/RenderFile'
+import useSkyflow from './hooks/Skyflow'
 
 const LogLevel = Skyflow.LogLevel
 const Env = Skyflow.Env
@@ -53,5 +54,6 @@ export {
   REGEX_MATCH_RULE,
   InputFieldElement,
   useRenderFile,
-  FileRenderElement
+  FileRenderElement,
+  useSkyflow
 }

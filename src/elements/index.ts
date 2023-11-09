@@ -58,6 +58,7 @@ export interface ICollectElementOptions {
   enableCardIcon?: boolean
   format?: string
   enableCopy?: boolean
+  allowedFileType?: string[]
 }
 
 export type IRevealOptions = {
