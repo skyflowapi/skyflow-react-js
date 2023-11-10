@@ -15,13 +15,16 @@ import ExpirationDateElement from './elements/ExpirationDate'
 import RevealElement from './elements/RevealElement'
 import InputFieldElement from './elements/InputField'
 import ComposableContainerComponent from './elements/ComposableContainer'
+import FileRenderElement from './elements/FileRenderElement'
 
 import useRevealContainer from './hooks/RevealContainer'
 import useMakeSkyflowStyles from './hooks/MakeSkyflowStyles'
 import useCollectListeners from './hooks/CollectListner'
 import useCollectContainer from './hooks/CollectContainer'
 import useComposableContainer from './hooks/ComposableContainer'
+import useRenderFile from './hooks/RenderFile'
 import useSkyflow from './hooks/Skyflow'
+
 const LogLevel = Skyflow.LogLevel
 const Env = Skyflow.Env
 
@@ -50,5 +53,7 @@ export {
   LENGTH_MATCH_RULE,
   REGEX_MATCH_RULE,
   InputFieldElement,
+  useRenderFile,
+  FileRenderElement,
   useSkyflow
 }
