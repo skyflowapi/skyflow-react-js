@@ -32,16 +32,13 @@ export interface SkyflowCollectElementProps {
 
 export interface SkyflowRevealElementProps {
   container: RevealContainer
-  token?: string
+  token: string
   id?: string
   label?: string
   altText?: string
   classes?: Record<string, unknown>
   options?: IRevealOptions
   redaction?: RedactionType
-  skyflowID?:string
-  table?: string
-  column?: string
 }
 export interface SkyflowRenderElementProps {
   container: RevealContainer
