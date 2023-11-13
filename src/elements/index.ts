@@ -42,12 +42,12 @@ export interface SkyflowRevealElementProps {
 }
 export interface SkyflowRenderElementProps {
   container: RevealContainer
-  id?: string
+  id: string
   altText?: string
   classes?: Record<string, unknown>
-  skyflowID?:string
-  table?: string
-  column?: string
+  skyflowID:string
+  table: string
+  column: string
 }
 
 export interface ICollectElementOptions {
