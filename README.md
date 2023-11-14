@@ -2273,6 +2273,7 @@ import {FileRenderElement} from 'skyflow-react-js';
 import Skyflow from 'skyflow-js';
 
 <FileRenderElement
+  id= 'string'        // Required, id that can passed to the element, it should be unique.
   skyflowID= 'string' // Required, skyflow id of the file to be render
   column= 'string'    // Required, column name of the file to be render
   table= 'string'     // Required, table name of the file to be render
@@ -2284,12 +2285,12 @@ The following `props` can be passed to Skyflow file render element:
 ```javascript
 {
   container: 'RevealContainer', // Required, the reveal container.
-  id: string,                   // Required, id that can passed to the element.
+  id: 'string',                 // Required, id that can passed to the element, it should be unique.
   classes: {},                  // Optional, styles that should be applied to the element.
   altText: 'string',            // Optional, string that is shown before file render call
   skyflowID: 'string',          // Required, skyflow id of the file to be render
   column: 'string',             // Required, column name of the file to be render
-  table: 'string',               // Required, table name of the file to be render
+  table: 'string',              // Required, table name of the file to be render
 }
 ```
 
@@ -2336,6 +2337,8 @@ fileElement
     // Handle error.
   });
 ```
+
+`Note`: id passed in the element should be unique and same id should be passed in useRenderFile('id') hook.
 
 ## End to end example of file render
 
