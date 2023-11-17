@@ -8,9 +8,10 @@ import CustomValidations from './components/CustomValidations';
 import DynamicComposableElements from './components/DynamicComposableElements';
 import ElementListners from './components/ElementListeners';
 import RevealElements from './components/RevealElements';
-import FileUploadAndRender from './components/FileUploadAndRender';
+import FileRender from './components/FileRenderElements';
 
 const App = () => {
+
   return (
     <div id='App'>
       <div id='Sample for Composable Elements'>
@@ -41,9 +42,9 @@ const App = () => {
       </div>
       <div id='Sample for File Render Element'>
         <p>
-          <b>Sample for upload and File Render Element</b>
+          <b>Sample for File Render Element</b>
         </p>
-        <FileUploadAndRender />
+        <FileRender />
       </div>
       <br />
       <div id='Sample for Custom Validations'>

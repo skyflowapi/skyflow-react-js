@@ -2338,12 +2338,12 @@ fileElement
   });
 ```
 
-`Note`: id passed in the element should be unique and same id should be passed in useRenderFile('id') hook.
+`Note`: The div id passed in the element should be unique, and the same div id should be passed in the useRenderFile('id') hook.
 
 ## End to end example of file render
 
 ```javascript
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 import {
   useMakeSkyflowStyles,
   useRevealContainer,
@@ -2354,9 +2354,33 @@ import {
 const App = () => {
   const revealContainer = useRevealContainer();
 
+  const [visible , setVisible] = useState(false);
+  const [skyflowID, updateSkyflowID] = useState('');
+
+  // REPLACE with your custom implementation to fetch skyflow_id from backend service.
+  // Sample implementation
+  useEffect(() => {
+    fetch('<BACKEND_URL>')
+      .then((response: any) => {
+
+      // on successful fetch skyflow_id
+      const skyflowID = response.skyflow_id;
+
+      // set skyflow id
+      updateSkyflowID(skyflowID);
+      setVisible(true);
+
+      }).catch((error) => {
+      // failed to fetch skyflow_id
+      console.log(error);
+    });
+  }, []);
+
+  // pass file render element div id in useRenderFile hook
   const render = useRenderFile('fileElement-1');
 
   const handleRender = () => {
+    // call render file method
     render?.renderFile().then((data) => console.log(data)).catch( err => console.log(err));
   }
 
@@ -2385,16 +2409,15 @@ const App = () => {
     <div className='App'>
       <header className='App-header'>
       <h4>Render PDF</h4>
-      <FileRenderElement
+      { visible &&  <FileRenderElement // create element, pass fetched skyflow id and other details here.
         id={'fileElement-1'}
         container={revealContainer}
         classes={classes}
-        skyflowID={'b63ec4e0-bbad-4e43-96e6-6bd50f483f75'}
+        skyflowID={skyflowID}
         column={'file'}
         table={'credit_cards'}
         altText={'Image File'}
-
-      />
+      /> }
       <button onClick={handleRender}>Reveal</button>
       </header>
     </div>
