@@ -142,6 +142,7 @@ For `env` parameter, there are 2 accepted values in `Env`
 ## Securely collecting data client-side
 
 - [**Using Skyflow Elements to collect data**](#using-skyflow-elements-to-collect-data)
+- [**Using Skyflow Elements to update data**](#using-skyflow-elements-to-update-data)
 - [**Event Listener on Collect Elements**](#event-listener-on-collect-elements)
 - [**Using Skyflow File Input Element to upload a file**](#using-skyflow-file-input-element-to-upload-a-file)
 
@@ -674,6 +675,222 @@ const Form = (props) => {
     />
   );
 };
+```
+
+## Using Skyflow Elements to update data
+
+You can update the data in a vault with Skyflow Elements. Use the following steps to securely update data. 
+
+### Step 1: Create a container
+
+First create a container for the form elements using the `useCollectContainer` hook as shown below:
+
+```jsx
+const container = useCollectContainer()
+```
+
+### Step 2: Create a collect Element
+
+
+```jsx
+import { CardNumberElement} from 'skyflow-react-js';
+
+<CardNumberElement
+  table='<TABLE_NAME>'
+  container='<CONTAINER>'
+  column='<COLUMN_NAME>'
+  skyflowID='<SKYFLOW_ID>'        // The skyflow_id of the record to be updated.
+  ...props
+/>
+```
+
+The following `props` can be passed to Skyflow collect Element:
+
+```javascript
+{
+  container: 'CollectContainer' // Required, the collect container.
+  table: 'string',              // Required, the table this data belongs to.
+  column: 'string',             // Required, the column into which this data should be inserted.
+  id: string,                   // Optional, id that can passed to the element.
+  classes: {},                  // Optional, styles that should be applied to the element.
+  label: 'string',              // Optional, label for the form element.
+  placeholder: 'string',        // Optional, placeholder for the form element.
+  validations: [],              // Optional, array of validation rules.
+  options: {},                  // Optional, options that can be passed to an element.
+  onChange: Function,           // Optional, function that is passed to trigger the onChange event.
+  onFocus: Function,            // Optional, function that is passed to trigger the onFocus event.
+  onBlur: Function,             // Optional, function that is passed to trigger the onBlur event.
+  onReady: Function,            // Optional, function that is passed to trigger the onReady event.
+  skyflowID: 'string',          // The skyflow_id of the record to be updated.
+}
+```
+
+The `table` and `column` fields indicate which table and column in the vault the Element corresponds to.
+
+`skyflowID` indicates the record that you want to update.
+
+
+**Note**:
+
+- Use dot delimited strings to specify columns nested inside JSON fields (e.g. `address.street.line1`)
+
+### Step 3: Update data from Elements 
+
+
+When the form is ready to be submitted, call the `collect(options?)` method on the container object. The `options` parameter takes a object of optional parameters as shown below:
+
+- `tokens`: indicates whether tokens for the collected data should be returned or not. Defaults to 'true'
+- `additionalFields`: Non-PCI elements data to be inserted into the vault which should be in the `records` object format.
+- `upsert`: To support upsert operations while collecting data from Skyflow elements, pass the table and column marked as unique in the table.
+
+```javascript
+const options = {
+  tokens: true, // Optional, indicates whether tokens for the collected data should be returned. Defaults to 'true'
+  additionalFields: {
+    records: [
+      {
+        table: 'string',          // Table into which record should be inserted
+        fields: {
+          column1: 'value',       // Column names should match vault column names
+          skyflowID: "value",     // The skyflow_id of the record to be updated.
+          // ...additional fields here
+        },
+      },
+      // ...additional records here
+    ],
+  }, // Optional
+  upsert: [
+    // Upsert operations support in the vault
+    {
+      table: 'string',             // Table name
+      column: 'value',             // Unique column in the table
+    },
+  ], //Optional
+}
+
+container.collect(options)
+```
+
+**Note:** `skyflowID` is required if you want to update the data. If `skyflowID` isn't specified, the `collect(options?)` method creates a new record in the vault.
+
+### End to end example of updating data with Skyflow Elements
+
+```jsx
+import React from 'react'
+import { CardNumberElement, useCollectContainer, useMakeSkyflowStyles, CardHolderNameElement } from 'skyflow-react-js'
+
+const App = () => {
+  const container = useCollectContainer()
+
+  const useStyles = useMakeSkyflowStyles({
+    inputStyles: {
+      base: {
+        border: '1px solid black',
+        borderRadius: '4px',
+        color: '#1d1d1d',
+        padding: '10px 16px',
+      },
+      complete: {
+        color: '#4caf50',
+      },
+      empty: {},
+      focus: {},
+      invalid: {
+        color: '#f44336',
+      },
+      cardIcon: {
+        position: 'absolute',
+        left: '8px',
+        bottom: 'calc(50% - 12px)',
+      },
+    },
+    labelStyles: {
+      base: {
+        fontSize: '16px',
+        fontWeight: 'bold',
+      },
+    },
+    errorTextStyles: {
+      base: {
+        color: 'blue',
+      },
+    },
+  })
+
+  const options = {
+    enableCopy: true,
+  }
+
+  const classes = useStyles()
+
+  const handleCollect = () => {
+    const nonPCIRecords = {
+          records: [
+            {
+              table: 'cards',
+              fields: {
+              gender: 'MALE',
+              skyflowID:  '431eaa6c-5c15-4513-aa15-29f50babe882',
+              },
+            },
+          ],
+      };
+    const response = container.collect({
+          tokens: true,
+          additionalFields: nonPCIRecords,
+    });
+    response
+      .then((res: unknown) => {
+        console.log(JSON.stringify(res))
+      })
+      .catch((e: unknown) => {
+        console.log(e)
+      })
+  }
+
+  return (
+    <div className='App'>
+      <header className='App-header'>
+        <CardNumberElement
+          container={container}
+          table={'cards'}
+          classes={classes}
+          column={'cardNumber'}
+          label={'Collect Card Number'}
+          options={options}
+          skyflowID={'431eaa6c-5c15-4513-aa15-29f50babe882'}
+        />
+        <CardHolderNameElement
+        container={container}
+        table={'cards'}
+        column={'name'}
+        label={'card holder name'}
+        skyflowID={'431eaa6c-5c15-4513-aa15-29f50babe882'}
+      />
+        <button onClick={handleCollect}>Collect</button>
+      </header>
+    </div>
+  )
+}
+
+export default App
+```
+
+**Sample Response :**
+```javascript
+{
+ "records": [
+   {
+     "table": "cards",
+     "fields": {
+       "skyflow_id": "431eaa6c-5c15-4513-aa15-29f50babe882",
+       "cardNumber": "f3907186-e7e2-466f-91e5-48e12c2bcbc1",
+       "first_name": "131e70dc-6f76-4319-bdd3-96281e051051",
+       "gender": "12f670af-6c7d-4837-83fb-30365fbc0b1e"
+     }
+   }
+ ]
+}
 ```
 
 ## Event Listener on Collect Elements
@@ -1908,6 +2125,7 @@ export default ComposableElements;
 ## Securely revealing data client-side
 -  [**Retrieving data from the vault**](#retrieving-data-from-the-vault)
 -  [**Using Skyflow Elements to reveal data**](#using-skyflow-elements-to-reveal-data)
+-  [**Render a file with a File Element**](#render-a-file-with-a-file-element)
 
 ## Retrieving data from the vault
 
@@ -2248,6 +2466,192 @@ export default App
         "description": "Tokens not found for 89024714-6a26-4256-b9d4-55ad69aa4047"
       }
     }
+  ]
+}
+```
+
+## Render a file with a File Element
+
+You can render files using the Skyflow File Element. Use the following steps to securely render a file.
+
+## Step 1: Create a container
+
+To start, create a container using the `useRevealContainer()` method of the Skyflow client as shown below.
+
+```jsx
+const revealContainer = useRevealContainer()
+```
+
+## Step 2: Create a File Element
+Define a Skyflow Element to render the file as shown below.
+
+```jsx
+import {FileRenderElement} from 'skyflow-react-js';
+import Skyflow from 'skyflow-js';
+
+<FileRenderElement
+  id= 'string'        // Required, id that can passed to the element, it should be unique.
+  skyflowID= 'string' // Required, skyflow id of the file to be render
+  column= 'string'    // Required, column name of the file to be render
+  table= 'string'     // Required, table name of the file to be render
+  ...props
+/>
+```
+The following `props` can be passed to Skyflow file render element:
+
+```javascript
+{
+  container: 'RevealContainer', // Required, the reveal container.
+  id: 'string',                 // Required, id that can passed to the element, it should be unique.
+  classes: {},                  // Optional, styles that should be applied to the element.
+  altText: 'string',            // Optional, string that is shown before file render call
+  skyflowID: 'string',          // Required, skyflow id of the file to be render
+  column: 'string',             // Required, column name of the file to be render
+  table: 'string',              // Required, table name of the file to be render
+}
+```
+
+The inputStyles and errorTextStyles parameters accept a styles object as described in the[previous section](#step-2-create-a-collect-element) for collecting data. But for render file elements, inputStyles accepts only base variant, global style objects.
+
+An example of a inputStyles object:
+
+```javascript
+inputStyles: {
+  base: {
+      height: '400px',
+      width: '300px',
+  },
+  global: {
+    '@import' :'url("https://fonts.googleapis.com/css2?family=Roboto&display=swap")',
+  }
+}
+```
+An example of a errorTextStyles object:
+```javascript
+errorTextStyles: {
+  base: {
+    color: '#f44336',
+  },
+  global: {
+    '@import' :'url("https://fonts.googleapis.com/css2?family=Roboto&display=swap")',
+  }
+}
+```
+
+## Step 3: Render File
+
+When the element is created and mounted, use useRenderFile(id) hook to pass the div id of file render element and  call the renderFile() method on the file render element instance return by useRenderFile(id) as shown below:
+
+```javascript
+const fileElement = useRenderFile('fileElement-1');
+
+fileElement
+  .renderFile()
+  .then(data => {
+    // Handle success.
+  })
+  .catch(err => {
+    // Handle error.
+  });
+```
+
+`Note`: The div id passed in the element should be unique, and the same div id should be passed in the useRenderFile('id') hook.
+
+## End to end example of file render
+
+```javascript
+import React, { useEffect, useState } from 'react';
+import {
+  useMakeSkyflowStyles,
+  useRevealContainer,
+  useRenderFile,
+  FileRenderElement,
+} from 'skyflow-react-js';
+
+const App = () => {
+  const revealContainer = useRevealContainer();
+
+  const [visible , setVisible] = useState(false);
+  const [skyflowID, updateSkyflowID] = useState('');
+
+  // REPLACE with your custom implementation to fetch skyflow_id from backend service.
+  // Sample implementation
+  useEffect(() => {
+    fetch('<BACKEND_URL>')
+      .then((response: any) => {
+
+      // on successful fetch skyflow_id
+      const skyflowID = response.skyflow_id;
+
+      // set skyflow id
+      updateSkyflowID(skyflowID);
+      setVisible(true);
+
+      }).catch((error) => {
+      // failed to fetch skyflow_id
+      console.log(error);
+    });
+  }, []);
+
+  // pass file render element div id in useRenderFile hook
+  const render = useRenderFile('fileElement-1');
+
+  const handleRender = () => {
+    // call render file method
+    render?.renderFile().then((data) => console.log(data)).catch( err => console.log(err));
+  }
+
+  const useStyles = useMakeSkyflowStyles({
+    inputStyles: {
+      base: {
+        height: '300px',
+        width: '400px',
+      },
+    },
+    errorTextStyles: {
+      base: {
+        color: 'red',
+        fontFamily: '"Roboto", sans-serif'
+      },
+      global: {
+        '@import' :'url("https://fonts.googleapis.com/css2?family=Roboto&display=swap")',
+      },
+    },
+  });
+
+
+  const classes = useStyles()
+
+  return (
+    <div className='App'>
+      <header className='App-header'>
+      <h4>Render PDF</h4>
+      { visible &&  <FileRenderElement // create element, pass fetched skyflow id and other details here.
+        id={'fileElement-1'}
+        container={revealContainer}
+        classes={classes}
+        skyflowID={skyflowID}
+        column={'file'}
+        table={'credit_cards'}
+        altText={'Image File'}
+      /> }
+      <button onClick={handleRender}>Reveal</button>
+      </header>
+    </div>
+  )
+}
+
+export default App
+```
+
+## Sample Success Response
+```json
+{
+  "success": [
+     {
+     "skyflow_id": "b63ec4e0-bbad-4e43-96e6-6bd50f483f75",
+     "column": "file"
+   },
   ]
 }
 ```
