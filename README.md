@@ -1908,6 +1908,7 @@ export default ComposableElements;
 ## Securely revealing data client-side
 -  [**Retrieving data from the vault**](#retrieving-data-from-the-vault)
 -  [**Using Skyflow Elements to reveal data**](#using-skyflow-elements-to-reveal-data)
+-  [**Render a file with a File Element**](#render-a-file-with-a-file-element)
 
 ## Retrieving data from the vault
 
@@ -2248,6 +2249,192 @@ export default App
         "description": "Tokens not found for 89024714-6a26-4256-b9d4-55ad69aa4047"
       }
     }
+  ]
+}
+```
+
+## Render a file with a File Element
+
+You can render files using the Skyflow File Element. Use the following steps to securely render a file.
+
+## Step 1: Create a container
+
+To start, create a container using the `useRevealContainer()` method of the Skyflow client as shown below.
+
+```jsx
+const revealContainer = useRevealContainer()
+```
+
+## Step 2: Create a File Element
+Define a Skyflow Element to render the file as shown below.
+
+```jsx
+import {FileRenderElement} from 'skyflow-react-js';
+import Skyflow from 'skyflow-js';
+
+<FileRenderElement
+  id= 'string'        // Required, id that can passed to the element, it should be unique.
+  skyflowID= 'string' // Required, skyflow id of the file to be render
+  column= 'string'    // Required, column name of the file to be render
+  table= 'string'     // Required, table name of the file to be render
+  ...props
+/>
+```
+The following `props` can be passed to Skyflow file render element:
+
+```javascript
+{
+  container: 'RevealContainer', // Required, the reveal container.
+  id: 'string',                 // Required, id that can passed to the element, it should be unique.
+  classes: {},                  // Optional, styles that should be applied to the element.
+  altText: 'string',            // Optional, string that is shown before file render call
+  skyflowID: 'string',          // Required, skyflow id of the file to be render
+  column: 'string',             // Required, column name of the file to be render
+  table: 'string',              // Required, table name of the file to be render
+}
+```
+
+The inputStyles and errorTextStyles parameters accept a styles object as described in the[previous section](#step-2-create-a-collect-element) for collecting data. But for render file elements, inputStyles accepts only base variant, global style objects.
+
+An example of a inputStyles object:
+
+```javascript
+inputStyles: {
+  base: {
+      height: '400px',
+      width: '300px',
+  },
+  global: {
+    '@import' :'url("https://fonts.googleapis.com/css2?family=Roboto&display=swap")',
+  }
+}
+```
+An example of a errorTextStyles object:
+```javascript
+errorTextStyles: {
+  base: {
+    color: '#f44336',
+  },
+  global: {
+    '@import' :'url("https://fonts.googleapis.com/css2?family=Roboto&display=swap")',
+  }
+}
+```
+
+## Step 3: Render File
+
+When the element is created and mounted, use useRenderFile(id) hook to pass the div id of file render element and  call the renderFile() method on the file render element instance return by useRenderFile(id) as shown below:
+
+```javascript
+const fileElement = useRenderFile('fileElement-1');
+
+fileElement
+  .renderFile()
+  .then(data => {
+    // Handle success.
+  })
+  .catch(err => {
+    // Handle error.
+  });
+```
+
+`Note`: The div id passed in the element should be unique, and the same div id should be passed in the useRenderFile('id') hook.
+
+## End to end example of file render
+
+```javascript
+import React, { useEffect, useState } from 'react';
+import {
+  useMakeSkyflowStyles,
+  useRevealContainer,
+  useRenderFile,
+  FileRenderElement,
+} from 'skyflow-react-js';
+
+const App = () => {
+  const revealContainer = useRevealContainer();
+
+  const [visible , setVisible] = useState(false);
+  const [skyflowID, updateSkyflowID] = useState('');
+
+  // REPLACE with your custom implementation to fetch skyflow_id from backend service.
+  // Sample implementation
+  useEffect(() => {
+    fetch('<BACKEND_URL>')
+      .then((response: any) => {
+
+      // on successful fetch skyflow_id
+      const skyflowID = response.skyflow_id;
+
+      // set skyflow id
+      updateSkyflowID(skyflowID);
+      setVisible(true);
+
+      }).catch((error) => {
+      // failed to fetch skyflow_id
+      console.log(error);
+    });
+  }, []);
+
+  // pass file render element div id in useRenderFile hook
+  const render = useRenderFile('fileElement-1');
+
+  const handleRender = () => {
+    // call render file method
+    render?.renderFile().then((data) => console.log(data)).catch( err => console.log(err));
+  }
+
+  const useStyles = useMakeSkyflowStyles({
+    inputStyles: {
+      base: {
+        height: '300px',
+        width: '400px',
+      },
+    },
+    errorTextStyles: {
+      base: {
+        color: 'red',
+        fontFamily: '"Roboto", sans-serif'
+      },
+      global: {
+        '@import' :'url("https://fonts.googleapis.com/css2?family=Roboto&display=swap")',
+      },
+    },
+  });
+
+
+  const classes = useStyles()
+
+  return (
+    <div className='App'>
+      <header className='App-header'>
+      <h4>Render PDF</h4>
+      { visible &&  <FileRenderElement // create element, pass fetched skyflow id and other details here.
+        id={'fileElement-1'}
+        container={revealContainer}
+        classes={classes}
+        skyflowID={skyflowID}
+        column={'file'}
+        table={'credit_cards'}
+        altText={'Image File'}
+      /> }
+      <button onClick={handleRender}>Reveal</button>
+      </header>
+    </div>
+  )
+}
+
+export default App
+```
+
+## Sample Success Response
+```json
+{
+  "success": [
+     {
+     "skyflow_id": "b63ec4e0-bbad-4e43-96e6-6bd50f483f75",
+     "column": "file"
+   },
   ]
 }
 ```
