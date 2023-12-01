@@ -22,6 +22,7 @@ const CardHolderNameElement: FC<SkyflowCollectElementProps> = ({ ...props }) => 
         {
           table: props.table,
           column: props.column,
+          ...(props.skyflowID ? {skyflowID: props.skyflowID} : {}),
           ...props.classes,
           placeholder: props.placeholder || '',
           label: props.label || '',

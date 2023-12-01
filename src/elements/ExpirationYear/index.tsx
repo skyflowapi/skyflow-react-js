@@ -22,6 +22,7 @@ const ExpirationYearElement: FC<SkyflowCollectElementProps> = ({ ...props }) => 
         {
           table: props.table,
           column: props.column,
+          ...(props.skyflowID ? {skyflowID: props.skyflowID} : {}),
           ...props.classes,
           placeholder: props.placeholder || '',
           label: props.label || '',
@@ -30,6 +31,7 @@ const ExpirationYearElement: FC<SkyflowCollectElementProps> = ({ ...props }) => 
         },
         { ...props.options },
       )
+      
       setElement(newElement);
       if(props?.container.type === Skyflow.ContainerType.COLLECT){
         const collectElement = newElement as CollectElement;
