@@ -7,11 +7,11 @@ import { v4 as uuid } from 'uuid';
 import Skyflow from 'skyflow-js';
 
 const RevealElement: FC<SkyflowRevealElementProps> = ({ ...props }) => {
-  const uniqueDivId = uuid();
+  const uniqueDivId = React.useRef(uuid());
   const [element,setElement] = React.useState<any>(null);
 
   React.useEffect(() => {
-    const divElement = document.getElementById(props?.id || `reveal-${uniqueDivId}`);
+    const divElement = document.getElementById(props?.id || `reveal-${uniqueDivId.current}`);
     try {
       if (divElement) {
         divElement.innerHTML = ''
@@ -27,7 +27,7 @@ const RevealElement: FC<SkyflowRevealElementProps> = ({ ...props }) => {
         { ...props.options },
       )
       setElement(RevealElement);
-      RevealElement.mount(props.id ? `#${props.id}` : `#reveal-${uniqueDivId}`)
+      RevealElement.mount(props.id ? `#${props.id}` : `#reveal-${uniqueDivId.current}`)
     } catch (e) {
       // eslint-disable-next-line no-console
       console.error(e)
@@ -40,7 +40,7 @@ const RevealElement: FC<SkyflowRevealElementProps> = ({ ...props }) => {
     }
   },[props.token])
 
-  return <div id={props.id ? props.id : `reveal-${uniqueDivId}` }></div>
+  return <div id={props.id ? props.id : `reveal-${uniqueDivId.current}` }></div>
 }
 
 export default React.memo(RevealElement);

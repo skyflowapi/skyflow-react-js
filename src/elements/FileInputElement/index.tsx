@@ -13,7 +13,7 @@ import useUpdateElement from '../../hooks/UpdateElement'
 import ComposableElement from 'skyflow-js/types/core/external/collect/compose-collect-element'
 
 const FileInputElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
-  const uniqueDivId = uuid();
+  const uniqueDivId = React.useRef(uuid());
   const [element, setElement] = React.useState<CollectElement | ComposableElement | null>(null);
 
   React.useEffect(() => {
@@ -36,7 +36,7 @@ const FileInputElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
 
       if (props?.container.type === Skyflow.ContainerType.COLLECT) {
         const collectElement = newElement as CollectElement;
-        collectElement.mount(props.id ? `#${props.id}` : `#FILE_INPUT-id-${uniqueDivId}`)
+        collectElement.mount(props.id ? `#${props.id}` : `#FILE_INPUT-id-${uniqueDivId.current}`)
       }
       else if (props?.container.type === Skyflow.ContainerType.COMPOSABLE) {
         if (!props.eventEmitter)
@@ -55,7 +55,7 @@ const FileInputElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
   useUpdateElement(props, element);
   return (
     props?.container?.type === Skyflow.ContainerType.COLLECT
-      ? (<div id={props.id ? props.id : `FILE_INPUT-id-${uniqueDivId}`}></div>)
+      ? (<div id={props.id ? props.id : `FILE_INPUT-id-${uniqueDivId.current}`}></div>)
       : (<></>)
   )
 }

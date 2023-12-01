@@ -6,10 +6,10 @@ import { FileRenderElements, SkyflowRenderElementProps } from '..'
 import { v4 as uuid } from 'uuid';
 
 const FileRenderElement: FC<SkyflowRenderElementProps> = ({ ...props }) => {
-  const uniqueDivId = uuid();
+  const uniqueDivId = React.useRef(uuid());
 
   React.useEffect(() => {
-    const divElement = document.getElementById(props?.id || `reveal-${uniqueDivId}`);
+    const divElement = document.getElementById(props?.id || `reveal-${uniqueDivId.current}`);
     try {
       if (divElement) {
         divElement.innerHTML = ''
@@ -23,14 +23,14 @@ const FileRenderElement: FC<SkyflowRenderElementProps> = ({ ...props }) => {
           table: props.table,
         }
       )
-      FileRenderElement.mount(props.id ? `#${props.id}` : `#reveal-${uniqueDivId}`)
+      FileRenderElement.mount(props.id ? `#${props.id}` : `#reveal-${uniqueDivId.current}`)
       FileRenderElements[props.id as string] = FileRenderElement
     } catch (e) {
       console.error(e)
     }
   }, [])
 
-  return <div id={props.id ? props.id : `reveal-${uniqueDivId}` }></div>
+  return <div id={props.id ? props.id : `reveal-${uniqueDivId.current}` }></div>
 }
 
 export default React.memo(FileRenderElement);

@@ -13,7 +13,7 @@ import useUpdateElement from '../../hooks/UpdateElement'
 import ComposableElement from 'skyflow-js/types/core/external/collect/compose-collect-element'
 
 const ExpirationMonthElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
-  const uniqueDivId = uuid();
+  const uniqueDivId = React.useRef(uuid());
   const [element,setElement] = React.useState<CollectElement | ComposableElement | null>(null);
   React.useEffect(() => {
     try {
@@ -34,7 +34,7 @@ const ExpirationMonthElement: FC<SkyflowCollectElementProps> = ({ ...props }) =>
 
       if (props?.container.type === Skyflow.ContainerType.COLLECT) {
         const collectElement = newElement as CollectElement;
-        collectElement.mount(props.id ? `#${props.id}` : `#EXPIRATION_MONTH-id-${uniqueDivId}`)
+        collectElement.mount(props.id ? `#${props.id}` : `#EXPIRATION_MONTH-id-${uniqueDivId.current}`)
       }
       else if (props?.container.type === Skyflow.ContainerType.COMPOSABLE){
         if(!props.eventEmitter)
@@ -53,7 +53,7 @@ const ExpirationMonthElement: FC<SkyflowCollectElementProps> = ({ ...props }) =>
 
   return (
     props?.container.type === Skyflow.ContainerType.COLLECT 
-    ? (<div id={props.id ? props.id : `EXPIRATION_MONTH-id-${uniqueDivId}`}></div>) 
+    ? (<div id={props.id ? props.id : `EXPIRATION_MONTH-id-${uniqueDivId.current}`}></div>) 
     : (<></>)
   )
 }
