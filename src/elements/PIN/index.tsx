@@ -13,7 +13,7 @@ import useUpdateElement from '../../hooks/UpdateElement'
 import ComposableElement from 'skyflow-js/types/core/external/collect/compose-collect-element'
 
 const PinElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
-  const uniqueDivId = uuid();
+  const uniqueDivId = React.useRef(uuid());
   const [element,setElement] = React.useState<CollectElement | ComposableElement | null>(null);
   
   React.useEffect(() => {
@@ -22,6 +22,7 @@ const PinElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
         {
           table: props.table,
           column: props.column,
+          ...(props.skyflowID ? {skyflowID: props.skyflowID} : {}),
           ...props.classes,
           placeholder: props.placeholder || '',
           label: props.label || '',
@@ -35,7 +36,7 @@ const PinElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
 
       if(props?.container.type === Skyflow.ContainerType.COLLECT){
         const collectElement = newElement as CollectElement;
-        collectElement.mount(props.id ? `#${props.id}` : `#PIN-id-${uniqueDivId}`)
+        collectElement.mount(props.id ? `#${props.id}` : `#PIN-id-${uniqueDivId.current}`)
       }
       else if (props?.container.type === Skyflow.ContainerType.COMPOSABLE){
         if(!props.eventEmitter)
@@ -54,7 +55,7 @@ const PinElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
 
   return (
     props?.container.type === Skyflow.ContainerType.COLLECT 
-    ? (<div id={props.id ? props.id : `PIN-id-${uniqueDivId}`}></div>) 
+    ? (<div id={props.id ? props.id : `PIN-id-${uniqueDivId.current}`}></div>) 
     : (<></>)
   )
 }
