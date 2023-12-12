@@ -100,7 +100,7 @@ const CollectElementsUpdateData = () => {
         classes={classes}
         column={'card_number'}
         label={'Collect Card Number'}
-        skyflowID={'ad5b38ae-4bcf-4b08-a274-3b68ddbf30f5'}
+        skyflowID={'<SKYFLOW_ID>'}
       />
 
       <CVVElement
@@ -110,7 +110,7 @@ const CollectElementsUpdateData = () => {
         classes={classes}
         column={'cvv'}
         label='Collect CVV'
-        skyflowID={'ad5b38ae-4bcf-4b08-a274-3b68ddbf30f5'}
+        skyflowID={'<SKYFLOW_ID>'}
       />
 
       <ExpirationMonthElement
@@ -121,7 +121,7 @@ const CollectElementsUpdateData = () => {
         column={'exp_month'}
         label='Collect Exp Month'
         placeholder='MM'
-        skyflowID={'ad5b38ae-4bcf-4b08-a274-3b68ddbf30f5'}
+        skyflowID={'<SKYFLOW_ID>'}
       />
 
       <ExpirationYearElement
@@ -132,7 +132,7 @@ const CollectElementsUpdateData = () => {
         column={'exp_year'}
         label='Collect Exp Year'
         placeholder='YY'
-        skyflowID={'ad5b38ae-4bcf-4b08-a274-3b68ddbf30f5'}
+        skyflowID={'<SKYFLOW_ID>'}
       />
 
       <ExpirationDateElement
@@ -142,7 +142,7 @@ const CollectElementsUpdateData = () => {
         table={'table1'}
         column={'card_expiration'}
         label={'Expiration Date'}
-        skyflowID={'ad5b38ae-4bcf-4b08-a274-3b68ddbf30f5'}
+        skyflowID={'<SKYFLOW_ID>'}
       />
 
       <PinElement
@@ -152,7 +152,7 @@ const CollectElementsUpdateData = () => {
         table={'table1'}
         column={'card_pin'}
         label={'Pin'}
-        skyflowID={'ad5b38ae-4bcf-4b08-a274-3b68ddbf30f5'}
+        skyflowID={'<SKYFLOW_ID>'}
       />
       
       <InputFieldElement
@@ -162,7 +162,7 @@ const CollectElementsUpdateData = () => {
         table={'table1'}
         column={'ssn'}
         label={'SSN'}
-        skyflowID={'ad5b38ae-4bcf-4b08-a274-3b68ddbf30f5'}
+        skyflowID={'<SKYFLOW_ID>'}
       />
 
       <FileInputElement
@@ -171,7 +171,7 @@ const CollectElementsUpdateData = () => {
         classes={classes}
         table={'table1'}
         column={'file'}
-        skyflowID='ad5b38ae-4bcf-4b08-a274-3b68ddbf30f5'
+        skyflowID='<SKYFLOW_ID>'
         label={'file-input'}
         options={options}
       />

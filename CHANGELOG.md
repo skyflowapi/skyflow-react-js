@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.11.0] - 2023-12-12
+
+### Added
+- Update record by skyflow id using elements
+
+### Fixed
+- Div not found issue when div id is not passed.
+
 ## [1.10.0] - 2023-11-13
 
 ### Added
