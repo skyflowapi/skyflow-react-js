@@ -9,6 +9,7 @@ import DynamicComposableElements from './components/DynamicComposableElements';
 import ElementListners from './components/ElementListeners';
 import RevealElements from './components/RevealElements';
 import FileRender from './components/FileRenderElements';
+import CollectElementsUpdateData from './components/CollectElementsUpdateData';
 
 const App = () => {
 
@@ -25,6 +26,12 @@ const App = () => {
           <b>Sample Collect Elements</b>
         </p>
         <CollectElements />
+      </div>
+      <div id='Sample for Collect Elements for updating data'>
+        <p>
+          <b>Sample Collect Elements for updating data</b>
+        </p>
+        <CollectElementsUpdateData />
       </div>
       <br />
       <div id='Sample for Element Listners'>
