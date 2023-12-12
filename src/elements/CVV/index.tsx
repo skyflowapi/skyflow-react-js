@@ -13,7 +13,7 @@ import useUpdateElement from '../../hooks/UpdateElement'
 import ComposableElement from 'skyflow-js/types/core/external/collect/compose-collect-element'
 
 const CVVElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
-  const uniqueDivId = uuid();
+  const uniqueDivId = React.useRef(uuid());
   const [element,setElement] = React.useState<CollectElement| ComposableElement | null>(null);
 
 
@@ -23,6 +23,7 @@ const CVVElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
         {
           table: props.table,
           column: props.column,
+          ...(props.skyflowID ? {skyflowID: props.skyflowID} : {}),
           ...props.classes,
           placeholder: props.placeholder || '',
           label: props.label || '',
@@ -36,7 +37,7 @@ const CVVElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
 
       if(props?.container.type === Skyflow.ContainerType.COLLECT){
         const collectElement = newElement as CollectElement;
-        collectElement.mount(props.id ? `#${props.id}` : `#CVV-id-${uniqueDivId}`)
+        collectElement.mount(props.id ? `#${props.id}` : `#CVV-id-${uniqueDivId.current}`)
       }
       else if (props?.container.type === Skyflow.ContainerType.COMPOSABLE){
         if(!props.eventEmitter)
@@ -55,7 +56,7 @@ const CVVElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
 
   return (
     props?.container.type === Skyflow.ContainerType.COLLECT 
-    ? (<div id={props.id ? props.id : `CVV-id-${uniqueDivId}`}></div>) 
+    ? (<div id={props.id ? props.id : `CVV-id-${uniqueDivId.current}`}></div>) 
     : (<></>)
   )
 }
