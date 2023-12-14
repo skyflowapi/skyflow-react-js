@@ -69,6 +69,16 @@ const useUpdateElement = (
     }
   }, [props.classes])
 
+  React.useEffect(() => {
+    if (element) {
+      if (props?.container !== undefined) {
+        element.update({
+          skyflowID: props.skyflowID
+        })
+      }
+    }
+  }, [props.skyflowID])
+
 }
 
 export default useUpdateElement

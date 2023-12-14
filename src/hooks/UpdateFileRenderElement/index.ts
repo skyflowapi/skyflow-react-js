@@ -20,7 +20,7 @@ const useUpdateFileRenderElement = (
     if (element) {
       if (props?.container !== undefined) {
         element.update({
-          classes: props.classes,
+          ...props.classes,
         })
       }
     }
