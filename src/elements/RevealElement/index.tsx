@@ -6,7 +6,10 @@ import { SkyflowRevealElementProps } from '..'
 import { v4 as uuid } from 'uuid';
 import Skyflow from 'skyflow-js';
 
-const RevealElement: FC<SkyflowRevealElementProps> = ({ ...props }) => {
+/**
+ *  Configuration for Reveal Elements to diplay sensitive data securely.
+ */
+const RevealElement: FC<SkyflowRevealElementProps> = React.memo(function RevealElement({ ...props }: SkyflowRevealElementProps) {
   const uniqueDivId = React.useRef(uuid());
   const [element,setElement] = React.useState<any>(null);
 
@@ -41,6 +44,6 @@ const RevealElement: FC<SkyflowRevealElementProps> = ({ ...props }) => {
   },[props.token])
 
   return <div id={props.id ? props.id : `reveal-${uniqueDivId.current}` }></div>
-}
+})
 
-export default React.memo(RevealElement);
+export default RevealElement;

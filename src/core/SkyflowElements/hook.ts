@@ -1,10 +1,10 @@
 /*
   Copyright (c) 2022 Skyflow, Inc. 
 */
-import { IConfig } from 'core'
+import { IConfig } from 'core/SkyflowElements'
 import React, { useContext } from 'react'
 import Skyflow from 'skyflow-js'
-import sdkVersion from '../../package.json'
+import sdkVersion from '../../../package.json'
 export const skyflowContext = React.createContext<Skyflow | undefined>(undefined) 
 
 const useSkyflowClient = () => {

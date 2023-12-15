@@ -5,16 +5,20 @@ import React, { FC } from 'react'
 import Skyflow from 'skyflow-js'
 import CollectElement from 'skyflow-js/types/core/external/collect/collect-element'
 import { SkyflowCollectElementProps } from '..'
-import useCollectListeners from '../../hooks/CollectListner'
+import { useCollectListeners } from '../../hooks/CollectListner'
 import { ELEMENT_CREATED } from '../../utils/constants'
 import { SKYFLOW_ERROR_CODE } from '../../utils/errors'
 import { v4 as uuid } from 'uuid';
 import useUpdateElement from '../../hooks/UpdateElement'
 import ComposableElement from 'skyflow-js/types/core/external/collect/compose-collect-element'
 
-const InputFieldElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
+/**
+ *  Element to collect expiration year values.
+ */
+const ExpirationYearElement: FC<SkyflowCollectElementProps> = React.memo(function ExpirationYearElement({ ...props }: SkyflowCollectElementProps) {
   const uniqueDivId = React.useRef(uuid());
   const [element,setElement] = React.useState<CollectElement| ComposableElement | null>(null);
+
   React.useEffect(() => {
     try {
       const newElement = props?.container.create(
@@ -25,7 +29,7 @@ const InputFieldElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
           ...props.classes,
           placeholder: props.placeholder || '',
           label: props.label || '',
-          type: Skyflow.ElementType.INPUT_FIELD,
+          type: Skyflow.ElementType.EXPIRATION_YEAR,
           validations: props.validations || [],
         },
         { ...props.options },
@@ -34,12 +38,12 @@ const InputFieldElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
       setElement(newElement);
       if(props?.container.type === Skyflow.ContainerType.COLLECT){
         const collectElement = newElement as CollectElement;
-        collectElement.mount(props.id ? `#${props.id}` : `#INPUT_FIELD-id-${uniqueDivId.current}`)
+        collectElement.mount(props.id ? `#${props.id}` : `#EXPIRATION_YEAR-id-${uniqueDivId.current}`)
       }
       else if (props?.container.type === Skyflow.ContainerType.COMPOSABLE){
         if(!props.eventEmitter)
           throw new Error(SKYFLOW_ERROR_CODE.COMPOSABLE_COMPONENT_NOT_PROVIDED.description);    
-        props.eventEmitter._emit(ELEMENT_CREATED,{id : 'INPUT FIELD'})
+        props.eventEmitter._emit(ELEMENT_CREATED,{id : 'EXPIRATION YEAR'})
       }
     
       useCollectListeners(props, newElement)
@@ -50,11 +54,13 @@ const InputFieldElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
   }, [])
 
   useUpdateElement(props, element);
+
   return (
     props?.container.type === Skyflow.ContainerType.COLLECT 
-    ? (<div id={props.id ? props.id : `INPUT_FIELD-id-${uniqueDivId.current}`}></div>) 
+    ? (<div id={props.id ? props.id : `EXPIRATION_YEAR-id-${uniqueDivId.current}`}></div>) 
     : (<></>)
   )
-}
+  
+})
 
-export default React.memo(InputFieldElement)
+export default ExpirationYearElement

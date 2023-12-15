@@ -1,4 +1,4 @@
-import { useSkyflowClient } from '../../core/hook';
+import { useSkyflowClient } from '../../core/SkyflowElements/hook';
 import React from 'react';
 import Skyflow from 'skyflow-js';
 

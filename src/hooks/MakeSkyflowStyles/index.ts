@@ -2,7 +2,10 @@
 	Copyright (c) 2022 Skyflow, Inc. 
 */
 
-const useMakeSkyflowStyles = (
+/**
+ * A hook to create Skyflow styles for a component.
+ */
+export const useMakeSkyflowStyles = (
   styles: Record<string, unknown> = {},
 ): (() => Record<string, unknown>) => {
   return function useStyles() {
@@ -11,4 +14,3 @@ const useMakeSkyflowStyles = (
     return classes
   }
 }
-export default useMakeSkyflowStyles

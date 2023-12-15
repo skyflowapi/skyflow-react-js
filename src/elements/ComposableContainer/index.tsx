@@ -7,13 +7,21 @@ import EventEmitter from '../../utils/event-emitter'
 import ComposableContainer from 'skyflow-js/types/core/external/collect/compose-collect-container';
 import Skyflow from 'skyflow-js'
 import { v4 as uuid } from 'uuid';
+
 export interface IComposableContainer {
+  /** Composable Skyflow elements wrapped within composable container. */
   children?: React.ReactNode
+  /** Composable container instance. */
   container: ComposableContainer
+  /** Unique ID for the composable container. */
   id?: string
+  /** `onSubmit` event handler. */
   onSubmit?: () => void
 }
 
+/**
+ *  Container for all Composable Elements.
+ */
 const ComposableContainerComponent: FC<IComposableContainer> = ({ children, ...props }) => {
   const uniqueDivId = uuid();
   const [currentCount, setCurrentCount] = useState(0);
