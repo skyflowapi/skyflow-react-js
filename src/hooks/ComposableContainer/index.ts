@@ -8,7 +8,8 @@ import ComposableContainer from 'skyflow-js/types/core/external/collect/compose-
 import { useSkyflowClient } from '../../core/SkyflowElements/hook'
 
 /**
- *  Container for composable elements.
+ * Container for composable elements.
+ * @returns Returns the ComposableContainer instance.
  */
 export const useComposableContainer = (options) => {
   const { skyflow } = useSkyflowClient()

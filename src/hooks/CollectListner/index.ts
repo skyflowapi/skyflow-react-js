@@ -6,6 +6,9 @@ import CollectElement from 'skyflow-js/types/core/external/collect/collect-eleme
 import ComposableElement from 'skyflow-js/types/core/external/collect/compose-collect-element'
 import { SkyflowCollectElementProps } from '../../elements'
 
+/**
+ * Event Listeners for Collect Elements.
+ */
 export const useCollectListeners = (props: SkyflowCollectElementProps, element: CollectElement | ComposableElement): void => {
   if (props.onChange) {
     element.on(Skyflow.EventName.CHANGE, props.onChange)

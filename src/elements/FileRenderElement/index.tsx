@@ -5,6 +5,9 @@ import React, { FC } from 'react'
 import { FileRenderElements, SkyflowRenderElementProps } from '..'
 import { v4 as uuid } from 'uuid';
 
+/**
+ *  Element to Render File.
+ */
 const FileRenderElement: FC<SkyflowRenderElementProps> = ({ ...props }) => {
   const uniqueDivId = React.useRef(uuid());
 

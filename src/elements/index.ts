@@ -20,7 +20,7 @@ export interface SkyflowCollectElementProps {
   table: string
   /** Column that the data belongs to. */
   column: string
-  /** ID that is passed to the element. */
+  /** Div ID that is passed to the element. */
   id?: string
   /** Label for the element. */
   label?: string
@@ -44,6 +44,7 @@ export interface SkyflowCollectElementProps {
   onReady?: (state: unknown) => void
   /** Event emitter for the element. */
   eventEmitter?:any
+  /** Skyflow ID to update the record */
   skyflowID?:string
   // TODO ref 
 }
@@ -56,7 +57,7 @@ export interface SkyflowRevealElementProps {
   container: RevealContainer
   /** A token to retrieve the value of. */
   token: string
-  /** ID that is passed to the element. */
+  /** Div ID that is passed to the element. */
   id?: string
   /** Label for the Reveal Element. */
   label?: string
@@ -66,15 +67,27 @@ export interface SkyflowRevealElementProps {
   classes?: Record<string, unknown>
   /** Additional configuration options. */
   options?: IRevealOptions
+  /** Redaction type for Reveal Element */
   redaction?: RedactionType
 }
+
+/**
+ *  Configuration for a File Render Element.
+ */
 export interface SkyflowRenderElementProps {
+  /** Type of the container. */
   container: RevealContainer
+  /** ID that is passed to the element. */
   id: string
+  /** Alternative text for the File Render Element. */
   altText?: string
+  /** Styles that should be applied to the element. */
   classes?: Record<string, unknown>
+  /** Skyflow ID of the file */
   skyflowID:string
+  /** Table name to get file from */
   table: string
+  /** Column name of the file */
   column: string
 }
 
@@ -90,6 +103,7 @@ export interface ICollectElementOptions {
   format?: string
   /** If `true`, displays a copy button that copies the Collect Element value to the clipboard. Defaults to `false`. */
   enableCopy?: boolean
+  /** Allowed File Types for File Collect Element */
   allowedFileType?: string[]
 }
 

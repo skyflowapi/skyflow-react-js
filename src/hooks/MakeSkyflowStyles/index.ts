@@ -4,6 +4,7 @@
 
 /**
  * A hook to create Skyflow styles for a component.
+ * @returns Returns the Skyflow styles.
  */
 export const useMakeSkyflowStyles = (
   styles: Record<string, unknown> = {},
