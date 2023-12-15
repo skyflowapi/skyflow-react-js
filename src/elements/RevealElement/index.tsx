@@ -5,6 +5,7 @@ import React, { FC } from 'react'
 import { SkyflowRevealElementProps } from '..'
 import { v4 as uuid } from 'uuid';
 import Skyflow from 'skyflow-js';
+import useUpdateRevealElement from '../../hooks/UpdateRevealElement';
 
 const RevealElement: FC<SkyflowRevealElementProps> = ({ ...props }) => {
   const uniqueDivId = React.useRef(uuid());
@@ -40,6 +41,7 @@ const RevealElement: FC<SkyflowRevealElementProps> = ({ ...props }) => {
     }
   },[props.token])
 
+  useUpdateRevealElement(props, element)
   return <div id={props.id ? props.id : `reveal-${uniqueDivId.current}` }></div>
 }
 
