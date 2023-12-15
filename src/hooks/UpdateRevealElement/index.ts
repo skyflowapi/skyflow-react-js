@@ -7,52 +7,34 @@ const useUpdateRevealElement = (
   element: RevealElement | null,
 ): void => {
   React.useEffect(() => {
-    if (element) {
-      if (props?.container !== undefined) {
-        element.update({
-          altText: props.altText,
-        })
-      }
+    if (element && props?.container) {
+      element.update({
+        altText: props.altText,
+      })
     }
   }, [props.altText])
 
   React.useEffect(() => {
-    if (element) {
-      if (props?.container !== undefined) {
-        element.update({
-          ...props.classes,
-        })
-      }
+    if (element && props?.container) {
+      element.update({
+        ...props.classes,
+      })
     }
   }, [props.classes])
 
   React.useEffect(() => {
-    if (element) {
-      if (props?.container !== undefined) {
-        element.update({
-          token: props.token,
-        })
-      }
-    }
-  }, [props.token])
-
-  React.useEffect(() => {
-    if (element) {
-      if (props?.container !== undefined) {
-        element.update({
-          label: props.label,
-        })
-      }
+    if (element && props?.container) {
+      element.update({
+        label: props.label,
+      })
     }
   }, [props.label])
 
   React.useEffect(() => {
-    if (element) {
-      if (props?.container !== undefined) {
-        element.update({
-          redaction: props.redaction,
-        })
-      }
+    if (element && props?.container) {
+      element.update({
+        redaction: props.redaction,
+      })
     }
   }, [props.redaction])
 }

@@ -7,78 +7,61 @@ const useUpdateElement = (
   props: SkyflowCollectElementProps,
   element: CollectElement | ComposableElement | null,
 ): void => {
-
   React.useEffect(() => {
-    if (element) {
-      if (props?.container !== undefined) {
-        element.update({
-          table: props.table,
-        })
-      }
+    if (element && props?.container) {
+      element.update({
+        table: props.table,
+      })
     }
   }, [props.table])
 
   React.useEffect(() => {
-    if (element) {
-      if (props?.container !== undefined) {
-        element.update({
-          column: props.column,
-        })
-      }
+    if (element && props?.container) {
+      element.update({
+        column: props.column,
+      })
     }
   }, [props.column])
 
   React.useEffect(() => {
-    if (element) {
-      if (props?.container !== undefined) {
-        element.update({
-          validations: props.validations,
-        })
-      }
+    if (element && props?.container) {
+      element.update({
+        validations: props.validations,
+      })
     }
   }, [props.validations])
 
   React.useEffect(() => {
-    if (element) {
-      if (props?.container !== undefined) {
-        element.update({
-          label: props.label,
-        })
-      }
+    if (element && props?.container) {
+      element.update({
+        label: props.label,
+      })
     }
   }, [props.label])
 
   React.useEffect(() => {
-    if (element) {
-      if (props?.container !== undefined) {
-        element.update({
-          placeholder: props.placeholder,
-        })
-      }
+    if (element && props?.container) {
+      element.update({
+        placeholder: props.placeholder,
+      })
     }
   }, [props.placeholder])
 
-
   React.useEffect(() => {
-    if (element) {
-      if (props?.container !== undefined) {
-        element.update({
-          ...props.classes
-        })
-      }
+    if (element && props?.container) {
+      element.update({
+        ...props.classes,
+      })
     }
   }, [props.classes])
 
   React.useEffect(() => {
-    if (element) {
-      if (props?.container !== undefined) {
-        element.update({
-          skyflowID: props.skyflowID
-        })
-      }
+    if (element && props?.container) {
+      element.update({
+        skyflowID: props.skyflowID,
+      })
     }
   }, [props.skyflowID])
-
 }
 
 export default useUpdateElement

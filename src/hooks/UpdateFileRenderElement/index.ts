@@ -7,52 +7,42 @@ const useUpdateFileRenderElement = (
   element: RevealElement | null,
 ): void => {
   React.useEffect(() => {
-    if (element) {
-      if (props?.container !== undefined) {
-        element.update({
-          altText: props.altText,
-        })
-      }
+    if (element && props?.container) {
+      element.update({
+        altText: props.altText,
+      })
     }
   }, [props.altText])
 
   React.useEffect(() => {
-    if (element) {
-      if (props?.container !== undefined) {
-        element.update({
-          ...props.classes,
-        })
-      }
+    if (element && props?.container) {
+      element.update({
+        ...props.classes,
+      })
     }
   }, [props.classes])
 
   React.useEffect(() => {
-    if (element) {
-      if (props?.container !== undefined) {
-        element.update({
-          skyflowID: props.skyflowID,
-        })
-      }
+    if (element && props?.container) {
+      element.update({
+        skyflowID: props.skyflowID,
+      })
     }
   }, [props.skyflowID])
 
   React.useEffect(() => {
-    if (element) {
-      if (props?.container !== undefined) {
-        element.update({
-          skyflowID: props.table,
-        })
-      }
+    if (element && props?.container) {
+      element.update({
+        table: props.table,
+      })
     }
   }, [props.table])
 
   React.useEffect(() => {
-    if (element) {
-      if (props?.container !== undefined) {
-        element.update({
-          skyflowID: props.column,
-        })
-      }
+    if (element && props?.container) {
+      element.update({
+        column: props.column,
+      })
     }
   }, [props.column])
 }
