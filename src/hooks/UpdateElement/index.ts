@@ -1,5 +1,4 @@
 import React from 'react'
-import Skyflow from 'skyflow-js'
 import CollectElement from 'skyflow-js/types/core/external/collect/collect-element'
 import ComposableElement from 'skyflow-js/types/core/external/collect/compose-collect-element'
 import { SkyflowCollectElementProps } from '../../elements'
@@ -11,7 +10,7 @@ const useUpdateElement = (
 
   React.useEffect(() => {
     if (element) {
-      if (props?.container?.type === Skyflow.ContainerType.COMPOSABLE) {
+      if (props?.container !== undefined) {
         element.update({
           table: props.table,
         })
@@ -21,7 +20,7 @@ const useUpdateElement = (
 
   React.useEffect(() => {
     if (element) {
-      if (props?.container?.type === Skyflow.ContainerType.COMPOSABLE) {
+      if (props?.container !== undefined) {
         element.update({
           column: props.column,
         })
@@ -31,7 +30,7 @@ const useUpdateElement = (
 
   React.useEffect(() => {
     if (element) {
-      if (props?.container?.type === Skyflow.ContainerType.COMPOSABLE) {
+      if (props?.container !== undefined) {
         element.update({
           validations: props.validations,
         })
@@ -41,7 +40,7 @@ const useUpdateElement = (
 
   React.useEffect(() => {
     if (element) {
-      if (props?.container?.type === Skyflow.ContainerType.COMPOSABLE) {
+      if (props?.container !== undefined) {
         element.update({
           label: props.label,
         })
@@ -51,7 +50,7 @@ const useUpdateElement = (
 
   React.useEffect(() => {
     if (element) {
-      if (props?.container?.type === Skyflow.ContainerType.COMPOSABLE) {
+      if (props?.container !== undefined) {
         element.update({
           placeholder: props.placeholder,
         })
@@ -62,13 +61,23 @@ const useUpdateElement = (
 
   React.useEffect(() => {
     if (element) {
-      if (props?.container?.type === Skyflow.ContainerType.COMPOSABLE) {
+      if (props?.container !== undefined) {
         element.update({
           ...props.classes
         })
       }
     }
   }, [props.classes])
+
+  React.useEffect(() => {
+    if (element) {
+      if (props?.container !== undefined) {
+        element.update({
+          skyflowID: props.skyflowID
+        })
+      }
+    }
+  }, [props.skyflowID])
 
 }
 
