@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.12.0] - 2023-12-15
+
+### Added
+- Update Collect, Reveal and File Render Element props dynamically.
+
 ## [1.11.0] - 2023-12-12
 
 ### Added
