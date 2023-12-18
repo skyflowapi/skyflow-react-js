@@ -45,7 +45,7 @@ const DynamicComposableElements = () => {
 	const classes = useStyles();
 
 	const containerOptions = {
-		layout: [1, 4],
+		layout: [1, 3],
 		styles: {
 			base: {
 				border: '1px solid #DFE3EB',

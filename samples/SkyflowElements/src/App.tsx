@@ -10,6 +10,8 @@ import ElementListners from './components/ElementListeners';
 import RevealElements from './components/RevealElements';
 import FileRender from './components/FileRenderElements';
 import CollectElementsUpdateData from './components/CollectElementsUpdateData';
+import DynamicCollectElements from './components/DynamicCollectElements';
+import DynamicRevealElements from './components/DynamicRevealElements';
 
 const App = () => {
 
@@ -65,6 +67,18 @@ const App = () => {
           <b>Sample Composable Elements Dynamic properties update</b>
         </p>
         <DynamicComposableElements />
+      </div>
+      <div id='Sample for Collect Elements Update Properties'>
+        <p>
+          <b>Sample Collect Elements Dynamic properties update</b>
+        </p>
+        <DynamicCollectElements />
+      </div>
+      <div id='Sample for Reveal Elements Update Properties'>
+        <p>
+          <b>Sample Reveal Elements Dynamic properties update</b>
+        </p>
+        <DynamicRevealElements />
       </div>
     </div>
   );
