@@ -74,14 +74,16 @@ const DynamicCollectElements = () => {
   }
 
   React.useEffect(() => {
-    container
-      .uploadFiles({})
-      .then((res) => {
-        console.log(res)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
+    if (skyflowID !== 'dummy-id') {
+      container
+        .uploadFiles({})
+        .then((res) => {
+          console.log(res)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    }
   }, [skyflowID])
 
   const handleUpdate = () => {
