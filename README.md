@@ -13,6 +13,7 @@ A React wrapper for [Skyflow JS SDK](https://github.com/skyflowapi/skyflow-js)
 - [**Securely collecting data using File Input Element to upload a file**](#securely-collecting-data-client-side)
 - [**Securely collecting data client-side using Composable Elements**](#securely-collecting-data-client-side-using-composable-elements)
 - [**Securely revealing data client-side**](#securely-revealing-data-client-side)
+- [**Update Skyflow Elements Properties**](#update-skyflow-elements-properties)
 - [**Reporting a Vulnerability**](#reporting-a-vulnerability)
 - [**License**](#license)
 
@@ -2654,6 +2655,215 @@ export default App
    },
   ]
 }
+```
+
+## Update Skyflow Elements Properties
+
+You can Update Skyflow Elements’ properties dynamically. You can use React’s `useState` hook to dynamically update the properties of Skyflow Elements. You can maintain the element properties via React state and update them at runtime as and when required. Skyflow React SDK provides the following elements:
+- Collect Elements
+- Reveal Elements
+- Composable Elements
+- File Render Element
+
+Note - You cannot update the `type` property for Collect and Composable Elements.
+
+### End to End example for updating properties in Collect and Reveal Elements
+```javascript
+import React, { useState } from 'react'
+import Skyflow from 'skyflow-js'
+import {
+  CardNumberElement,
+  FileInputElement,
+  FileRenderElement,
+  RevealElement,
+  useCollectContainer,
+  useMakeSkyflowStyles,
+  useRenderFile,
+  useRevealContainer,
+} from 'skyflow-react-js'
+
+const App = () => {
+  // Initialise states for properties to update
+  const [table, setTable] = useState<string>('dummy-table')
+  const [skyflowID, setSkyflowID] = useState<string>('dummy-id')
+  const [cardNumberLabel, setCardNumberLabel] = useState<string>('card number')
+  const [cardNumberToken, setCardNumberToken] = useState<string>('43wrf-23v-9vf-fdvjcknfsk')
+
+  const container = useCollectContainer()
+  const revealContainer = useRevealContainer()
+  const fileElement = useRenderFile('fileRenderElement-1')
+
+  const useStyles = useMakeSkyflowStyles({
+    inputStyles: {
+      base: {
+        border: '1px solid black',
+        borderRadius: '4px',
+        color: '#1d1d1d',
+        padding: '10px 16px',
+        fontFamily: '"Roboto", sans-serif',
+      },
+      complete: {
+        color: '#4caf50',
+      },
+      empty: {},
+      focus: {},
+      invalid: {
+        color: '#f44336',
+      },
+      cardIcon: {
+        position: 'absolute',
+        left: '8px',
+        bottom: 'calc(50% - 12px)',
+      },
+      global: {
+        '@import': 'url("https://fonts.googleapis.com/css2?family=Roboto&display=swap")',
+      },
+    },
+    labelStyles: {
+      base: {
+        fontSize: '16px',
+        fontWeight: 'bold',
+        fontFamily: '"Roboto", sans-serif',
+      },
+      global: {
+        '@import': 'url("https://fonts.googleapis.com/css2?family=Roboto&display=swap")',
+      },
+    },
+    errorTextStyles: {
+      base: {
+        color: 'blue',
+        fontFamily: '"Roboto", sans-serif',
+      },
+      global: {
+        '@import': 'url("https://fonts.googleapis.com/css2?family=Roboto&display=swap")',
+      },
+    },
+  })
+
+  const options = {
+    enableCopy: true,
+  }
+
+  const classes = useStyles()
+  
+  // handler function for collecting data
+  const handleCollect = () => {
+    const response = container.collect({
+      tokens: true,
+    })
+    response
+      .then((res: unknown) => {
+        console.log(JSON.stringify(res))
+        const id = res.records[0].fields.skyflow_id 
+        const token = res.records[0].fields.card_number
+        setSkyflowID(id)  // updates skyflowID with received ID
+        setCardNumberToken(token)  // updates token with received token
+      })
+      .catch((e: unknown) => {
+        console.log(e)
+      })
+  }
+
+  // handler function for revealing data
+  const handleReveal = () => {
+    revealContainer
+      .reveal()
+      .then((res: any) => {
+        console.log(res)
+      })
+      .catch((err: any) => {
+        console.log(err)
+      })
+  }
+  
+  // handler function for rendering file
+  const renderFile = () => {
+   fileElement?
+      .renderFile()
+      .then((res: any) => {
+        console.log(res)
+      })
+      .catch((err: any) => {
+        console.log(err)
+      })
+  }
+
+  // uploads file after skyflowID is updated
+  React.useEffect(() => {
+    if (skyflowID !== 'dummy-id') {
+      container
+        .uploadFiles({})
+        .then((res) => {
+          console.log(res)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    }
+  }, [skyflowID])
+
+  // updates table property value
+  const handleCollectUpdate = () => {
+    setTable('pii_fields_upsert')
+  }
+  
+  // updates card number label property value
+  const handleRevealUpdate = () => {
+    setCardNumberLabel('Reveal Card Number')
+  }
+
+  return (
+    <div className='App'>
+      <header className='App-header'>
+        <CardNumberElement
+          container={container}
+          table={table}
+          classes={classes}
+          column={'card_number'}
+          label={'Collect Card Number'}
+          options={options}
+        />
+
+        <FileInputElement
+          container={container}
+          table={table}
+          column={'file'}
+          label={'Collect File'}
+          classes={classes}
+          skyflowID={skyflowID}
+        />
+
+        <RevealElement
+          id={'dynamicRevealElement-1'}
+          container={revealContainer}
+          token={cardNumberToken}
+          label={cardNumberLabel}
+          classes={classes}
+          redaction={Skyflow.RedactionType.PLAIN_TEXT}
+          altText={'card number'}
+        />
+
+        <FileRenderElement
+          container={revealContainer}
+          id={'fileRenderElement-1'}
+          skyflowID={skyflowID}
+          altText={'image.png'}
+          classes={classes}
+          table={table}
+          column={'file'}
+        />
+
+        <button onClick={handleCollect}>Collect</button>
+        <button onClick={handleCollectUpdate}>Update Collect</button>
+        <button onClick={handleReveal}>Reveal</button>
+        <button onClick={handleRevealUpdate}>Update Reveal</button>
+        <button onClick={renderFile}>Render File</button>
+      </header>
+    </div>
+  )
+}
+
+export default App
 ```
 
 ## Reporting a Vulnerability
