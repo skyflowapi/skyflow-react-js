@@ -2659,7 +2659,7 @@ export default App
 
 ## Update Skyflow Elements Properties
 
-You can Update Skyflow Elements’ properties dynamically. You can use React’s `useState` hook to dynamically update the properties of Skyflow Elements. You can maintain the element properties via React state and update them at runtime as and when required. Skyflow React SDK provides the following elements:
+You can dynamically update Skyflow Elements’ properties dynamically by using React’s `useState` hook. You can maintain the element properties via React state and update them at runtime as and when required. Skyflow's React SDK provides the following elements:
 - Collect Elements
 - Reveal Elements
 - Composable Elements
@@ -2667,7 +2667,7 @@ You can Update Skyflow Elements’ properties dynamically. You can use React’s
 
 Note - You cannot update the `type` property for Collect and Composable Elements.
 
-### End to End example for updating properties in Collect and Reveal Elements
+### End-to-end example for updating properties in Collect and Reveal Elements
 ```javascript
 import React, { useState } from 'react'
 import Skyflow from 'skyflow-js'
