@@ -56,6 +56,7 @@ export interface ICollectElementOptions {
   format?: string
   enableCopy?: boolean
   allowedFileType?: string[]
+  preserveFileName?: boolean
 }
 
 export type IRevealOptions = {
