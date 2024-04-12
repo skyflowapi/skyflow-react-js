@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.14.0] - 2024-04-12
+### Added
+- iframe latency metrics.
+
+## [1.13.0] - 2024-04-02
+### Added
+- `preserveFileName` option in file element options.
+
 ## [1.12.0] - 2023-12-15
 
 ### Added
