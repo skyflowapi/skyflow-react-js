@@ -3,9 +3,10 @@
 */
 
 
+import { CardType } from 'skyflow-js/types/core/constants';
 import CollectContainer from 'skyflow-js/types/core/external/collect/collect-container'
 import ComposableContainer from 'skyflow-js/types/core/external/collect/compose-collect-container'
-import RevealContainer, { IRevealElementOptions } from 'skyflow-js/types/core/external/reveal/reveal-container'
+import RevealContainer from 'skyflow-js/types/core/external/reveal/reveal-container'
 import { IValidationRule, RedactionType } from 'skyflow-js/types/utils/common'
 
 export const FileRenderElements = {};
@@ -57,9 +58,14 @@ export interface ICollectElementOptions {
   enableCopy?: boolean
   allowedFileType?: string[]
   preserveFileName?: boolean
+  cardMetadata ?: ICardMetadata
 }
 
 export type IRevealOptions = {
   enableCopy?: boolean;
   format?:string
+}
+
+export type ICardMetadata = {
+  scheme?: typeof CardType[]
 }

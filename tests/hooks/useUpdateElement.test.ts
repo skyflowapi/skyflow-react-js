@@ -33,4 +33,9 @@ describe('test useUpdateElement hook',()=>{
         useUpdateElement({table:''} as any, elementMock as any);
         expect(updateMethodMock).not.toBeCalled();
     });
+
+    it('should call update if options have cardmetadata',()=>{
+        useUpdateElement({options:{cardMetadata:{scheme:[]}},container:{type:Skyflow.ContainerType.COLLECT}} as any, elementMock as any);
+        expect(updateMethodMock).toBeCalled();
+    })
 });
