@@ -1,10 +1,10 @@
 import React from 'react'
 import CollectElement from 'skyflow-js/types/core/external/collect/collect-element'
 import ComposableElement from 'skyflow-js/types/core/external/collect/compose-collect-element'
-import { SkyflowCollectElementProps } from '../../elements'
+import { ICollectElementOptions, SkyflowCollectElementProps } from '../../elements'
 
 const useUpdateElement = (
-  props: SkyflowCollectElementProps,
+  props: SkyflowCollectElementProps & ICollectElementOptions,
   element: CollectElement | ComposableElement | null,
 ): void => {
   React.useEffect(() => {
@@ -62,6 +62,16 @@ const useUpdateElement = (
       })
     }
   }, [props.skyflowID])
+
+  React.useEffect(() => {
+    if (element && props?.container && props.options?.cardMetadata?.scheme) {
+      element.update({
+        cardMetadata:{
+          scheme: props.options?.cardMetadata?.scheme
+        }
+      })
+    }
+  }, [props.options?.cardMetadata?.scheme])
 }
 
 export default useUpdateElement

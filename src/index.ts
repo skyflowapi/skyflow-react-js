@@ -31,6 +31,8 @@ const Env = Skyflow.Env
 const LENGTH_MATCH_RULE = Skyflow.ValidationRuleType.LENGTH_MATCH_RULE
 const REGEX_MATCH_RULE = Skyflow.ValidationRuleType.REGEX_MATCH_RULE
 
+const CardType = Skyflow.CardType
+
 export {
   SkyflowElements,
   CardNumberElement,
@@ -50,6 +52,7 @@ export {
   ComposableContainerComponent as ComposableContainer,
   LogLevel,
   Env,
+  CardType,
   LENGTH_MATCH_RULE,
   REGEX_MATCH_RULE,
   InputFieldElement,
