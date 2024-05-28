@@ -742,7 +742,6 @@ When the form is ready to be submitted, call the `collect(options?)` method on t
 
 - `tokens`: indicates whether tokens for the collected data should be returned or not. Defaults to 'true'
 - `additionalFields`: Non-PCI elements data to be inserted into the vault which should be in the `records` object format.
-- `upsert`: To support upsert operations while collecting data from Skyflow elements, pass the table and column marked as unique in the table.
 
 ```javascript
 const options = {
@@ -760,19 +759,12 @@ const options = {
       // ...additional records here
     ],
   }, // Optional
-  upsert: [
-    // Upsert operations support in the vault
-    {
-      table: 'string',             // Table name
-      column: 'value',             // Unique column in the table
-    },
-  ], //Optional
 }
 
 container.collect(options)
 ```
 
-**Note:** `skyflowID` is required if you want to update the data. If `skyflowID` isn't specified, the `collect(options?)` method creates a new record in the vault.
+**Note:** `skyflowID` is required if you want to update the data using skyflow id. If `skyflowID` isn't specified, the `collect(options?)` method creates a new record in the vault.
 
 ### End to end example of updating data with Skyflow Elements
 
