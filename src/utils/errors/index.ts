@@ -1,6 +1,9 @@
+import sdkVersion from '../../../package.json'
+
+
 export const logs = {
   errorLogs: {
-    COMPOSABLE_COMPONENT_NOT_PROVIDED: 'Component is not wrapped inside the `ComposableContainer`.',
+    COMPOSABLE_COMPONENT_NOT_PROVIDED: `React SDK v${sdkVersion.version} Component is not wrapped inside the \`ComposableContainer\`.`,
   },
 }
 
