@@ -15,6 +15,7 @@ import InputFieldElement from '../../src/elements/InputField'
 import CardHolderNameElement from '../../src/elements/CardHolderName'
 import FileInputElement from '../../src/elements/FileInputElement'
 import ComposableContainer from '../../src/elements/ComposableContainer';
+import CollectContainer from 'skyflow-js/types/core/external/collect/collect-container'
 
 const foucsTrigger = jest.fn();
 const blurTrigger = jest.fn();
@@ -67,6 +68,7 @@ describe('test collect elements', () => {
     jest.clearAllMocks();
     jest.resetAllMocks();
   });
+  let collectContainer: CollectContainer;
   test('test card number collect Element ', () => {
     const container = useCollectContainer();
     const cardContainer = render(
@@ -156,6 +158,44 @@ describe('test collect elements', () => {
     expect(eventListenerMock).toBeCalled();
   });
 
+  test('test cvv collect Element error case', () => {
+    const cvvContainer = render(
+      <CVVElement
+        id={''}
+        container={collectContainer}
+        table={''}
+        column={'string'}
+        placeholder={'CVV'}
+        label={'Cvv'}
+        onChange={changeTrigger}
+        onBlur={blurTrigger}
+        onFocus={foucsTrigger}
+        onReady={readyTrigger}
+        validations={[]}
+      />,
+    )
+    expect(cvvContainer).toMatchSnapshot()
+  });
+
+  test('test cvv composable Element without eventEmitter ', () => {
+    const container = useComposabelContainer({ layout: [1] });
+    const cvvContainer = render(
+      <CVVElement
+        container={container}
+        table={'table1'}
+        column={'string'}
+        placeholder={'CVV'}
+        label={'Cvv'}
+        onChange={changeTrigger}
+        onBlur={blurTrigger}
+        onFocus={foucsTrigger}
+        onReady={readyTrigger}
+        validations={[]}
+      />,
+    )
+    expect(cvvContainer).toMatchSnapshot()
+  });
+
   test('test Pin collect Element ', () => {
     const container = useCollectContainer();
     const PinContainer = render(
@@ -242,6 +282,44 @@ describe('test collect elements', () => {
     expect(cardHolderNameContainer).toMatchSnapshot()
     expect(eventEmitterMock).toBeCalled();
     expect(eventListenerMock).toBeCalled();
+  });
+
+  test('test cardHolderName Collect Element error case', () => {
+    const cardHolderNameContainer = render(
+      <CardHolderNameElement
+        container={collectContainer}
+        table={'table1'}
+        column={'string'}
+        placeholder={'cardHolderName'}
+        label={'cardHolderName'}
+        onChange={changeTrigger}
+        onBlur={blurTrigger}
+        onFocus={foucsTrigger}
+        onReady={readyTrigger}
+        validations={[]}
+        eventEmitter={composableEventEmitter}
+      />,
+    )
+    expect(cardHolderNameContainer).toMatchSnapshot()
+  });
+
+  test('test cardHolderName composable element without eventEmitter', () => {
+    const container = useComposabelContainer({ layout: [1] });
+    const cardHolderNameContainer = render(
+      <CardHolderNameElement
+        container={container}
+        table={'table1'}
+        column={'string'}
+        placeholder={'cardHolderName'}
+        label={'cardHolderName'}
+        onChange={changeTrigger}
+        onBlur={blurTrigger}
+        onFocus={foucsTrigger}
+        onReady={readyTrigger}
+        validations={[]}
+      />,
+    )
+    expect(cardHolderNameContainer).toMatchSnapshot()
   });
 
   test('test inputField collect Element ', () => {

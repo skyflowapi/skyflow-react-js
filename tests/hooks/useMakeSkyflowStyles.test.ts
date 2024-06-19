@@ -1,7 +1,8 @@
 /*
 	Copyright (c) 2022 Skyflow, Inc. 
 */
-import useMakeSkyflowStyles from '../../src/hooks/MakeSkyflowStyles'
+import { renderHook } from '@testing-library/react';
+import useMakeSkyflowStyles from '../../src/hooks/MakeSkyflowStyles';
 
 const mockStyleObject = {
   inputStyles: {
@@ -23,23 +24,27 @@ const mockStyleObject = {
       color: 'red',
     },
   },
-}
+};
 
-const mockUseStyles = {
-  useStyles: jest.fn().mockReturnValue(mockStyleObject),
-}
+describe('useMakeSkyflowStyles Hook', () => {
+  it('should not return undefined', () => {
+    const { result } = renderHook(() => useMakeSkyflowStyles(mockStyleObject));
+    expect(result.current).not.toBe(undefined);
+  });
 
-describe('Test make syflow styles hook', () => {
-  it('useMakestyles hook should not return undefined', () => {
-    const result = useMakeSkyflowStyles(mockStyleObject)
-    expect(result).not.toBe(undefined)
-  })
+  it('useStyles function should return the passed styles object', () => {
+    const { result } = renderHook(() => {
+      const useStyles = useMakeSkyflowStyles(mockStyleObject);
+      return useStyles();
+    });
+    expect(result.current).toBe(mockStyleObject);
+  });
 
-  it('useStyles functiion to return classes object ', () => {
-    expect(mockUseStyles.useStyles()).toBe(mockStyleObject)
-  })
-
-  it('useStyles function should not return empty object if styles are passed', () => {
-    expect(mockUseStyles.useStyles()).not.toBe({})
-  })
-})
+  it('useStyles function should not return an empty object if styles are passed', () => {
+    const { result } = renderHook(() => {
+      const useStyles = useMakeSkyflowStyles(mockStyleObject);
+      return useStyles();
+    });
+    expect(result.current).not.toEqual({});
+  });
+});
