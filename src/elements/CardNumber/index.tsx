@@ -54,7 +54,7 @@ const CardNumberElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
   useUpdateElement(props, element);
   
   return (
-    props.container.type === Skyflow.ContainerType.COLLECT 
+    props?.container?.type === Skyflow.ContainerType.COLLECT 
     ? (<div id={props.id ? props.id : `CARD_NUMBER-id-${uniqueDivId.current}`}></div>) 
     : (<></>)
   )

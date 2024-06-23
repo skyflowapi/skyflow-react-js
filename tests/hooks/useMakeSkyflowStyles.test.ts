@@ -47,4 +47,12 @@ describe('useMakeSkyflowStyles Hook', () => {
     });
     expect(result.current).not.toEqual({});
   });
+
+  it('should return an empty object if styles are passed', () => {
+    const { result } = renderHook(() => {
+      const useStyles = useMakeSkyflowStyles();
+      return useStyles();
+    });
+    expect(result.current).toEqual({});
+  });
 });

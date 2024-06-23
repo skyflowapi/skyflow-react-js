@@ -37,7 +37,8 @@ const CVVElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
 
       if(props?.container.type === Skyflow.ContainerType.COLLECT){
         const collectElement = newElement as CollectElement;
-        collectElement.mount(props.id ? `#${props.id}` : `#CVV-id-${uniqueDivId.current}`)
+        const divId = props.id ? `#${props.id}` : `#CVV-id-${uniqueDivId.current}`
+        collectElement.mount(divId)
       }
       else if (props?.container.type === Skyflow.ContainerType.COMPOSABLE){
         if(!props.eventEmitter)
