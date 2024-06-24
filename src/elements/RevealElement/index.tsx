@@ -17,7 +17,7 @@ const RevealElement: FC<SkyflowRevealElementProps> = ({ ...props }) => {
       if (divElement) {
         divElement.innerHTML = ''
       }
-      const RevealElement = props?.container.create(
+      const RevealElement = props?.container?.create(
         {
           token: props.token,
           ...props.classes,
@@ -28,7 +28,8 @@ const RevealElement: FC<SkyflowRevealElementProps> = ({ ...props }) => {
         { ...props.options },
       )
       setElement(RevealElement);
-      RevealElement.mount(props.id ? `#${props.id}` : `#reveal-${uniqueDivId.current}`)
+      const divId = props.id ? `#${props.id}` : `#reveal-${uniqueDivId.current}`;
+      RevealElement.mount(divId)
     } catch (e) {
       // eslint-disable-next-line no-console
       console.error(e)
