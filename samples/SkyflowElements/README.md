@@ -90,13 +90,13 @@ app.listen(port, () => {
 10. Update `<TOKEN_END_POINT_URL>` in [index.tsx](src/index.tsx)
 
 ## The samples
-### [Collect data](https://github.com/skyflowapi/skyflow-react-js/tree/master/samples/SkyflowElements/src/components/CollectElements)
+### [Collect data](https://github.com/skyflowapi/skyflow-react-js/tree/main/samples/SkyflowElements/src/components/CollectElements)
 This sample illustrates how to use secure Skyflow elements to collect sensitive user information and reveal it to the user via tokens.
-### [Custom Validation](https://github.com/skyflowapi/skyflow-react-js/tree/master/samples/SkyflowElements/src/components/CustomValidations)
+### [Custom Validation](https://github.com/skyflowapi/skyflow-react-js/tree/main/samples/SkyflowElements/src/components/CustomValidations)
 This sample illustrates how to use custom validation with skylow collect elements.
-### [Reveal data](https://github.com/skyflowapi/skyflow-react-js/tree/master/samples/SkyflowElements/src/components/RevealElements)
+### [Reveal data](https://github.com/skyflowapi/skyflow-react-js/tree/main/samples/SkyflowElements/src/components/RevealElements)
 This sample illustrates how functionality of reveal feature works.
-### [Event Listeners](https://github.com/skyflowapi/skyflow-react-js/tree/master/samples/SkyflowElements/src/components/ElementListeners)
+### [Event Listeners](https://github.com/skyflowapi/skyflow-react-js/tree/main/samples/SkyflowElements/src/components/ElementListeners)
 This sample illustrates how evenet listeners with Skyflow elements.
 
 #### Run the sample
