@@ -10,6 +10,7 @@ module.exports = {
     './src/core/*.{ts,tsx}',
     './src/elements/**/*.{ts,tsx}',
     './src/hooks/**/*.{ts,tsx}',
+    './src/utils/helpers/*.{ts,tsx}',
   ],
   moduleNameMapper: {
     'skyflow-react-js':

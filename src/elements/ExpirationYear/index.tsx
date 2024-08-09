@@ -4,13 +4,14 @@
 import React, { FC } from 'react'
 import Skyflow from 'skyflow-js'
 import CollectElement from 'skyflow-js/types/core/external/collect/collect-element'
-import { SkyflowCollectElementProps } from '..'
+import { CollectElements, SkyflowCollectElementProps } from '..'
 import useCollectListeners from '../../hooks/CollectListner'
 import { ELEMENT_CREATED } from '../../utils/constants'
 import { SKYFLOW_ERROR_CODE } from '../../utils/errors'
 import { v4 as uuid } from 'uuid';
 import useUpdateElement from '../../hooks/UpdateElement'
 import ComposableElement from 'skyflow-js/types/core/external/collect/compose-collect-element'
+import { createElementValueMatchRule } from '../../utils/helpers'
 
 const ExpirationYearElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
   const uniqueDivId = React.useRef(uuid());
@@ -18,6 +19,7 @@ const ExpirationYearElement: FC<SkyflowCollectElementProps> = ({ ...props }) => 
 
   React.useEffect(() => {
     try {
+      props.validations = createElementValueMatchRule(props.validations)
       const newElement = props?.container.create(
         {
           table: props.table,
@@ -36,6 +38,7 @@ const ExpirationYearElement: FC<SkyflowCollectElementProps> = ({ ...props }) => 
       if(props?.container.type === Skyflow.ContainerType.COLLECT){
         const collectElement = newElement as CollectElement;
         collectElement.mount(props.id ? `#${props.id}` : `#EXPIRATION_YEAR-id-${uniqueDivId.current}`)
+        CollectElements[props.id as string] = collectElement
       }
       else if (props?.container.type === Skyflow.ContainerType.COMPOSABLE){
         if(!props.eventEmitter)

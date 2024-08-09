@@ -10,6 +10,7 @@ import RevealContainer from 'skyflow-js/types/core/external/reveal/reveal-contai
 import { IValidationRule, RedactionType } from 'skyflow-js/types/utils/common'
 
 export const FileRenderElements = {};
+export const CollectElements = {};
 
 export interface SkyflowCollectElementProps {
   container: CollectContainer | ComposableContainer
