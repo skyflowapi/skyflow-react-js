@@ -2,6 +2,7 @@ import React from 'react'
 import CollectElement from 'skyflow-js/types/core/external/collect/collect-element'
 import ComposableElement from 'skyflow-js/types/core/external/collect/compose-collect-element'
 import { ICollectElementOptions, SkyflowCollectElementProps } from '../../elements'
+import { createElementValueMatchRule } from '../../utils/helpers'
 
 const useUpdateElement = (
   props: SkyflowCollectElementProps & ICollectElementOptions,
@@ -26,7 +27,7 @@ const useUpdateElement = (
   React.useEffect(() => {
     if (element && props?.container) {
       element.update({
-        validations: props.validations,
+        validations: createElementValueMatchRule(props.validations),
       })
     }
   }, [props.validations])

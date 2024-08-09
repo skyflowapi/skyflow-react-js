@@ -30,6 +30,7 @@ const Env = Skyflow.Env
 
 const LENGTH_MATCH_RULE = Skyflow.ValidationRuleType.LENGTH_MATCH_RULE
 const REGEX_MATCH_RULE = Skyflow.ValidationRuleType.REGEX_MATCH_RULE
+const ELEMENT_VALUE_MATCH_RULE = Skyflow.ValidationRuleType.ELEMENT_VALUE_MATCH_RULE
 
 const CardType = Skyflow.CardType
 
@@ -55,6 +56,7 @@ export {
   CardType,
   LENGTH_MATCH_RULE,
   REGEX_MATCH_RULE,
+  ELEMENT_VALUE_MATCH_RULE,
   InputFieldElement,
   useRenderFile,
   FileRenderElement,
