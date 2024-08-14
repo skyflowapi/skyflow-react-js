@@ -1,9 +1,14 @@
-import { CollectElements } from '../../elements'
+import { CollectElements, ComposableElements } from '../../elements'
 import Skyflow from 'skyflow-js'
 import { IValidationRule } from 'skyflow-js/types/utils/common'
 import { SKYFLOW_ERROR_CODE } from '../errors'
+import CollectContainer from 'skyflow-js/types/core/external/collect/collect-container'
+import ComposableContainer from 'skyflow-js/types/core/external/collect/compose-collect-container'
 
-export const createElementValueMatchRule = (validations?: IValidationRule[]) => {
+export const createElementValueMatchRule = (
+  container: CollectContainer | ComposableContainer,
+  validations?: IValidationRule[],
+) => {
   if (validations) {
     for (let index = 0; index < validations.length; index++) {
       const validationRule = validations[index]
@@ -27,10 +32,18 @@ export const createElementValueMatchRule = (validations?: IValidationRule[]) => 
           }
         }
         const elementId = validationRule.params.elementId
-        if (Object.prototype.hasOwnProperty.call(CollectElements, elementId)) {
-          validationRule.params.element = CollectElements[elementId]
-          validations[index] = validationRule
+        if (container && container.type === Skyflow.ContainerType.COLLECT) {
+          if (Object.prototype.hasOwnProperty.call(CollectElements, elementId)) {
+            validationRule.params.element = CollectElements[elementId]
+            validations[index] = validationRule
+          }
+        } else if (container && container.type === Skyflow.ContainerType.COMPOSABLE) {
+          if (Object.prototype.hasOwnProperty.call(ComposableElements, elementId)) {
+            validationRule.params.element = ComposableElements[elementId]
+            validations[index] = validationRule
+          }
         }
+
         return validations
       }
     }

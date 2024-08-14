@@ -27,7 +27,7 @@ const useUpdateElement = (
   React.useEffect(() => {
     if (element && props?.container) {
       element.update({
-        validations: createElementValueMatchRule(props.validations),
+        validations: createElementValueMatchRule(props.container, props.validations),
       })
     }
   }, [props.validations])

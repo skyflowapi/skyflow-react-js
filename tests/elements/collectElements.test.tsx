@@ -277,6 +277,45 @@ describe('test collect elements', () => {
     expect(cardContainer).toMatchSnapshot()
   });
 
+  test('test card number composable Element with element value match rule', () => {
+    const container = useComposabelContainer({ layout: [2] });
+    const cardContainer = render(
+      <ComposableContainer
+        id='composableContainer'
+        container={container}
+      >
+        <CardNumberElement
+          id={'collectCardNumber'}
+          container={container}
+          table={'table1'}
+          column={'string'}
+          placeholder={'XXXX XXXX XXXX'}
+          label={'Card Number'}
+          onChange={changeTrigger}
+          onBlur={blurTrigger}
+          onFocus={foucsTrigger}
+          onReady={readyTrigger}
+          validations={[]}
+        />,
+        
+        <CardNumberElement
+          id={'confirmCardNumber'}
+          container={container}          
+          table={'table1'}
+          column={'string'}
+          placeholder={'XXXX XXXX XXXX'}
+          label={'Card Number'}
+          onChange={changeTrigger}
+          onBlur={blurTrigger}
+          onFocus={foucsTrigger}
+          onReady={readyTrigger}
+          validations={[cardNumberMatchRule]}
+        />
+      </ComposableContainer>
+    )
+    expect(cardContainer).toMatchSnapshot()
+  })
+
   test('test cvv collect Element ', () => {
     const container = useCollectContainer();
     const cvvContainer = render(
