@@ -15,6 +15,7 @@ import InputFieldElement from '../../src/elements/InputField'
 import CardHolderNameElement from '../../src/elements/CardHolderName'
 import FileInputElement from '../../src/elements/FileInputElement'
 import ComposableContainer from '../../src/elements/ComposableContainer';
+import Skyflow from 'skyflow-js'
 import CollectContainer from 'skyflow-js/types/core/external/collect/collect-container'
 
 const foucsTrigger = jest.fn();
@@ -40,6 +41,29 @@ const collectElementMock = {
 const composableElementMock = {
   mount: mountMock,
   on: eventListenerMock
+}
+
+const invalidValidation1 = {
+  type: Skyflow.ValidationRuleType.ELEMENT_VALUE_MATCH_RULE,
+  params: {
+    error: 'validation check has failed!'
+  }
+}
+
+const invalidValidation2 = {
+  type: Skyflow.ValidationRuleType.ELEMENT_VALUE_MATCH_RULE,
+  params: {
+    element: 'collectCvv',
+    error: 'validation check has failed!'
+  }
+}
+
+const cardNumberMatchRule = {
+  type: Skyflow.ValidationRuleType.ELEMENT_VALUE_MATCH_RULE,
+  params: {
+    elementId: 'collectCardNumber',
+    error: 'card numbers do not match!'
+  }
 }
  
 jest.mock('../../src/hooks/CollectContainer', () => ({
@@ -134,6 +158,82 @@ describe('test collect elements', () => {
     expect(cardContainer).toMatchSnapshot()
   });
 
+  test('test card number collect Element with invalid validations - 1', () => {
+    const container = useCollectContainer()
+    const cardContainer = render(
+      <CardNumberElement
+        id={'id'}
+        container={container}
+        table={'table1'}
+        column={'string'}
+        placeholder={'XXXX XXXX XXXX'}
+        label={'Card Number'}
+        onChange={changeTrigger}
+        onBlur={blurTrigger}
+        onFocus={foucsTrigger}
+        onReady={readyTrigger}
+        validations={[invalidValidation1]}
+      />,
+    )
+    expect(cardContainer).toMatchSnapshot()
+  });
+
+  test('test card number collect Element with invalid validations - 2', () => {
+    const container = useCollectContainer()
+    const cardContainer = render(
+      <CardNumberElement
+        id={'id'}
+        container={container}
+        table={'table1'}
+        column={'string'}
+        placeholder={'XXXX XXXX XXXX'}
+        label={'Card Number'}
+        onChange={changeTrigger}
+        onBlur={blurTrigger}
+        onFocus={foucsTrigger}
+        onReady={readyTrigger}
+        validations={[invalidValidation2]}
+      />,
+    )
+    expect(cardContainer).toMatchSnapshot()
+  });
+
+  test('test card number collect Element with element value match rule', () => {
+    const container = useCollectContainer()
+    const cardContainer = render(
+      <>
+        <CardNumberElement
+          id={'collectCardNumber'}
+          container={container}
+          table={'table1'}
+          column={'string'}
+          placeholder={'XXXX XXXX XXXX'}
+          label={'Card Number'}
+          onChange={changeTrigger}
+          onBlur={blurTrigger}
+          onFocus={foucsTrigger}
+          onReady={readyTrigger}
+          validations={[]}
+        />,
+        
+        <CardNumberElement
+          id={'confirmCardNumber'}
+          container={container}
+          table={'table1'}
+          column={'string'}
+          placeholder={'XXXX XXXX XXXX'}
+          label={'Card Number'}
+          onChange={changeTrigger}
+          onBlur={blurTrigger}
+          onFocus={foucsTrigger}
+          onReady={readyTrigger}
+          validations={[cardNumberMatchRule]}
+        />
+      </>
+    )
+    expect(cardContainer).toMatchSnapshot()
+  });
+
   test('test card number composable Element ', () => {
     const container = useComposabelContainer({ layout: [1] });
     const cardContainer = render(
@@ -176,6 +276,45 @@ describe('test collect elements', () => {
     )
     expect(cardContainer).toMatchSnapshot()
   });
+
+  test('test card number composable Element with element value match rule', () => {
+    const container = useComposabelContainer({ layout: [2] });
+    const cardContainer = render(
+      <ComposableContainer
+        id='composableContainer'
+        container={container}
+      >
+        <CardNumberElement
+          id={'collectCardNumber'}
+          container={container}
+          table={'table1'}
+          column={'string'}
+          placeholder={'XXXX XXXX XXXX'}
+          label={'Card Number'}
+          onChange={changeTrigger}
+          onBlur={blurTrigger}
+          onFocus={foucsTrigger}
+          onReady={readyTrigger}
+          validations={[]}
+        />,
+        
+        <CardNumberElement
+          id={'confirmCardNumber'}
+          container={container}          
+          table={'table1'}
+          column={'string'}
+          placeholder={'XXXX XXXX XXXX'}
+          label={'Card Number'}
+          onChange={changeTrigger}
+          onBlur={blurTrigger}
+          onFocus={foucsTrigger}
+          onReady={readyTrigger}
+          validations={[cardNumberMatchRule]}
+        />
+      </ComposableContainer>
+    )
+    expect(cardContainer).toMatchSnapshot()
+  })
 
   test('test cvv collect Element ', () => {
     const container = useCollectContainer();
