@@ -316,7 +316,7 @@ describe('test collect elements', () => {
     expect(cardContainer).toMatchSnapshot()
   })
 
-  test('test cvv collect Element ', () => {
+  test('test cvv collect Element', () => {
     const container = useCollectContainer();
     const cvvContainer = render(
       <CVVElement
