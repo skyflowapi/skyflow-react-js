@@ -1594,7 +1594,7 @@ Object {
 }
 `;
 
-exports[`test collect elements test cvv collect Element  1`] = `
+exports[`test collect elements test cvv collect Element 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
