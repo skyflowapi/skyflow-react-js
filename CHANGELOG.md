@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.16.0] - 2024-05-20
+### Added
+- Support for `ELEMENT_VALUE_MATCH_RULE` custom validation rule.
+
 ## [1.15.0] - 2024-05-08
 ### Added
 - card brand choice support for card number element.

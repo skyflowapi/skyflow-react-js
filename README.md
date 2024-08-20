@@ -637,14 +637,35 @@ const lengthMatchRule = {
 }
 ```
 
-The Sample for using custom validations:
+- `ELEMENT_VALUE_MATCH_RULE`: You can use this rule to match the value of one element with the value of another element. `elementId` is the `id` of the collect element with which you want to compare values. Collect elements must have an `id` property to compare values.
+
+```jsx
+const elementValueMatchRule = {
+  type: ELEMENT_VALUE_MATCH_RULE,
+  params: {
+    elementId: string, // 'id' of element you want to compare values with
+    error: string // Optional, default error is 'VALIDATION FAILED'.
+  }
+}
+```
+
+#### Example usage of custom validations
+
+The sample [code snippet](https://github.com/skyflowapi/skyflow-react-js/blob/main/samples/SkyflowElements/src/components/CustomValidations/index.tsx) for using custom validations:
 
 ```jsx
 /*
   A simple example that illustrates custom validations.
-  Adding REGEX_MATCH_RULE , LENGTH_MATCH_RULE to collect element.
+  Adding REGEX_MATCH_RULE, LENGTH_MATCH_RULE and ELEMENT_VALUE_MATCH_RULE to
+  collect elements.
 */
-import {CardNumberElement, REGEX_MATCH_RULE, LENGTH_MATCH_RULE} from 'skyflow-react-js';
+import {
+  CardNumberElement, 
+  InputFieldElement as PasswordElement,
+  LENGTH_MATCH_RULE,
+  REGEX_MATCH_RULE,
+  ELEMENT_VALUE_MATCH_RULE
+} from 'skyflow-react-js';
 
 // This rule allows 1 or more alphabets.
 const alphabetsOnlyRegexRule = {
@@ -665,17 +686,46 @@ const lengthRule = {
   }
 };
 
+// This rule will compare values of passwords entered in InputField elements
+const elementValueMatchRule = {
+  type: ELEMENT_VALUE_MATCH_RULE,
+  params: {
+    elementId: 'collectPassword', // 'id' of Password (InputField) element
+    error: 'passwords does not match' 
+  }
+}
+
 const Form = (props) => {
   return (
-    <CardNumberElement
-      container='COLLECT CONTAINER'
-      table='<TABLE_NAME>'
-      column='<COLUMN_NAME>'
-      validations={[alphabetsOnlyRegexRule, lengthRule]}
-      ...props
-    />
+    <>
+      <CardNumberElement
+        container='COLLECT CONTAINER'
+        table='<TABLE_NAME>'
+        column='<COLUMN_NAME>'
+        validations={[alphabetsOnlyRegexRule, lengthRule]}
+        ...props
+      />
+
+      <PasswordElement
+        id={'collectPassword'} // required, same as passed in element match rule
+        container='COLLECT CONTAINER'
+        table='<TABLE_NAME>'
+        column='<COLUMN_NAME>'
+        ...props
+      />
+
+      <PasswordElement
+        container='COLLECT CONTAINER'
+        table='<TABLE_NAME>'
+        column='<COLUMN_NAME>'
+        validations={[elementValueMatchRule]} // pass rule to element
+        ...props
+      />
+    </>
   );
 };
+
+export default Form;
 ```
 
 ## Using Skyflow Elements to update data
