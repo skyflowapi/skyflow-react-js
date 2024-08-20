@@ -637,7 +637,7 @@ const lengthMatchRule = {
 }
 ```
 
-- `ELEMENT_VALUE_MATCH_RULE`: You can use this rule to match the value of one element with another element
+- `ELEMENT_VALUE_MATCH_RULE`: You can use this rule to match the value of one element with the value of another element. `elementId` is the `id` of the collect element with which you want to compare values. Collect elements must have an `id` property to compare values.
 
 ```jsx
 const elementValueMatchRule = {
@@ -649,11 +649,7 @@ const elementValueMatchRule = {
 }
 ```
 
-Notes:
-- `element` param is not supported for Element value match rule. You should use `elementId` instead. 
-- `elementId` is the `id` of the collect element with which you want to compare the values.
-- `id`, although optional, will be required for the collect element which you want to pass to the Element Value match rule.
-
+#### Example usage of custom validations
 
 The sample [code snippet](https://github.com/skyflowapi/skyflow-react-js/blob/main/samples/SkyflowElements/src/components/CustomValidations/index.tsx) for using custom validations:
 
@@ -665,8 +661,7 @@ The sample [code snippet](https://github.com/skyflowapi/skyflow-react-js/blob/ma
 */
 import {
   CardNumberElement, 
-  CVVElement,
-  PinElement,
+  InputFieldElement as PasswordElement,
   LENGTH_MATCH_RULE,
   REGEX_MATCH_RULE,
   ELEMENT_VALUE_MATCH_RULE
@@ -691,12 +686,12 @@ const lengthRule = {
   }
 };
 
-// This rule will compare value of CVV element with another Element
+// This rule will compare values of passwords entered in InputField elements
 const elementValueMatchRule = {
   type: ELEMENT_VALUE_MATCH_RULE,
   params: {
-    elementId: 'collectCvv', // 'id' of CVV collect element
-    error: 'values do not match' 
+    elementId: 'collectPassword', // 'id' of Password (InputField) element
+    error: 'passwords does not match' 
   }
 }
 
@@ -711,19 +706,19 @@ const Form = (props) => {
         ...props
       />
 
-      <CVVElement
-        id={'collectCvv'} // required, same as passed in element match rule
+      <PasswordElement
+        id={'collectPassword'} // required, same as passed in element match rule
         container='COLLECT CONTAINER'
         table='<TABLE_NAME>'
         column='<COLUMN_NAME>'
         ...props
       />
 
-      <PinElement
+      <PasswordElement
         container='COLLECT CONTAINER'
         table='<TABLE_NAME>'
         column='<COLUMN_NAME>'
-        validations={[elementValueMatchRule]} // pass rule to PIN element
+        validations={[elementValueMatchRule]} // pass rule to element
         ...props
       />
     </>
