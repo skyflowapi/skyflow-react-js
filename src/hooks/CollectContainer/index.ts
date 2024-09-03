@@ -7,11 +7,11 @@ import CollectContainer from 'skyflow-js/types/core/external/collect/collect-con
 
 import { useSkyflowClient } from '../../core/hook'
 
-const useCollectContainer = (): CollectContainer => {
+const useCollectContainer = (options?): CollectContainer => {
   const { skyflow } = useSkyflowClient()
 
   return React.useMemo(
-    () => skyflow?.container(Skyflow.ContainerType.COLLECT) as CollectContainer,
+    () => options ? skyflow?.container(Skyflow.ContainerType.COLLECT, options) as CollectContainer : skyflow?.container(Skyflow.ContainerType.COLLECT) as CollectContainer,
     [],
   )
 }
