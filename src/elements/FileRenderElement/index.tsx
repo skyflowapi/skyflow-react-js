@@ -25,7 +25,8 @@ const FileRenderElement: FC<SkyflowRenderElementProps> = ({ ...props }) => {
           table: props.table,
         }
       )
-      FileRenderElement.mount(props.id ? `#${props.id}` : `#reveal-${uniqueDivId.current}`)
+      const divId = props.id ? `#${props.id}` : `#reveal-${uniqueDivId.current}`;
+      FileRenderElement.mount(divId)
       FileRenderElements[props.id as string] = FileRenderElement
       setElement(FileRenderElement);
     } catch (e) {

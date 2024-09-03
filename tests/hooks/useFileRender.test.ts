@@ -1,50 +1,24 @@
 /*
 	Copyright (c) 2022 Skyflow, Inc. 
 */
-import Skyflow from 'skyflow-js'
 import useRenderFile from '../../src/hooks/RenderFile'
-import React from 'react'
-import { IConfig } from '../../src/core'
+import { act } from 'react-dom/test-utils';
+import { renderHook } from '@testing-library/react';
+import { FileRenderElements } from '../../src/elements';
 
-const mockContext: IConfig = {
-  vaultID: '',
-  vaultURL: '',
-  getBearerToken: jest.fn(),
-  options: {
-    logLevel: Skyflow.LogLevel.ERROR,
-    env: Skyflow.Env.PROD,
+jest.mock('../../src/elements', () => ({
+  FileRenderElements: {
+    'id' : 1,
+    'name': 'Element 1'
   },
-}
-
-const mockUseContext = jest.fn().mockImplementation(() => mockContext)
-
-React.useContext = mockUseContext
-
-Skyflow.init = jest.fn()
-
-const useRenderFileMock: unknown = {
-    'id': 1,
-    'name': 'Element 1',
-}
-
-const mockFileRenderElements = {
-    'revealElement-1': {
-      id: 1,
-      name: 'Element 1',
-    },
-  };
-
-jest
-.spyOn(React, 'useState')
-.mockImplementation(
-  () => [mockFileRenderElements['revealElement-1'], jest.fn()]
-);
-jest.spyOn(React,'useEffect').mockImplementation((arg)=>{
-  return arg();
-});
+}));
 
 describe('test useRenderFile', () => {
-    it('should return useRenderFile', () => {
-        expect(useRenderFile('div')).toStrictEqual(useRenderFileMock);
+  it('should return the RevealElement if id exists in FileRenderElements', () => {
+    const { result } = renderHook(() => useRenderFile('id'));
+    act(() => {
+      jest.runAllTimers();
     });
+    expect(result.current).toBe(FileRenderElements['id']);
+  });
 })

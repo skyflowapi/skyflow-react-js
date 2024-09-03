@@ -6,6 +6,7 @@ import { render } from '@testing-library/react'
 import RevealElement from '../../src/elements/RevealElement'
 import RevealContainer from 'skyflow-js/types/core/external/reveal/reveal-container'
 import Skyflow from 'skyflow-js'
+import useRevealContainer from '../../src/hooks/RevealContainer'
 
 jest.mock('../../src/hooks/RevealContainer')
 jest.mock('uuid',()=>{return {
@@ -29,6 +30,13 @@ describe('RevealElement', () => {
   test('valid redaction type passed in reveal element', () => {
     const revealElement = render(
       <RevealElement container={container} id={id} token={token} classes={classes} label={label} redaction={Skyflow.RedactionType.PLAIN_TEXT}/>,
+    )
+    expect(revealElement).toMatchSnapshot()
+  })
+  test('should test reveal element when id is passed', () => {
+    const revealContainer = useRevealContainer();
+    const revealElement = render(
+      <RevealElement container={revealContainer} id={'id'} token={'state'} classes={classes} label={'label'} redaction={Skyflow.RedactionType.PLAIN_TEXT}/>,
     )
     expect(revealElement).toMatchSnapshot()
   })
