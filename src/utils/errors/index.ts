@@ -1,13 +1,14 @@
-import sdkVersion from '../../../package.json'
+import sdkDetails from '../../../package.json'
 
+const sdkLanguageAndVersion = `React SDK v${sdkDetails.version}`;
 
 export const logs = {
   errorLogs: {
-    COMPOSABLE_COMPONENT_NOT_PROVIDED: `React SDK v${sdkVersion.version} Component is not wrapped inside the \`ComposableContainer\`.`,
+    COMPOSABLE_COMPONENT_NOT_PROVIDED: `${sdkLanguageAndVersion} Component is not wrapped inside the \`ComposableContainer\`.`,
     MISSING_ELEMENTID_IN_ELEMENT_MATCH_RULE:
-      'Interface: collect element - Missing `elementId` in ValidationRule params at index %s1 in validations array.',
+      `${sdkLanguageAndVersion} Validation error. Missing 'element id' param in validations array at index %s1. Specify a valid value for element id param.`,
     INVALID_PARAMS_IN_ELEMENT_MATCH_RULE:
-      'Interface: collect element - `element` param not supported in ValidationRule params at index %s1 in validations array. Pass `elementId` instead.',
+      `${sdkLanguageAndVersion} Validation error. Invalid 'params' for validation rule found in validations array at index %s1. Specify valid params for validation rule.`,
   },
 }
 
