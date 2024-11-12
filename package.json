@@ -2,7 +2,7 @@
   "name": "skyflow-react-js",
   "preferGlobal": true,
   "analyze": false,
-  "version": "1.18.0",
+  "version": "1.18.0-dev.af68459",
   "description": "Skyflow React SDK",
   "homepage": "https://github.com/skyflowapi/skyflow-react",
   "main": "lib/index.js",
@@ -82,7 +82,7 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
-    "skyflow-js": "^1.38.0",
+    "skyflow-js": "^1.38.2",
     "uuid": "^9.0.0"
   },
   "peerDependencies": {
