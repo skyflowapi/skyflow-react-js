@@ -13,6 +13,7 @@ import CollectElementsUpdateData from './components/CollectElementsUpdateData';
 import DynamicCollectElements from './components/DynamicCollectElements';
 import DynamicRevealElements from './components/DynamicRevealElements';
 import CardBrandChoice from './components/CardBrandChoice';
+import ThreeDSHelperFunctions from './components/3DSHelperFunctions';
 
 const App = () => {
 
@@ -86,6 +87,11 @@ const App = () => {
           <b>Sample Card Brand Choice</b>
         </p>
         <CardBrandChoice />
+      <div id='Sample for 3DS Helper Functions'>
+        <p>
+          <b>Sample 3DS Helper Functions</b>
+        </p>
+        <ThreeDSHelperFunctions />
       </div>
     </div>
   );
