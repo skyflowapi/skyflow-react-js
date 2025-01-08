@@ -8,7 +8,7 @@ const ThreeDSHelperFunctions = () => {
   const threeDS = use3DS()
 
   const generateBrowserDetails = () => {
-    const browserDetails = threeDS.getBroswerDetails()
+    const browserDetails = threeDS.getBrowserDetails()
     const browserDetailsDiv = document.getElementById('threeDSBrowserDetails')
     if (browserDetailsDiv) {
       browserDetailsDiv.innerHTML = JSON.stringify(browserDetails)
