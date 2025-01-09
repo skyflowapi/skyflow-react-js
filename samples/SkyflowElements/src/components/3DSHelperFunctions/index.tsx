@@ -19,7 +19,7 @@ const ThreeDSHelperFunctions = () => {
     const actionButtons = document.getElementById('actionButtons')
     const challengeWindow = document.getElementById('challengeWindow')
     if (challengeWindow) {
-      const challengeIFrame = threeDS.showChallenege('<acs-url>', '<c-req>', '04', challengeWindow)
+      const challengeIFrame = threeDS.showChallenge('<acs-url>', '<c-req>', '04', challengeWindow)
       challengeIFrame.addEventListener('load', function () {
         if ( actionButtons && actionButtons.hidden) {
           challengeIFrame.hidden = true

@@ -8,6 +8,6 @@ describe('test useRenderFile', () => {
   it('should return the RevealElement if id exists in FileRenderElements', () => {
     const {result} = renderHook(() => use3DS())
     expect(result.current.getBrowserDetails).toBeDefined()
-    expect(result.current.showChallenege).toBeDefined()
+    expect(result.current.showChallenge).toBeDefined()
   })
 })
