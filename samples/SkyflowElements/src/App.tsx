@@ -12,6 +12,7 @@ import FileRender from './components/FileRenderElements';
 import CollectElementsUpdateData from './components/CollectElementsUpdateData';
 import DynamicCollectElements from './components/DynamicCollectElements';
 import DynamicRevealElements from './components/DynamicRevealElements';
+import CardBrandChoice from './components/CardBrandChoice';
 
 const App = () => {
 
@@ -79,6 +80,12 @@ const App = () => {
           <b>Sample Reveal Elements Dynamic properties update</b>
         </p>
         <DynamicRevealElements />
+      </div>
+      <div id='Sample for Card Brand Choice'>
+        <p>
+          <b>Sample Card Brand Choice</b>
+        </p>
+        <CardBrandChoice />
       </div>
     </div>
   );

@@ -320,6 +320,7 @@ const options = {
   format: String, // Optional, format for the element (only applicable currently for EXPIRATION_DATE ElementType).
   enableCopy: false, // Optional, enables the copy icon in collect and reveal elements to copy text to clipboard. Defaults to 'false').
   allowedFileType: string[], // Optional, allowed extensions for the file to be uploaded.
+  cardMetadata: {}, // Optional, metadata to control card number element behavior. (only applicable for CARD_NUMBER ElementType).
 }
 ```
 
@@ -346,6 +347,29 @@ The values that are accepted for `EXPIRATION_YEAR` are
 - `YYYY`
 
 `NOTE`: If not specified or invalid value is passed to the `format` then it takes default value.
+
+- `cardMetadata`: An object of metadata keys to control card number element behavior. It supports an optional key called `scheme`, which accepts an array of Skyflow accept card types based on which SDK will display card brand choice dropdown in the card number element. `CardType` is an enum with all skyflow supported card schemes.
+
+```jsx
+import React from 'react';
+import { CardType } from 'skyflow-react-js'
+
+const cardMetadata = {
+	scheme: CardType[] // Optional, array of skyflow supported card types.
+}
+```
+<div id="supported-card-types-by-skyflowcardtype">Supported card types by CardType :</div>
+
+- `VISA`
+- `MASTERCARD`
+- `AMEX`
+- `DINERS_CLUB`
+- `DISCOVER`
+- `JCB`
+- `MAESTRO`
+- `UNIONPAY`
+- `HIPERCARD`
+- `CARTES_BANCAIRES`
 
 ### Step 3: Collect data from Elements
 
@@ -963,11 +987,13 @@ state: {
   isFocused: boolean
   isValid: boolean
   value: string
+  selectedCardScheme: CardType // only for CARD_NUMBER element type
 }
 ```
 
 `Note:`
-Values of SkyflowElements will be returned in element state object only when `env` is  `DEV`,  else it is empty string i.e, '', but in case of CARD_NUMBER type element when the `env` is `PROD` for all the card types except AMEX, it will return first eight digits, for AMEX it will return first six digits and rest all digits in masked format.
+- Values of SkyflowElements will be returned in element state object only when `env` is  `DEV`,  else it is empty string i.e, '', but in case of CARD_NUMBER type element when the `env` is `PROD` for all the card types except AMEX, it will return first eight digits, for AMEX it will return first six digits and rest all digits in masked format.
+- - `selectedCardScheme` will exist for `CARD_NUMBER` element state and the value of <a href="#supported-card-types-by-skyflowcardtype">CardType</a> will be only populated when cardbrand choice selection is triggered otherwise, it will always be an empty string.
 
 ### Example Usage of Event Listener on Collect Elements
 
