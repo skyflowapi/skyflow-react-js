@@ -12,7 +12,7 @@ import FileRender from './components/FileRenderElements';
 import CollectElementsUpdateData from './components/CollectElementsUpdateData';
 import DynamicCollectElements from './components/DynamicCollectElements';
 import DynamicRevealElements from './components/DynamicRevealElements';
-import CardBrandChoiceSample from './components/CardBrandChoice';
+import CardBrandChoice from './components/CardBrandChoice';
 
 const App = () => {
 
@@ -85,7 +85,7 @@ const App = () => {
         <p>
           <b>Sample Card Brand Choice</b>
         </p>
-        <CardBrandChoiceSample />
+        <CardBrandChoice />
       </div>
     </div>
   );

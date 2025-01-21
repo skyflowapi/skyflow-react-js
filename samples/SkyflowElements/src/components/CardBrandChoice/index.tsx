@@ -6,7 +6,7 @@ import {
   useMakeSkyflowStyles,
 } from 'skyflow-react-js'
 
-const CardBrandChoiceSample = () => {
+const CardBrandChoice = () => {
   // Use this state to update cardschema list to provide choice
   const [scheme,setScheme] = useState<typeof CardType[]>([]);
   
@@ -153,4 +153,4 @@ const CardBrandChoiceSample = () => {
   )
 }
 
-export default CardBrandChoiceSample;
+export default CardBrandChoice;
