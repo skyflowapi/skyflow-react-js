@@ -87,6 +87,7 @@ const App = () => {
           <b>Sample Card Brand Choice</b>
         </p>
         <CardBrandChoice />
+      </div>
       <div id='Sample for 3DS Helper Functions'>
         <p>
           <b>Sample 3DS Helper Functions</b>
