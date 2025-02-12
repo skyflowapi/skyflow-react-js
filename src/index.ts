@@ -24,6 +24,7 @@ import useCollectContainer from './hooks/CollectContainer'
 import useComposableContainer from './hooks/ComposableContainer'
 import useRenderFile from './hooks/RenderFile'
 import useSkyflow from './hooks/Skyflow'
+import use3DS from './hooks/ThreeDS'
 
 const LogLevel = Skyflow.LogLevel
 const Env = Skyflow.Env
@@ -60,5 +61,6 @@ export {
   InputFieldElement,
   useRenderFile,
   FileRenderElement,
-  useSkyflow
+  useSkyflow,
+  use3DS
 }
