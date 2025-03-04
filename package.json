@@ -2,7 +2,7 @@
   "name": "skyflow-react-js",
   "preferGlobal": true,
   "analyze": false,
-  "version": "2.1.0-dev.a91c4b9",
+  "version": "2.1.2",
   "description": "Skyflow React SDK",
   "homepage": "https://github.com/skyflowapi/skyflow-react",
   "main": "lib/index.js",
