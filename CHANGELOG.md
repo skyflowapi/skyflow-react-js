@@ -2,6 +2,34 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.1.3] - 2025-03-12
+### Added
+- Support for latest react version `v19.0.0`.
+
+## [2.1.2] - 2025-03-04
+### Changed
+- Upgrade JS SDK latest version for patch fixes.
+
+## [2.1.0] - 2025-02-12
+### Added
+- Support for 3DS helper functions
+
+## [2.0.0] - 2025-01-28
+### Added
+- Support for iframe versioning.
+
+## [1.18.1] - 2024-11-12
+### Changed
+- Upgrade JS SDK latest version for patch fixes.
+
+## [1.18.0] - 2024-09-11
+### Changed
+- Error messages for SDK validation scenarios
+
+## [1.17.0] - 2024-09-03
+### Added
+- Support for Coralogix iframe metrics
+
 ## [1.16.0] - 2024-05-20
 ### Added
 - Support for `ELEMENT_VALUE_MATCH_RULE` custom validation rule.

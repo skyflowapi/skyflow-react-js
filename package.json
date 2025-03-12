@@ -2,7 +2,7 @@
   "name": "skyflow-react-js",
   "preferGlobal": true,
   "analyze": false,
-  "version": "2.1.2",
+  "version": "2.1.2-dev.78b7a03",
   "description": "Skyflow React SDK",
   "homepage": "https://github.com/skyflowapi/skyflow-react",
   "main": "lib/index.js",
@@ -86,7 +86,7 @@
     "uuid": "^9.0.0"
   },
   "peerDependencies": {
-    "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
-    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
   }
 }
