@@ -3,7 +3,7 @@
 */
 import React, { FC } from 'react'
 import Skyflow from 'skyflow-js'
-import { CollectElements, ComposableElements, SkyflowCollectElementProps } from '..'
+import { CollectElements, ComposableElements, SkyflowCollectElementProps, SkyflowCollectElementRef } from '..'
 import { ELEMENT_CREATED } from '../../utils/constants'
 import useCollectListeners from '../../hooks/CollectListner'
 import CollectElement from 'skyflow-js/types/core/external/collect/collect-element'
@@ -13,9 +13,20 @@ import useUpdateElement from '../../hooks/UpdateElement'
 import ComposableElement from 'skyflow-js/types/core/external/collect/compose-collect-element'
 import { createElementValueMatchRule } from '../../utils/helpers'
 
-const CVVElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
+const CVVElement = React.forwardRef<SkyflowCollectElementRef, SkyflowCollectElementProps>(({ ...props }, ref) => {
   const uniqueDivId = React.useRef(uuid());
   const [element,setElement] = React.useState<CollectElement| ComposableElement | null>(null);
+
+  
+  React.useImperativeHandle(ref, () => {
+    return {
+      setErrorMessage: (errorMessage: string) => {
+        if(element && 'setErrorOverride' in element && typeof element.setErrorOverride === 'function'){
+          element.setErrorOverride(errorMessage);
+        }
+      }
+    }
+  }, [element]);
 
   React.useEffect(() => {
     try {
@@ -64,6 +75,6 @@ const CVVElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
     ? (<div id={props.id ? props.id : `CVV-id-${uniqueDivId.current}`}></div>) 
     : (<></>)
   )
-}
+});
 
 export default React.memo(CVVElement);

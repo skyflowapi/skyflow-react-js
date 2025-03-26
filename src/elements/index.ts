@@ -30,7 +30,12 @@ export interface SkyflowCollectElementProps {
   onReady?: (state: unknown) => void
   eventEmitter?:any
   skyflowID?:string
+  ref?: {current: SkyflowCollectElementRef | null};
   // TODO ref 
+}
+
+export interface SkyflowCollectElementRef {
+    setErrorMessage: (errorMessage: string) => void;
 }
 
 export interface SkyflowRevealElementProps {
