@@ -4,7 +4,7 @@
 import React, { FC } from 'react'
 import Skyflow from 'skyflow-js'
 import CollectElement from 'skyflow-js/types/core/external/collect/collect-element'
-import { CollectElements, ComposableElements, SkyflowCollectElementProps } from '..'
+import { CollectElements, ComposableElements, SkyflowCollectElementProps, SkyflowCollectElementRef } from '..'
 import useCollectListeners from '../../hooks/CollectListner'
 import { ELEMENT_CREATED } from '../../utils/constants'
 import { SKYFLOW_ERROR_CODE } from '../../utils/errors'
@@ -13,10 +13,20 @@ import useUpdateElement from '../../hooks/UpdateElement'
 import ComposableElement from 'skyflow-js/types/core/external/collect/compose-collect-element'
 import { createElementValueMatchRule } from '../../utils/helpers'
 
-const CardNumberElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
+const CardNumberElement = React.forwardRef<SkyflowCollectElementRef, SkyflowCollectElementProps>(({ ...props }, ref) => {
   const uniqueDivId = React.useRef(uuid());
 
   const [element,setElement] = React.useState<CollectElement| ComposableElement | null>(null);
+
+  React.useImperativeHandle(ref, () => {
+    return {
+      setErrorMessage: (errorMessage: string) => {
+        if(element && 'setErrorOverride' in element && typeof element.setErrorOverride === 'function'){
+          element.setErrorOverride(errorMessage);
+        }
+      }
+    }
+  }, [element]);
   
   React.useEffect(() => {
     try {
@@ -63,6 +73,6 @@ const CardNumberElement: FC<SkyflowCollectElementProps> = ({ ...props }) => {
     ? (<div id={props.id ? props.id : `CARD_NUMBER-id-${uniqueDivId.current}`}></div>) 
     : (<></>)
   )
-}
+})
 
 export default React.memo(CardNumberElement)
