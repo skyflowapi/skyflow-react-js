@@ -12,21 +12,14 @@ import { v4 as uuid } from 'uuid';
 import useUpdateElement from '../../hooks/UpdateElement'
 import ComposableElement from 'skyflow-js/types/core/external/collect/compose-collect-element'
 import { createElementValueMatchRule } from '../../utils/helpers'
+import useErrorOverride from '../../hooks/OverrideError'
 
 const CVVElement = React.forwardRef<SkyflowCollectElementRef, SkyflowCollectElementProps>(({ ...props }, ref) => {
   const uniqueDivId = React.useRef(uuid());
   const [element,setElement] = React.useState<CollectElement| ComposableElement | null>(null);
 
   
-  React.useImperativeHandle(ref, () => {
-    return {
-      setErrorMessage: (errorMessage: string) => {
-        if(element && 'setErrorOverride' in element && typeof element.setErrorOverride === 'function'){
-          element.setErrorOverride(errorMessage);
-        }
-      }
-    }
-  }, [element]);
+  useErrorOverride(element, ref, props);
 
   React.useEffect(() => {
     try {
