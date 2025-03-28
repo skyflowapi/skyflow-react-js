@@ -25,6 +25,7 @@ import useComposableContainer from './hooks/ComposableContainer'
 import useRenderFile from './hooks/RenderFile'
 import useSkyflow from './hooks/Skyflow'
 import use3DS from './hooks/ThreeDS'
+import { SkyflowCollectElementRef, SkyflowRenderElementRef, SkyflowRevealElementRef } from 'elements'
 
 const LogLevel = Skyflow.LogLevel
 const Env = Skyflow.Env
@@ -62,5 +63,8 @@ export {
   useRenderFile,
   FileRenderElement,
   useSkyflow,
-  use3DS
+  use3DS,
+  SkyflowCollectElementRef,
+  SkyflowRevealElementRef,
+  SkyflowRenderElementRef,
 }

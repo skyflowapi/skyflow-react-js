@@ -2,13 +2,16 @@
   Copyright (c) 2022 Skyflow, Inc. 
 */
 import React, { FC } from 'react'
-import { FileRenderElements, SkyflowRenderElementProps } from '..'
+import { FileRenderElements, SkyflowRenderElementProps, SkyflowRenderElementRef } from '..'
 import { v4 as uuid } from 'uuid';
 import useUpdateFileRenderElement from '../../hooks/UpdateFileRenderElement';
+import useErrorOverride from '../../hooks/OverrideError';
 
-const FileRenderElement: FC<SkyflowRenderElementProps> = ({ ...props }) => {
+const FileRenderElement = React.forwardRef<SkyflowRenderElementRef, SkyflowRenderElementProps>(({ ...props }, ref) => {
   const uniqueDivId = React.useRef(uuid());
   const [element, setElement] = React.useState<any>(null);
+
+  useErrorOverride(element, ref, props);
 
   React.useEffect(() => {
     const divElement = document.getElementById(props?.id || `reveal-${uniqueDivId.current}`);
@@ -36,6 +39,6 @@ const FileRenderElement: FC<SkyflowRenderElementProps> = ({ ...props }) => {
 
   useUpdateFileRenderElement(props, element)
   return <div id={props.id ? props.id : `reveal-${uniqueDivId.current}` }></div>
-}
+})
 
 export default React.memo(FileRenderElement);
