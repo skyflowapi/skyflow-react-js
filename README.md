@@ -1088,6 +1088,87 @@ export default App
   value: '41111111XXXXXXXX',
 };
 ```
+
+### Override default error Messages
+
+You can override the default error messages with custom ones by using `setErrorOverride`. This is especially useful to override default error messages in non-English languages.
+
+To override error messages dynamically, you need to:
+
+  1. Create a ref using `React.useRef`.
+
+  2. Pass the ref to the Skyflow element for which you want to set the custom error.
+
+  3. Use `setErrorOverride` on ref.current to set the custom message.
+
+`setErrorOverride` overrides the default error message when the value is invalid. The error resets automatically when the value becomes valid.
+
+```javascript
+import {
+  CardNumberElement,
+  useCollectContainer,
+  CardHolderNameElement,
+  SkyflowCollectElementRef,
+} from 'skyflow-react-js';
+
+const CollectElements = () => {
+  const container = useCollectContainer();
+
+  const cardNumberRef = React.useRef<SkyflowCollectElementRef | null>(null);
+  const cardholderNameRef = React.useRef<SkyflowCollectElementRef | null>(null);
+
+  const onCardNumberBlur = (state: any) => {
+    if(state.isEmpty){
+      //can override the message when the field is required and empty
+      cardNumberRef.current?.setErrorOverride("custom error for required");
+    } else if(!state.isValid){
+      //can override the message when the input is invalid
+      cardNumberRef.current?.setErrorOverride("custom error for invalid number");
+    }
+  }
+
+  const onCardholderNameBlur = (state: any) => {
+    if(state.isEmpty){
+      //can override the message when the field is required and empty
+      cardNameRef.current?.setErrorOverride("custom error for required");
+    } else if(!state.isValid){
+      //can override the message when the input is invalid
+      cardNameRef.current?.setErrorOverride("custom error for invalid name");
+    }
+  }
+
+  return (
+    <div>
+     <CardNumberElement
+        id={'collectCardNumber'}
+        container={container}
+        table={'table1'}
+        column={'card_number'}
+        label='Card number'
+        ref={cardNumberRef}
+        options={{required:true}}
+        onBlur={onCardNumberBlur}
+      />
+      <CardHolderNameElement
+        id={'collectCardName'}
+        container={container}
+        table={'table1'}
+        column={'cardholder_name'}
+        label='Name'
+        ref={cardNameRef}
+        options={{required:true}}
+        onBlur={onCardholderNameBlur}
+      />
+    </div>
+  )
+}
+```
+
+**Note**:
+- Maintain different references for different elements.
+- `setErrorOverride` can only override default error messages.
+- `setErrorOverride` can only be used in BLUR event listener as shown in the above example.
+
 ## Using Skyflow File Input Element to upload a file
 
 You can upload binary files to a vault using the Skyflow File Input Element. Use the following steps to securely upload a file.

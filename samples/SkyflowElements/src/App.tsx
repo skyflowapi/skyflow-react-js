@@ -14,6 +14,7 @@ import DynamicCollectElements from './components/DynamicCollectElements';
 import DynamicRevealElements from './components/DynamicRevealElements';
 import CardBrandChoice from './components/CardBrandChoice';
 import ThreeDSHelperFunctions from './components/3DSHelperFunctions';
+import OverrideDefaultErrors from './components/OverrideDefaultErrors'
 
 const App = () => {
 
@@ -64,35 +65,47 @@ const App = () => {
         </p>
         <CustomValidations />
       </div>
+      <br />
       <div id='Sample for Composable Elements In Modal'>
         <p>
           <b>Sample Composable Elements Dynamic properties update</b>
         </p>
         <DynamicComposableElements />
       </div>
+      <br />
       <div id='Sample for Collect Elements Update Properties'>
         <p>
           <b>Sample Collect Elements Dynamic properties update</b>
         </p>
         <DynamicCollectElements />
       </div>
+      <br />
       <div id='Sample for Reveal Elements Update Properties'>
         <p>
           <b>Sample Reveal Elements Dynamic properties update</b>
         </p>
         <DynamicRevealElements />
       </div>
+      <br />
       <div id='Sample for Card Brand Choice'>
         <p>
           <b>Sample Card Brand Choice</b>
         </p>
         <CardBrandChoice />
       </div>
+      <br />
       <div id='Sample for 3DS Helper Functions'>
         <p>
           <b>Sample 3DS Helper Functions</b>
         </p>
         <ThreeDSHelperFunctions />
+      </div>
+      <br />
+      <div id='Sample for override default error messages'>
+        <p>
+          <b>Override default error messages</b>
+        </p>
+        <OverrideDefaultErrors />
       </div>
     </div>
   );
