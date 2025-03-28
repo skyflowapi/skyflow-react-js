@@ -2,14 +2,17 @@
   Copyright (c) 2022 Skyflow, Inc. 
 */
 import React, { FC } from 'react'
-import { SkyflowRevealElementProps } from '..'
+import { SkyflowCollectElementRef, SkyflowRevealElementProps, SkyflowRevealElementRef } from '..'
 import { v4 as uuid } from 'uuid';
 import Skyflow from 'skyflow-js';
 import useUpdateRevealElement from '../../hooks/UpdateRevealElement';
+import useErrorOverride from '../../hooks/OverrideError';
 
-const RevealElement: FC<SkyflowRevealElementProps> = ({ ...props }) => {
+const RevealElement = React.forwardRef<SkyflowRevealElementRef, SkyflowRevealElementProps>( ({ ...props }, ref) => {
   const uniqueDivId = React.useRef(uuid());
   const [element,setElement] = React.useState<any>(null);
+
+  useErrorOverride(element, ref, props);
 
   React.useEffect(() => {
     const divElement = document.getElementById(props?.id || `reveal-${uniqueDivId.current}`);
@@ -44,6 +47,6 @@ const RevealElement: FC<SkyflowRevealElementProps> = ({ ...props }) => {
 
   useUpdateRevealElement(props, element)
   return <div id={props.id ? props.id : `reveal-${uniqueDivId.current}` }></div>
-}
+})
 
 export default React.memo(RevealElement);

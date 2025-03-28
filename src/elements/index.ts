@@ -30,7 +30,12 @@ export interface SkyflowCollectElementProps {
   onReady?: (state: unknown) => void
   eventEmitter?:any
   skyflowID?:string
+  ref?: {current: SkyflowCollectElementRef | null};
   // TODO ref 
+}
+
+export interface SkyflowCollectElementRef {
+    setErrorOverride: (errorMessage: string) => void;
 }
 
 export interface SkyflowRevealElementProps {
@@ -42,7 +47,13 @@ export interface SkyflowRevealElementProps {
   classes?: Record<string, unknown>
   options?: IRevealOptions
   redaction?: RedactionType
+  ref?: {current: SkyflowRevealElementRef | null}
 }
+
+export interface SkyflowRevealElementRef {
+  setErrorOverride: (errorMessage: string) => void;
+}
+
 export interface SkyflowRenderElementProps {
   container: RevealContainer
   id: string
@@ -51,6 +62,11 @@ export interface SkyflowRenderElementProps {
   skyflowID:string
   table: string
   column: string
+  ref?: {current: SkyflowRenderElementRef | null};
+}
+
+export interface SkyflowRenderElementRef {
+  setErrorOverride: (errorMessage: string) => void;
 }
 
 export interface ICollectElementOptions {
