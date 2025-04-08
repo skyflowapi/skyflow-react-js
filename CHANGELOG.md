@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.2.1] - 2025-04-08
+### Added
+- Flexibility to display the desired card brand scheme for card brand choice.
+
+## [2.2.0] - 2025-03-28
+### Added
+- Support for overriding error messages for collect elements.
+
 ## [2.1.3] - 2025-03-12
 ### Added
 - Support for latest react version `v19.0.0`.
