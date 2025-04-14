@@ -77,6 +77,8 @@ export interface ICollectElementOptions {
   allowedFileType?: string[]
   preserveFileName?: boolean
   cardMetadata ?: ICardMetadata
+  masking?: boolean
+  maskingChar?: string
 }
 
 export type IRevealOptions = {
