@@ -15,6 +15,7 @@ import DynamicRevealElements from './components/DynamicRevealElements';
 import CardBrandChoice from './components/CardBrandChoice';
 import ThreeDSHelperFunctions from './components/3DSHelperFunctions';
 import OverrideDefaultErrors from './components/OverrideDefaultErrors'
+import Masking from './components/Masking';
 
 const App = () => {
 
@@ -106,6 +107,13 @@ const App = () => {
           <b>Override default error messages</b>
         </p>
         <OverrideDefaultErrors />
+      </div>
+      <br />
+      <div id='Sample for masking'>
+        <p>
+          <b>Masking input</b>
+        </p>
+        <Masking />
       </div>
     </div>
   );

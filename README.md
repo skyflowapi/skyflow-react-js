@@ -321,6 +321,8 @@ const options = {
   enableCopy: false, // Optional, enables the copy icon in collect and reveal elements to copy text to clipboard. Defaults to 'false').
   allowedFileType: string[], // Optional, allowed extensions for the file to be uploaded.
   cardMetadata: {}, // Optional, metadata to control card number element behavior. (only applicable for CARD_NUMBER ElementType).
+  masking: true,        // Optional, indicates whether the input should be masked. Defaults to 'false'.
+  maskingChar: '*',     // Optional, character used for masking input when masking is enabled. Defaults to '*'.
 }
 ```
 
@@ -370,6 +372,63 @@ const cardMetadata = {
 - `UNIONPAY`
 - `HIPERCARD`
 - `CARTES_BANCAIRES`
+
+`masking` : A boolean value for whether to mask the input of the element. When masking is enabled, user input will be replaced with a masking character.
+The default masking character is `*`, but you can customize masking character using the maskingChar property.
+
+`maskingChar`: A single character used to mask the input when masking is enabled. Defaults to `*`, but can be customized to any character of your choice.
+
+***Collect Element Options examples for masking***:
+
+Example for CVV:
+```jsx
+const options = {
+  required: true,
+  enableCopy: false, 
+  masking: true, 
+  maskingChar: '•',
+}
+```
+User input: "1234" 
+Value displayed in CVV: "••••"
+
+Example for CARDHOLDER_NAME:
+```jsx
+const options = {
+  required: true,
+  enableCopy: false, 
+  masking: true, 
+}
+```
+User input: "John Doe" 
+Value displayed in CARDHOLDER_NAME: "********"
+
+Example for CARD_NUMBER:
+```jsx
+const options = {
+  required: true,
+  enableCopy: false, 
+  masking: true, 
+  maskingChar: '#'
+}
+```
+User input: "4111 1111 1111 1111" 
+Value displayed in CARD_NUMBER: "#### #### #### ####"
+
+Example for PIN:
+```jsx
+const options = {
+  required: true,
+  enableCopy: false, 
+  masking: true, 
+  maskingChar: '&'
+}
+```
+User input: "98364721" 
+Value displayed in PIN: "&&&&&&&&"
+
+**Note**:
+- Unmasked data will be stored in  the vault.
 
 ### Step 3: Collect data from Elements
 
