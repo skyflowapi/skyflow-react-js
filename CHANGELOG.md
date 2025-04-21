@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.3.1] - 2025-04-21
+### Added
+- Validation check for blocking 0 byte size files
+
+## [2.3.0] - 2025-04-15
+### Added
+- Masking support for collect elements.
+
+## [2.2.1-beta.1] - 2025-04-10
+### Added
+- Iframe refactoring
+
 ## [2.2.1] - 2025-04-08
 ### Added
 - Flexibility to display the desired card brand scheme for card brand choice.
