@@ -1116,6 +1116,46 @@ describe('test collect elements', () => {
     )
     expect(fileInputContainer).toMatchSnapshot()
   });
+  test('test fileInput collect Element with blockEmptyFiles option is true', () => {
+    const container = useCollectContainer();
+    const options = {
+      blockEmptyFiles: true,
+    };
+    const fileInputContainer = render(
+      <FileInputElement
+        id={''}
+        container={container}
+        table={''}
+        column={'string'}
+        label={'file input'}
+        validations={[]}
+        skyflowID={'skyflow-id'}
+        options={options}
+        eventEmitter={composableEventEmitter}
+      />,
+    )
+    expect(fileInputContainer).toMatchSnapshot()
+  });
+  test('test fileInput collect Element with blockEmptyFiles option is false', () => {
+    const container = useCollectContainer();
+    const options = {
+      blockEmptyFiles: false,
+    };
+    const fileInputContainer = render(
+      <FileInputElement
+        id={''}
+        container={container}
+        table={''}
+        column={'string'}
+        label={'file input'}
+        validations={[]}
+        skyflowID={'skyflow-id'}
+        options={options}
+        eventEmitter={composableEventEmitter}
+      />,
+    )
+    expect(fileInputContainer).toMatchSnapshot()
+  });
 
   test('test fileInput composable Element with emitter ', () => {
     const container = useComposabelContainer({ layout: [1] });
