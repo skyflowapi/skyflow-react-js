@@ -79,6 +79,7 @@ export interface ICollectElementOptions {
   cardMetadata ?: ICardMetadata
   masking?: boolean
   maskingChar?: string
+  blockEmptyFiles?: boolean
 }
 
 export type IRevealOptions = {
