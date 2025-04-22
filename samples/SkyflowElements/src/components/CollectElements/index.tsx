@@ -31,7 +31,7 @@ const CollectElements = () => {
 
   const options = {
     allowedFileType: ["<allowedFileType1>","<allowedFileType2>"],
-    blockEmptyFiles: false, // default is false, if set to true, it will block empty files
+    blockEmptyFiles: true, // default is false, if set to true, it will block empty files
   };
   
   const handleFile = () => {
