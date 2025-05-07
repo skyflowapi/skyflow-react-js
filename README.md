@@ -4,6 +4,12 @@ A React wrapper for [Skyflow JS SDK](https://github.com/skyflowapi/skyflow-js)
 
 ---
 
+## Browsers support
+
+| <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="IE / Edge" width="34px" height="34px" /><br/> IE / Edge | <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="34px" height="34px" /><br/>Firefox | <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="34px" height="34px" /><br/>Chrome | <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="34px" height="34px" /><br/>Safari
+|--------------------------------------------------------------------------------------------------------------------------------------------------------------| --------- | --------- |-------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+
 ## Table of Contents
 
 - [**Including Skyflow-React**](#including-skyflow-react)
