@@ -2,11 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
-## [2.2.3] - 2025-05-08
+## [2.3.3] - 2025-05-08
 ### Added
 - Add overloading method signatures for container initialisation.
 
-## [2.2.2] - 2025-04-22
+## [2.3.2] - 2025-04-22
 ### Added
 - Add boolean value in options to add validation check for blocking empty files.
 
