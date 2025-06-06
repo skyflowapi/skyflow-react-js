@@ -148,10 +148,242 @@ For `env` parameter, there are 2 accepted values in `Env`
 
 ## Securely collecting data client-side
 
+- [**Insert data into the vault**](#insert-data-into-the-vault)
 - [**Using Skyflow Elements to collect data**](#using-skyflow-elements-to-collect-data)
 - [**Using Skyflow Elements to update data**](#using-skyflow-elements-to-update-data)
 - [**Event Listener on Collect Elements**](#event-listener-on-collect-elements)
 - [**Using Skyflow File Input Element to upload a file**](#using-skyflow-file-input-element-to-upload-a-file)
+
+### Insert Data into the Vault
+
+To insert data into the vault, use the `insert(records, options?)` method of the Skyflow client. The `records` parameter takes a JSON object of the records to insert into the below format. The `options` parameter takes an object of optional parameters for the insertion. The `insert` method also supports upsert operations.
+
+#### Schema for Records
+```js
+data = {
+  records: [
+    {
+      table: '<TABLE_NAME>',      // Table into which record should be inserted.
+      fields: {
+        '<FIELDNAME>': '<VALUE>'  // Column names should match vault column names.
+        // ...additional fields here
+      },
+    },
+    // ...additional records here
+  ]
+};
+```
+
+#### Schema for Options
+```js
+options = {
+  tokens: true,               // Optional, indicates if tokens should be returned for the inserted data. Defaults to true.
+  upsert:[                    // Optional, upsert operations support in the vault.
+    {
+      table: '<TABLE_NAME>',  // Table name.
+      column: 'value',        // Unique column in the table.
+    }
+  ],
+  continueOnError: true       // Optional, decides whether to continue if error encountered or not 
+};
+```
+
+Example Usage:
+
+```jsx
+import React from 'react';
+import { useSkyflow } from 'skyflow-react-js';
+
+const InsertRecords = () => {
+
+  const skyflow = useSkyflow()
+
+  const callInsert = () => {
+    const response = skyflow.insert({
+      records: [
+        {
+          table: "cards",
+          fields: {
+            expiry_date: '12/2026',
+            card_number: '411111111111111',
+          },
+        },
+      ],
+    },
+    { tokens: true });
+
+    response.then((res: any) => {
+      console.log(res)
+    })
+    .catch((e: any) => {
+      console.log(e)
+    });
+  }
+
+	return ( 
+    <div id='insert-div' >
+		<button id='insert-button' onClick={callInsert}> Insert Record </button>  
+    </div>
+	)
+}
+```
+
+Sample response:
+
+```json
+{
+  "records": [
+    {
+      "table": "cards",
+      "fields": {
+        "skyflow_id": "431eaa6c-5c15-4513-aa15-29f50babe882",
+        "card_number": "f37186-e7e2-466f-91e5-48e2bcbc1",
+        "expiry_date": "1989cb56-63a-4482-adf-1f74cd1a5",
+      },
+    },
+  ],
+}
+
+```
+Example Usage with upsert support:
+
+```jsx
+import React from 'react';
+import { useSkyflow } from 'skyflow-react-js';
+
+const InsertRecords = () => {
+
+  const skyflow = useSkyflow()
+
+  const callInsert = () => {
+    const response = skyflow.insert({
+      records: [
+        {
+          table: "cards",
+          fields: {
+            expiry_date: '12/2026',
+            card_number: '411111111111111',
+          },
+        },
+      ],
+    }, { 
+      tokens: true,
+      upsert: [{
+        table: 'cards',
+        column: 'card_number',
+      }]
+    });
+
+    response.then((res: any) => {
+      console.log(res)
+    })
+    .catch((e: any) => {
+      console.log(e)
+    });
+  }
+
+	return ( 
+    <div id='insert-div' >
+		<button id='insert-button' onClick={callInsert}> Insert Record </button>  
+    </div>
+	)
+}
+```
+
+Samples Response:
+```json
+{
+  "records": [
+    {
+      "table": "cards",
+      "fields": {
+        "skyflow_id": "16419435-aa63-4823-aae7-19c6a2d6a19f",
+        "card_number": "f3907186-e7e2-466f-91e5-48e12c2bcbc1",
+        "cvv": "1989cb56-63da-4482-a2df-1f74cd0dd1a5",
+      },
+    }
+  ]
+}
+```
+
+Example Usage with contiueOnError support:
+
+```jsx
+import React from 'react';
+import { useSkyflow } from 'skyflow-react-js';
+
+const InsertRecords = () => {
+
+  const skyflow = useSkyflow()
+
+  const callInsert = () => {
+    const response = skyflow.insert({
+      records: [
+        {
+          fields: {
+            expiry_date: '12/2026',
+            card_number: '411111111111111',
+            namee: 'john doe',
+          },
+          table: 'cards',
+        },
+        {
+          fields: {
+            expiry_date: '12/2027',
+            card_number: '411111111111111',
+            name: 'jane doe',
+          },
+          table: 'cards',
+        }
+      ],
+    },
+    { 
+      tokens: true,
+      continueOnError: true,
+    });
+
+    response.then((res: any) => {
+      console.log(res)
+    })
+    .catch((e: any) => {
+      console.log(e)
+    });
+  }
+
+	return ( 
+    <div id='insert-div' >
+		<button id='insert-button' onClick={callInsert}> Insert Record </button>  
+    </div>
+	)
+}
+```
+
+Sample Response:
+```json
+{
+  "records": [
+    {
+      "table": "cards",
+      "fields": {
+        "skyflow_id": "16419435-aa63-4823-aae7-19c6a2d6a19f",
+        "card_number": "f3907186-e7e2-466f-91e5-48e12c2bcbc1",
+        "expiry_date": "1989cb56-63da-4482-a2df-1f74cd0dd1a5",
+        "name": "245d3a0f-a2d3-443b-8a20-8c17de86e186",
+      },
+      "request_index": 1,
+    }
+  ],
+  "errors": [
+    {
+      "error": {
+        "code":400,
+        "description":"Invalid field present in JSON namee - requestId: 87fb2e32-6287-4e61-8304-9268df12bfe8",
+        "request_index": 0,
+      }
+    }
+  ]
+}
+```
 
 ### Using Skyflow Elements to collect data
 
@@ -443,29 +675,30 @@ When the form is ready to be submitted, call the `collect(options?)` method on t
 - `tokens`: indicates whether tokens for the collected data should be returned or not. Defaults to 'true'
 - `additionalFields`: Non-PCI elements data to be inserted into the vault which should be in the `records` object format.
 - `upsert`: To support upsert operations while collecting data from Skyflow elements, pass the table and column marked as unique in the table.
+- `continueOnError`: To decides whether to continue if error encountered or not. Defaults to `false`.
 
 ```javascript
 const options = {
-  tokens: true, // Optional, indicates whether tokens for the collected data should be returned. Defaults to 'true'
+  tokens: true,                          // Optional, indicates whether tokens for the collected data should be returned. Defaults to 'true'
   additionalFields: {
     records: [
       {
-        table: 'string', // Table into which record should be inserted
+        table: 'string',                 // Table into which record should be inserted
         fields: {
-          column1: 'value', // Column names should match vault column names
+          column1: 'value',              // Column names should match vault column names
           // ...additional fields here
         },
       },
       // ...additional records here
     ],
-  }, // Optional
-  upsert: [
-    // Upsert operations support in the vault
+  },                                     // Optional
+  upsert: [                              // Upsert operations support in the vault
     {
       table: 'string', // Table name
       column: 'value', // Unique column in the table
     },
   ], //Optional
+  continueOnError: true                  // Optional, decides whether to continue if error encountered or not
 }
 
 container.collect(options)
@@ -561,6 +794,7 @@ export default App
     {
       "table": "cards",
       "fields": {
+        "skyflow_id": "431eaa6c-5c15-4513-aa15-29f50babe882",
         "cardNumber": "f3907186-e7e2-466f-91e5-48e12c2bcbc1",
       }
     }
@@ -667,17 +901,145 @@ export default App
 
 **Skyflow returns tokens for the record you just inserted.**
 
-```javascript
+```json
 {
-   "records": [
-       {
-           "table": "cards",
-           "fields": {
-               "cardNumber": "f3907186-e7e2-466f-91e5-48e12c2bcbc1",
-               "cvv": "l4907186-e7e2-466f-91e5-985e12c2bcbc1"
-           }
-       }
-   ]
+  "records": [
+    {
+      "table": "cards",
+      "fields": {
+        "skyflow_id": "431eaa6c-5c15-4513-aa15-29f50babe882",
+        "cardNumber": "f3907186-e7e2-466f-91e5-48e12c2bcbc1",
+        "cvv": "l4907186-e7e2-466f-91e5-985e12c2bcbc1"
+      }
+    }
+  ]
+}
+```
+
+### Insert call example with continueOnError support
+
+```jsx
+import React from 'react'
+import {
+  CardNumberElement,
+  CVVElement,
+  useCollectContainer,
+  useMakeSkyflowStyles,
+} from 'skyflow-react-js'
+
+function App() {
+  const container = useCollectContainer()
+
+  const useStyles = useMakeSkyflowStyles({
+    inputStyles: {
+      base: {
+        border: '1px solid black',
+        borderRadius: '4px',
+        color: '#1d1d1d',
+        padding: '10px 16px',
+      },
+      complete: {
+        color: '#4caf50',
+      },
+      empty: {},
+      focus: {},
+      invalid: {
+        color: '#f44336',
+      },
+    },
+    labelStyles: {
+      base: {
+        fontSize: '16px',
+        fontWeight: 'bold',
+      },
+    },
+    errorTextStyles: {
+      base: {
+        color: 'blue',
+      },
+    },
+  })
+
+  const classes = useStyles()
+
+  const handleCollect = () => {
+    const options = {
+      tokens: true,
+      continueOnError: true,
+      additionalFields: {
+        records: [
+          {
+            table: 'table',                  
+            fields: {
+              "cardholder_nam": 'value',   
+            },
+          },
+        ],
+      },
+    }
+
+    const response = container.collect(options)
+    response
+      .then((res: any) => {
+        console.log(JSON.stringify(res))
+      })
+      .catch((e: any) => {
+        console.log(e)
+      })
+  }
+
+  return (
+    <div className='App'>
+      <header className='App-header'>
+        <CardNumberElement
+          container={container}
+          table={'cards'}
+          classes={classes}
+          column={'cardNumber'}
+          label={'Collect Card Number'}
+          options={options}
+        />
+
+        <CVVElement
+          container={container}
+          table={'cards'}
+          classes={classes}
+          column={'cvv'}
+          label={'Collect CVV'}
+          options={options}
+        />
+
+        <button onClick={handleCollect}>Collect</button>
+      </header>
+    </div>
+  )
+}
+
+export default App
+```
+
+**Skyflow returns tokens for the record you just inserted.**
+
+```json
+{
+  "records": [
+    {
+      "table": "cards",
+      "fields": {
+        "skyflow_id": "431eaa6c-5c15-4513-aa15-29f50babe882",
+        "cardNumber": "f3907186-e7e2-466f-91e5-48e12c2bcbc1",
+        "cvv": "12f670af-6c7d-4837-83fb-30365fbc0b1e"
+      }
+    }
+  ], 
+  "errors": [
+    {
+      "error": {
+        "code": 404,
+        "description": "Invalid field present in JSON cardholder_nam - requestId : d6b0eb7e-d002-4232-9000-fd44fe8bec86",
+      }
+    }
+  ]
 }
 ```
 
