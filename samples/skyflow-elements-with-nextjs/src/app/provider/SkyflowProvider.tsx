@@ -32,7 +32,7 @@ const SkyflowProvider = ({
   }, []);
 
   /*
-  // Comment above useEffect and uncomment below code to use with hooks
+  // Comment the above useEffect and uncomment the below code to use with hooks
   const getBearerToken = useCallback(() => {
     return new Promise<string>((resolve) => {
       resolve("<TOKEN>");

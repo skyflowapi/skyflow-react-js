@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-// import "./globals.css";
-import SkyflowProvider from "./Provider/SkyflowProvider";
+import SkyflowProvider from "./provider/SkyflowProvider";
+import ClientWrapper from "./provider/ClientWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,9 +26,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        {/* SkyflowProvider is used to provide the Skyflow configuration to the application */}
         <SkyflowProvider>
         {children}
         </SkyflowProvider>
+       {/* Uncomment the ClientWrapper if you want to use dynamic import for SkyflowProvider */}
+        {/* <ClientWrapper>
+        {children}
+        </ClientWrapper> */}
       </body>
     </html>
   );
