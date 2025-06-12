@@ -82,7 +82,7 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
-    "skyflow-js": "2.3.2",
+    "skyflow-js": "^2.3.2",
     "uuid": "^9.0.0"
   },
   "peerDependencies": {
