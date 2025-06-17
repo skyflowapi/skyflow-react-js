@@ -1,0 +1,30 @@
+{
+  "name": "vuejs-skyflow-reactsdk-sample",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve --host localhost --port 8080 --public localhost:8080",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "@types/react": "^19.1.8",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-to-webcomponent": "^2.0.1",
+    "skyflow-js": "^2.3.2",
+    "skyflow-react-js": "^2.4.3",
+    "vue": "^3.2.13"
+  },
+  "devDependencies": {
+    "@babel/preset-react": "^7.27.1",
+    "@babel/preset-typescript": "^7.27.1",
+    "@types/react-dom": "^19.1.6",
+    "@vue/babel-preset-jsx": "^1.4.0",
+    "@vue/cli-plugin-babel": "^5.0.8",
+    "@vue/cli-plugin-typescript": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "babel-loader": "^10.0.0",
+    "typescript": "~4.5.5",
+    "webpack": "^5.99.9"
+  }
+}
