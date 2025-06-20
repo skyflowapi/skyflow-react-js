@@ -2,9 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
-## [2.5.0] - 2025-06-19
+## [2.5.0] - 2025-06-20
 ### Added
-- Typescript support for public interfaces.
+- Typescript support for public interfaces in JS SDK.
 
 ## [2.4.3] - 2025-06-16
 ### Fixed
