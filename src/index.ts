@@ -2,7 +2,7 @@
 	Copyright (c) 2022 Skyflow, Inc. 
 */
 import SkyflowElements from './core'
-import Skyflow from 'skyflow-js'
+import Skyflow, { CardType } from 'skyflow-js'
 
 import CardHolderNameElement from './elements/CardHolderName'
 import CardNumberElement from './elements/CardNumber'
@@ -33,8 +33,6 @@ const Env = Skyflow.Env
 const LENGTH_MATCH_RULE = Skyflow.ValidationRuleType.LENGTH_MATCH_RULE
 const REGEX_MATCH_RULE = Skyflow.ValidationRuleType.REGEX_MATCH_RULE
 const ELEMENT_VALUE_MATCH_RULE = Skyflow.ValidationRuleType.ELEMENT_VALUE_MATCH_RULE
-
-const CardType = Skyflow.CardType
 
 export {
   SkyflowElements,
