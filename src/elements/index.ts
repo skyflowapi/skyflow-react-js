@@ -3,7 +3,7 @@
 */
 
 
-import { CardType } from 'skyflow-js/types/core/constants';
+import { CardMetadata } from 'skyflow-js';
 import CollectContainer from 'skyflow-js/types/core/external/collect/collect-container'
 import ComposableContainer from 'skyflow-js/types/core/external/collect/compose-collect-container'
 import RevealContainer from 'skyflow-js/types/core/external/reveal/reveal-container'
@@ -35,7 +35,7 @@ export interface SkyflowCollectElementProps {
 }
 
 export interface SkyflowCollectElementRef {
-    setErrorOverride: (errorMessage: string) => void;
+  setErrorOverride: (errorMessage: string) => void;
 }
 
 export interface SkyflowRevealElementProps {
@@ -76,7 +76,7 @@ export interface ICollectElementOptions {
   enableCopy?: boolean
   allowedFileType?: string[]
   preserveFileName?: boolean
-  cardMetadata ?: ICardMetadata
+  cardMetadata ?: CardMetadata
   masking?: boolean
   maskingChar?: string
   blockEmptyFiles?: boolean
@@ -87,6 +87,6 @@ export type IRevealOptions = {
   format?:string
 }
 
-export type ICardMetadata = {
-  scheme?: typeof CardType[]
-}
+// export type ICardMetadata = {
+//   scheme?: typeof CardType[]
+// }
