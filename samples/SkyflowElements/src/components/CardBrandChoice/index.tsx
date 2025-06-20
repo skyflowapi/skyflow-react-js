@@ -8,7 +8,7 @@ import {
 
 const CardBrandChoice = () => {
   // Use this state to update cardschema list to provide choice
-  const [scheme,setScheme] = useState<typeof CardType[]>([]);
+  const [scheme,setScheme] = useState<CardType[]>([]);
   
   // Use this to aviod unnesscary bin api calls.
   const binUpdate = useRef(false);
@@ -116,7 +116,7 @@ const CardBrandChoice = () => {
 
   // Handle to parse card scheme from the bin api response. 
   const getCardSchems = (cardData:any)=>{
-    const schemeList:any[] = [];
+    const schemeList:CardType[] = [];
     // cardData will results in array of length more than 1 if it is cobranded. 
     cardData.forEach((card:any)=>{
       if(card.card_scheme === 'VISA'){
