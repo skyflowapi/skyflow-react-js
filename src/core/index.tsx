@@ -21,7 +21,6 @@ export interface ISkyflowElements {
 }
 
 const SkyflowElements: React.FC<ISkyflowElements> = ({ children, config }): JSX.Element => {
-  // Initialize Skyflow
   const skyflow = useSkyflowInit(config)
   return <skyflowContext.Provider value={skyflow}>{children}</skyflowContext.Provider>
 }
