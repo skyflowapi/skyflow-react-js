@@ -16,6 +16,7 @@ import CardBrandChoice from './components/CardBrandChoice';
 import ThreeDSHelperFunctions from './components/3DSHelperFunctions';
 import OverrideDefaultErrors from './components/OverrideDefaultErrors'
 import Masking from './components/Masking';
+import InputFormatting from './components/InputFormatting';
 
 const App = () => {
 
@@ -65,6 +66,13 @@ const App = () => {
           <b>Sample for Custom Validations</b>
         </p>
         <CustomValidations />
+      </div>
+      <br />
+      <div id='Sample for Input Formatting'>
+        <p>
+          <b>Sample for Input Formatting</b>
+        </p>
+        <InputFormatting />
       </div>
       <br />
       <div id='Sample for Composable Elements In Modal'>
