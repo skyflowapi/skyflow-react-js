@@ -131,7 +131,6 @@ const InputFormatting = () => {
                 label={'OTP'}
                 options={otpOptions}
             />
-           
             <button onClick={handleCollect}>Collect</button>
         </div>
     );
