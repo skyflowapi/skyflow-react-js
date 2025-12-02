@@ -385,8 +385,8 @@ const options = {
   translation: { 'X': '[0-9]',  'Y': '[A-Z]' } 
 }
 ```
-User input: "B123412123"
-Value displayed in INPUT_FIELD: "AB 12-341-2123"
+User input: "B123412124"
+Value displayed in INPUT_FIELD: "AB 12-341-2124"
 
 
 - `cardMetadata`: An object of metadata keys to control card number element behavior. It supports an optional key called `scheme`, which accepts an array of Skyflow accept card types based on which SDK will display card brand choice dropdown in the card number element. `CardType` is an enum with all skyflow supported card schemes.
