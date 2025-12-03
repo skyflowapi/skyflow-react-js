@@ -353,7 +353,7 @@ const options = {
 
     Accepted values by element type:
 
-    | Element type    | `format`and `translation` values                                                                                                                                                           | Examples                                                                                                                                   |
+    | Element type    | `format` and `translation` values                                                                                                                                                           | Examples                                                                                                                                   |
     | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
     | EXPIRATION_DATE | <li>`format`</li> <ul><li>`mm/yy` (default)</li><li>`mm/yyyy`</li><li>`yy/mm`</li><li>`yyyy/mm`</li></ul>                                                                                  | <ul><li>12/27</li><li>12/2027</li> <li>27/12</li> <li> 2027/12</li></ul></ul>                                                              |
     | EXPIRATION_YEAR | <li>`format`</li> <ul><li>`yy` (default)</li><li>`yyyy`</li></ul>                                                                                                                          | <ul><li>27</li><li>2027</li></ul>                                                                                                          |
@@ -361,32 +361,32 @@ const options = {
     | INPUT_FIELD     | <li>`format`: A string that matches the desired output, with placeholder characters of your choice.</li><li>`translation`: An object of key/value pairs. Defaults to `{"X": "[0-9]"}`</li> | With a `format` of `+91 XXXX-XX-XXXX` and a `translation` of `{"X": "[0-9]"}`, user input of "1234121234" displays as "+91 1234-12-1234". |
 
 
-    `NOTE`: If not specified or invalid value is passed to the `format` then it takes default value.
+    **Note:** If `format` isn't specified or receives an invalid value, it uses the element type's default value.
 
-**Collect Element Options examples for INPUT_FIELD**
+    **Collect Element Options examples for INPUT_FIELD**
 
-Example 1
-```js
-const options = {
-  format:'+91 XXXX-XX-XXXX',
-  translation: { 'X': '[0-9]' } 
-}
-```
+    Example 1
+    ```js
+    const options = {
+      format:'+91 XXXX-XX-XXXX',
+      translation: { 'X': '[0-9]' } 
+    }
+    ```
 
-User input: "1234121234"
-Value displayed in INPUT_FIELD: "+91 1234-12-1234"
+    User input: "1234121234"
+    Value displayed in INPUT_FIELD: "+91 1234-12-1234"
 
-Example 2
-```js
-const options = {
-  required: true, 
-  enableCardIcon: true,
-  format: 'AY XX-XXX-XXXX',
-  translation: { 'X': '[0-9]',  'Y': '[A-Z]' } 
-}
-```
-User input: "B123412124"
-Value displayed in INPUT_FIELD: "AB 12-341-2124"
+    Example 2
+    ```js
+    const options = {
+      required: true, 
+      enableCardIcon: true,
+      format: 'AY XX-XXX-XXXX',
+      translation: { 'X': '[0-9]',  'Y': '[A-Z]' } 
+    }
+    ```
+    User input: "B123412124"
+    Value displayed in INPUT_FIELD: "AB 12-341-2124"
 
 
 - `cardMetadata`: An object of metadata keys to control card number element behavior. It supports an optional key called `scheme`, which accepts an array of Skyflow accept card types based on which SDK will display card brand choice dropdown in the card number element. `CardType` is an enum with all skyflow supported card schemes.
