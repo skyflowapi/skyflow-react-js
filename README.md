@@ -323,7 +323,8 @@ Along with Collect Element we can define other options which takes a object of o
 const options = {
   required: false, // Optional, indicates whether the field is marked as required. Defaults to 'false'.
   enableCardIcon: true, // Optional, indicates whether card icon should be enabled (only applicable for CARD_NUMBER ElementType).
-  format: String, // Optional, format for the element (only applicable currently for EXPIRATION_DATE ElementType).
+  format: String, // Optional, format for the element.
+  translation: {}, // Optional, indicates the allowed data type value for format. 
   enableCopy: false, // Optional, enables the copy icon in collect and reveal elements to copy text to clipboard. Defaults to 'false').
   allowedFileType: string[], // Optional, allowed extensions for the file to be uploaded.
   cardMetadata: {}, // Optional, metadata to control card number element behavior. (only applicable for CARD_NUMBER ElementType).
@@ -336,25 +337,57 @@ const options = {
 
 - `enableCardIcon` parameter indicates whether the icon is visible for the CARD_NUMBER element, defaults to true
 
-- `format` parameter takes string value and indicates the format pattern applicable to the element type, It's currently only applicable to `EXPIRATION_DATE` and `EXPIRATION_YEAR` element types.
 
 - `enableCopy` parameter indicates whether the copy icon is visible in collect and reveal elements.
 
 - `allowedFileType` parameter indicates the allowedFileType extensions to be uploaded.
 
-The values that are accepted for `EXPIRATION_DATE` are
+- `format`: A string value that indicates the format pattern applicable to the element type.
+    Only applicable to EXPIRATION_DATE, CARD_NUMBER, EXPIRATION_YEAR, and INPUT_FIELD elements.
 
-- `MM/YY` (default)
-- `MM/YYYY`
-- `YY/MM`
-- `YYYY/MM`
+      - For INPUT_FIELD elements,
+        - the length of `format` determines the expected length of the user input.
+        - if `translation` isn't specified, the `format` value is considered a string literal.
 
-The values that are accepted for `EXPIRATION_YEAR` are
+    `translation`: An object of key value pairs, where the key is a character that appears in `format` and the value is a simple regex pattern of acceptable inputs for that character. Each key can only appear once. Only applicable for INPUT_FIELD elements.
 
-- `YY` (default)
-- `YYYY`
+    Accepted values by element type:
 
-`NOTE`: If not specified or invalid value is passed to the `format` then it takes default value.
+    | Element type    | `format` and `translation` values                                                                                                                                                           | Examples                                                                                                                                   |
+    | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
+    | EXPIRATION_DATE | <li>`format`</li> <ul><li>`mm/yy` (default)</li><li>`mm/yyyy`</li><li>`yy/mm`</li><li>`yyyy/mm`</li></ul>                                                                                  | <ul><li>12/27</li><li>12/2027</li> <li>27/12</li> <li> 2027/12</li></ul></ul>                                                              |
+    | EXPIRATION_YEAR | <li>`format`</li> <ul><li>`yy` (default)</li><li>`yyyy`</li></ul>                                                                                                                          | <ul><li>27</li><li>2027</li></ul>                                                                                                          |
+    | CARD_NUMBER     | <li>`format`</li> <ul><li>`XXXX XXXX XXXX XXXX` (default)</li><li>`XXXX-XXXX-XXXX-XXXX`</li></ul>                                                                                          | <ul><li>1234 5678 9012 3456</li><li>1234-5678-9012-3456</li></ul>                                                                          |
+    | INPUT_FIELD     | <li>`format`: A string that matches the desired output, with placeholder characters of your choice.</li><li>`translation`: An object of key/value pairs. Defaults to `{"X": "[0-9]"}`</li> | With a `format` of `+91 XXXX-XX-XXXX` and a `translation` of `{"X": "[0-9]"}`, user input of "1234121234" displays as "+91 1234-12-1234". |
+
+
+    **Note:** If `format` isn't specified or receives an invalid value, it uses the element type's default value.
+
+    **Collect Element Options examples for INPUT_FIELD**
+
+    Example 1
+    ```js
+    const options = {
+      format:'+91 XXXX-XX-XXXX',
+      translation: { 'X': '[0-9]' } 
+    }
+    ```
+
+    User input: "1234121234"
+    Value displayed in INPUT_FIELD: "+91 1234-12-1234"
+
+    Example 2
+    ```js
+    const options = {
+      required: true, 
+      enableCardIcon: true,
+      format: 'AY XX-XXX-XXXX',
+      translation: { 'X': '[0-9]',  'Y': '[A-Z]' } 
+    }
+    ```
+    User input: "B123412124"
+    Value displayed in INPUT_FIELD: "AB 12-341-2124"
+
 
 - `cardMetadata`: An object of metadata keys to control card number element behavior. It supports an optional key called `scheme`, which accepts an array of Skyflow accept card types based on which SDK will display card brand choice dropdown in the card number element. `CardType` is an enum with all skyflow supported card schemes.
 
