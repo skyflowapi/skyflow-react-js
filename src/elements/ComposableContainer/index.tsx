@@ -7,11 +7,12 @@ import EventEmitter from '../../utils/event-emitter'
 import ComposableContainer from 'skyflow-js/types/core/external/collect/compose-collect-container';
 import Skyflow from 'skyflow-js'
 import { v4 as uuid } from 'uuid';
+import { ComposableSubmitResponse } from '../../types';
 export interface IComposableContainer {
   children?: React.ReactNode
   container: ComposableContainer
   id?: string
-  onSubmit?: () => void
+  onSubmit?: (response?: ComposableSubmitResponse) => void
 }
 
 const ComposableContainerComponent: FC<IComposableContainer> = ({ children, ...props }) => {
@@ -24,7 +25,7 @@ const ComposableContainerComponent: FC<IComposableContainer> = ({ children, ...p
     setCurrentCount((prev) => prev + 1);
   });
 
-  const iterateOverChildren = (children) => {
+  const iterateOverChildren = (children: React.ReactNode) => {
     return React.Children.map(children, (child) => {
       if (!React.isValidElement(child)) return child;
       return React.cloneElement(child, { eventEmitter: eventEmitter } as Partial<unknown>)

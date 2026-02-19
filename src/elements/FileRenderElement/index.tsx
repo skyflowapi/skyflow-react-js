@@ -4,12 +4,14 @@
 import React, { FC } from 'react'
 import { FileRenderElements, SkyflowRenderElementProps, SkyflowRenderElementRef } from '..'
 import { v4 as uuid } from 'uuid';
+import RevealElementType from 'skyflow-js/types/core/external/reveal/reveal-element';
 import useUpdateFileRenderElement from '../../hooks/UpdateFileRenderElement';
 import useErrorOverride from '../../hooks/OverrideError';
 
+// eslint-disable-next-line react/display-name
 const FileRenderElement = React.forwardRef<SkyflowRenderElementRef, SkyflowRenderElementProps>(({ ...props }, ref) => {
   const uniqueDivId = React.useRef(uuid());
-  const [element, setElement] = React.useState<any>(null);
+  const [element, setElement] = React.useState<RevealElementType | null>(null);
 
   useErrorOverride(element, ref, props);
 

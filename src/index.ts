@@ -27,6 +27,19 @@ import useSkyflow from './hooks/Skyflow'
 import use3DS from './hooks/ThreeDS'
 import { SkyflowCollectElementRef, SkyflowRenderElementRef, SkyflowRevealElementRef } from 'elements'
 
+export type {
+  ContainerOptions,
+  ErrorTextStyles,
+  LabelStyles,
+  InputStyles,
+  StylesConfig,
+  ElementClassesConfig,
+  CollectElementState,
+  EventCallback,
+  EventCallbackFunction,
+  ComposableSubmitResponse,
+} from './types'
+
 const LogLevel = Skyflow.LogLevel
 const Env = Skyflow.Env
 

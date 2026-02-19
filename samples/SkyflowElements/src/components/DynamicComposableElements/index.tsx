@@ -22,7 +22,7 @@ const DynamicComposableElements = () => {
 			base: {
 				fontFamily: 'Inter',
 				fontStyle: 'normal',
-				fontWeight: 400,
+				fontWeight: '400',
 				fontSize: '14px',
 				lineHeight: '21px',
 				color: '#1d1d1d',
@@ -30,15 +30,14 @@ const DynamicComposableElements = () => {
 			},
 			complete: {
 				color: '#4caf50',
-			}
-
-		},
-		empty: {
-		},
-		focus: {
-		},
-		invalid: {
-			color: '#f44336',
+			},
+			empty: {
+			},
+			focus: {
+			},
+			invalid: {
+				color: '#f44336',
+			},
 		},
 	});
 	

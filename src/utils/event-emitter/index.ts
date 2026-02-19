@@ -1,11 +1,13 @@
+import { EventCallback, EventCallbackFunction } from '../../types'
+
 class EventEmitter {
-  events: Record<string, { priority: boolean; callback: any }[]>
+  events: Record<string, EventCallback[]>
 
   constructor() {
     this.events = {}
   }
 
-  on(event: string, callback: any, priority = false): void {
+  on(event: string, callback: EventCallbackFunction, priority = false): void {
     if (this.events[event]) {
       this.events[event].push({ priority, callback })
     } else {
@@ -13,7 +15,7 @@ class EventEmitter {
     }
   }
 
-  off(event: string, callback: any): void {
+  off(event: string, callback: EventCallbackFunction): void {
     const eventCallbacks = this.events[event]
 
     if (!eventCallbacks) {
@@ -49,11 +51,11 @@ class EventEmitter {
   }
 
   resetEvents() {
-    const tempEvents: any = {}
+    const tempEvents: Record<string, EventCallback[]> = {}
     Object.keys(this.events).forEach((eventName) => {
       const events = this.events[eventName]
       if (events && events.length > 0) {
-        const newEvents: any[] = []
+        const newEvents: EventCallback[] = []
         events.forEach((event) => {
           if (event.priority) newEvents.push(event)
         })

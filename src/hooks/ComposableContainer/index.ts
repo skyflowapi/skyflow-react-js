@@ -4,10 +4,10 @@
 import React from 'react'
 import Skyflow from 'skyflow-js'
 import ComposableContainer from 'skyflow-js/types/core/external/collect/compose-collect-container'
-
+import { ContainerOptions } from '../../types'
 import { useSkyflowClient } from '../../core/hook'
 
-const useComposableContainer = (options) => {
+const useComposableContainer = (options: ContainerOptions) => {
   const { skyflow } = useSkyflowClient()
   return React.useMemo(
     () => skyflow?.container(Skyflow.ContainerType.COMPOSABLE, options) as ComposableContainer,
