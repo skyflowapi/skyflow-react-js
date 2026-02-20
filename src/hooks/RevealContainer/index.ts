@@ -4,7 +4,7 @@
 import React from 'react'
 import Skyflow from 'skyflow-js'
 import RevealContainer from 'skyflow-js/types/core/external/reveal/reveal-container'
-import { ContainerOptions } from '../../types'
+import { ContainerOptions } from '../../common'
 import { useSkyflowClient } from '../../core/hook'
 
 const useRevealContainer = (options?: ContainerOptions): RevealContainer => {

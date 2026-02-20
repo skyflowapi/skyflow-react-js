@@ -8,7 +8,7 @@ import CollectContainer from 'skyflow-js/types/core/external/collect/collect-con
 import ComposableContainer from 'skyflow-js/types/core/external/collect/compose-collect-container'
 import RevealContainer from 'skyflow-js/types/core/external/reveal/reveal-container'
 import { IValidationRule, RedactionType } from 'skyflow-js/types/utils/common'
-import { ElementClassesConfig, CollectElementState } from '../types'
+import { ElementClassesConfig, CollectElementState } from '../common'
 import EventEmitter from '../utils/event-emitter'
 
 export const FileRenderElements = {};

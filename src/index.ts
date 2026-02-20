@@ -38,7 +38,7 @@ export type {
   EventCallback,
   EventCallbackFunction,
   ComposableSubmitResponse,
-} from './types'
+} from './common'
 
 const LogLevel = Skyflow.LogLevel
 const Env = Skyflow.Env

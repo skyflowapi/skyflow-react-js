@@ -1,4 +1,4 @@
-import { EventCallback, EventCallbackFunction } from '../../types'
+import { EventCallback, EventCallbackFunction } from '../../common'
 
 class EventEmitter {
   events: Record<string, EventCallback[]>

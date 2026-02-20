@@ -7,7 +7,7 @@ import EventEmitter from '../../utils/event-emitter'
 import ComposableContainer from 'skyflow-js/types/core/external/collect/compose-collect-container';
 import Skyflow from 'skyflow-js'
 import { v4 as uuid } from 'uuid';
-import { ComposableSubmitResponse } from '../../types';
+import { ComposableSubmitResponse } from '../../common';
 export interface IComposableContainer {
   children?: React.ReactNode
   container: ComposableContainer

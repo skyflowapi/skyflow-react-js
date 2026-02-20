@@ -4,7 +4,7 @@
 import React from 'react'
 import Skyflow from 'skyflow-js'
 import ComposableContainer from 'skyflow-js/types/core/external/collect/compose-collect-container'
-import { ContainerOptions } from '../../types'
+import { ContainerOptions } from '../../common'
 import { useSkyflowClient } from '../../core/hook'
 
 const useComposableContainer = (options: ContainerOptions) => {

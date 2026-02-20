@@ -1,7 +1,7 @@
 /*
 	Copyright (c) 2022 Skyflow, Inc. 
 */
-import { StylesConfig } from '../../types'
+import { StylesConfig } from '../../common'
 
 const useMakeSkyflowStyles = (
   styles: StylesConfig = {},
