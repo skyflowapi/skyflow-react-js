@@ -8,6 +8,7 @@ import Skyflow from 'skyflow-js';
 import useUpdateRevealElement from '../../hooks/UpdateRevealElement';
 import useErrorOverride from '../../hooks/OverrideError';
 
+// eslint-disable-next-line react/display-name
 const RevealElement = React.forwardRef<SkyflowRevealElementRef, SkyflowRevealElementProps>( ({ ...props }, ref) => {
   const uniqueDivId = React.useRef(uuid());
   const [element,setElement] = React.useState<any>(null);
