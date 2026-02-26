@@ -1,16 +1,18 @@
 /*
   Copyright (c) 2022 Skyflow, Inc. 
 */
-import React, { FC } from 'react'
-import { SkyflowCollectElementRef, SkyflowRevealElementProps, SkyflowRevealElementRef } from '..'
+import React from 'react'
+import { SkyflowRevealElementProps, SkyflowRevealElementRef } from '..'
 import { v4 as uuid } from 'uuid';
 import Skyflow from 'skyflow-js';
+import RevealElementType from 'skyflow-js/types/core/external/reveal/reveal-element';
 import useUpdateRevealElement from '../../hooks/UpdateRevealElement';
 import useErrorOverride from '../../hooks/OverrideError';
 
+// eslint-disable-next-line react/display-name
 const RevealElement = React.forwardRef<SkyflowRevealElementRef, SkyflowRevealElementProps>( ({ ...props }, ref) => {
   const uniqueDivId = React.useRef(uuid());
-  const [element,setElement] = React.useState<any>(null);
+  const [element,setElement] = React.useState<RevealElementType | null>(null);
 
   useErrorOverride(element, ref, props);
 

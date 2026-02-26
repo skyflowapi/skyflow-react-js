@@ -32,12 +32,6 @@ const CardBrandChoice = () => {
       invalid: {
         color: '#f44336',
       },
-      dropdownIcon: {
-        // Pass styles for the dropdown icon.
-      },
-      dropdown: {
-        // Pass styles for the card choice dropdown.
-      },
     },
     labelStyles: {
       base: {

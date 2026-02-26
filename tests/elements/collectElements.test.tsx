@@ -30,7 +30,12 @@ const mountMock = jest.fn();
 const eventEmitterMock = jest.fn();
 
 const composableEventEmitter = {
+  events: {},
+  on: jest.fn(),
+  off: jest.fn(),
   _emit: eventEmitterMock,
+  hasListener: jest.fn(),
+  resetEvents: jest.fn(),
 };
 
 const collectElementMock = {
@@ -94,7 +99,7 @@ describe('test collect elements', () => {
     jest.clearAllMocks();
     jest.resetAllMocks();
   });
-  let collectContainer;
+  let collectContainer: any;
   test('test card number collect Element ', () => {
     const container = useCollectContainer();
     const cardContainer = render(

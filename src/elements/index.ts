@@ -8,6 +8,8 @@ import CollectContainer from 'skyflow-js/types/core/external/collect/collect-con
 import ComposableContainer from 'skyflow-js/types/core/external/collect/compose-collect-container'
 import RevealContainer from 'skyflow-js/types/core/external/reveal/reveal-container'
 import { IValidationRule, RedactionType } from 'skyflow-js/types/utils/common'
+import { ElementClassesConfig, CollectElementState } from '../common'
+import EventEmitter from '../utils/event-emitter'
 
 export const FileRenderElements = {};
 export const CollectElements = {};
@@ -22,13 +24,13 @@ export interface SkyflowCollectElementProps {
   placeholder?: string
   errorText?: string
   validations?: IValidationRule[] | undefined
-  classes?: Record<string, unknown>
+  classes?: ElementClassesConfig
   options?: ICollectElementOptions
-  onChange?: (state: unknown) => void
-  onFocus?: (state: unknown) => void
-  onBlur?: (state: unknown) => void
-  onReady?: (state: unknown) => void
-  eventEmitter?:any
+  onChange?: (state: CollectElementState) => void
+  onFocus?: (state: CollectElementState) => void
+  onBlur?: (state: CollectElementState) => void
+  onReady?: (state: CollectElementState) => void
+  eventEmitter?: EventEmitter
   skyflowID?:string
   ref?: {current: SkyflowCollectElementRef | null};
   // TODO ref 
@@ -44,7 +46,7 @@ export interface SkyflowRevealElementProps {
   id?: string
   label?: string
   altText?: string
-  classes?: Record<string, unknown>
+  classes?: ElementClassesConfig
   options?: IRevealOptions
   redaction?: RedactionType
   ref?: {current: SkyflowRevealElementRef | null}
@@ -58,7 +60,7 @@ export interface SkyflowRenderElementProps {
   container: RevealContainer
   id: string
   altText?: string
-  classes?: Record<string, unknown>
+  classes?: ElementClassesConfig
   skyflowID:string
   table: string
   column: string
