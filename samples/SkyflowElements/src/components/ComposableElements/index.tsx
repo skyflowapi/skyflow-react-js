@@ -15,7 +15,7 @@ const ComposableElements = () => {
 			base: {
 				fontFamily: 'Inter',
 				fontStyle: 'normal',
-				fontWeight: 400,
+				fontWeight: '400',
 				fontSize: '14px',
 				lineHeight: '21px',
 				color: '#1d1d1d',
@@ -32,7 +32,7 @@ const ComposableElements = () => {
 			base: {
 				fontFamily: 'Inter',
 				fontStyle: 'normal',
-				fontWeight: 400,
+				fontWeight: '400',
 				fontSize: '14px',
 				lineHeight: '21px',
 			},

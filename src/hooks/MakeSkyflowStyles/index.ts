@@ -1,12 +1,13 @@
 /*
 	Copyright (c) 2022 Skyflow, Inc. 
 */
+import { StylesConfig } from '../../common'
 
 const useMakeSkyflowStyles = (
-  styles: Record<string, unknown> = {},
-): (() => Record<string, unknown>) => {
+  styles: StylesConfig = {},
+): (() => StylesConfig) => {
   return function useStyles() {
-    const classes: Record<string, unknown> = styles
+    const classes: StylesConfig = styles
 
     return classes
   }
