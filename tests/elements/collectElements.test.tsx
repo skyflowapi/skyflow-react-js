@@ -5,7 +5,7 @@ import * as React from 'react'
 import { render } from '@testing-library/react'
 import CardNumberElement from '../../src/elements/CardNumber'
 import useCollectContainer from '../../src/hooks/CollectContainer'
-import useComposableContainer from '../../src/hooks/ComposableContainer'
+import useComposabelContainer from '../../src/hooks/ComposableContainer'
 import CVVElement from '../../src/elements/CVV'
 import PinElement from '../../src/elements/PIN'
 import ExpirationDateElement from '../../src/elements/ExpirationDate'
@@ -18,7 +18,7 @@ import ComposableContainer from '../../src/elements/ComposableContainer';
 import Skyflow from 'skyflow-js'
 import CollectContainer from 'skyflow-js/types/core/external/collect/collect-container'
 
-const focusTrigger = jest.fn();
+const foucsTrigger = jest.fn();
 const blurTrigger = jest.fn();
 const changeTrigger = jest.fn();
 const readyTrigger = jest.fn();
@@ -107,7 +107,7 @@ describe('test collect elements', () => {
         label={'Card Number'}
         onChange={changeTrigger}
         onBlur={blurTrigger}
-        onFocus={focusTrigger}
+        onFocus={foucsTrigger}
         onReady={readyTrigger}
         validations={[]}
       />,
@@ -129,7 +129,7 @@ describe('test collect elements', () => {
         label={'Card Number'}
         onChange={changeTrigger}
         onBlur={blurTrigger}
-        onFocus={focusTrigger}
+        onFocus={foucsTrigger}
         onReady={readyTrigger}
         validations={[]}
       />,
@@ -150,7 +150,7 @@ describe('test collect elements', () => {
         label={'Card Number'}
         onChange={changeTrigger}
         onBlur={blurTrigger}
-        onFocus={focusTrigger}
+        onFocus={foucsTrigger}
         onReady={readyTrigger}
         validations={[]}
       />,
@@ -170,7 +170,7 @@ describe('test collect elements', () => {
         label={'Card Number'}
         onChange={changeTrigger}
         onBlur={blurTrigger}
-        onFocus={focusTrigger}
+        onFocus={foucsTrigger}
         onReady={readyTrigger}
         validations={[invalidValidation1]}
       />,
@@ -190,7 +190,7 @@ describe('test collect elements', () => {
         label={'Card Number'}
         onChange={changeTrigger}
         onBlur={blurTrigger}
-        onFocus={focusTrigger}
+        onFocus={foucsTrigger}
         onReady={readyTrigger}
         validations={[invalidValidation2]}
       />,
@@ -211,7 +211,7 @@ describe('test collect elements', () => {
           label={'Card Number'}
           onChange={changeTrigger}
           onBlur={blurTrigger}
-          onFocus={focusTrigger}
+          onFocus={foucsTrigger}
           onReady={readyTrigger}
           validations={[]}
         />,
@@ -225,7 +225,7 @@ describe('test collect elements', () => {
           label={'Card Number'}
           onChange={changeTrigger}
           onBlur={blurTrigger}
-          onFocus={focusTrigger}
+          onFocus={foucsTrigger}
           onReady={readyTrigger}
           validations={[cardNumberMatchRule]}
         />
@@ -235,7 +235,7 @@ describe('test collect elements', () => {
   });
 
   test('test card number composable Element ', () => {
-    const container = useComposableContainer({ layout: [1] });
+    const container = useComposabelContainer({ layout: [1] });
     const cardContainer = render(
       <CardNumberElement
         id={'id'}
@@ -247,7 +247,7 @@ describe('test collect elements', () => {
         eventEmitter={composableEventEmitter}
         onChange={changeTrigger}
         onBlur={blurTrigger}
-        onFocus={focusTrigger}
+        onFocus={foucsTrigger}
         onReady={readyTrigger}
         validations={[]}
       />,
@@ -258,7 +258,7 @@ describe('test collect elements', () => {
   });
 
   test('test card number composable Element without eventEmitter ', () => {
-    const container = useComposableContainer({ layout: [1] });
+    const container = useComposabelContainer({ layout: [1] });
     const cardContainer = render(
       <CardNumberElement
         id={'id'}
@@ -269,7 +269,7 @@ describe('test collect elements', () => {
         label={'Card Number'}
         onChange={changeTrigger}
         onBlur={blurTrigger}
-        onFocus={focusTrigger}
+        onFocus={foucsTrigger}
         onReady={readyTrigger}
         validations={[]}
       />,
@@ -278,7 +278,7 @@ describe('test collect elements', () => {
   });
 
   test('test card number composable Element with element value match rule', () => {
-    const container = useComposableContainer({ layout: [2] });
+    const container = useComposabelContainer({ layout: [2] });
     const cardContainer = render(
       <ComposableContainer
         id='composableContainer'
@@ -293,7 +293,7 @@ describe('test collect elements', () => {
           label={'Card Number'}
           onChange={changeTrigger}
           onBlur={blurTrigger}
-          onFocus={focusTrigger}
+          onFocus={foucsTrigger}
           onReady={readyTrigger}
           validations={[]}
         />,
@@ -307,7 +307,7 @@ describe('test collect elements', () => {
           label={'Card Number'}
           onChange={changeTrigger}
           onBlur={blurTrigger}
-          onFocus={focusTrigger}
+          onFocus={foucsTrigger}
           onReady={readyTrigger}
           validations={[cardNumberMatchRule]}
         />
@@ -328,7 +328,7 @@ describe('test collect elements', () => {
         label={'Cvv'}
         onChange={changeTrigger}
         onBlur={blurTrigger}
-        onFocus={focusTrigger}
+        onFocus={foucsTrigger}
         onReady={readyTrigger}
         validations={[]}
       />,
@@ -350,7 +350,7 @@ describe('test collect elements', () => {
         label={'Cvv'}
         onChange={changeTrigger}
         onBlur={blurTrigger}
-        onFocus={focusTrigger}
+        onFocus={foucsTrigger}
         onReady={readyTrigger}
         validations={[]}
       />,
@@ -361,7 +361,7 @@ describe('test collect elements', () => {
   });
 
   test('test cvv  composable Element ', () => {
-    const container = useComposableContainer({ layout: [1] });
+    const container = useComposabelContainer({ layout: [1] });
     const cvvContainer = render(
       <CVVElement
         container={container}
@@ -371,7 +371,7 @@ describe('test collect elements', () => {
         label={'Cvv'}
         onChange={changeTrigger}
         onBlur={blurTrigger}
-        onFocus={focusTrigger}
+        onFocus={foucsTrigger}
         onReady={readyTrigger}
         validations={[]}
         eventEmitter={composableEventEmitter}
@@ -392,7 +392,7 @@ describe('test collect elements', () => {
         label={'Cvv'}
         onChange={changeTrigger}
         onBlur={blurTrigger}
-        onFocus={focusTrigger}
+        onFocus={foucsTrigger}
         onReady={readyTrigger}
         validations={[]}
       />,
@@ -401,7 +401,7 @@ describe('test collect elements', () => {
   });
 
   test('test cvv composable Element without eventEmitter ', () => {
-    const container = useComposableContainer({ layout: [1] });
+    const container = useComposabelContainer({ layout: [1] });
     const cvvContainer = render(
       <CVVElement
         container={container}
@@ -411,7 +411,7 @@ describe('test collect elements', () => {
         label={'Cvv'}
         onChange={changeTrigger}
         onBlur={blurTrigger}
-        onFocus={focusTrigger}
+        onFocus={foucsTrigger}
         onReady={readyTrigger}
         validations={[]}
       />,
@@ -431,7 +431,7 @@ describe('test collect elements', () => {
         label={'Pin'}
         onChange={changeTrigger}
         onBlur={blurTrigger}
-        onFocus={focusTrigger}
+        onFocus={foucsTrigger}
         onReady={readyTrigger}
         validations={[]}
       />,
@@ -453,7 +453,7 @@ describe('test collect elements', () => {
         label={'Pin'}
         onChange={changeTrigger}
         onBlur={blurTrigger}
-        onFocus={focusTrigger}
+        onFocus={foucsTrigger}
         onReady={readyTrigger}
         validations={[]}
       />,
@@ -474,7 +474,7 @@ describe('test collect elements', () => {
         label={'Pin'}
         onChange={changeTrigger}
         onBlur={blurTrigger}
-        onFocus={focusTrigger}
+        onFocus={foucsTrigger}
         onReady={readyTrigger}
         validations={[]}
       />,
@@ -483,7 +483,7 @@ describe('test collect elements', () => {
   });
 
   test('test Pin composable Element ', () => {
-    const container = useComposableContainer({ layout: [1] });
+    const container = useComposabelContainer({ layout: [1] });
     const PinContainer = render(
       <PinElement
         container={container}
@@ -493,7 +493,7 @@ describe('test collect elements', () => {
         label={'Pin'}
         onChange={changeTrigger}
         onBlur={blurTrigger}
-        onFocus={focusTrigger}
+        onFocus={foucsTrigger}
         onReady={readyTrigger}
         validations={[]}
         eventEmitter={composableEventEmitter}
@@ -505,7 +505,7 @@ describe('test collect elements', () => {
   });
 
   test('test Pin composable Element without eventEmitter ', () => {
-    const container = useComposableContainer({ layout: [1] });
+    const container = useComposabelContainer({ layout: [1] });
     const PinContainer = render(
       <PinElement
         container={container}
@@ -515,7 +515,7 @@ describe('test collect elements', () => {
         label={'Pin'}
         onChange={changeTrigger}
         onBlur={blurTrigger}
-        onFocus={focusTrigger}
+        onFocus={foucsTrigger}
         onReady={readyTrigger}
         validations={[]}
       />,
@@ -535,7 +535,7 @@ describe('test collect elements', () => {
         label={'cardHolderName'}
         onChange={changeTrigger}
         onBlur={blurTrigger}
-        onFocus={focusTrigger}
+        onFocus={foucsTrigger}
         onReady={readyTrigger}
         validations={[]}
       />,
@@ -557,7 +557,7 @@ describe('test collect elements', () => {
         label={'cardHolderName'}
         onChange={changeTrigger}
         onBlur={blurTrigger}
-        onFocus={focusTrigger}
+        onFocus={foucsTrigger}
         onReady={readyTrigger}
         validations={[]}
       />,
@@ -568,7 +568,7 @@ describe('test collect elements', () => {
   });
 
   test('test cardHolderName composable Element ', () => {
-    const container = useComposableContainer({ layout: [1] });
+    const container = useComposabelContainer({ layout: [1] });
     const cardHolderNameContainer = render(
       <CardHolderNameElement
         container={container}
@@ -578,7 +578,7 @@ describe('test collect elements', () => {
         label={'cardHolderName'}
         onChange={changeTrigger}
         onBlur={blurTrigger}
-        onFocus={focusTrigger}
+        onFocus={foucsTrigger}
         onReady={readyTrigger}
         validations={[]}
         eventEmitter={composableEventEmitter}
@@ -599,7 +599,7 @@ describe('test collect elements', () => {
         label={'cardHolderName'}
         onChange={changeTrigger}
         onBlur={blurTrigger}
-        onFocus={focusTrigger}
+        onFocus={foucsTrigger}
         onReady={readyTrigger}
         validations={[]}
         eventEmitter={composableEventEmitter}
@@ -618,7 +618,7 @@ describe('test collect elements', () => {
         label={'cardHolderName'}
         onChange={changeTrigger}
         onBlur={blurTrigger}
-        onFocus={focusTrigger}
+        onFocus={foucsTrigger}
         onReady={readyTrigger}
         validations={[]}
         eventEmitter={composableEventEmitter}
@@ -628,7 +628,7 @@ describe('test collect elements', () => {
   });
 
   test('test cardHolderName composable element without eventEmitter', () => {
-    const container = useComposableContainer({ layout: [1] });
+    const container = useComposabelContainer({ layout: [1] });
     const cardHolderNameContainer = render(
       <CardHolderNameElement
         container={container}
@@ -638,7 +638,7 @@ describe('test collect elements', () => {
         label={'cardHolderName'}
         onChange={changeTrigger}
         onBlur={blurTrigger}
-        onFocus={focusTrigger}
+        onFocus={foucsTrigger}
         onReady={readyTrigger}
         validations={[]}
       />,
@@ -658,7 +658,7 @@ describe('test collect elements', () => {
         label={'inputField'}
         onChange={changeTrigger}
         onBlur={blurTrigger}
-        onFocus={focusTrigger}
+        onFocus={foucsTrigger}
         onReady={readyTrigger}
         validations={[]}
       />,
@@ -680,7 +680,7 @@ describe('test collect elements', () => {
         label={'inputField'}
         onChange={changeTrigger}
         onBlur={blurTrigger}
-        onFocus={focusTrigger}
+        onFocus={foucsTrigger}
         onReady={readyTrigger}
         validations={[]}
       />,
@@ -701,7 +701,7 @@ describe('test collect elements', () => {
         label={'inputField'}
         onChange={changeTrigger}
         onBlur={blurTrigger}
-        onFocus={focusTrigger}
+        onFocus={foucsTrigger}
         onReady={readyTrigger}
         validations={[]}
       />,
@@ -710,7 +710,7 @@ describe('test collect elements', () => {
   });
 
   test('test inputField  composable Element ', () => {
-    const container = useComposableContainer({ layout: [1] });
+    const container = useComposabelContainer({ layout: [1] });
     const inputFieldContainer = render(
       <InputFieldElement
         container={container}
@@ -720,7 +720,7 @@ describe('test collect elements', () => {
         label={'inputField'}
         onChange={changeTrigger}
         onBlur={blurTrigger}
-        onFocus={focusTrigger}
+        onFocus={foucsTrigger}
         onReady={readyTrigger}
         validations={[]}
         eventEmitter={composableEventEmitter}
@@ -732,7 +732,7 @@ describe('test collect elements', () => {
   });
 
   test('test inputField  composable Element without eventEmitter ', () => {
-    const container = useComposableContainer({ layout: [1] });
+    const container = useComposabelContainer({ layout: [1] });
     const inputFieldContainer = render(
       <InputFieldElement
         container={container}
@@ -742,7 +742,7 @@ describe('test collect elements', () => {
         label={'inputField'}
         onChange={changeTrigger}
         onBlur={blurTrigger}
-        onFocus={focusTrigger}
+        onFocus={foucsTrigger}
         onReady={readyTrigger}
         validations={[]}
       />,
@@ -762,7 +762,7 @@ describe('test collect elements', () => {
         label={'expirationDate'}
         onChange={changeTrigger}
         onBlur={blurTrigger}
-        onFocus={focusTrigger}
+        onFocus={foucsTrigger}
         onReady={readyTrigger}
         validations={[]}
       />,
@@ -784,7 +784,7 @@ describe('test collect elements', () => {
         label={'expirationDate'}
         onChange={changeTrigger}
         onBlur={blurTrigger}
-        onFocus={focusTrigger}
+        onFocus={foucsTrigger}
         onReady={readyTrigger}
         validations={[]}
       />,
@@ -805,7 +805,7 @@ describe('test collect elements', () => {
         label={'expirationDate'}
         onChange={changeTrigger}
         onBlur={blurTrigger}
-        onFocus={focusTrigger}
+        onFocus={foucsTrigger}
         onReady={readyTrigger}
         validations={[]}
       />,
@@ -814,7 +814,7 @@ describe('test collect elements', () => {
   });
 
   test('test expirationDate  composable Element ', () => {
-    const container = useComposableContainer({ layout: [1] });
+    const container = useComposabelContainer({ layout: [1] });
     const expirationDateContainer = render(
       <ExpirationDateElement
         container={container}
@@ -824,7 +824,7 @@ describe('test collect elements', () => {
         label={'expirationDate'}
         onChange={changeTrigger}
         onBlur={blurTrigger}
-        onFocus={focusTrigger}
+        onFocus={foucsTrigger}
         onReady={readyTrigger}
         validations={[]}
         eventEmitter={composableEventEmitter}
@@ -836,7 +836,7 @@ describe('test collect elements', () => {
   });
 
   test('test expirationDate  composable Element without eventEmitter ', () => {
-    const container = useComposableContainer({ layout: [1] });
+    const container = useComposabelContainer({ layout: [1] });
     const expirationDateContainer = render(
       <ExpirationDateElement
         container={container}
@@ -846,7 +846,7 @@ describe('test collect elements', () => {
         label={'expirationDate'}
         onChange={changeTrigger}
         onBlur={blurTrigger}
-        onFocus={focusTrigger}
+        onFocus={foucsTrigger}
         onReady={readyTrigger}
         validations={[]}
       />,
@@ -866,7 +866,7 @@ describe('test collect elements', () => {
         label={'expirationMonth'}
         onChange={changeTrigger}
         onBlur={blurTrigger}
-        onFocus={focusTrigger}
+        onFocus={foucsTrigger}
         onReady={readyTrigger}
         validations={[]}
       />,
@@ -888,7 +888,7 @@ describe('test collect elements', () => {
         label={'expirationMonth'}
         onChange={changeTrigger}
         onBlur={blurTrigger}
-        onFocus={focusTrigger}
+        onFocus={foucsTrigger}
         onReady={readyTrigger}
         validations={[]}
       />,
@@ -909,7 +909,7 @@ describe('test collect elements', () => {
         label={'expirationMonth'}
         onChange={changeTrigger}
         onBlur={blurTrigger}
-        onFocus={focusTrigger}
+        onFocus={foucsTrigger}
         onReady={readyTrigger}
         validations={[]}
       />,
@@ -918,7 +918,7 @@ describe('test collect elements', () => {
   });
 
   test('test expirationMonth  composable Element ', () => {
-    const container = useComposableContainer({ layout: [1] });
+    const container = useComposabelContainer({ layout: [1] });
     const expirationMonthContainer = render(
       <ExpirationMonthElement
         container={container}
@@ -928,7 +928,7 @@ describe('test collect elements', () => {
         label={'expirationMonth'}
         onChange={changeTrigger}
         onBlur={blurTrigger}
-        onFocus={focusTrigger}
+        onFocus={foucsTrigger}
         onReady={readyTrigger}
         validations={[]}
         eventEmitter={composableEventEmitter}
@@ -940,7 +940,7 @@ describe('test collect elements', () => {
   });
 
   test('test expirationMonth  composable Element without eventEmitter ', () => {
-    const container = useComposableContainer({ layout: [1] });
+    const container = useComposabelContainer({ layout: [1] });
     const expirationMonthContainer = render(
       <ExpirationMonthElement
         container={container}
@@ -950,7 +950,7 @@ describe('test collect elements', () => {
         label={'expirationMonth'}
         onChange={changeTrigger}
         onBlur={blurTrigger}
-        onFocus={focusTrigger}
+        onFocus={foucsTrigger}
         onReady={readyTrigger}
         validations={[]}
       />,
@@ -970,7 +970,7 @@ describe('test collect elements', () => {
         label={'expirationYear'}
         onChange={changeTrigger}
         onBlur={blurTrigger}
-        onFocus={focusTrigger}
+        onFocus={foucsTrigger}
         onReady={readyTrigger}
         validations={[]}
       />,
@@ -992,7 +992,7 @@ describe('test collect elements', () => {
         label={'expirationYear'}
         onChange={changeTrigger}
         onBlur={blurTrigger}
-        onFocus={focusTrigger}
+        onFocus={foucsTrigger}
         onReady={readyTrigger}
         validations={[]}
       />,
@@ -1013,7 +1013,7 @@ describe('test collect elements', () => {
         label={'expirationYear'}
         onChange={changeTrigger}
         onBlur={blurTrigger}
-        onFocus={focusTrigger}
+        onFocus={foucsTrigger}
         onReady={readyTrigger}
         validations={[]}
       />,
@@ -1022,7 +1022,7 @@ describe('test collect elements', () => {
   });
 
   test('test expirationYear composable Element ', () => {
-    const container = useComposableContainer({ layout: [1] });
+    const container = useComposabelContainer({ layout: [1] });
     const expirationYearContainer = render(
       <ExpirationYearElement
         container={container}
@@ -1032,7 +1032,7 @@ describe('test collect elements', () => {
         label={'expirationYear'}
         onChange={changeTrigger}
         onBlur={blurTrigger}
-        onFocus={focusTrigger}
+        onFocus={foucsTrigger}
         onReady={readyTrigger}
         validations={[]}
         eventEmitter={composableEventEmitter}
@@ -1044,7 +1044,7 @@ describe('test collect elements', () => {
   });
 
   test('test expirationYear composable Element without eventEmitter ', () => {
-    const container = useComposableContainer({ layout: [1] });
+    const container = useComposabelContainer({ layout: [1] });
     const expirationYearContainer = render(
       <ExpirationYearElement
         container={container}
@@ -1054,7 +1054,7 @@ describe('test collect elements', () => {
         label={'expirationYear'}
         onChange={changeTrigger}
         onBlur={blurTrigger}
-        onFocus={focusTrigger}
+        onFocus={foucsTrigger}
         onReady={readyTrigger}
         validations={[]}
       />,
@@ -1158,7 +1158,7 @@ describe('test collect elements', () => {
   });
 
   test('test fileInput composable Element with emitter ', () => {
-    const container = useComposableContainer({ layout: [1] });
+    const container = useComposabelContainer({ layout: [1] });
     const fileInputContainer = render(
       <FileInputElement
         container={container}
@@ -1174,7 +1174,7 @@ describe('test collect elements', () => {
   });
 
   test('test fileInput composable Element ', () => {
-    const container = useComposableContainer({ layout: [1] });
+    const container = useComposabelContainer({ layout: [1] });
     const fileInputContainer = render(
       <FileInputElement
         container={container}
@@ -1189,7 +1189,7 @@ describe('test collect elements', () => {
   });
 
   test('test composable container element', () => {
-    const container = useComposableContainer({ layout: [1] });
+    const container = useComposabelContainer({ layout: [1] });
     const composableContainer = render(
       <ComposableContainer
         id={'id'}
@@ -1216,7 +1216,7 @@ describe('test collect elements', () => {
   });
 
   test('test composable container element with children', () => {
-    const container = useComposableContainer({ layout: [1] });
+    const container = useComposabelContainer({ layout: [1] });
     const composableContainer = render(
       <ComposableContainer
         id={'id'}
@@ -1235,7 +1235,7 @@ describe('test collect elements', () => {
   });
 
   test('test composable container element without id', () => {
-    const container = useComposableContainer({ layout: [1] });
+    const container = useComposabelContainer({ layout: [1] });
     const composableContainer = render(
       <ComposableContainer
         id={''}

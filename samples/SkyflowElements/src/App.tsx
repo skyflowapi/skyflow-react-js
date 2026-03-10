@@ -6,7 +6,7 @@ import CollectElements from './components/CollectElements';
 import ComposableElements from './components/ComposableElements';
 import CustomValidations from './components/CustomValidations';
 import DynamicComposableElements from './components/DynamicComposableElements';
-import ElementListeners from './components/ElementListeners';
+import ElementListners from './components/ElementListeners';
 import RevealElements from './components/RevealElements';
 import FileRender from './components/FileRenderElements';
 import CollectElementsUpdateData from './components/CollectElementsUpdateData';
@@ -41,11 +41,11 @@ const App = () => {
         <CollectElementsUpdateData />
       </div>
       <br />
-      <div id='Sample for Element Listeners'>
+      <div id='Sample for Element Listners'>
         <p>
-          <b>Sample Element Listeners</b>
+          <b>Sample Element Listners</b>
         </p>
-        <ElementListeners />
+        <ElementListners />
       </div>
       <br />
       <div id='Sample for Reveal Element'>

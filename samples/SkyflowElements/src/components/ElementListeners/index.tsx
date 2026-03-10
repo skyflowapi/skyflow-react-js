@@ -9,7 +9,7 @@ import {
   useMakeSkyflowStyles,
 } from 'skyflow-react-js';
 
-const ElementListeners = () => {
+const ElementListners = () => {
   const container = useCollectContainer();
 
   const handleOnChange = (changeState: unknown) => {
@@ -59,9 +59,9 @@ const ElementListeners = () => {
   const classes = useStyles();
 
   return (
-    <div className='ElementListeners' style={{width: '300px'}}>
+    <div className='ElementListners' style={{width: '300px'}}>
       <CardNumberElement
-        id={'eventListenerCollectElement'}
+        id={'eventListnerCollectElement'}
         container={container}
         table={'table1'}
         classes={classes}
@@ -74,7 +74,7 @@ const ElementListeners = () => {
       />
 
       <InputFieldElement
-        id='eventListenerInputField'
+        id='eventListnerInputField'
         container={container}
         classes={classes}
         table={'table1'}
@@ -89,4 +89,4 @@ const ElementListeners = () => {
   );
 };
 
-export default ElementListeners;
+export default ElementListners;
