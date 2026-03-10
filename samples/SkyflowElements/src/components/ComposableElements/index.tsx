@@ -62,7 +62,7 @@ const ComposableElements = () => {
 				margin: '12px 2px',
 			}
 		},
-		errorTextSyles: {
+		errorTextStyles: {
 			base: {
 				color: '#f44336',
 				fontFamily: '"Roboto", sans-serif'

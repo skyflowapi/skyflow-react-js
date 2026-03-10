@@ -54,7 +54,7 @@ const DynamicComposableElements = () => {
 				margin: '12px 2px',
 			}
 		},
-		errorTextSyles: {
+		errorTextStyles: {
 			base: {
 				color: '#f44336'
 			}
@@ -113,7 +113,7 @@ const DynamicComposableElements = () => {
 
 	const handleSubmit = ()=>{
 		// Your implementation when the SUBMIT(enter) event occurs.
-		console.log('OnSubmit listener Triggred..!')
+		console.log('OnSubmit listener Triggered..!')
 	};
 	  
 	return (

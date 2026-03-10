@@ -215,7 +215,7 @@ All notable changes to this project will be documented in this file.
 ## [1.4.0] - 2023-01-03
   
 ### Fixed
-- Fixed `Reveal` Element re-redering
+- Fixed `Reveal` Element re-rendering
 
 ## [1.3.1] - 2022-09-23
   
@@ -245,11 +245,11 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
-- Minimun react version support for react SDK
+- Minimum react version support for react SDK
 ### Changed
 
 -  README.md file
 -  Sample App
 ## [1.0.0] - 2022-08-16
 
-- Inital Skyflow React SDK release
+- Initial Skyflow React SDK release

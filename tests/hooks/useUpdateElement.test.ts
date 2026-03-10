@@ -17,13 +17,13 @@ describe('test useUpdateElement hook',()=>{
   
     });
     
-    it('should call update menthod with table props for Composable Element',()=>{
+    it('should call update method with table props for Composable Element',()=>{
         const props = {table:'',container:{type:Skyflow.ContainerType.COMPOSABLE}}
         useUpdateElement(props as any, elementMock as any);
         expect(updateMethodMock).toBeCalled();
     });
     
-    it('should call update menthod with table props Collect Element',()=>{
+    it('should call update method with table props Collect Element',()=>{
         const props = {table:'',container:{type:Skyflow.ContainerType.COLLECT}}
         useUpdateElement(props as any, elementMock as any);
         expect(updateMethodMock).toBeCalled();

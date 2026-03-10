@@ -10,7 +10,7 @@ const CardBrandChoice = () => {
   // Use this state to update cardschema list to provide choice
   const [scheme,setScheme] = useState<CardType[]>([]);
   
-  // Use this to aviod unnesscary bin api calls.
+  // Use this to avoid unnecessary bin api calls.
   const binUpdate = useRef(false);
 
   // Create collect container.

@@ -16,7 +16,8 @@
     "test:cov": "jest --coverage",
     "lint": "eslint src/**/*.{js,jsx,ts,tsx,json} tests/**/*.{js,jsx,ts,tsx,json}",
     "lint:fix": "eslint --fix 'src/**/*.{js,jsx,ts,tsx,json}' 'tests/**/*.{js,jsx,ts,tsx,json}'",
-    "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,md,json}' 'tests/**/*.{js,jsx,ts,tsx,json}' --config ./.prettierrc"
+    "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,md,json}' 'tests/**/*.{js,jsx,ts,tsx,json}' --config ./.prettierrc",
+    "spellcheck": "cspell '**/*.{ts,tsx,js,jsx,md}'"
   },
   "keywords": [
     "client",
@@ -49,6 +50,7 @@
     "@testing-library/react": "^13.0.0",
     "@types/jest": "^29.5.12",
     "@types/jquery-mask-plugin": "^1.14.3",
+    "@types/minimatch": "^3.0.5",
     "@types/node": "^14.0.5",
     "@types/react": "^18.0.14",
     "@typescript-eslint/eslint-plugin": "^5.32.0",
@@ -56,6 +58,7 @@
     "babel-loader": "^9.1.2",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
     "compression-webpack-plugin": "^8.0.1",
+    "cspell": "^4.2.8",
     "eslint": "^8.31.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-airbnb-typescript": "^16.0.0",
