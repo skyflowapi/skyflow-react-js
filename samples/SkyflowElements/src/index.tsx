@@ -19,13 +19,13 @@ const getBearerToken = () => {
         if (Http.status === 200) {
           resolve('');
         } else {
-          reject('Error occured');
+          reject('Error occurred');
         }
       }
     };
 
     Http.onerror = () => {
-      reject('Error occured');
+      reject('Error occurred');
     };
 
     const url = '<TOKEN_END_POINT_URL>'
