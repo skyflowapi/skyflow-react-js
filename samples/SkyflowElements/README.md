@@ -18,7 +18,7 @@ Test the SDK by adding `VAULT-ID`, `VAULT-URL`, and `SERVICE-ACCOUNT` details in
 2. Create a vault by clicking **Create Vault** > **Upload Vault Schema**.
 3. Choose [data/vaultSchema.json](data/vaultSchema.json).
 3. Once the vault is created, click the gear icon and select **Edit Vault** Details.
-4. Note your **Vault URL** and **Vault ID** values, then click **Cancel**. Update the vaules of `VAULT_URL` and `VAULT_ID` in the [index.tsx](src/index.tsx).
+4. Note your **Vault URL** and **Vault ID** values, then click **Cancel**. Update the values of `VAULT_URL` and `VAULT_ID` in the [index.tsx](src/index.tsx).
 
 ### Create A Service Account
 1. In the side navigation click, **IAM** > **Service Accounts** > **New Service Account**.
