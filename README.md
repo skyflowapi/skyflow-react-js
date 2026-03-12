@@ -93,13 +93,13 @@ const getBearerToken = () => {
           const response = JSON.parse(Http.responseText)
           resolve(response.accessToken)
         } else {
-          reject('Error occured')
+          reject('Error occurred')
         }
       }
     }
 
     Http.onerror = (error) => {
-      reject('Error occured')
+      reject('Error occurred')
     }
 
     const url = 'https://api.acmecorp.com/skyflowToken'
@@ -2022,7 +2022,7 @@ const CollectElements = () => {
         margin: '12px 2px',
       }
     },
-    errorTextSyles: {
+    errorTextStyles: {
       base: {
         color: '#f44336'
       }
@@ -2906,7 +2906,7 @@ export default App
 
 ## Update Skyflow Elements Properties
 
-You can dynamically update Skyflow Elements’ properties dynamically by using React’s `useState` hook. You can maintain the element properties via React state and update them at runtime as and when required. Skyflow's React SDK provides the following elements:
+You can dynamically update Skyflow Elements’ properties dynamically by using the React `useState` hook. You can maintain the element properties via React state and update them at runtime as and when required. The Skyflow React SDK provides the following elements:
 - Collect Elements
 - Reveal Elements
 - Composable Elements
