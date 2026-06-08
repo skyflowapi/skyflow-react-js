@@ -23,7 +23,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 14.17.6
-      - run: npm install
+      - run: npm install --ignore-scripts
 
       - name: npm build
         run: npm run build
