@@ -15,10 +15,12 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
+    "ignoreDeprecations": "6.0",
     "resolveJsonModule": false,
     "isolatedModules": false,
     "noEmit": false,
     "declaration": true,
+    "rootDir": "./src",
     "outDir": "./lib"
   },
   "include": ["src","typings.d.ts"],
