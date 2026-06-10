@@ -24,9 +24,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v1
         with:
-          node-version: '22'
+          node-version: 14.17.6
 
       - name: install node_modules
         run: npm install --ignore-scripts
