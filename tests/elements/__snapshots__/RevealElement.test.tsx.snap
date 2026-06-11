@@ -1,7 +1,7 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`RevealElement should match snapshot 1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div>
@@ -70,7 +70,7 @@ Object {
 `;
 
 exports[`RevealElement should test reveal element when id is passed 1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div>
@@ -139,7 +139,7 @@ Object {
 `;
 
 exports[`RevealElement valid redaction type passed in reveal element 1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div>

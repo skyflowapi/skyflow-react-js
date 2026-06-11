@@ -21,7 +21,8 @@
     "noEmit": false,
     "declaration": true,
     "rootDir": "./src",
-    "outDir": "./lib"
+    "outDir": "./lib",
+    "types": ["jest", "node"]
   },
   "include": ["src","typings.d.ts"],
   "exclude": []

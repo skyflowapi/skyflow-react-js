@@ -20,22 +20,22 @@ describe('test useUpdateElement hook',()=>{
     it('should call update method with table props for Composable Element',()=>{
         const props = {table:'',container:{type:Skyflow.ContainerType.COMPOSABLE}}
         useUpdateElement(props as any, elementMock as any);
-        expect(updateMethodMock).toBeCalled();
+        expect(updateMethodMock).toHaveBeenCalled();
     });
     
     it('should call update method with table props Collect Element',()=>{
         const props = {table:'',container:{type:Skyflow.ContainerType.COLLECT}}
         useUpdateElement(props as any, elementMock as any);
-        expect(updateMethodMock).toBeCalled();
+        expect(updateMethodMock).toHaveBeenCalled();
     });
 
     it('should not call update method with no container ',()=>{
         useUpdateElement({table:''} as any, elementMock as any);
-        expect(updateMethodMock).not.toBeCalled();
+        expect(updateMethodMock).not.toHaveBeenCalled();
     });
 
     it('should call update if options have cardmetadata',()=>{
         useUpdateElement({options:{cardMetadata:{scheme:[]}},container:{type:Skyflow.ContainerType.COLLECT}} as any, elementMock as any);
-        expect(updateMethodMock).toBeCalled();
+        expect(updateMethodMock).toHaveBeenCalled();
     })
 });
