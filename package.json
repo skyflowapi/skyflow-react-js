@@ -4,7 +4,7 @@
   "analyze": false,
   "version": "2.5.4",
   "description": "Skyflow React SDK",
-  "homepage": "https://github.com/skyflowapi/skyflow-react",
+  "homepage": "https://github.com/skyflowapi/skyflow-react-js",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
@@ -14,10 +14,12 @@
     "build": "tsc",
     "test": "jest",
     "test:cov": "jest --coverage",
-    "lint": "eslint src/**/*.{js,jsx,ts,tsx,json} tests/**/*.{js,jsx,ts,tsx,json}",
-    "lint:fix": "eslint --fix 'src/**/*.{js,jsx,ts,tsx,json}' 'tests/**/*.{js,jsx,ts,tsx,json}'",
+    "lint": "eslint src tests",
+    "lint:fix": "eslint --fix src tests",
     "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,md,json}' 'tests/**/*.{js,jsx,ts,tsx,json}' --config ./.prettierrc",
-    "spellcheck": "cspell '**/*.{ts,tsx,js,jsx,md}'"
+    "spellcheck": "cspell '**/*.{ts,tsx,js,jsx,md}'",
+    "check-deps": "node scripts/check-deps.js",
+    "validate-deps": "node scripts/validate-deps.js"
   },
   "keywords": [
     "client",

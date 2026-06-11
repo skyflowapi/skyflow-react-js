@@ -1,0 +1,136 @@
+name: Monthly dependency upgrade
+
+on:
+  schedule:
+    - cron: '0 9 1 * *'   # 1st of every month at 09:00 UTC
+  workflow_dispatch:        # manual trigger from GitHub Actions UI
+
+jobs:
+  upgrade:
+    name: Bump outdated dependencies and open PR
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install current dependencies
+        run: npm install --ignore-scripts
+
+      - name: Run upgrade script
+        id: upgrade
+        run: |
+          node scripts/check-deps.js --apply | tee /tmp/dep-report.txt
+          EXIT_CODE=${PIPESTATUS[0]}
+
+          {
+            echo 'report<<DEP_REPORT_EOF'
+            cat /tmp/dep-report.txt
+            echo 'DEP_REPORT_EOF'
+          } >> $GITHUB_OUTPUT
+
+          if [[ $EXIT_CODE -eq 1 ]]; then
+            echo "upgraded=true" >> $GITHUB_OUTPUT
+          else
+            echo "upgraded=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Write job summary
+        if: always()
+        run: |
+          echo "## Dependency Upgrade — $(date +'%Y-%m-%d')" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          cat /tmp/dep-report.txt >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+
+      # Try npm install; continue-on-error so ERESOLVE still produces a PR with a warning
+      - name: Install updated dependencies
+        id: npm_install
+        if: steps.upgrade.outputs.upgraded == 'true'
+        continue-on-error: true
+        run: |
+          npm install 2>&1 | tee /tmp/npm-install.log
+          EXIT=${PIPESTATUS[0]}
+          if [[ $EXIT -ne 0 ]]; then
+            echo "failed=true" >> $GITHUB_OUTPUT
+          else
+            echo "failed=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Build PR body
+        id: pr_body
+        if: steps.upgrade.outputs.upgraded == 'true'
+        run: |
+          {
+            cat << 'HEADER'
+          Automated monthly dependency upgrade.
+
+          **Policy:** 14-day cooling period — only versions published ≥14 days ago are included. Stable releases only (no alpha/beta/rc).
+
+          **Upgrade report:**
+          ```
+          HEADER
+            cat /tmp/dep-report.txt
+            printf '```\n'
+          } > /tmp/pr-body.md
+
+          if [[ "${{ steps.npm_install.outputs.failed }}" == "true" ]]; then
+            cat >> /tmp/pr-body.md << 'WARN'
+
+          ---
+
+          ⚠️ **`npm install` failed — resolve peer dependency conflict before merging.**
+
+          A bumped package may conflict with another package's declared `peerDependencies`.
+          Common causes:
+          - The bumped package crossed a major version that a plugin hasn't added support for yet.
+          - A transitive dependency requires a lower version.
+
+          **npm error:**
+          ```
+          WARN
+            grep -A 30 "npm error" /tmp/npm-install.log >> /tmp/pr-body.md || cat /tmp/npm-install.log >> /tmp/pr-body.md
+            printf '\n```\n' >> /tmp/pr-body.md
+            cat >> /tmp/pr-body.md << 'FIX'
+
+          **Fix options:**
+          1. Remove the conflicting package if it is unused.
+          2. Pin the bumped package back to the last conflict-free version and wait for the plugin to release compatibility.
+          3. Last resort: add `--legacy-peer-deps` temporarily and open an issue to track removal.
+          FIX
+          fi
+
+          cat >> /tmp/pr-body.md << 'CHECKLIST'
+
+          ---
+
+          **Before merging:**
+          - [ ] 🔴 HIGH risk items: read the changelog and test manually
+          - [ ] `npm run build` passes
+          - [ ] `npm test` passes
+          - [ ] For any `dependencies` changes (runtime), validate end-to-end with a consumer app
+          - [ ] `npm audit` clean (run `npm audit fix` if needed)
+          - [ ] Convert draft → ready for review
+          CHECKLIST
+
+          # Read the body file into GITHUB_OUTPUT as a multiline value
+          {
+            echo 'content<<PR_BODY_EOF'
+            cat /tmp/pr-body.md
+            echo 'PR_BODY_EOF'
+          } >> $GITHUB_OUTPUT
+
+      - name: Open draft PR
+        if: steps.upgrade.outputs.upgraded == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: chore/monthly-dep-upgrade
+          commit-message: 'chore: monthly dependency upgrade'
+          title: 'chore: monthly dependency upgrade'
+          draft: true
+          labels: dependencies
+          body: ${{ steps.pr_body.outputs.content }}

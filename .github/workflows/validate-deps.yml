@@ -1,0 +1,25 @@
+name: Validate dependency cooling period
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+      - release/*
+    paths:
+      - 'package.json'
+
+jobs:
+  validate:
+    name: 14-day cooling period gate
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Validate dependency versions
+        run: node scripts/validate-deps.js
