@@ -18,7 +18,7 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-node@v1
         with:
-          node-version: 20
+          node-version: 14.17.6
           registry-url: 'https://registry.npmjs.org'
       - name: install modules
         run: npm install --ignore-scripts
