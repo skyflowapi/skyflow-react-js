@@ -113,8 +113,8 @@ describe('test collect elements', () => {
       />,
     )
     expect(cardContainer).toMatchSnapshot()
-    expect(mountMock).toBeCalled();
-    expect(eventListenerMock).toBeCalled();
+    expect(mountMock).toHaveBeenCalled();
+    expect(eventListenerMock).toHaveBeenCalled();
   });
 
   test('test card number collect Element without id', () => {
@@ -135,8 +135,8 @@ describe('test collect elements', () => {
       />,
     )
     expect(cardContainer).toMatchSnapshot()
-    expect(mountMock).toBeCalled();
-    expect(eventListenerMock).toBeCalled();
+    expect(mountMock).toHaveBeenCalled();
+    expect(eventListenerMock).toHaveBeenCalled();
   });
 
   test('test card number collect Element error case', () => {
@@ -253,8 +253,8 @@ describe('test collect elements', () => {
       />,
     )
     expect(cardContainer).toMatchSnapshot()
-    expect(eventEmitterMock).toBeCalled();
-    expect(eventListenerMock).toBeCalledTimes(4);
+    expect(eventEmitterMock).toHaveBeenCalled();
+    expect(eventListenerMock).toHaveBeenCalledTimes(4);
   });
 
   test('test card number composable Element without eventEmitter ', () => {
@@ -334,8 +334,8 @@ describe('test collect elements', () => {
       />,
     )
     expect(cvvContainer).toMatchSnapshot()
-    expect(mountMock).toBeCalled();
-    expect(eventListenerMock).toBeCalled();
+    expect(mountMock).toHaveBeenCalled();
+    expect(eventListenerMock).toHaveBeenCalled();
   });
 
   test('test cvv collect Element with id ', () => {
@@ -356,8 +356,8 @@ describe('test collect elements', () => {
       />,
     )
     expect(cvvContainer).toMatchSnapshot()
-    expect(mountMock).toBeCalled();
-    expect(eventListenerMock).toBeCalled();
+    expect(mountMock).toHaveBeenCalled();
+    expect(eventListenerMock).toHaveBeenCalled();
   });
 
   test('test cvv  composable Element ', () => {
@@ -378,8 +378,8 @@ describe('test collect elements', () => {
       />,
     )
     expect(cvvContainer).toMatchSnapshot()
-    expect(eventEmitterMock).toBeCalled();
-    expect(eventListenerMock).toBeCalled();
+    expect(eventEmitterMock).toHaveBeenCalled();
+    expect(eventListenerMock).toHaveBeenCalled();
   });
 
   test('test cvv collect Element error case', () => {
@@ -437,8 +437,8 @@ describe('test collect elements', () => {
       />,
     )
     expect(PinContainer).toMatchSnapshot()
-    expect(mountMock).toBeCalled();
-    expect(eventListenerMock).toBeCalled();
+    expect(mountMock).toHaveBeenCalled();
+    expect(eventListenerMock).toHaveBeenCalled();
   });
 
   test('test Pin collect Element with id', () => {
@@ -459,8 +459,8 @@ describe('test collect elements', () => {
       />,
     )
     expect(PinContainer).toMatchSnapshot()
-    expect(mountMock).toBeCalled();
-    expect(eventListenerMock).toBeCalled();
+    expect(mountMock).toHaveBeenCalled();
+    expect(eventListenerMock).toHaveBeenCalled();
   });
 
   test('test Pin collect Element error case ', () => {
@@ -500,8 +500,8 @@ describe('test collect elements', () => {
       />,
     )
     expect(PinContainer).toMatchSnapshot()
-    expect(eventEmitterMock).toBeCalled();
-    expect(eventListenerMock).toBeCalled();
+    expect(eventEmitterMock).toHaveBeenCalled();
+    expect(eventListenerMock).toHaveBeenCalled();
   });
 
   test('test Pin composable Element without eventEmitter ', () => {
@@ -541,8 +541,8 @@ describe('test collect elements', () => {
       />,
     )
     expect(cardHolderNameContainer).toMatchSnapshot()
-    expect(mountMock).toBeCalled();
-    expect(eventListenerMock).toBeCalled();
+    expect(mountMock).toHaveBeenCalled();
+    expect(eventListenerMock).toHaveBeenCalled();
   });
 
   test('test cardHolderName collect Element with id ', () => {
@@ -563,8 +563,8 @@ describe('test collect elements', () => {
       />,
     )
     expect(cardHolderNameContainer).toMatchSnapshot()
-    expect(mountMock).toBeCalled();
-    expect(eventListenerMock).toBeCalled();
+    expect(mountMock).toHaveBeenCalled();
+    expect(eventListenerMock).toHaveBeenCalled();
   });
 
   test('test cardHolderName composable Element ', () => {
@@ -585,8 +585,8 @@ describe('test collect elements', () => {
       />,
     )
     expect(cardHolderNameContainer).toMatchSnapshot()
-    expect(eventEmitterMock).toBeCalled();
-    expect(eventListenerMock).toBeCalled();
+    expect(eventEmitterMock).toHaveBeenCalled();
+    expect(eventListenerMock).toHaveBeenCalled();
   });
 
   test('test cardHolderName Collect Element error case', () => {
@@ -664,8 +664,8 @@ describe('test collect elements', () => {
       />,
     )
     expect(inputFieldContainer).toMatchSnapshot()
-    expect(mountMock).toBeCalled();
-    expect(eventListenerMock).toBeCalled();
+    expect(mountMock).toHaveBeenCalled();
+    expect(eventListenerMock).toHaveBeenCalled();
   });
 
   test('test inputField collect Element with id', () => {
@@ -686,8 +686,8 @@ describe('test collect elements', () => {
       />,
     )
     expect(inputFieldContainer).toMatchSnapshot()
-    expect(mountMock).toBeCalled();
-    expect(eventListenerMock).toBeCalled();
+    expect(mountMock).toHaveBeenCalled();
+    expect(eventListenerMock).toHaveBeenCalled();
   });
 
   test('test inputField collect Element error case ', () => {
@@ -727,8 +727,8 @@ describe('test collect elements', () => {
       />,
     )
     expect(inputFieldContainer).toMatchSnapshot()
-    expect(eventEmitterMock).toBeCalled();
-    expect(eventListenerMock).toBeCalled();
+    expect(eventEmitterMock).toHaveBeenCalled();
+    expect(eventListenerMock).toHaveBeenCalled();
   });
 
   test('test inputField  composable Element without eventEmitter ', () => {
@@ -768,8 +768,8 @@ describe('test collect elements', () => {
       />,
     )
     expect(expirationDateContainer).toMatchSnapshot()
-    expect(mountMock).toBeCalled();
-    expect(eventListenerMock).toBeCalled();
+    expect(mountMock).toHaveBeenCalled();
+    expect(eventListenerMock).toHaveBeenCalled();
   });
 
   test('test expirationDate collect Element with id', () => {
@@ -790,8 +790,8 @@ describe('test collect elements', () => {
       />,
     )
     expect(expirationDateContainer).toMatchSnapshot()
-    expect(mountMock).toBeCalled();
-    expect(eventListenerMock).toBeCalled();
+    expect(mountMock).toHaveBeenCalled();
+    expect(eventListenerMock).toHaveBeenCalled();
   });
 
   test('test expirationDate collect Element error case ', () => {
@@ -831,8 +831,8 @@ describe('test collect elements', () => {
       />,
     )
     expect(expirationDateContainer).toMatchSnapshot()
-    expect(eventEmitterMock).toBeCalled();
-    expect(eventListenerMock).toBeCalled();
+    expect(eventEmitterMock).toHaveBeenCalled();
+    expect(eventListenerMock).toHaveBeenCalled();
   });
 
   test('test expirationDate  composable Element without eventEmitter ', () => {
@@ -872,8 +872,8 @@ describe('test collect elements', () => {
       />,
     )
     expect(expirationMonthContainer).toMatchSnapshot()
-    expect(mountMock).toBeCalled();
-    expect(eventListenerMock).toBeCalled();
+    expect(mountMock).toHaveBeenCalled();
+    expect(eventListenerMock).toHaveBeenCalled();
   });
 
   test('test expirationMonth collect Element with id ', () => {
@@ -894,8 +894,8 @@ describe('test collect elements', () => {
       />,
     )
     expect(expirationMonthContainer).toMatchSnapshot()
-    expect(mountMock).toBeCalled();
-    expect(eventListenerMock).toBeCalled();
+    expect(mountMock).toHaveBeenCalled();
+    expect(eventListenerMock).toHaveBeenCalled();
   });
 
   test('test expirationMonth collect Element error case ', () => {
@@ -935,8 +935,8 @@ describe('test collect elements', () => {
       />,
     )
     expect(expirationMonthContainer).toMatchSnapshot()
-    expect(eventEmitterMock).toBeCalled();
-    expect(eventListenerMock).toBeCalled();
+    expect(eventEmitterMock).toHaveBeenCalled();
+    expect(eventListenerMock).toHaveBeenCalled();
   });
 
   test('test expirationMonth  composable Element without eventEmitter ', () => {
@@ -976,8 +976,8 @@ describe('test collect elements', () => {
       />,
     )
     expect(expirationYearContainer).toMatchSnapshot()
-    expect(mountMock).toBeCalled();
-    expect(eventListenerMock).toBeCalled();
+    expect(mountMock).toHaveBeenCalled();
+    expect(eventListenerMock).toHaveBeenCalled();
   });
 
   test('test expirationYear collect Element ', () => {
@@ -998,8 +998,8 @@ describe('test collect elements', () => {
       />,
     )
     expect(expirationYearContainer).toMatchSnapshot()
-    expect(mountMock).toBeCalled();
-    expect(eventListenerMock).toBeCalled();
+    expect(mountMock).toHaveBeenCalled();
+    expect(eventListenerMock).toHaveBeenCalled();
   });
 
   test('test expirationYear collect Element error case ', () => {
@@ -1039,8 +1039,8 @@ describe('test collect elements', () => {
       />,
     )
     expect(expirationYearContainer).toMatchSnapshot()
-    expect(eventEmitterMock).toBeCalled();
-    expect(eventListenerMock).toBeCalled();
+    expect(eventEmitterMock).toHaveBeenCalled();
+    expect(eventListenerMock).toHaveBeenCalled();
   });
 
   test('test expirationYear composable Element without eventEmitter ', () => {

@@ -31,7 +31,7 @@ jest.mock('uuid',()=>{return {
 describe('RevealElement', () => {
   let container: RevealContainer
   let id: string
-  let classes: Record<string, unknown>
+  let classes: Record<string, unknown> = {}
   let collectContainer;
 
   test('should reveal element', async () => {

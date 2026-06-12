@@ -15,11 +15,11 @@ jest.mock('uuid',()=>{return {
 })
 
 describe('RevealElement', () => {
-  let container: RevealContainer
-  let token: string
-  let id: string
-  let label: string
-  let classes: Record<string, unknown>
+  let container: RevealContainer = {} as RevealContainer
+  let token: string = ''
+  let id: string = ''
+  let label: string = ''
+  let classes: Record<string, unknown> = {}
 
   test('should match snapshot', () => {
     const revealElement = render(

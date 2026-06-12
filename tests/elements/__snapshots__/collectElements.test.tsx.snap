@@ -1,7 +1,7 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`test collect elements test Pin collect Element  1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div>
@@ -70,7 +70,7 @@ Object {
 `;
 
 exports[`test collect elements test Pin collect Element error case  1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div />
@@ -131,7 +131,7 @@ Object {
 `;
 
 exports[`test collect elements test Pin collect Element with id 1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div>
@@ -200,7 +200,7 @@ Object {
 `;
 
 exports[`test collect elements test Pin composable Element  1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div />
@@ -261,7 +261,7 @@ Object {
 `;
 
 exports[`test collect elements test Pin composable Element without eventEmitter  1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div />
@@ -322,7 +322,7 @@ Object {
 `;
 
 exports[`test collect elements test card number collect Element  1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div>
@@ -391,7 +391,7 @@ Object {
 `;
 
 exports[`test collect elements test card number collect Element error case 1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div />
@@ -452,7 +452,7 @@ Object {
 `;
 
 exports[`test collect elements test card number collect Element with element value match rule 1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div>
@@ -529,7 +529,7 @@ Object {
 `;
 
 exports[`test collect elements test card number collect Element with invalid validations - 1 1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div>
@@ -598,7 +598,7 @@ Object {
 `;
 
 exports[`test collect elements test card number collect Element with invalid validations - 2 1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div>
@@ -667,7 +667,7 @@ Object {
 `;
 
 exports[`test collect elements test card number collect Element without id 1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div>
@@ -736,7 +736,7 @@ Object {
 `;
 
 exports[`test collect elements test card number composable Element  1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div />
@@ -797,7 +797,7 @@ Object {
 `;
 
 exports[`test collect elements test card number composable Element with element value match rule 1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div>
@@ -872,7 +872,7 @@ Object {
 `;
 
 exports[`test collect elements test card number composable Element without eventEmitter  1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div />
@@ -933,7 +933,7 @@ Object {
 `;
 
 exports[`test collect elements test cardHolderName Collect Element error case 1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div />
@@ -994,7 +994,7 @@ Object {
 `;
 
 exports[`test collect elements test cardHolderName Collect Element error case 2`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div />
@@ -1055,7 +1055,7 @@ Object {
 `;
 
 exports[`test collect elements test cardHolderName collect Element  1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div>
@@ -1124,7 +1124,7 @@ Object {
 `;
 
 exports[`test collect elements test cardHolderName collect Element with id  1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div>
@@ -1193,7 +1193,7 @@ Object {
 `;
 
 exports[`test collect elements test cardHolderName composable Element  1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div />
@@ -1254,7 +1254,7 @@ Object {
 `;
 
 exports[`test collect elements test cardHolderName composable element without eventEmitter 1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div />
@@ -1315,7 +1315,7 @@ Object {
 `;
 
 exports[`test collect elements test composable container element 1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div>
@@ -1392,7 +1392,7 @@ Object {
 `;
 
 exports[`test collect elements test composable container element with children 1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div>
@@ -1463,7 +1463,7 @@ Object {
 `;
 
 exports[`test collect elements test composable container element without id 1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div>
@@ -1534,7 +1534,7 @@ Object {
 `;
 
 exports[`test collect elements test cvv  composable Element  1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div />
@@ -1595,7 +1595,7 @@ Object {
 `;
 
 exports[`test collect elements test cvv collect Element 1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div>
@@ -1664,7 +1664,7 @@ Object {
 `;
 
 exports[`test collect elements test cvv collect Element error case 1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div />
@@ -1725,7 +1725,7 @@ Object {
 `;
 
 exports[`test collect elements test cvv collect Element with id  1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div>
@@ -1794,7 +1794,7 @@ Object {
 `;
 
 exports[`test collect elements test cvv composable Element without eventEmitter  1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div />
@@ -1855,7 +1855,7 @@ Object {
 `;
 
 exports[`test collect elements test expirationDate  composable Element  1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div />
@@ -1916,7 +1916,7 @@ Object {
 `;
 
 exports[`test collect elements test expirationDate  composable Element without eventEmitter  1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div />
@@ -1977,7 +1977,7 @@ Object {
 `;
 
 exports[`test collect elements test expirationDate collect Element  1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div>
@@ -2046,7 +2046,7 @@ Object {
 `;
 
 exports[`test collect elements test expirationDate collect Element error case  1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div />
@@ -2107,7 +2107,7 @@ Object {
 `;
 
 exports[`test collect elements test expirationDate collect Element with id 1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div>
@@ -2176,7 +2176,7 @@ Object {
 `;
 
 exports[`test collect elements test expirationMonth  composable Element  1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div />
@@ -2237,7 +2237,7 @@ Object {
 `;
 
 exports[`test collect elements test expirationMonth  composable Element without eventEmitter  1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div />
@@ -2298,7 +2298,7 @@ Object {
 `;
 
 exports[`test collect elements test expirationMonth collect Element  1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div>
@@ -2367,7 +2367,7 @@ Object {
 `;
 
 exports[`test collect elements test expirationMonth collect Element error case  1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div />
@@ -2428,7 +2428,7 @@ Object {
 `;
 
 exports[`test collect elements test expirationMonth collect Element with id  1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div>
@@ -2497,7 +2497,7 @@ Object {
 `;
 
 exports[`test collect elements test expirationYear collect Element  1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div>
@@ -2566,7 +2566,7 @@ Object {
 `;
 
 exports[`test collect elements test expirationYear collect Element  2`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div>
@@ -2635,7 +2635,7 @@ Object {
 `;
 
 exports[`test collect elements test expirationYear collect Element error case  1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div />
@@ -2696,7 +2696,7 @@ Object {
 `;
 
 exports[`test collect elements test expirationYear composable Element  1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div />
@@ -2757,7 +2757,7 @@ Object {
 `;
 
 exports[`test collect elements test expirationYear composable Element without eventEmitter  1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div />
@@ -2818,7 +2818,7 @@ Object {
 `;
 
 exports[`test collect elements test fileInput collect Element  1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div>
@@ -2887,7 +2887,7 @@ Object {
 `;
 
 exports[`test collect elements test fileInput collect Element with allowedFileType option  1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div>
@@ -2956,7 +2956,7 @@ Object {
 `;
 
 exports[`test collect elements test fileInput collect Element with blockEmptyFiles option is false 1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div>
@@ -3025,7 +3025,7 @@ Object {
 `;
 
 exports[`test collect elements test fileInput collect Element with blockEmptyFiles option is true 1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div>
@@ -3094,7 +3094,7 @@ Object {
 `;
 
 exports[`test collect elements test fileInput collect Element with id  1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div>
@@ -3163,7 +3163,7 @@ Object {
 `;
 
 exports[`test collect elements test fileInput composable Element with emitter  1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div />
@@ -3224,7 +3224,7 @@ Object {
 `;
 
 exports[`test collect elements test inputField  composable Element  1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div />
@@ -3285,7 +3285,7 @@ Object {
 `;
 
 exports[`test collect elements test inputField  composable Element without eventEmitter  1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div />
@@ -3346,7 +3346,7 @@ Object {
 `;
 
 exports[`test collect elements test inputField collect Element  1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div>
@@ -3415,7 +3415,7 @@ Object {
 `;
 
 exports[`test collect elements test inputField collect Element error case  1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div />
@@ -3476,7 +3476,7 @@ Object {
 `;
 
 exports[`test collect elements test inputField collect Element with id 1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div>
