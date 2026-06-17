@@ -15,11 +15,14 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
+    "ignoreDeprecations": "6.0",
     "resolveJsonModule": false,
     "isolatedModules": false,
     "noEmit": false,
     "declaration": true,
-    "outDir": "./lib"
+    "rootDir": "./src",
+    "outDir": "./lib",
+    "types": ["jest", "node"]
   },
   "include": ["src","typings.d.ts"],
   "exclude": []

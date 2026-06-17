@@ -53,7 +53,7 @@ const ComposableElements = () => {
 	const cvvClasses = useCardCvvStyles();
 
 	const containerOptions = {
-		layout: [1, 3],
+		layout: [1, 2],
 		styles: {
 			base: {
 				border: '1px solid #DFE3EB',

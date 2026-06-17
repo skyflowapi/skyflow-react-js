@@ -4,8 +4,8 @@ Test the SDK by adding `VAULT-ID`, `VAULT-URL`, and `SERVICE-ACCOUNT` details in
 
 ## Prerequisites
 - A Skyflow account. If you don't have one, register for one on the [Try Skyflow](https://skyflow.com/try-skyflow) page.
-- [Node.js](https://nodejs.org/en/) version 10 or above
-- [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) version 6.x.x
+- [Node.js](https://nodejs.org/en/) version 20.x or above
+- [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) version 10.x or above
 - [express.js](http://expressjs.com/en/starter/hello-world.html)
 - Minimum supported version of React is v16.8.0
 
