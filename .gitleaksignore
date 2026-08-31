@@ -1,0 +1,2 @@
+# False positives: sample response tokens (UUID record identifiers) in README.md docs, not real secrets.
+36e823a2532dde303eb21fa0874e334251c0b5c6:README.md:generic-api-key:2711
