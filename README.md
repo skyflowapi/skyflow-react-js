@@ -2708,7 +2708,7 @@ export default App
   ],
   "errors": [
     {
-      "token": "89024714-6a26-4256-b9d4-55ad69aa4047",
+      token={'<TOKEN_ID>'},
       "error": {
         "code": 404,
         "description": "Tokens not found for 89024714-6a26-4256-b9d4-55ad69aa4047"
