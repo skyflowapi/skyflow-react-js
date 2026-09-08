@@ -2703,12 +2703,12 @@ export default App
 {
   "success": [
     {
-      "token": "1404-8379-9069-7378"
+      "token": "<TOKEN_ID>"
     }
   ],
   "errors": [
     {
-      "token": "89024714-6a26-4256-b9d4-55ad69aa4047",
+      "token": "<TOKEN_ID>",
       "error": {
         "code": 404,
         "description": "Tokens not found for 89024714-6a26-4256-b9d4-55ad69aa4047"
