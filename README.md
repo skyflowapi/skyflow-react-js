@@ -16,9 +16,12 @@ A React wrapper for [Skyflow JS SDK](https://github.com/skyflowapi/skyflow-js)
   - [Requirements](#requirements)
 - [**Initializing Skyflow-React**](#initializing-skyflow-react)
 - [**Securely collecting data client-side**](#securely-collecting-data-client-side)
-- [**Securely collecting data using File Input Element to upload a file**](#securely-collecting-data-client-side)
+  - [**Validations**](#validations)
+  - [**Event Listener on Collect Elements**](#event-listener-on-collect-elements)
+- [**Using Skyflow File Input Element to upload a file**](#using-skyflow-file-input-element-to-upload-a-file)
 - [**Securely collecting data client-side using Composable Elements**](#securely-collecting-data-client-side-using-composable-elements)
 - [**Securely revealing data client-side**](#securely-revealing-data-client-side)
+  - [**Render a file with a File Element**](#render-a-file-with-a-file-element)
 - [**Update Skyflow Elements Properties**](#update-skyflow-elements-properties)
 - [**Reporting a Vulnerability**](#reporting-a-vulnerability)
 - [**License**](#license)
@@ -309,7 +312,6 @@ We support the following collect elements in the react SDK:
 - `ExpirationDateElement`
 - `CVVElement`
 - `PinElement`
-- `ExpirationDateElement`
 - `ExpirationMonthElement`
 - `ExpirationYearElement`
 - `InputFieldElement`
@@ -1228,10 +1230,10 @@ const CollectElements = () => {
   const onCardholderNameBlur = (state: any) => {
     if(state.isEmpty){
       //can override the message when the field is required and empty
-      cardNameRef.current?.setErrorOverride("custom error for required");
+      cardholderNameRef.current?.setErrorOverride("custom error for required");
     } else if(!state.isValid){
       //can override the message when the input is invalid
-      cardNameRef.current?.setErrorOverride("custom error for invalid name");
+      cardholderNameRef.current?.setErrorOverride("custom error for invalid name");
     }
   }
 
@@ -1253,7 +1255,7 @@ const CollectElements = () => {
         table={'table1'}
         column={'cardholder_name'}
         label='Name'
-        ref={cardNameRef}
+        ref={cardholderNameRef}
         options={{required:true}}
         onBlur={onCardholderNameBlur}
       />
@@ -1314,7 +1316,7 @@ The `table` and `column` fields indicate which table and column the Element corr
 - `skyflowID` is required while creating File element
 - Use period-delimited strings to specify columns nested inside JSON fields (e.g. `address.street.line1`).
 
-## Step 3: Collect data from elements
+### Step 3: Collect data from elements
 
 When the file is ready to be uploaded, call the `uploadFiles()` method on the container object.
 
@@ -1762,10 +1764,10 @@ Note: Use dot-delimited strings to specify columns nested inside JSON fields (fo
 
 All elements can be styled with JSS syntax.
 
-An example of styling an element with `makeSkyflowStyles` hook:
+An example of styling an element with `useMakeSkyflowStyles` hook:
 
 ```jsx
-const useSkyflowStyles = makeSkyflowStyles({
+const useSkyflowStyles = useMakeSkyflowStyles({
   inputStyles: {
     base: {
       color: "#013370",
@@ -1872,7 +1874,6 @@ The React SDK supports the following composable elements:
 - `ExpirationDateElement`
 - `CVVElement`
 - `PinElement`
-- `ExpirationDateElement`
 - `ExpirationMonthElement`
 - `ExpirationYearElement`
 - `InputFieldElement`
@@ -2459,7 +2460,7 @@ const GetRecords = () => {
     }
 	return ( 
     <div id = 'get-div' >
-		<button id = 'get-button' onClick = {callGet} > Get Records </button>  
+		<button id = 'get-button' onClick = {handleGetMethod} > Get Records </button>  
     </div >
 	)
 }
@@ -2522,7 +2523,7 @@ const GetRecords = () => {
 	}
 	return ( 
     <div id = 'get-div' >
-		<button id = 'get-button' onClick = {callGet} > Get Records </button>  
+		<button id = 'get-button' onClick = {handleGetMethod} > Get Records </button>  
     </div >
 	)
 }
@@ -2722,7 +2723,7 @@ export default App
 
 You can render files using the Skyflow File Element. Use the following steps to securely render a file.
 
-## Step 1: Create a container
+### Step 1: Create a container
 
 To start, create a container using the `useRevealContainer()` method of the Skyflow client as shown below.
 
@@ -2730,7 +2731,7 @@ To start, create a container using the `useRevealContainer()` method of the Skyf
 const revealContainer = useRevealContainer()
 ```
 
-## Step 2: Create a File Element
+### Step 2: Create a File Element
 Define a Skyflow Element to render the file as shown below.
 
 ```jsx
@@ -2738,6 +2739,7 @@ import {FileRenderElement} from 'skyflow-react-js';
 import Skyflow from 'skyflow-js';
 
 <FileRenderElement
+  container='<CONTAINER>'  // Required, the reveal container.
   id= 'string'        // Required, id that can passed to the element, it should be unique.
   skyflowID= 'string' // Required, skyflow id of the file to be render
   column= 'string'    // Required, column name of the file to be render
@@ -2786,7 +2788,7 @@ errorTextStyles: {
 }
 ```
 
-## Step 3: Render File
+### Step 3: Render File
 
 When the element is created and mounted, use useRenderFile(id) hook to pass the div id of file render element and  call the renderFile() method on the file render element instance return by useRenderFile(id) as shown below:
 
@@ -2805,7 +2807,7 @@ fileElement
 
 `Note`: The div id passed in the element should be unique, and the same div id should be passed in the useRenderFile('id') hook.
 
-## End to end example of file render
+### End to end example of file render
 
 ```javascript
 import React, { useEffect, useState } from 'react';
@@ -2892,7 +2894,7 @@ const App = () => {
 export default App
 ```
 
-## Sample Success Response
+### Sample Success Response
 ```json
 {
   "success": [
@@ -2906,7 +2908,7 @@ export default App
 
 ## Update Skyflow Elements Properties
 
-You can dynamically update Skyflow Elements’ properties dynamically by using the React `useState` hook. You can maintain the element properties via React state and update them at runtime as and when required. The Skyflow React SDK provides the following elements:
+You can dynamically update Skyflow Elements’ properties by using the React `useState` hook. You can maintain the element properties via React state and update them at runtime as and when required. The Skyflow React SDK provides the following elements:
 - Collect Elements
 - Reveal Elements
 - Composable Elements
@@ -3025,8 +3027,8 @@ const App = () => {
   
   // handler function for rendering file
   const renderFile = () => {
-   fileElement?
-      .renderFile()
+   fileElement
+      ?.renderFile()
       .then((res: any) => {
         console.log(res)
       })
