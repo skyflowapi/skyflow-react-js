@@ -23,7 +23,7 @@ Test the SDK by adding `VAULT-ID`, `VAULT-URL`, and `SERVICE-ACCOUNT` details in
 ### Create A Service Account
 1. In the side navigation click, **IAM** > **Service Accounts** > **New Service Account**.
 2. For Name, enter "SDK Sample". For Roles, choose **Vault Editor**.
-3. Click **Create**. Your browser downloads a **credentials.json** file. Keep this file secure, as You'll need it for each of the samples.
+3. Click **Create**. Your browser downloads a **credentials.json** file. Keep this file secure, as you'll need it for each of the samples.
 
 ### Create a bearer token generation endpoint
 1. Create a new directory named `bearer-token-generator`.
@@ -38,7 +38,7 @@ Test the SDK by adding `VAULT-ID`, `VAULT-URL`, and `SERVICE-ACCOUNT` details in
 4. Install `skyflow-node`
 
         npm i skyflow-node
-5. Move the downloaded “credentials.json” file #Create a service account account into the bearer-token-generator directory.
+5. Move the downloaded “credentials.json” file from [Create A Service Account](#create-a-service-account) into the bearer-token-generator directory.
 6. Create `index.js` file
 7. Open `index.js` file
 8. Populate `index.js` file with below code snippet
@@ -92,12 +92,32 @@ app.listen(port, () => {
 ## The samples
 ### [Collect data](https://github.com/skyflowapi/skyflow-react-js/tree/main/samples/SkyflowElements/src/components/CollectElements)
 This sample illustrates how to use secure Skyflow elements to collect sensitive user information and reveal it to the user via tokens.
+### [Collect data with update](https://github.com/skyflowapi/skyflow-react-js/tree/main/samples/SkyflowElements/src/components/CollectElementsUpdateData)
+This sample illustrates how to update previously collected data using Skyflow collect elements.
+### [Composable Elements](https://github.com/skyflowapi/skyflow-react-js/tree/main/samples/SkyflowElements/src/components/ComposableElements)
+This sample illustrates how to collect data using Composable Elements.
+### [Dynamic collect elements](https://github.com/skyflowapi/skyflow-react-js/tree/main/samples/SkyflowElements/src/components/DynamicCollectElements)
+This sample illustrates how to update collect element properties at runtime.
+### [Dynamic Composable Elements](https://github.com/skyflowapi/skyflow-react-js/tree/main/samples/SkyflowElements/src/components/DynamicComposableElements)
+This sample illustrates how to update Composable Element properties at runtime.
+### [Dynamic reveal elements](https://github.com/skyflowapi/skyflow-react-js/tree/main/samples/SkyflowElements/src/components/DynamicRevealElements)
+This sample illustrates how to update reveal element properties at runtime.
 ### [Custom Validation](https://github.com/skyflowapi/skyflow-react-js/tree/main/samples/SkyflowElements/src/components/CustomValidations)
-This sample illustrates how to use custom validation with skylow collect elements.
+This sample illustrates how to use custom validation with Skyflow collect elements.
 ### [Reveal data](https://github.com/skyflowapi/skyflow-react-js/tree/main/samples/SkyflowElements/src/components/RevealElements)
 This sample illustrates how functionality of reveal feature works.
+### [File render element](https://github.com/skyflowapi/skyflow-react-js/tree/main/samples/SkyflowElements/src/components/FileRenderElements)
+This sample illustrates how to render an uploaded file with the File Render Element.
+### [Input formatting](https://github.com/skyflowapi/skyflow-react-js/tree/main/samples/SkyflowElements/src/components/InputFormatting)
+This sample illustrates how to format element input with the `format` and `translation` options.
+### [Masking](https://github.com/skyflowapi/skyflow-react-js/tree/main/samples/SkyflowElements/src/components/Masking)
+This sample illustrates how to mask element input with the `masking` and `maskingChar` options.
+### [Override default errors](https://github.com/skyflowapi/skyflow-react-js/tree/main/samples/SkyflowElements/src/components/OverrideDefaultErrors)
+This sample illustrates how to override default error messages with `setErrorOverride`.
+### [Card brand choice](https://github.com/skyflowapi/skyflow-react-js/tree/main/samples/SkyflowElements/src/components/CardBrandChoice)
+This sample illustrates how to let users choose a card brand with the `cardMetadata.scheme` option.
 ### [Event Listeners](https://github.com/skyflowapi/skyflow-react-js/tree/main/samples/SkyflowElements/src/components/ElementListeners)
-This sample illustrates how evenet listeners with Skyflow elements.
+This sample illustrates how to use event listeners with Skyflow elements.
 
 #### Run the sample
 
